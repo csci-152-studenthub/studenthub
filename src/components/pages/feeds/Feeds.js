@@ -1,11 +1,17 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import CardContainer from './CardContainer';
+import './feeds.css'
 
 export class Feeds extends Component {
   render() {
     return (
-      <div>
-        
-      </div>
+    <div className="container">
+      <div className="grid-item itemHeader">StudentHub</div>
+        <div className="grid-item itemBody">
+          <CardContainer />
+        </div>
+      
+    </div>
     )
   }
 }
