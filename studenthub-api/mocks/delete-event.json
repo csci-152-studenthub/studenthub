@@ -1,0 +1,10 @@
+{
+  "pathParameters": {
+    "id": "845c5780-3a36-11e9-836e-8ba4e9fa7096"
+  },
+  "requestContext": {
+    "identity": {
+      "cognitoIdentityId": "ecast96@mail.fresnostate.edu"
+    }
+  }
+}
