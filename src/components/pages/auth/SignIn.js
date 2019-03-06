@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import {message, Layout, Col, Row, Divider, Form, Icon, Input, Button, Checkbox} from 'antd';
 import { Auth } from "aws-amplify";
 import { Typography } from 'antd';
-import logo from './assets/logo.jpg';
-import './App.css';
+import logo from '../../../assets/logo.jpg';
+import '../../../App.css';
 
 import SignInComponent from './SignIn.component';
 import ForgotPasswordComponent from './ForgotPassword.component';
@@ -17,53 +17,18 @@ const {
   Header, Footer, Sider, Content,
 } = Layout;
 
-const success = () => {
-  message.loading('Action in progress..', 2.5)
-    .then(() => message.success('Loading finished', 2.5));
-  };
-
 class SignIn extends Component {
   constructor(props){
     super(props);
 
     this.state = {
-      loading: false,
       formType: 0,
-      email: "",
-      password: ""
     }
 
-  }
-
-  componentDidMount(){
-    Auth.currentAuthenticatedUser({
-        bypassCache: false  // Optional, By default is false. If set to true, this call will send a request to Cognito to get the latest user data
-    }).then(user => console.log(user.attributes.email+' is signed in!'))
-    .catch(err => console.log(err));
   }
 
   changeForm = (type) => {
     this.setState({formType: type})
-  }
-
-  handleChange = event => {
-    console.log(`${event.target.id} is now: `, event.target.value);
-    this.setState({
-      [event.target.id]: event.target.value
-    });
-  }
-
-  handleSubmit = async event => {
-    event.preventDefault();
-    console.log(this.state);
-
-    try {
-      const response = await Auth.signIn(this.state.normal_login_email, this.state.normal_login_password);
-      // console.log(response);
-      message.success("Logged in", 2.5);
-    } catch (e) {
-      message.error(e.message, 2.5)
-    }
   }
 
   renderForm(){

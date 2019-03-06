@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import {message, Layout, Col, Row, Divider, Form, Icon, Input, Button, Checkbox} from 'antd';
 import { Auth } from "aws-amplify";
 import { Typography } from 'antd';
-import SignUp from './SignUp';
-import logo from './assets/logo.jpg';
-import './App.css';
+import logo from '../../../assets/logo.jpg';
+import '../../../App.css';
 
 const { Title } = Typography;
 
@@ -13,17 +12,13 @@ const {
   Header, Footer, Sider, Content,
 } = Layout;
 
-const success = () => {
-  message.loading('Action in progress..', 2.5)
-    .then(() => message.success('Loading finished', 2.5));
-  };
-
 class SignInComponent extends Component {
   constructor(props){
     super(props);
 
     this.state = {
       loading: false,
+      buttonLoading: false,
       formType: 0,
       email: "",
       password: ""
@@ -43,12 +38,21 @@ class SignInComponent extends Component {
 
     this.props.form.validateFieldsAndScroll(async (err, values) => {
       if(!err){
+        this.setState({buttonLoading: true});
         console.log(values);
         var email = values.email;
         var password = values.password;
         const response = await Auth.signIn(email, password)
-          .then(data => {console.log(data); message.success("Success!", 2.5);})
-          .catch(err => {console.log(err); message.error(err.message, 2.5)});
+          .then(data => {
+            this.setState({buttonLoading: false});
+            console.log(data);
+            message.success("Success!", 2.5);
+          })
+          .catch(err => {
+            this.setState({buttonLoading: false});
+            console.log(err);
+            message.error(err.message, 2.5);
+          });
       } else {
         console.log(err);
       }
@@ -85,10 +89,10 @@ class SignInComponent extends Component {
             <Checkbox>Remember me</Checkbox>
           )}
           <a className="login-form-forgot" onClick={() => changeForm(1)}>Forgot password</a>
-          <Button loading={this.state.loading} onClick={this.handleSubmit} type="primary" htmlType="submit" className="login-form-button">
+          <Button loading={this.state.buttonLoading} onClick={this.handleSubmit} type="primary" htmlType="submit" className="login-form-button">
             Log in
           </Button>
-          Or <a onClick={() => changeForm(2)}>register now!</a>
+          Or <a onClick={() => changeForm(2)}>sign up now!</a>
         </Form.Item>
       </Form>
       </div>

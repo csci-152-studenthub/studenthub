@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import {message, Layout, Col, Row, Divider, Form, Icon, Input, Button, Checkbox, Typography} from 'antd';
 import { Auth } from "aws-amplify";
-import logo from './assets/logo.jpg';
-import './App.css';
+import logo from '../../../assets/logo.jpg';
+import '../../../App.css';
 
 const { Title } = Typography;
 
@@ -11,17 +11,13 @@ const {
   Header, Footer, Sider, Content,
 } = Layout;
 
-const success = () => {
-  message.loading('Action in progress..', 2.5)
-    .then(() => message.success('Loading finished', 2.5));
-  };
-
 class ForgotPasswordComponent extends Component {
   constructor(props){
     super(props);
 
     this.state = {
       loading: false,
+      buttonLoading: false,
       formType: 0,
       email: "",
       password: ""
@@ -41,12 +37,22 @@ class ForgotPasswordComponent extends Component {
 
     this.props.form.validateFieldsAndScroll(async (err, values) => {
       if(!err){
+        this.setState({buttonLoading: true});
         console.log(values);
 
         var username = values.email;
         const response = await Auth.forgotPassword(username)
-          .then(data => {console.log(data); message.success("Email sent!", 2.5); setTimeout(() => this.props.changeForm(3), 1)})
-          .catch(err => {console.log(err); message.error(err.message, 2.5)});
+          .then(data => {
+            this.setState({buttonLoading: false});
+            console.log(data);
+            message.success("Email sent!", 2.5);
+            setTimeout(() => this.props.changeForm(3), 1);
+          })
+          .catch(err => {
+            this.setState({buttonLoading: false});
+            console.log(err);
+            message.error(err.message, 2.5)
+          });
 
       } else {
         console.log(err);
@@ -59,7 +65,7 @@ class ForgotPasswordComponent extends Component {
     var changeForm  =   this.props.changeForm;
     return (
       <div>
-        <Title level={4} style={{paddingLeft: 0}}>Forgot Password?</Title>
+        <Title level={4} style={{paddingLeft: 0}}>Forgot Password</Title>
         <Form onSubmit={this.handleSubmit} className="login-form">
           <Form.Item style={{paddingTop: 20}}>
             {getFieldDecorator('email', {
@@ -71,7 +77,7 @@ class ForgotPasswordComponent extends Component {
           </Form.Item>
 
           <Form.Item>
-            <Button loading={this.state.loading} onClick={this.handleSubmit} type="primary" htmlType="submit" className="login-form-button">
+            <Button loading={this.state.buttonLoading} onClick={this.handleSubmit} type="primary" htmlType="submit" className="login-form-button">
               Submit
             </Button>
             Or <a onClick={() => changeForm(0)}>back to sign in.</a>
