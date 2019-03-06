@@ -4,6 +4,7 @@ import {message, Layout, Col, Row, Divider} from 'antd';
 import { Typography } from 'antd';
 import logo from './assets/logo.jpg';
 import './App.css';
+import cat from './assets/CrytoCat.png'
 
 import SignIn from './components/pages/auth/SignIn';
 import Test from './Test';
