@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import {message, Layout, Col, Row, Divider} from 'antd';
-import Form from './SignIn';
-import SignUp from './SignUp';
+import { Typography } from 'antd';
+import SignIn from './SignIn';
 import logo from './assets/logo.jpg';
 import './App.css';
+
+const { Title } = Typography;
+
 
 const {
   Header, Footer, Sider, Content,
@@ -19,11 +22,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Row type="flex" align="middle"  justify="space-around" style={{ paddingTop: 100}}>
-          <Col span={6} ><img src={logo} alt="Logo" style={{ height: 400, paddingLeft: 200, paddingRight: 10}}/></Col>
-          <Col span={1}><Divider type="vertical" style={{height: 300, left: 125}} /></Col>
-          <Col span={10}><Form /></Col>
-        </Row>
+      <SignIn />
       </div>
     );
   }

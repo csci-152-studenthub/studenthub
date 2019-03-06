@@ -1,23 +1,49 @@
-import React from 'react';
+import React, { Component } from 'react';
+import {message, Layout, Col, Row, Divider, Form, Icon, Input, Button, Checkbox} from 'antd';
 import { Auth } from "aws-amplify";
-
+import { Typography } from 'antd';
+import logo from './assets/logo.jpg';
 import './App.css';
 
-import {
-  Form, Icon, Input, Button, Checkbox, message
-} from 'antd';
+import SignInComponent from './SignIn.component';
+import ForgotPasswordComponent from './ForgotPassword.component';
+import SignUpComponent from './SignUp.component';
+import ChangePasswordComponent from './ChangePassword.component';
 
-class NormalLoginForm extends React.Component {
+const { Title } = Typography;
+
+
+const {
+  Header, Footer, Sider, Content,
+} = Layout;
+
+const success = () => {
+  message.loading('Action in progress..', 2.5)
+    .then(() => message.success('Loading finished', 2.5));
+  };
+
+class SignIn extends Component {
   constructor(props){
     super(props);
 
     this.state = {
       loading: false,
+      formType: 0,
       email: "",
       password: ""
     }
 
-    this.switchLoading = this.switchLoading.bind(this);
+  }
+
+  componentDidMount(){
+    Auth.currentAuthenticatedUser({
+        bypassCache: false  // Optional, By default is false. If set to true, this call will send a request to Cognito to get the latest user data
+    }).then(user => console.log(user.attributes.email+' is signed in!'))
+    .catch(err => console.log(err));
+  }
+
+  changeForm = (type) => {
+    this.setState({formType: type})
   }
 
   handleChange = event => {
@@ -28,81 +54,50 @@ class NormalLoginForm extends React.Component {
   }
 
   handleSubmit = async event => {
-      event.preventDefault();
-      console.log(this.state);
+    event.preventDefault();
+    console.log(this.state);
 
-      try {
-        const response = await Auth.signIn(this.state.normal_login_email, this.state.normal_login_password);
-        // console.log(response);
-        message.success("Logged in", 2.5);
-      } catch (e) {
-        message.error(e.message, 2.5)
-      }
+    try {
+      const response = await Auth.signIn(this.state.normal_login_email, this.state.normal_login_password);
+      // console.log(response);
+      message.success("Logged in", 2.5);
+    } catch (e) {
+      message.error(e.message, 2.5)
     }
+  }
 
-
-  // handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   this.props.form.validateFields((err, values) => {
-  //     if (!err) {
-  //       event.preventDefault();
-  //       try {
-  //         await Auth.signIn(this.state.email, this.state.password);
-  //         alert("Logged in");
-  //       } catch (e) {
-  //         alert(e.message);
-  //       }
-  //     }
-  //   });
-  // }
-
-  switchLoading() {
-    this.setState(state => ({
-      loading: true
-    }));
-    message.loading('Signing in...', 2.5)
-      .then(() => message.success('Signed in!', .5));
-    this.setState(state => ({
-      loading: false
-    }));
+  renderForm(){
+    var formType = this.state.formType;
+    if(formType === 0){
+      return (<SignInComponent changeForm = {this.changeForm} />)
+    } else if (formType === 1) {
+      return (<ForgotPasswordComponent changeForm = {this.changeForm} />)
+    } else if (formType === 2) {
+      return (<SignUpComponent changeForm = {this.changeForm} />)
+    } else if (formType === 3) {
+      return (<ChangePasswordComponent changeForm = {this.changeForm} />)
+    }
   }
 
   render() {
     const { getFieldDecorator } = this.props.form;
     return (
-      <Form onSubmit={this.handleSubmit} className="login-form">
-        <Form.Item style={{paddingTop: 20}}>
-          {getFieldDecorator('email', {
-            rules: [{ required: true, message: 'Please input your email!' }],
-          })(
-            <Input setFieldsValue={this.state.email} onChange={this.handleChange} prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} type="email" placeholder="Email" />
-          )}
-        </Form.Item>
-        <Form.Item>
-          {getFieldDecorator('password', {
-            rules: [{ required: true, message: 'Please input your Password!' }],
-          })(
-            <Input setFieldsValue={this.state.password} onChange={this.handleChange} prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="Password" />
-          )}
-        </Form.Item>
-        <Form.Item>
-          {getFieldDecorator('remember', {
-            valuePropName: 'checked',
-            initialValue: true,
-          })(
-            <Checkbox>Remember me</Checkbox>
-          )}
-          <a className="login-form-forgot" >Forgot password</a>
-          <Button loading={this.state.loading} onClick={this.handleSubmit} type="primary" htmlType="submit" className="login-form-button">
-            Log in
-          </Button>
-          Or <a >register now!</a>
-        </Form.Item>
-      </Form>
+      <div>
+        <Row type="flex" align="middle"  justify="space-around" style={{ paddingTop: 100}}>
+          <Col span={6} >
+            <img src={logo} alt="Logo" style={{ height: 400, paddingLeft: 200, paddingRight: 10}}/>
+            </Col>
+          <Col span={1}><Divider type="vertical" style={{height: 300, left: 125}} /></Col>
+          <Col span={10}>
+            <Title style={{paddingLeft: 0}}>StudentHub</Title>
+            {this.renderForm()}
+          </Col>
+        </Row>
+      </div>
     );
   }
 }
 
-const WrappedNormalLoginForm = Form.create({ name: 'normal_login' })(NormalLoginForm);
+const WrappedNormalLoginForm = Form.create({ name: 'normal_login' })(SignIn);
 
 export default WrappedNormalLoginForm;
