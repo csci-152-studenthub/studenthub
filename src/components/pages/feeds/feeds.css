@@ -4,18 +4,27 @@
     grid-column-start: 2;
     grid-column-end:3;
     justify-self: center;
+    background:"#0000ff";
 }
 .itemBody {
     grid-area: main;
+ 
 }
-.item-c {
+.itemSider{
+    grid-area: sider;
+}
+.itemFooter {
     grid-area: footer;
+    grid-column-start:-3;
+    grid-column-end: -1;
+    grid-template-rows: 200px;
+
 }
 
 .grid-item {
     background-color: rgba(255, 255, 255, 0.8);
     /* border: 1px solid rgba(0, 0, 0, 0.8); */
-    padding: 20px;
+    padding: 0px;
     font-size: 30px;
 }
   
@@ -24,6 +33,7 @@
     grid-template-columns: 200px 1fr 200px;
     grid-template-rows: auto;
     grid-template-areas: 
-    "header header header"
     "main main main"
+   
+    
 }

@@ -1,0 +1,63 @@
+
+/* CSS for smaller screens */
+
+.item-image {
+    grid-area: image;
+    display: none;
+
+}
+
+.item-sign-in {
+    grid-area: signIn;
+    /* justify-self: center; */
+ 
+}
+.item-col-line {
+    grid-area: columnLine;
+    height: 400px;
+    justify-self: center;
+    display: none;
+ 
+}
+
+.register-container{
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 100px;
+    grid-template-areas:
+    "signIn"  
+   
+}
+
+/* CSS for larger screens */
+@media (min-width: 900px){
+    .register-container{
+        display: grid;
+        padding: 0px;
+        grid-template-columns: 1fr 200px 1fr;
+        grid-template-rows: 1fr 2fr;
+        grid-template-areas:
+        ". . ."
+        "image columnLine signIn"    
+    }
+    .item-sign-in {
+        grid-area: signIn;
+        /* justify-self: start; */
+    }
+    .item-image{
+        display:block;
+        grid-area: image;
+        height: 400px;
+        width: 400px;
+        justify-self: end;
+    }
+    .item-col-line {
+        display:block;
+        grid-area: columnLine;
+        height: 400px;
+        justify-self: center;
+    }
+    
+    
+
+}
