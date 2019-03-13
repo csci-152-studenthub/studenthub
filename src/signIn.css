@@ -35,7 +35,7 @@
         display: grid;
         padding: 0px;
         grid-template-columns: 1fr 200px 1fr;
-        grid-template-rows: 1fr 2fr;
+        grid-template-rows: 100px 1fr;
         grid-template-areas:
         ". . ."
         "image columnLine signIn"    
