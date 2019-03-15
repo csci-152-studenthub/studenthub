@@ -24,6 +24,10 @@ class ForgotPasswordComponent extends Component {
     }
   }
 
+  componentDidMount(){
+    this.setState({email: this.props.email});
+  }
+
   handleChange = event => {
     console.log(`${event.target.id} is now: `, event.target.value);
     this.setState({
@@ -39,6 +43,7 @@ class ForgotPasswordComponent extends Component {
       if(!err){
         this.setState({buttonLoading: true});
         console.log(values);
+        this.props.changeEmail(values.email);
 
         var username = values.email;
         const response = await Auth.forgotPassword(username)
@@ -63,14 +68,16 @@ class ForgotPasswordComponent extends Component {
   render() {
     const { getFieldDecorator } = this.props.form;
     var changeForm  =   this.props.changeForm;
+    var email = this.props.email;
     return (
       <div>
         <Title level={4} style={{paddingLeft: 0}}>Forgot Password</Title>
         <Form onSubmit={this.handleSubmit} className="login-form">
-          <Form.Item style={{paddingTop: 20}}>
+          <Form.Item style={{paddingTop: 10}}>
             {getFieldDecorator('email', {
               rules: [{ type: 'email', message: 'The input is not valid E-mail!'},
-                      { required: true, message: 'Please input your email!' }]
+                      { required: true, message: 'Please input your email!' }],
+              initialValue: email
             })(
               <Input setFieldsValue={this.state.email} onChange={this.handleChange} prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} type="email" placeholder="Email" />
             )}

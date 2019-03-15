@@ -39,6 +39,7 @@ class SignInComponent extends Component {
     this.props.form.validateFieldsAndScroll(async (err, values) => {
       if(!err){
         this.setState({buttonLoading: true});
+        this.props.changeEmail(values.email);
         console.log(values);
         var email = values.email;
         var password = values.password;
@@ -47,6 +48,7 @@ class SignInComponent extends Component {
             this.setState({buttonLoading: false});
             console.log(data);
             message.success("Success!", 2.5);
+            this.props.history.push("/signed-in");
           })
           .catch(err => {
             this.setState({buttonLoading: false});
@@ -62,16 +64,18 @@ class SignInComponent extends Component {
   render() {
     const { getFieldDecorator } = this.props.form;
     var changeForm  =   this.props.changeForm;
+    var email = this.props.email;
     return (
       <div>
       <Title level={3} style={{paddingLeft: 0}}>Sign in</Title>
       <Form onSubmit={this.handleSubmit} className="login-form">
-        <Form.Item style={{paddingTop: 20}}>
+        <Form.Item style={{paddingTop: 10}}>
           {getFieldDecorator('email', {
             rules: [{ type: 'email', message: 'The input is not valid E-mail!'},
-                    { required: true, message: 'Please input your email!' }]
+                    { required: true, message: 'Please input your email!' }],
+            initialValue: email
           })(
-            <Input setFieldsValue={this.state.email} onChange={this.handleChange} prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} type="email" placeholder="Email" />
+            <Input setFieldsValue={email} onChange={this.handleChange} prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} type="email" placeholder="Email" />
           )}
         </Form.Item>
         <Form.Item>

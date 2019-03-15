@@ -41,6 +41,7 @@ class ChangePasswordComponent extends Component {
         console.log(values);
 
         var username = values.email;
+        this.props.changeEmail(username);
         var code = values.code;
         var new_password = values.new_password;
 
@@ -67,22 +68,27 @@ class ChangePasswordComponent extends Component {
   render() {
     const { getFieldDecorator } = this.props.form;
     var changeForm  =   this.props.changeForm;
+    var email = this.props.email;
     return (
       <div>
         <Title level={4} style={{paddingLeft: 0}}>Change password</Title>
         <Form onSubmit={this.handleSubmit} className="login-form">
-          <Form.Item style={{paddingTop: 20}}>
+          <Form.Item style={{paddingTop: 10}}>
             {getFieldDecorator('email', {
               rules: [
                 { type: 'email', message: 'The input is not valid E-mail!'},
                 { required: true, message: 'Please input your email!' }],
+              initialValue: email
             })(
-              <Input setFieldsValue={this.state.email} onChange={this.handleChange} prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} type="email" placeholder="Email" />
+              <Input setFieldsValue={email} onChange={this.handleChange} prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} type="email" placeholder="Email" />
             )}
           </Form.Item>
           <Form.Item >
             {getFieldDecorator('code', {
-              rules: [{ required: true, message: 'Please input your code!' }],
+              rules: [
+                { max: 6, message: 'Code can only be 6 characters long!'},
+                { required: true, message: 'Please input your code!' }
+              ],
             })(
               <Input setFieldsValue={this.state.code} onChange={this.handleChange} prefix={<Icon type="ant-design" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Code" />
             )}
