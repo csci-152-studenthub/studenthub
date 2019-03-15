@@ -1,4 +1,101 @@
 
-.siderStyle{
-    height: 100vh;
+/* CSS for mobile */
+.item-header {
+    grid-area: header;
+    justify-self: center;
+    background:"#0000ff";
+}
+.item-body {
+    grid-area: main;
+    background:#fff;
+    /* background: blue; */
+    /* min-height: 100%; */
+    justify-content: center;
+    padding: 20px;
+
+}
+
+.item-footer {
+    grid-area: footer;
+    text-align: center;
+}
+.container{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 60px 770px auto;
+    grid-gap: 30px 80px;
+    background:#f0f2f5;
+    /* background:red; */
+    grid-template-areas:
+    "header"
+    "main"
+    "footer"
+}
+.item-sider{
+    display: none;
+    grid-area: sider;
+    min-height: 100%;
+}
+
+/* For any screen larger than 900px */
+@media (min-width: 900px){
+
+
+    .logo {
+        height: 100px;
+        background: rgba(255,255,255,.2);
+        margin-left: auto;
+        margin-right: auto;
+        background-color: transparent;
+    }
+
+    .item-header {
+        grid-area: header;
+        justify-self: center;
+        background:"#0000ff";
+    }
+    .item-body {
+        grid-area: main;
+        background:#fff;
+        /* background: blue; */
+        /* min-height: 100%; */
+        justify-content: center;
+        padding: 20px;
+
+    }
+    .item-sider{
+        grid-area: sider;
+        height: 100vh;
+        display: block;
+    }
+    .item-footer {
+        grid-area: footer;
+        text-align: center;
+        /* height: auto; */
+        /* margin-top: -50px; */
+
+
+    }
+
+    .grid-item {
+        /* background-color: rgba(255, 255, 255, 0.8); */
+        /* border: 1px solid rgba(0, 0, 0, 0.8); */
+        /* padding: 0px;
+        font-size: 30px; */
+    }
+
+    .container{
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        grid-template-rows: 60px 770px auto;
+        grid-gap: 30px 80px;
+        background:#f0f2f5;
+        /* background:red; */
+        grid-template-areas:
+        "sider header header"
+        "sider main ."
+        "sider footer footer"
+    }
+
+  
 }

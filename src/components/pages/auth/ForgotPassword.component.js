@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import {message, Layout, Col, Row, Divider, Form, Icon, Input, Button, Checkbox, Typography} from 'antd';
+import {message, Form, Icon, Input, Button, Typography} from 'antd';
 import { Auth } from "aws-amplify";
-import logo from '../../../assets/logo.jpg';
+// import logo from '../../../assets/logo.jpg';
 import '../../../App.css';
 
 const { Title } = Typography;
 
 
-const {
-  Header, Footer, Sider, Content,
-} = Layout;
+// const {
+//   Header, Footer, Sider, Content,
+// } = Layout;
 
 class ForgotPasswordComponent extends Component {
   constructor(props){
