@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {message, Layout, Col, Row, Divider, Form, Icon, Input, Button, Checkbox} from 'antd';
 import { Auth } from "aws-amplify";
 import { Typography } from 'antd';
+// import { Link, withRouter } from "react-router-dom";
 import logo from './assets/logo.jpg';
 import './App.css';
 import './signIn.css';
@@ -31,7 +32,7 @@ class SignIn extends Component {
       loading: false,
       formType: 2,
       email: "",
-      password: ""
+      password: "",
     }
 
   }

@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import {message, Layout, Col, Row, Divider} from 'antd';
 import { Typography } from 'antd';
 import SignIn from './SignIn';
-import Feeds from './components/pages/feeds/Feeds'
 import logo from './assets/logo.jpg';
-import './App.css';
+import SiderContainer  from './components/pages/feeds/SiderContainer'
+// import './App.css';
+import './NewApp.css';
 
 const { Title } = Typography;
 
@@ -22,9 +23,15 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-      {/* <Feeds /> */}
-      <SignIn />
+       <div className="container">
+        <div className="grid-item itemSider">
+          <SiderContainer/>
+        </div>
+        <div className="itemFooter">
+          <Footer style={{ textAlign: 'center' }}>
+            Ant Design ©2018 Created by Ant UED
+          </Footer>
+        </div>
       </div>
     );
   }

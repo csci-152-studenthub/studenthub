@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Menu, Icon, Switch, Layout } from 'antd';
 import CardContainer from './CardContainer';
-import './feeds.css'
+import './SiderContainer.css'
 
 const SubMenu = Menu.SubMenu;
 
@@ -12,13 +12,7 @@ export class SiderContainer extends Component {
       } = Layout;
       return(
         <Layout>
-          <Sider
-            collapsible
-            // breakpoint="lg"
-            // collapsedWidth="0"
-            // onBreakpoint={(broken) => { console.log(broken); }}
-            // onCollapse={(collapsed, type) => { console.log(collapsed, type); }}
-          >
+          <Sider className="siderStyle" collapsible>
             <div className="logo" />
             <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']}>
               <Menu.Item key="1">
@@ -40,7 +34,7 @@ export class SiderContainer extends Component {
             </Menu>
           </Sider>
 
-          <Layout>
+          {/* <Layout>
             <Header style={{ background: '#fff', padding: 0 }} />
             <Content style={{ className: 'item-grid item-main' }}>
               <div style={{ padding: 24, background: '#fff', minHeight: 618}}>
@@ -51,7 +45,7 @@ export class SiderContainer extends Component {
               Ant Design ©2018 Created by Ant UED
             </Footer>
          
-          </Layout>
+          </Layout> */}
         </Layout>
         
       );

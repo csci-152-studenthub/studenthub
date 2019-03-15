@@ -1,0 +1,37 @@
+
+.itemHeader {
+    grid-area: header;
+    justify-self: center;
+    background:"#0000ff";
+}
+.itemBody {
+    grid-area: main;
+ 
+}
+.itemSider{
+    grid-area: sider;
+}
+.itemFooter {
+    grid-area: footer;
+    grid-template-rows: 60px;
+
+}
+
+.grid-item {
+    /* background-color: rgba(255, 255, 255, 0.8); */
+    /* border: 1px solid rgba(0, 0, 0, 0.8); */
+    /* padding: 0px;
+    font-size: 30px; */
+}
+  
+.container{
+    display: grid;
+    grid-template-columns: 200px 1fr 200px;
+    grid-template-rows: 50px 1fr 50px;
+    grid-template-areas: 
+    "sider header header"
+    "sider main main"
+    "sider footer footer"
+   
+    
+}
