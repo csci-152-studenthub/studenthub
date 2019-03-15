@@ -55,6 +55,7 @@ class SignUpComponent extends Component {
           .then(data => {
             this.setState({buttonLoading: false});
             console.log(data);
+            this.props.changeEmail(username);
             message.success("Successfully signed up!", 2.5);
             setTimeout(() => this.props.changeForm(0), 500);
           })
@@ -103,6 +104,7 @@ class SignUpComponent extends Component {
     const { getFieldDecorator } = this.props.form;
     const { autoCompleteResult } = this.state;
     var changeForm  =   this.props.changeForm;
+    var email = this.props.email;
 
     const formItemLayout = {
       labelCol: {
@@ -132,13 +134,13 @@ class SignUpComponent extends Component {
       <Form onSubmit={this.handleSubmit} className="login-form">
         <Form.Item>
           {getFieldDecorator('email', {
-            rules: [{
-              type: 'email', message: 'The input is not valid E-mail!',
-            }, {
-              required: true, message: 'Please input your E-mail!',
-            }],
-          })(
-            <Input type="email" placeholder="Email" setFieldsValue={this.state.email} onChange={this.handleChange} prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}/>
+            rules: [
+              { pattern: '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.+-]+\.edu$', message: 'Only edu emails can be accepted!'},
+              { type: 'email', message: 'This is not a valid E-mail!'},
+              { required: true, message: 'Please input your E-mail!'}
+            ],
+            })(
+              <Input type="email" placeholder="Email" setFieldsValue={email} onChange={this.handleChange} prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}/>
           )}
         </Form.Item>
         <Form.Item>

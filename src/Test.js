@@ -18,6 +18,7 @@ class Test extends Component {
     .then(data => {
       console.log(data);
       message.success('Signed out successfully!', 2.5);
+      this.props.history.replace("/");
     })
     .catch(err => {
       console.log(err);

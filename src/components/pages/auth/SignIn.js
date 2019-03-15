@@ -23,24 +23,30 @@ class SignIn extends Component {
 
     this.state = {
       formType: 0,
+      email: ''
     }
 
   }
 
   changeForm = (type) => {
-    this.setState({formType: type})
+    this.setState({formType: type});
+  }
+
+  changeEmail = (email) => {
+    console.log("Setting email to: ", email);
+    this.setState({email: email});
   }
 
   renderForm(){
     var formType = this.state.formType;
     if(formType === 0){
-      return (<SignInComponent changeForm = {this.changeForm} />)
+      return (<SignInComponent changeForm = {this.changeForm} changeEmail={this.changeEmail} email={this.state.email} history={this.props.history}/>)
     } else if (formType === 1) {
-      return (<ForgotPasswordComponent changeForm = {this.changeForm} />)
+      return (<ForgotPasswordComponent changeForm = {this.changeForm} changeEmail={this.changeEmail} email={this.state.email}/>)
     } else if (formType === 2) {
-      return (<SignUpComponent changeForm = {this.changeForm} />)
+      return (<SignUpComponent changeForm = {this.changeForm} changeEmail={this.changeEmail} email={this.state.email}/>)
     } else if (formType === 3) {
-      return (<ChangePasswordComponent changeForm = {this.changeForm} />)
+      return (<ChangePasswordComponent changeForm = {this.changeForm} changeEmail={this.changeEmail} email={this.state.email}/>)
     }
   }
 
@@ -54,7 +60,7 @@ class SignIn extends Component {
             </Col>
           <Col span={1}><Divider type="vertical" style={{height: 300, left: 125}} /></Col>
           <Col span={10}>
-            <Title style={{paddingLeft: 0}}>StudentHub</Title>
+            <Title style={{paddingLeft: 0}}>Studenthub.io</Title>
             {this.renderForm()}
           </Col>
         </Row>
