@@ -4,7 +4,7 @@ import { Auth } from "aws-amplify";
 import { Typography } from 'antd';
 import logo from '../../../assets/logo.jpg';
 import '../../../App.css';
-import '../../../SignIn.css';
+import './SignIn.css';
 
 
 import SignInComponent from './SignIn.component';
