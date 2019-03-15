@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { Menu, Icon, Switch, Layout, message, Button } from 'antd';
 import { Auth } from "aws-amplify";
-import CardContainer from './CardContainer';
-import './SiderContainer.css'
+import CardContainer from '../feeds/CardContainer';
+import './Main.css'
 
 const SubMenu = Menu.SubMenu;
 
@@ -59,8 +59,10 @@ export class SiderContainer extends Component {
             </Menu>
           </Sider>
 
+
           <Footer style={{ textAlign: 'center' }}>
-            Ant Design ©2018 Created by Ant UED
+            Studenthub.io ©2019 Created with
+            <a href="https://ant.design/"> Ant Design</a>
           </Footer>
         </Layout>
 

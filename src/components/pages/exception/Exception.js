@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'antd/dist/antd.css';
-import './index.css';
+import '../../../index.css';
 import 'ant-design-pro/dist/ant-design-pro.css';
 import Exception from 'ant-design-pro/lib/Exception';
 
