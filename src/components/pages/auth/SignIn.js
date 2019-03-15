@@ -4,6 +4,8 @@ import { Auth } from "aws-amplify";
 import { Typography } from 'antd';
 import logo from '../../../assets/logo.jpg';
 import '../../../App.css';
+import '../../../SignIn.css';
+
 
 import SignInComponent from './SignIn.component';
 import ForgotPasswordComponent from './ForgotPassword.component';
@@ -53,17 +55,13 @@ class SignIn extends Component {
   render() {
     const { getFieldDecorator } = this.props.form;
     return (
-      <div>
-        <Row type="flex" align="middle"  justify="space-around" style={{ paddingTop: 100}}>
-          <Col span={6} >
-            <img src={logo} alt="Logo" style={{ height: 400, paddingLeft: 200, paddingRight: 10}}/>
-            </Col>
-          <Col span={1}><Divider type="vertical" style={{height: 300, left: 125}} /></Col>
-          <Col span={10}>
-            <Title style={{paddingLeft: 0}}>Studenthub.io</Title>
-            {this.renderForm()}
-          </Col>
-        </Row>
+      <div className="register-container">
+        <img src={logo} alt="Logo" className="item-image"/>
+        <Divider type="vertical" className="item-col-line" />
+        <div className="item-sign-in">
+          <Title>StudentHub</Title>
+          {this.renderForm()}
+        </div>
       </div>
     );
   }
