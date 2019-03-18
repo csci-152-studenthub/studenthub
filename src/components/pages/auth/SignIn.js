@@ -59,7 +59,7 @@ class SignIn extends Component {
         <img src={logo} alt="Logo" className="item-image"/>
         <Divider type="vertical" className="item-col-line" />
         <div className="item-sign-in">
-          <Title>StudentHub</Title>
+          <Title>XXXXX</Title>
           {this.renderForm()}
         </div>
       </div>
