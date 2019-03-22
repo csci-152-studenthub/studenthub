@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
-import { Menu, Icon, Layout, message, Row, Col } from 'antd';
+import { Menu, Icon, Layout, message, Row, Col, Button } from 'antd';
 import { Typography } from 'antd';
-import { Auth } from "aws-amplify";
-import { Card, Avatar, Tag, Divider, Spin, Input } from 'antd';
+import { Auth, API } from "aws-amplify";
+import { Card, Avatar, Tag, Divider, Spin, Input, List, Skeleton, Switch } from 'antd';
 // const { Title } = Typography;
 // import CardContainer from '../feeds/CardContainer';
 import Feeds from '../feeds/Feeds';
+import uuid from "uuid";
 import './Main.css';
 
 const SubMenu = Menu.SubMenu;
@@ -15,12 +16,144 @@ const {
   Content, Footer, Sider,
 } = Layout;
 
+const { TextArea } = Input;
+
 
 class Dashboard extends React.Component {
+  constructor(props){
+    super(props);
+
+    this.state = {
+      loading: true,
+      user: '',
+      posts: [],
+      component: 1,
+      title: '',
+      content: ''
+    }
+
+    this.getPosts = this.getPosts.bind(this);
+  }
+
+  async componentDidMount(){
+    Auth.currentAuthenticatedUser({
+        bypassCache: false  // Optional, By default is false. If set to true, this call will send a request to Cognito to get the latest user data
+    }).then(user => {
+      this.setState({user: user.attributes.email})
+    })
+    .catch(err => console.log(err));
+    this.getPosts();
+    this.setState({loading: false});
+  }
+
+  onChange = (checked) => {
+    this.setState({ loading: !checked });
+  }
+
+  handleChange(type, e){
+    console.log(type, 'is now: ', e.target.value);
+    this.setState({
+      [type]: e.target.value
+    });
+  }
+
+  handleSubmit = async event => {
+    event.preventDefault();
+
+    // console.log(this.state);
+
+    try {
+      const response = await this.createPost({
+        id: uuid.v4().toString(),
+        user: this.state.user,
+        title: this.state.title,
+        content: this.state.content
+      });
+      console.log(response);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  createPost(post) {
+    return API.post("posts", "/posts/create", {
+      body: post
+    });
+  }
+
+  async getPosts() {
+    this.setState({posts: []})
+    setTimeout((console.log('waiting...')), 5000);
+    try {
+      const posts = await API.get("posts", "/posts/get-posts");
+      // this.setState({posts});
+      posts.body.map((post) => (
+        this.setState({
+          posts: [
+            ...this.state.posts,
+            {
+              id: post.id,
+              user: post.user,
+              title: post.title,
+              content: post.content
+            }
+          ]
+        })
+      ));
+      console.log(posts.body);
+      message.success('Successfully retrieved posts!');
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+
+
   render() {
+    const IconText = ({ type, text }) => (
+      <span>
+        <Icon type={type} style={{ marginRight: 2}} />
+        {text}
+      </span>
+    );
+    const data = this.state.posts
     return(
       <div>
       <Title>Dashboard</Title>
+      <Switch checked={!this.state.loading} onChange={this.onChange} />
+      <Input placeholder="Post title" style={{maxWidth: '300px'}} onChange={(e) => this.handleChange('title', e)}/>
+      <TextArea placeholder="Post content" rows={4} style={{top: 15}} onChange={(e) => this.handleChange('content', e)}/>
+      <Button type="primary" onClick={this.handleSubmit} style={{top: 25}}>Submit Post</Button>
+      <Button type="primary" onClick={() => console.log(this.state.posts)} style={{top: 25, left: 15}}>Console Log posts</Button>
+      {this.state.posts === undefined ? null :
+      <List
+          itemLayout="vertical"
+          size="large"
+          pagination={{
+            onChange: (page) => {
+              console.log(page);
+            },
+            pageSize: 3,
+          }}
+          style={{top: 50}}
+          dataSource={data}
+          renderItem={item => (
+            <List.Item
+              key={item.id}
+              actions={!this.state.loading && [<IconText type="star-o" text="156" />, <IconText type="like-o" text="156" />, <IconText type="message" text="2" />]}
+            >
+            <Skeleton loading={this.state.loading} active avatar>
+            <List.Item.Meta
+              avatar={<Avatar size={36} icon="user" style={{backgroundColor: '#1890FF'}}/>}
+              title={item.title}
+              description={'Submitted by: '+item.user}
+            />
+            {item.content}
+            </Skeleton>
+            </List.Item>
+          )}
+        />
+      }
       </div>
     );
   }
