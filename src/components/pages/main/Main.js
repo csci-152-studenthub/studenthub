@@ -140,7 +140,7 @@ class Dashboard extends React.Component {
           renderItem={item => (
             <List.Item
               key={item.id}
-              actions={!this.state.loading && [<IconText type="star-o" text="156" />, <IconText type="like-o" text="156" />, <IconText type="message" text="2" />]}
+              actions={!this.state.loading && [<IconText type="like-o" text="156" />, <IconText type="dislike-o" text="156" />, <IconText type="message" text="2" />]}
             >
             <Skeleton loading={this.state.loading} active avatar>
             <List.Item.Meta
