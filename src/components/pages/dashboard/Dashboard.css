@@ -1,28 +1,24 @@
 .grid-head {
   grid-gap: 20px 5px;
-  
-}
-.grid-head {
   display: grid;
   height: 200px;
   grid-template:auto;
   gap: 20px 5px;
- 
+ font-size:40px;
 }
 
 .grid-head > div {
-  border: 1px solid red;
-  background-color: red;
+  border: 1px solid Gainsboro;
+  background-color: white;
   height: 200px;
   
 }
 
+
 .grid-container {
   grid-gap: 20px 5px;
   padding-top: 40px;
-  
-}
-.grid-container {
+  font-weight:bold;
   display: grid;
   height: 200px;
   grid-template: repeat(3, 1fr) / repeat(3, 1fr);
@@ -30,15 +26,14 @@
 }
 
 .grid-container > div {
-  border: 1px solid green;
-  background-color: lime;
+  border: 1px solid  Gainsboro;
+  background-color: white;
   height: 200px;
 }
+
 .grid-bottom {
   grid-gap: 20px 5px;
   padding-top: 70px;
-}
-.grid-bottom {
   display: grid;
   height: 200px;
   grid-template:auto;
@@ -47,8 +42,8 @@
 }
 
 .grid-bottom > div {
-  border: 1px solid white;
-  background-color: black;
+  border: 1px solid  Gainsboro;
+  background-color: white;
   height: 270px;
   
 }
