@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
-import {message, Layout, Col, Row, Divider, Form, Icon, Input, Button, Checkbox} from 'antd';
+import {message, Form, Icon, Input, Button, Checkbox} from 'antd';
 import { Auth } from "aws-amplify";
 import { Typography } from 'antd';
-import logo from '../../../assets/logo.jpg';
-import '../../../App.css';
+// import logo from '../../../assets/logo.jpg';
+// import '../../../App.css';
+import './SignIn.css';
 
 const { Title } = Typography;
 
 
-const {
-  Header, Footer, Sider, Content,
-} = Layout;
+// const {
+//   Header, Footer, Sider, Content,
+// } = Layout;
 
 class SignInComponent extends Component {
   constructor(props){
@@ -47,8 +48,8 @@ class SignInComponent extends Component {
           .then(data => {
             this.setState({buttonLoading: false});
             console.log(data);
-            message.success("Success!", 2.5);
-            this.props.history.push("/signed-in");
+            message.success("Signed In!", 2.5);
+            this.props.history.push("/home");
           })
           .catch(err => {
             this.setState({buttonLoading: false});

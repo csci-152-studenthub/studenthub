@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import {message, Layout, Col, Row, Divider, Form, Icon, Input, Button, Checkbox} from 'antd';
-import { Auth } from "aws-amplify";
+import { Divider, Form} from 'antd';
+// import { Auth } from "aws-amplify";
 import { Typography } from 'antd';
 import logo from '../../../assets/logo.jpg';
 import '../../../App.css';
-import '../../../SignIn.css';
+import './SignIn.css';
 
 
 import SignInComponent from './SignIn.component';
@@ -15,9 +15,9 @@ import ChangePasswordComponent from './ChangePassword.component';
 const { Title } = Typography;
 
 
-const {
-  Header, Footer, Sider, Content,
-} = Layout;
+// const {
+//   Header, Footer, Sider, Content,
+// } = Layout;
 
 class SignIn extends Component {
   constructor(props){
