@@ -4,8 +4,8 @@ import React, { Component } from 'react';
 // import { List, Icon, Tag } from 'antd';
 
 import './Dashboard.css';
-
-export class CardContainer extends Component {
+import Feeds from '../feeds/Feeds';
+export class Dashboard extends Component {
 
   render() {
     return (
@@ -14,7 +14,7 @@ export class CardContainer extends Component {
           <div>Hello!</div>
         </div>
         <div class="grid-container">
-          <div><a href='linkhref.html' id='Feeds'>Feeds</a>
+          <div><Feeds/>
           
 
           </div>
@@ -40,4 +40,4 @@ export class CardContainer extends Component {
   }
 }
 
-export default CardContainer
+export default Dashboard

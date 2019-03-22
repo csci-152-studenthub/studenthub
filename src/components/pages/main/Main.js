@@ -6,6 +6,7 @@ import { Card, Avatar, Tag, Divider, Spin, Input } from 'antd';
 // const { Title } = Typography;
 // import CardContainer from '../feeds/CardContainer';
 import Feeds from '../feeds/Feeds';
+import Dashboard from '../dashboard/Dashboard';
 import './Main.css';
 
 const SubMenu = Menu.SubMenu;
@@ -16,15 +17,7 @@ const {
 } = Layout;
 
 
-class Dashboard extends React.Component {
-  render() {
-    return(
-      <div>
-      <Title>Dashboard</Title>
-      </div>
-    );
-  }
-}
+
 
 class Resources extends React.Component {
   render() {
