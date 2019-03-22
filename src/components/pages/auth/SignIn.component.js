@@ -48,7 +48,7 @@ class SignInComponent extends Component {
           .then(data => {
             this.setState({buttonLoading: false});
             console.log(data);
-            message.success("Success!", 2.5);
+            message.success("Signed In!", 2.5);
             this.props.history.push("/home");
           })
           .catch(err => {
