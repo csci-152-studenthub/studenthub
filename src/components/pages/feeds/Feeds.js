@@ -1,18 +1,15 @@
 import React, { Component } from 'react';
 import CardContainer from './CardContainer';
 import { Layout } from 'antd';
-// import './feeds.css'
+import './feeds.css'
 
 export class Feeds extends Component {
   render() {
 
     return (
-      
-        <CardContainer/>
-         
-
-
-     
+        <div className="feed-container">
+          <CardContainer/>
+        </div>
     )
   }
 }

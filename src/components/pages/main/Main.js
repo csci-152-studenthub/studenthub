@@ -6,6 +6,11 @@ import { Card, Avatar, Tag, Divider, Spin, Input } from 'antd';
 // const { Title } = Typography;
 // import CardContainer from '../feeds/CardContainer';
 import Feeds from '../feeds/Feeds';
+import Dashboard from '../dashboard/Dashboard';
+import Resources from '../resources/Resources';
+import StudyGroups from '../studygroup/Studygroup';
+import Profile from '../profile/Profile';
+
 import './Main.css';
 
 const SubMenu = Menu.SubMenu;
@@ -14,36 +19,6 @@ const { Title } = Typography;
 const {
   Content, Footer, Sider,
 } = Layout;
-
-
-class Dashboard extends React.Component {
-  render() {
-    return(
-      <div>
-      <Title>Dashboard</Title>
-      </div>
-    );
-  }
-}
-
-class Resources extends React.Component {
-  render() {
-    return <div><Title>Resources Page</Title></div>;
-  }
-}
-
-class StudyGroups extends React.Component {
-  render() {
-    return <div><Title>Study Groups Page</Title></div>;
-  }
-}
-
-class Profile extends React.Component {
-  render() {
-    return <div><Title>Profile Page</Title></div>;
-  }
-}
-
 export class Main extends Component {
   constructor(props){
     super(props);
@@ -67,19 +42,19 @@ export class Main extends Component {
     switch (current_component) {
       case 1:
         return (<Dashboard />);
-        break;
+        // break;
       case 2:
         return (<Feeds />);
-        break;
+        // break;
       case 3:
         return (<Resources />);
-        break;
+        // break;
       case 4:
         return (<StudyGroups />);
-        break;
+        // break;
       case 5:
         return (<Profile />);
-        break;
+        // break;
       default:
         return (<Dashboard />)
     }
