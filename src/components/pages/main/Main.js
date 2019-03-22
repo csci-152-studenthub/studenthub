@@ -43,7 +43,6 @@ class Dashboard extends React.Component {
     })
     .catch(err => console.log(err));
     this.getPosts();
-    this.setState({loading: false});
   }
 
   onChange = (checked) => {
@@ -60,15 +59,17 @@ class Dashboard extends React.Component {
   handleSubmit = async event => {
     event.preventDefault();
 
-    // console.log(this.state);
-
     try {
+      var timestamp = new Date().toLocaleString();
       const response = await this.createPost({
+        timestamp: timestamp,
         id: uuid.v4().toString(),
         user: this.state.user,
         title: this.state.title,
         content: this.state.content
       });
+      message.success('Post has been created!');
+      this.getPosts();
       console.log(response);
     } catch (e) {
       console.log(e);
@@ -102,8 +103,10 @@ class Dashboard extends React.Component {
       ));
       console.log(posts.body);
       message.success('Successfully retrieved posts!');
+      this.setState({loading: false});
     } catch (e) {
       console.log(e);
+      this.setState({loading: false});
     }
   }
 
@@ -144,7 +147,7 @@ class Dashboard extends React.Component {
             >
             <Skeleton loading={this.state.loading} active avatar>
             <List.Item.Meta
-              avatar={<Avatar size={36} icon="user" style={{backgroundColor: '#1890FF'}}/>}
+              avatar={<Avatar size={42} icon="user" style={{backgroundColor: '#1890FF', top: 10}}/>}
               title={item.title}
               description={'Submitted by: '+item.user}
             />
