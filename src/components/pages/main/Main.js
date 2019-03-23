@@ -34,6 +34,7 @@ class Dashboard extends React.Component {
     }
 
     this.getPosts = this.getPosts.bind(this);
+    this.handleLike = this.handleLike.bind(this);
     this.deletePost = this.deletePost.bind(this);
     this.handleActionClick = this.handleActionClick.bind(this);
   }
@@ -62,6 +63,8 @@ class Dashboard extends React.Component {
     try {
       var timestamp = new Date().toLocaleString();
       const response = await this.createPost({
+        likes: 0,
+        dislikes: 0,
         timestamp: timestamp,
         id: uuid.v4().toString(),
         user: this.state.user,
@@ -142,6 +145,48 @@ class Dashboard extends React.Component {
     console.log('Like button pressed!');
   }
 
+  handleLike(post){
+    console.log('User liked post: ', post.title);
+
+    let apiName = 'posts';
+    let path = '/posts/'+post.id+'/like';
+    console.log('api: '+path)
+    let myInit = {
+        body: {
+          timestamp: post.timestamp
+        }
+    }
+    API.put(apiName, path, myInit).then(response => {
+        // Add your code here
+        message.success('Successfully liked post!')
+        console.log(response);
+    }).catch(error => {
+        message.error('Could not like post.')
+        console.log(error.response)
+    });
+  }
+
+    handleDislike(post){
+      console.log('User disliked post: ', post.title);
+
+      let apiName = 'posts';
+      let path = '/posts/'+post.id+'/dislike';
+      console.log('api: '+path)
+      let myInit = {
+          body: {
+            timestamp: post.timestamp
+          }
+      }
+      API.put(apiName, path, myInit).then(response => {
+          // Add your code here
+          message.success('Successfully disliked post!')
+          console.log(response);
+      }).catch(error => {
+          message.error('Could not like post.')
+          console.log(error.response)
+      });
+    }
+
   render() {
     const IconText = ({ type, text }) => (
       <span>
@@ -167,7 +212,7 @@ class Dashboard extends React.Component {
       <TextArea placeholder="Post content" rows={4} style={{top: 15}} onChange={(e) => this.handleChange('content', e)}/>
       <Button loading={this.state.buttonLoading} type="primary" onClick={this.handleSubmit} style={{top: 25}}>Submit Post</Button>
       <Button type="primary" onClick={() => console.log(this.state.posts)} style={{top: 25, left: 15}}>Console Log posts</Button>
-      {this.state.posts === undefined ? null :
+      {data === [] ? null :
       <List
           itemLayout="vertical"
           size="large"
@@ -190,7 +235,9 @@ class Dashboard extends React.Component {
               title={item.title}
               description={'Submitted by: '+item.user}
             />
-            {item.content}
+            {item.content}<br/>
+            <a onClick={() => this.handleLike(item)}>Like</a><br />
+            <a onClick={() => this.handleDislike(item)}>Dislike</a>
             </Skeleton>
             </List.Item>
           )}
