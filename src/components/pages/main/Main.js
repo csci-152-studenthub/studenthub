@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Menu, Icon, Layout, message, Row, Col, Button } from 'antd';
 import { Typography } from 'antd';
 import { Auth, API } from "aws-amplify";
-import { Card, Avatar, Tag, Divider, Spin, Input, List, Skeleton, Switch } from 'antd';
+import { Card, Avatar, Tag, Divider, Spin, Input, List, Skeleton, Switch, Popconfirm } from 'antd';
 // const { Title } = Typography;
 // import CardContainer from '../feeds/CardContainer';
 import Feeds from '../feeds/Feeds';
@@ -24,6 +24,7 @@ class Dashboard extends React.Component {
     super(props);
 
     this.state = {
+      buttonLoading: false,
       loading: true,
       user: '',
       posts: [],
@@ -33,6 +34,8 @@ class Dashboard extends React.Component {
     }
 
     this.getPosts = this.getPosts.bind(this);
+    this.deletePost = this.deletePost.bind(this);
+    this.handleActionClick = this.handleActionClick.bind(this);
   }
 
   async componentDidMount(){
@@ -45,10 +48,6 @@ class Dashboard extends React.Component {
     this.getPosts();
   }
 
-  onChange = (checked) => {
-    this.setState({ loading: !checked });
-  }
-
   handleChange(type, e){
     console.log(type, 'is now: ', e.target.value);
     this.setState({
@@ -58,6 +57,7 @@ class Dashboard extends React.Component {
 
   handleSubmit = async event => {
     event.preventDefault();
+    this.setState({buttonLoading: true});
 
     try {
       var timestamp = new Date().toLocaleString();
@@ -68,10 +68,13 @@ class Dashboard extends React.Component {
         title: this.state.title,
         content: this.state.content
       });
+      this.setState({buttonLoading: false});
       message.success('Post has been created!');
       this.getPosts();
       console.log(response);
     } catch (e) {
+      this.setState({buttonLoading: false});
+      message.error('Could not create post.')
       console.log(e);
     }
   }
@@ -83,8 +86,11 @@ class Dashboard extends React.Component {
   }
 
   async getPosts() {
-    this.setState({posts: []})
-    setTimeout((console.log('waiting...')), 5000);
+    this.setState({
+      posts: [],
+      loading: true
+    })
+
     try {
       const posts = await API.get("posts", "/posts/get-posts");
       // this.setState({posts});
@@ -93,6 +99,7 @@ class Dashboard extends React.Component {
           posts: [
             ...this.state.posts,
             {
+              timestamp: post.timestamp,
               id: post.id,
               user: post.user,
               title: post.title,
@@ -101,7 +108,7 @@ class Dashboard extends React.Component {
           ]
         })
       ));
-      console.log(posts.body);
+      // console.log(posts.body);
       message.success('Successfully retrieved posts!');
       this.setState({loading: false});
     } catch (e) {
@@ -110,7 +117,30 @@ class Dashboard extends React.Component {
     }
   }
 
+  deletePost(id, timestamp){
+    console.log(`Deleting post with id: ${id}`)
+    let apiName = 'posts';
+    let path = '/posts/delete-post';
+    let myInit = {
+        body: {
+          id: id,
+          timestamp: timestamp
+        }
+    }
+    API.del(apiName, path, myInit).then(response => {
+        // Add your code here
+        message.success('Successfully deleted post!')
+        this.getPosts();
+        console.log(response);
+    }).catch(error => {
+        message.error('Could not delete post.')
+        console.log(error.response)
+    });
+  }
 
+  handleActionClick(type){
+    console.log('Like button pressed!');
+  }
 
   render() {
     const IconText = ({ type, text }) => (
@@ -119,14 +149,23 @@ class Dashboard extends React.Component {
         {text}
       </span>
     );
+    const DeleteIcon = ({ createdBy, id, timestamp }) => (
+      <span>
+        {this.state.user === createdBy ?
+          <Popconfirm title="Are you sure delete this post?" onConfirm={() => this.deletePost(id, timestamp)} onCancel={() => console.log('Canceled post deletion.')} okText="Yes" cancelText="No">
+            <Icon type="delete" style={{ right: 5}} />
+          </Popconfirm>
+          : null
+        }
+      </span>
+    );
     const data = this.state.posts
     return(
       <div>
       <Title>Dashboard</Title>
-      <Switch checked={!this.state.loading} onChange={this.onChange} />
       <Input placeholder="Post title" style={{maxWidth: '300px'}} onChange={(e) => this.handleChange('title', e)}/>
       <TextArea placeholder="Post content" rows={4} style={{top: 15}} onChange={(e) => this.handleChange('content', e)}/>
-      <Button type="primary" onClick={this.handleSubmit} style={{top: 25}}>Submit Post</Button>
+      <Button loading={this.state.buttonLoading} type="primary" onClick={this.handleSubmit} style={{top: 25}}>Submit Post</Button>
       <Button type="primary" onClick={() => console.log(this.state.posts)} style={{top: 25, left: 15}}>Console Log posts</Button>
       {this.state.posts === undefined ? null :
       <List
@@ -143,7 +182,7 @@ class Dashboard extends React.Component {
           renderItem={item => (
             <List.Item
               key={item.id}
-              actions={!this.state.loading && [<IconText type="like-o" text="156" />, <IconText type="dislike-o" text="156" />, <IconText type="message" text="2" />]}
+              actions={!this.state.loading && [<IconText type="like-o" text="156" />, <IconText type="dislike-o" text="156" />, <IconText type="message" text="2" />, <DeleteIcon createdBy={item.user} id={item.id} timestamp={item.timestamp}/>]}
             >
             <Skeleton loading={this.state.loading} active avatar>
             <List.Item.Meta
