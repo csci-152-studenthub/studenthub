@@ -1,4 +1,100 @@
 
-.siderStyle{
-    height: 100vh;
+/* CSS for mobile */
+.item-header {
+    grid-area: header;
+    /* justify-self: center; */
+    /* background:white; */
+
+}
+.item-body {
+    grid-area: main;
+    /* background:#fff; */
+    /* background: blue; */
+    /* min-height: 100%; */
+    justify-content: center;
+    /* padding: 20px; */
+
+}
+
+.item-footer {
+    grid-area: footer;
+    text-align: center;
+}
+.container{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 60px auto 80px;
+    /* grid-gap: 0px 50px; */
+    /* background:#f0f2f5; */
+    /* background:red; */
+    grid-template-areas:
+    "header"
+    "main"
+    "footer"
+}
+.item-sider{
+    display: none;
+    grid-area: sider;
+    min-height: 100%;
+
+}
+
+/* For any screen larger than 900px */
+@media (min-width: 900px){
+    .logo {
+        height: 100px;
+        background: rgba(255,255,255,.2);
+        margin-left: auto;
+        margin-right: auto;
+        background-color: transparent;
+    }
+
+    .item-header {
+        grid-area: header;
+        /* justify-self: left; */
+        /* background:"#0000ff"; */
+        background-color:white;
+        box-shadow: 0 1px 4px rgba(0,21,41,.08);
+    }
+   
+    .item-body {
+        grid-area: main;
+        /* background:#fff; */
+        /* background: blue; */
+        /* min-height: 100%; */
+        justify-content: center;
+        
+
+    }
+    .item-sider{
+        grid-area: sider;
+        height: 100vh;
+        display: block;
+        min-height: 100%;
+
+    
+    }
+    .item-footer {
+        grid-area: footer;
+        text-align: center;
+        /* height: auto; */
+        /* margin-top: -50px; */
+
+
+    }
+
+    .container{
+        display: grid;
+        grid-template-columns: [first]auto [line2]50px 1fr [line4]50px;
+        grid-template-rows: 80px [row1-end]50px auto 80px;
+        /* grid-gap: 50px 0px; */
+        background:#f0f2f5;
+        /* background:red; */
+        grid-template-areas:
+        "sider header header header"
+        "sider . . ."
+        "sider . main ."
+        "sider . footer ."
+    }
+
 }

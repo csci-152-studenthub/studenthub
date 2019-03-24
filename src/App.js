@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
 import { Auth } from "aws-amplify";
-import {message, Layout, Col, Row, Divider} from 'antd';
+// import { Col, Row, Divider} from 'antd';
 import Routes from "./routes";
-import { Typography } from 'antd';
-import logo from './assets/logo.jpg';
+// import { Typography } from 'antd';
+// import logo from './assets/logo.jpg';
 import './App.css';
-import cat from './assets/CrytoCat.png'
 
-const { Title } = Typography;
+// const { Title } = Typography;
 
 
-const {
-  Header, Footer, Sider, Content,
-} = Layout;
+// const {
+//   Header, Footer, Sider, Content,
+// } = Layout;
 
 class App extends Component {
   constructor(props){

@@ -1,6 +1,5 @@
-
+/* Sign in  */
 /* CSS for smaller screens */
-
 .item-image {
     grid-area: image;
     display: none;
@@ -23,7 +22,7 @@
 .register-container{
     display: grid;
     grid-template-columns: 1fr;
-    padding: 100px;
+    padding: 60px;
     grid-template-areas:
     "signIn"
 
@@ -58,6 +57,17 @@
         justify-self: center;
     }
 
+}
 
+/* SignUp */
+.login-form {
+    max-width: 300px;
+}
 
+.login-form-forgot {
+    float: right;
+}
+
+.login-form-button {
+    width: 100%;
 }

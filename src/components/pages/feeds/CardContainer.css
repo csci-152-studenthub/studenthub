@@ -1,0 +1,19 @@
+.item-feed{
+    grid-area: feed;
+
+}
+.item-post{
+    grid-area: post;
+}
+
+.card-container{
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto ;
+    grid-gap: 30px;
+    background:white;
+    padding: 20px;
+    grid-template-areas:
+    "post"
+    "feed"
+}

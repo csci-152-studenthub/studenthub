@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
-import {message, Layout, Col, Row, Tooltip, Divider, Form, Icon, Input, Button, Checkbox, AutoComplete, Select, Cascader, Typography} from 'antd';
+import {message, Form, Icon, Input, Button, AutoComplete, Select, Typography} from 'antd';
 import { Auth } from "aws-amplify";
-import logo from '../../../assets/logo.jpg';
+// import logo from '../../../assets/logo.jpg';
 import '../../../App.css';
+import './SignIn.css';
 
 const { Option } = Select;
 const AutoCompleteOption = AutoComplete.Option;
 
 const { Title } = Typography;
 
-const {
-  Header, Footer, Sider, Content,
-} = Layout;
+// const {
+//   Header, Footer, Sider, Content,
+// } = Layout;
 
 class SignUpComponent extends Component {
   constructor(props){
