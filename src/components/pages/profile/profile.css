@@ -3,7 +3,7 @@
 .item-profile{
     grid-area: profile;
     background: white;
-    /* justify-self: center; */
+    padding:20px;
 }
 
 
@@ -11,7 +11,7 @@
     grid-area: body;
     background: white;
     /* justify-content: center; */
-    /* padding: 20px; */
+    padding: 20px;
 
 }
 
@@ -33,7 +33,7 @@
     .item-profile{
         grid-area: profile;
         background: white;
-        /* justify-self: center; */
+        padding:20px;
     }
     .gray-col{
         grid-area: gray-col;
@@ -45,7 +45,7 @@
         grid-area: body;
         background: white;
         /* justify-content: center; */
-        /* padding: 20px; */
+        padding: 20px;
 
     }
 

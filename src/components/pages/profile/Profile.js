@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
-import { Typography } from 'antd';
+import { Avatar, message, Input, List, Skeleton, Popconfirm, Icon, Typography, Button } from 'antd';
+
 import './profile.css';
+
 
 const { Title } = Typography;
 export class Profile extends Component {
@@ -8,6 +10,7 @@ export class Profile extends Component {
     return (
       <div className="profile-container">
         <div className="item-profile">
+          <Title>Profile</Title>
           <h3>This is the profile area. Will expand the more things put in this container</h3>
         </div>
         <span className="gray-col"></span>

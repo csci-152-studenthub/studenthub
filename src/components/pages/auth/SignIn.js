@@ -53,7 +53,7 @@ class SignIn extends Component {
   }
 
   render() {
-    const { getFieldDecorator } = this.props.form;
+    // const { getFieldDecorator } = this.props.form;
     return (
       <div className="register-container">
         <img src={logo} alt="Logo" className="item-image"/>

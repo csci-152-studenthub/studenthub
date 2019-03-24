@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import { Menu, Icon, Layout, message, Row, Col } from 'antd';
-import { Typography } from 'antd';
 import { Auth } from "aws-amplify";
-import { Card, Avatar, Tag, Divider, Spin, Input } from 'antd';
+// import { Card, Avatar, Tag, Divider, Spin, Input } from 'antd';
 // const { Title } = Typography;
 // import CardContainer from '../feeds/CardContainer';
 import Feeds from '../feeds/Feeds';
@@ -13,9 +12,9 @@ import Profile from '../profile/Profile';
 
 import './Main.css';
 
-const SubMenu = Menu.SubMenu;
+// const SubMenu = Menu.SubMenu;
 
-const { Title } = Typography;
+// const { Title } = Typography;
 const {
   Content, Footer, Sider,
 } = Layout;
@@ -77,6 +76,9 @@ export class Main extends Component {
     render() {
       return(
         <div className="container">
+          <div className="item-header">
+            <h2>This is the header</h2>
+          </div>
 
           <Sider className="item-sider" collapsible>
             <div className="logo" />
