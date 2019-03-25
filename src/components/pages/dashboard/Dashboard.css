@@ -3,6 +3,7 @@
   display: grid;
   height: 200px;
   grid-template:auto;
+  overflow: scroll;
   gap: 20px 5px;
  font-size:40px;
 }
@@ -29,6 +30,8 @@
   border: 1px solid  Gainsboro;
   background-color: white;
   height: 200px;
+
+  overflow-y:auto;
 }
 
 .grid-bottom {
