@@ -87,7 +87,7 @@
     .container{
         display: grid;
         grid-template-columns: auto 1fr auto;
-        grid-template-rows: 60px 770px auto;
+        grid-template-rows: 60px auto auto;
         grid-gap: 30px 80px;
         background:#f0f2f5;
         /* background:red; */

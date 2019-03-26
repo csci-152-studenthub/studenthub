@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Menu, Icon, Layout, message, Row, Col, Button } from 'antd';
 import { Typography } from 'antd';
 import { Auth, API } from "aws-amplify";
-import { Card, Avatar, Tag, Divider, Spin, Input, List, Skeleton, Switch, Popconfirm } from 'antd';
+import { Card, Avatar, Tag, Divider, Spin, Input, List, Skeleton, Switch, Popconfirm, Cascader, Modal } from 'antd';
 // const { Title } = Typography;
 // import CardContainer from '../feeds/CardContainer';
 import Feeds from '../feeds/Feeds';
@@ -11,7 +11,7 @@ import './Main.css';
 
 const SubMenu = Menu.SubMenu;
 
-const { Title } = Typography;
+const { Title, Text } = Typography;
 const {
   Content, Footer, Sider,
 } = Layout;
@@ -24,19 +24,26 @@ class Dashboard extends React.Component {
     super(props);
 
     this.state = {
+      confirmLoading: false,
       buttonLoading: false,
+      current_subfeed: 'General',
       loading: true,
       user: '',
       posts: [],
       component: 1,
       title: '',
-      content: ''
+      content: '',
+      visible: false
     }
 
     this.getPosts = this.getPosts.bind(this);
     this.handleLike = this.handleLike.bind(this);
     this.deletePost = this.deletePost.bind(this);
+    this.createSubfeed = this.createSubfeed.bind(this);
     this.handleActionClick = this.handleActionClick.bind(this);
+    this.getSubfeedPosts = this.getSubfeedPosts.bind(this);
+    this.switchSubfeed = this.switchSubfeed.bind(this);
+    this.onChange = this.onChange.bind(this);
   }
 
   async componentDidMount(){
@@ -50,7 +57,7 @@ class Dashboard extends React.Component {
   }
 
   handleChange(type, e){
-    console.log(type, 'is now: ', e.target.value);
+    // console.log(type, 'is now: ', e.target.value);
     this.setState({
       [type]: e.target.value
     });
@@ -63,6 +70,7 @@ class Dashboard extends React.Component {
     try {
       var timestamp = new Date().toLocaleString();
       const response = await this.createPost({
+        subfeed: this.state.current_subfeed,
         likes: 0,
         dislikes: 0,
         timestamp: timestamp,
@@ -73,7 +81,7 @@ class Dashboard extends React.Component {
       });
       this.setState({buttonLoading: false});
       message.success('Post has been created!');
-      this.getPosts();
+      this.getSubfeedPosts(this.state.current_subfeed)
       console.log(response);
     } catch (e) {
       this.setState({buttonLoading: false});
@@ -102,6 +110,7 @@ class Dashboard extends React.Component {
           posts: [
             ...this.state.posts,
             {
+              subfeed: post.subfeed,
               timestamp: post.timestamp,
               id: post.id,
               user: post.user,
@@ -120,6 +129,39 @@ class Dashboard extends React.Component {
     }
   }
 
+  async getSubfeedPosts(subfeed){
+    this.setState({
+      posts: [],
+      loading: true
+    })
+    try{
+      await API.post("posts", "/posts/get-posts", {body: {subfeed: subfeed}}).then(response => {
+          console.log('Got subfeed posts: ',response);
+          response.body.map((post) => (
+            this.setState({
+              posts: [
+                ...this.state.posts,
+                {
+                  subfeed: post.subfeed,
+                  timestamp: post.timestamp,
+                  id: post.id,
+                  user: post.user,
+                  title: post.title,
+                  content: post.content
+                }
+              ]
+            })
+          ));
+          this.setState({loading: false});
+      }).catch(error => {
+          this.setState({loading: false});
+          console.log(error)
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
   deletePost(id, timestamp){
     console.log(`Deleting post with id: ${id}`)
     let apiName = 'posts';
@@ -133,7 +175,7 @@ class Dashboard extends React.Component {
     API.del(apiName, path, myInit).then(response => {
         // Add your code here
         message.success('Successfully deleted post!')
-        this.getPosts();
+        this.getSubfeedPosts(this.state.current_subfeed);
         console.log(response);
     }).catch(error => {
         message.error('Could not delete post.')
@@ -166,26 +208,92 @@ class Dashboard extends React.Component {
     });
   }
 
-    handleDislike(post){
-      console.log('User disliked post: ', post.title);
+  handleDislike(post){
+    console.log('User disliked post: ', post.title);
 
-      let apiName = 'posts';
-      let path = '/posts/'+post.id+'/dislike';
-      console.log('api: '+path)
-      let myInit = {
-          body: {
-            timestamp: post.timestamp
-          }
-      }
-      API.put(apiName, path, myInit).then(response => {
-          // Add your code here
-          message.success('Successfully disliked post!')
-          console.log(response);
-      }).catch(error => {
-          message.error('Could not like post.')
-          console.log(error.response)
-      });
+    let apiName = 'posts';
+    let path = '/posts/'+post.id+'/dislike';
+    console.log('api: '+path)
+    let myInit = {
+        body: {
+          timestamp: post.timestamp
+        }
     }
+    API.put(apiName, path, myInit).then(response => {
+        // Add your code here
+        message.success('Successfully disliked post!')
+        console.log(response);
+    }).catch(error => {
+        message.error('Could not like post.')
+        console.log(error.response)
+    });
+  }
+
+  createSubfeed(){
+    var subfeed_name = this.state.subfeed;
+    var created_by = this.state.user;
+    var timestamp = new Date().toLocaleString();
+    var id = 'subfeed-'+uuid.v4().toString()
+
+    console.log('User created subfeed: '+subfeed_name);
+    this.setState({confirmLoading: true});
+
+    let apiName = 'posts';
+    let path = '/posts/create-subfeed';
+    let myInit = {
+        body: {id, subfeed_name, created_by, timestamp}
+    }
+    API.post(apiName, path, myInit).then(response => {
+      this.setState({confirmLoading: false});
+      if(response.body.success){
+        message.success(response.body.success)
+        this.setState({
+          visible: false,
+        });
+      } else{
+        message.error(response.body.error)
+      }
+      console.log(response);
+    }).catch(error => {
+      this.setState({confirmLoading: false});
+      message.error('Could not create subfeed.')
+      console.log(error.response)
+    });
+  }
+
+  showModal = () => {
+    this.setState({
+      visible: true,
+    });
+  }
+
+  handleCancel = (e) => {
+    console.log(e);
+    this.setState({
+      visible: false,
+    });
+  }
+
+  onChange(value, selectedOptions) {
+    console.log(value[0]);
+    this.setState({
+      current_subfeed: value[0]
+    });
+    if(value[0] === 'General'){
+      this.getPosts();
+    } else{
+      this.getSubfeedPosts(value[0])
+    }
+  }
+
+  switchSubfeed(subfeed){
+    console.log(`Setting subfeed to '${subfeed}' and loading posts.`)
+    if(subfeed === 'General'){
+      this.getPosts();
+    } else {
+      this.getSubfeedPosts(subfeed);
+    }
+  }
 
   render() {
     const IconText = ({ type, text }) => (
@@ -205,13 +313,45 @@ class Dashboard extends React.Component {
       </span>
     );
     const data = this.state.posts
+    const options = [{
+      value: 'General',
+      label: 'General'
+    }, {
+      value: 'Biology',
+      label: 'Biology',
+    }, {
+      value: 'Chemistry',
+      label: 'Chemistry',
+    }, {
+      value: 'Computer Science',
+      label: 'Computer Science',
+    }
+  ];
+
+    function filter(inputValue, path) {
+      return (path.some(option => (option.label).toLowerCase().indexOf(inputValue.toLowerCase()) > -1));
+    }
+
     return(
       <div>
       <Title>Dashboard</Title>
-      <Input placeholder="Post title" style={{maxWidth: '300px'}} onChange={(e) => this.handleChange('title', e)}/>
-      <TextArea placeholder="Post content" rows={4} style={{top: 15}} onChange={(e) => this.handleChange('content', e)}/>
-      <Button loading={this.state.buttonLoading} type="primary" onClick={this.handleSubmit} style={{top: 25}}>Submit Post</Button>
-      <Button type="primary" onClick={() => console.log(this.state.posts)} style={{top: 25, left: 15}}>Console Log posts</Button>
+        <div>
+          <Button type="primary" onClick={this.showModal}>Create Subfeed</Button>
+        </div>
+        <div>
+        <Title level={4}>Subfeed</Title>
+        <Cascader
+          changeOnSelect
+          options={options}
+          onChange={this.onChange}
+          placeholder="Please select subfeed"
+          showSearch={{ filter }}
+        />
+        </div>
+        <Input placeholder="Post title" style={{maxWidth: '300px', top: 15}} onChange={(e) => this.handleChange('title', e)}/>
+        <TextArea placeholder="Post content" rows={4} style={{top: 30}} onChange={(e) => this.handleChange('content', e)}/>
+        <Button loading={this.state.buttonLoading} type="primary" onClick={this.handleSubmit} style={{top: 40}}>Submit Post</Button>
+        <Button type="primary" onClick={() => console.log(this.state.posts)} style={{top: 40, left: 15}}>Console Log posts</Button>
       {data === [] ? null :
       <List
           itemLayout="vertical"
@@ -227,7 +367,7 @@ class Dashboard extends React.Component {
           renderItem={item => (
             <List.Item
               key={item.id}
-              actions={!this.state.loading && [<IconText type="like-o" text="156" />, <IconText type="dislike-o" text="156" />, <IconText type="message" text="2" />, <DeleteIcon createdBy={item.user} id={item.id} timestamp={item.timestamp}/>]}
+              actions={!this.state.loading && [<IconText type="like-o" text="156" />, <IconText type="dislike-o" text="156" />, <IconText type="message" text="2" />, <DeleteIcon createdBy={item.user} id={item.id} timestamp={item.timestamp}/>, <Text onClick={() => this.switchSubfeed(item.subfeed)} style={{color: '#1890FF'}}>{item.subfeed}</Text>]}
             >
             <Skeleton loading={this.state.loading} active avatar>
             <List.Item.Meta
@@ -243,6 +383,22 @@ class Dashboard extends React.Component {
           )}
         />
       }
+      <Modal
+        title="Create Subfeed"
+        visible={this.state.visible}
+        onOk={this.createSubfeed}
+        onCancel={this.handleCancel}
+        confirmLoading={this.state.confirmLoading}
+        footer={[
+            <Button key="back" onClick={this.handleCancel}>Cancel</Button>,
+            <Button key="submit" type="primary" loading={this.state.confirmLoading} onClick={this.createSubfeed}>
+              Create Subfeed
+            </Button>,
+          ]}
+      >
+        <Text level={3} />Subfeed Name<Text/>
+        <Input placeholder="New subfeed name" onChange={(e) => this.handleChange('subfeed', e)} style={{maxWidth: '300px', left: 15}}/>
+      </Modal>
       </div>
     );
   }
