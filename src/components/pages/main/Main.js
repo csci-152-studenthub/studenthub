@@ -83,7 +83,11 @@ class Dashboard extends React.Component {
       });
       this.setState({buttonLoading: false});
       message.success('Post has been created!');
-      this.getSubfeedPosts(this.state.current_subfeed)
+      if(this.state.current_subfeed === 'General'){
+        this.getPosts();
+      } else {
+        this.getSubfeedPosts(this.state.current_subfeed)
+      }
       console.log(response);
     } catch (e) {
       this.setState({buttonLoading: false});
@@ -241,7 +245,7 @@ class Dashboard extends React.Component {
 
     try {
       const subfeeds = await API.get("posts", "/posts/get-subfeeds");
-      // console.log('Subfeeds: ', subfeeds);
+      console.log('Subfeeds: ', subfeeds);
       subfeeds.body.map((sub) => (
         this.setState({
           subfeeds: [
