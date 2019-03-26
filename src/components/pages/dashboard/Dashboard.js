@@ -22,7 +22,7 @@ export class Dashboard extends Component {
           <div>StudyGroup</div>
         </div>
         <div class="grid-bottom">
-          <div></div>
+          <div>User posts title in Feeds</div>
         </div>
 
 
