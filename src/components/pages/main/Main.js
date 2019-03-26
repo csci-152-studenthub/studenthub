@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Menu, Icon, Layout, message, Row, Col, Button } from 'antd';
 import { Typography } from 'antd';
 import { Auth, API } from "aws-amplify";
-import { Card, Avatar, Tag, Divider, Spin, Input, List, Skeleton, Switch, Popconfirm, Cascader, Modal } from 'antd';
+import { Card, Avatar, Tag, Divider, Spin, Input, List, Skeleton, Switch, Popconfirm, Cascader, Modal, Tooltip } from 'antd';
 // const { Title } = Typography;
 // import CardContainer from '../feeds/CardContainer';
 import Feeds from '../feeds/Feeds';
@@ -37,7 +37,6 @@ class Dashboard extends React.Component {
     }
 
     this.getPosts = this.getPosts.bind(this);
-    this.handleLike = this.handleLike.bind(this);
     this.deletePost = this.deletePost.bind(this);
     this.createSubfeed = this.createSubfeed.bind(this);
     this.handleActionClick = this.handleActionClick.bind(this);
@@ -296,9 +295,9 @@ class Dashboard extends React.Component {
   }
 
   render() {
-    const IconText = ({ type, text }) => (
+    const IconText = ({ type, text, onClick }) => (
       <span>
-        <Icon type={type} style={{ marginRight: 2}} />
+        <Icon type={type} style={{ marginRight: 2, color: '#1890FF'}} onClick={onClick}/>
         {text}
       </span>
     );
@@ -367,7 +366,7 @@ class Dashboard extends React.Component {
           renderItem={item => (
             <List.Item
               key={item.id}
-              actions={!this.state.loading && [<IconText type="like-o" text="156" />, <IconText type="dislike-o" text="156" />, <IconText type="message" text="2" />, <DeleteIcon createdBy={item.user} id={item.id} timestamp={item.timestamp}/>, <Text onClick={() => this.switchSubfeed(item.subfeed)} style={{color: '#1890FF'}}>{item.subfeed}</Text>]}
+              actions={!this.state.loading && [<IconText onClick={() => this.handleLike(item)} type="like-o" text="152" />, <IconText onClick={() => this.handleDislike(item)} type="dislike-o" text="152" />, <Tooltip title={`Switch to ${item.subfeed} subfeed`}><Text onClick={() => this.switchSubfeed(item.subfeed)} style={{color: '#1890FF'}}>{item.subfeed}</Text></Tooltip>, <DeleteIcon createdBy={item.user} id={item.id} timestamp={item.timestamp}/>]}
             >
             <Skeleton loading={this.state.loading} active avatar>
             <List.Item.Meta
@@ -376,8 +375,6 @@ class Dashboard extends React.Component {
               description={'Submitted by: '+item.user}
             />
             {item.content}<br/>
-            <a onClick={() => this.handleLike(item)}>Like</a><br />
-            <a onClick={() => this.handleDislike(item)}>Dislike</a>
             </Skeleton>
             </List.Item>
           )}
