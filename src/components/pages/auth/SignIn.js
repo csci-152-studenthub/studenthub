@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import {message, Layout, Col, Row, Divider, Form, Icon, Input, Button, Checkbox} from 'antd';
-import { Auth } from "aws-amplify";
+import { Divider, Form} from 'antd';
 import { Typography } from 'antd';
 import logo from '../../../assets/logo.jpg';
 import '../../../App.css';
@@ -13,11 +12,6 @@ import SignUpComponent from './SignUp.component';
 import ChangePasswordComponent from './ChangePassword.component';
 
 const { Title } = Typography;
-
-
-const {
-  Header, Footer, Sider, Content,
-} = Layout;
 
 class SignIn extends Component {
   constructor(props){
@@ -53,7 +47,6 @@ class SignIn extends Component {
   }
 
   render() {
-    const { getFieldDecorator } = this.props.form;
     return (
       <div className="register-container">
         <img src={logo} alt="Logo" className="item-image"/>

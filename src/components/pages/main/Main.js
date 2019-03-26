@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
-import { Menu, Icon, Layout, message, Row, Col, Button } from 'antd';
+import { Menu, Icon, Layout, message, Button } from 'antd';
 import { Typography } from 'antd';
 import { Auth, API } from "aws-amplify";
-import { Card, Avatar, Tag, Divider, Spin, Input, List, Skeleton, Switch, Popconfirm, Cascader, Modal, Tooltip } from 'antd';
+import { Avatar, Input, List, Skeleton, Popconfirm, Cascader, Modal, Tooltip } from 'antd';
 // const { Title } = Typography;
 // import CardContainer from '../feeds/CardContainer';
 import Feeds from '../feeds/Feeds';
 import uuid from "uuid";
 import './Main.css';
 
-const SubMenu = Menu.SubMenu;
+// const SubMenu = Menu.SubMenu;
 
 const { Title, Text } = Typography;
 const {
@@ -30,6 +30,7 @@ class Dashboard extends React.Component {
       loading: true,
       user: '',
       posts: [],
+      subfeeds: [],
       component: 1,
       title: '',
       content: '',
@@ -37,6 +38,7 @@ class Dashboard extends React.Component {
     }
 
     this.getPosts = this.getPosts.bind(this);
+    this.getSubfeeds = this.getSubfeeds.bind(this);
     this.deletePost = this.deletePost.bind(this);
     this.createSubfeed = this.createSubfeed.bind(this);
     this.handleActionClick = this.handleActionClick.bind(this);
@@ -46,13 +48,14 @@ class Dashboard extends React.Component {
   }
 
   async componentDidMount(){
+    this.getPosts();
+    this.getSubfeeds();
     Auth.currentAuthenticatedUser({
         bypassCache: false  // Optional, By default is false. If set to true, this call will send a request to Cognito to get the latest user data
     }).then(user => {
       this.setState({user: user.attributes.email})
     })
     .catch(err => console.log(err));
-    this.getPosts();
   }
 
   handleChange(type, e){
@@ -103,7 +106,6 @@ class Dashboard extends React.Component {
 
     try {
       const posts = await API.get("posts", "/posts/get-posts");
-      // this.setState({posts});
       posts.body.map((post) => (
         this.setState({
           posts: [
@@ -228,6 +230,32 @@ class Dashboard extends React.Component {
     });
   }
 
+  async getSubfeeds(){
+    this.setState({
+      subfeeds: []
+    })
+
+    try {
+      const subfeeds = await API.get("posts", "/posts/get-subfeeds");
+      // console.log('Subfeeds: ', subfeeds);
+      subfeeds.body.map((sub) => (
+        this.setState({
+          subfeeds: [
+            ...this.state.subfeeds,
+            {
+              created_by: sub.created_by,
+              value: sub.subfeed_name,
+              label: sub.subfeed_name
+            }
+          ]
+        })
+      ));
+      message.success('Successfully retrieved subfeeds!');
+    } catch (e) {
+      console.log('Error: ',e);
+    }
+  }
+
   createSubfeed(){
     var subfeed_name = this.state.subfeed;
     var created_by = this.state.user;
@@ -246,6 +274,7 @@ class Dashboard extends React.Component {
       this.setState({confirmLoading: false});
       if(response.body.success){
         message.success(response.body.success)
+        this.getSubfeeds();
         this.setState({
           visible: false,
         });
@@ -290,6 +319,7 @@ class Dashboard extends React.Component {
     if(subfeed === 'General'){
       this.getPosts();
     } else {
+      this.setState({current_subfeed: subfeed})
       this.getSubfeedPosts(subfeed);
     }
   }
@@ -312,20 +342,6 @@ class Dashboard extends React.Component {
       </span>
     );
     const data = this.state.posts
-    const options = [{
-      value: 'General',
-      label: 'General'
-    }, {
-      value: 'Biology',
-      label: 'Biology',
-    }, {
-      value: 'Chemistry',
-      label: 'Chemistry',
-    }, {
-      value: 'Computer Science',
-      label: 'Computer Science',
-    }
-  ];
 
     function filter(inputValue, path) {
       return (path.some(option => (option.label).toLowerCase().indexOf(inputValue.toLowerCase()) > -1));
@@ -335,22 +351,21 @@ class Dashboard extends React.Component {
       <div>
       <Title>Dashboard</Title>
         <div>
-          <Button type="primary" onClick={this.showModal}>Create Subfeed</Button>
+          <Title level={4}>Subfeed</Title>
+          <Cascader
+            changeOnSelect
+            options={this.state.subfeeds}
+            onChange={this.onChange}
+            placeholder="Please select subfeed"
+            showSearch={{ filter }}
+          />
+          <Button type="primary" onClick={this.showModal} style={{left: 15}}>Create New Subfeed</Button>
         </div>
-        <div>
-        <Title level={4}>Subfeed</Title>
-        <Cascader
-          changeOnSelect
-          options={options}
-          onChange={this.onChange}
-          placeholder="Please select subfeed"
-          showSearch={{ filter }}
-        />
-        </div>
-        <Input placeholder="Post title" style={{maxWidth: '300px', top: 15}} onChange={(e) => this.handleChange('title', e)}/>
-        <TextArea placeholder="Post content" rows={4} style={{top: 30}} onChange={(e) => this.handleChange('content', e)}/>
-        <Button loading={this.state.buttonLoading} type="primary" onClick={this.handleSubmit} style={{top: 40}}>Submit Post</Button>
-        <Button type="primary" onClick={() => console.log(this.state.posts)} style={{top: 40, left: 15}}>Console Log posts</Button>
+        <Title level={2}>{this.state.current_subfeed}</Title>
+        <Title level={4}>Create Post</Title>
+        <Input placeholder="Post title" style={{maxWidth: '300px', top: 0}} onChange={(e) => this.handleChange('title', e)}/>
+        <TextArea placeholder="Post content" rows={4} style={{top: 15}} onChange={(e) => this.handleChange('content', e)}/>
+        <Button loading={this.state.buttonLoading} type="primary" onClick={this.handleSubmit} style={{top: 25}}>Submit Post</Button>
       {data === [] ? null :
       <List
           itemLayout="vertical"
@@ -366,7 +381,11 @@ class Dashboard extends React.Component {
           renderItem={item => (
             <List.Item
               key={item.id}
-              actions={!this.state.loading && [<IconText onClick={() => this.handleLike(item)} type="like-o" text="152" />, <IconText onClick={() => this.handleDislike(item)} type="dislike-o" text="152" />, <Tooltip title={`Switch to ${item.subfeed} subfeed`}><Text onClick={() => this.switchSubfeed(item.subfeed)} style={{color: '#1890FF'}}>{item.subfeed}</Text></Tooltip>, <DeleteIcon createdBy={item.user} id={item.id} timestamp={item.timestamp}/>]}
+              actions={!this.state.loading && [
+                <IconText onClick={() => this.handleLike(item)} type="like-o" text="152" />,
+                <IconText onClick={() => this.handleDislike(item)} type="dislike-o" text="152" />,
+                <Tooltip title={`Switch to ${item.subfeed} subfeed`}><Text onClick={() => this.switchSubfeed(item.subfeed)} style={{color: '#1890FF'}}>{item.subfeed}</Text></Tooltip>,
+                <DeleteIcon createdBy={item.user} id={item.id} timestamp={item.timestamp}/>]}
             >
             <Skeleton loading={this.state.loading} active avatar>
             <List.Item.Meta
@@ -442,19 +461,14 @@ export class Main extends Component {
     switch (current_component) {
       case 1:
         return (<Dashboard />);
-        break;
       case 2:
         return (<Feeds />);
-        break;
       case 3:
         return (<Resources />);
-        break;
       case 4:
         return (<StudyGroups />);
-        break;
       case 5:
         return (<Profile />);
-        break;
       default:
         return (<Dashboard />)
     }

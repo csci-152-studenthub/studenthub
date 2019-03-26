@@ -45,7 +45,7 @@ class SignUpComponent extends Component {
         const password = values.password;
         const phone_number = values.prefix+values.phone
 
-        const response = await Auth.signUp({
+        await Auth.signUp({
           username,
           password,
           attributes: {

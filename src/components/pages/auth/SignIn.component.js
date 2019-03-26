@@ -27,7 +27,7 @@ class SignInComponent extends Component {
   }
 
   handleChange = event => {
-    console.log(`${event.target.id} is now: `, event.target.value);
+    // console.log(`${event.target.id} is now: `, event.target.value);
     this.setState({
       [event.target.id]: event.target.value
     });
@@ -35,16 +35,15 @@ class SignInComponent extends Component {
 
   handleSubmit = async event => {
     event.preventDefault();
-    console.log(this.state);
 
     this.props.form.validateFieldsAndScroll(async (err, values) => {
       if(!err){
         this.setState({buttonLoading: true});
         this.props.changeEmail(values.email);
-        console.log(values);
+        // console.log(values);
         var email = values.email;
         var password = values.password;
-        const response = await Auth.signIn(email, password)
+        await Auth.signIn(email, password)
           .then(data => {
             this.setState({buttonLoading: false});
             console.log(data);
