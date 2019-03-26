@@ -176,7 +176,11 @@ class Dashboard extends React.Component {
     API.del(apiName, path, myInit).then(response => {
         // Add your code here
         message.success('Successfully deleted post!')
-        this.getSubfeedPosts(this.state.current_subfeed);
+        if(this.state.current_subfeed === 'General'){
+          this.getPosts();
+        } else {
+          this.getSubfeedPosts(this.state.current_subfeed);
+        }
         console.log(response);
     }).catch(error => {
         message.error('Could not delete post.')
@@ -350,6 +354,7 @@ class Dashboard extends React.Component {
     return(
       <div>
       <Title>Dashboard</Title>
+        <Title level={2}>{this.state.current_subfeed}</Title>
         <div>
           <Title level={4}>Subfeed</Title>
           <Cascader
@@ -361,8 +366,7 @@ class Dashboard extends React.Component {
           />
           <Button type="primary" onClick={this.showModal} style={{left: 15}}>Create New Subfeed</Button>
         </div>
-        <Title level={2}>{this.state.current_subfeed}</Title>
-        <Title level={4}>Create Post</Title>
+        <Title level={4} >Create Post</Title>
         <Input placeholder="Post title" style={{maxWidth: '300px', top: 0}} onChange={(e) => this.handleChange('title', e)}/>
         <TextArea placeholder="Post content" rows={4} style={{top: 15}} onChange={(e) => this.handleChange('content', e)}/>
         <Button loading={this.state.buttonLoading} type="primary" onClick={this.handleSubmit} style={{top: 25}}>Submit Post</Button>
@@ -384,7 +388,7 @@ class Dashboard extends React.Component {
               actions={!this.state.loading && [
                 <IconText onClick={() => this.handleLike(item)} type="like-o" text="152" />,
                 <IconText onClick={() => this.handleDislike(item)} type="dislike-o" text="152" />,
-                <Tooltip title={`Switch to ${item.subfeed} subfeed`}><Text onClick={() => this.switchSubfeed(item.subfeed)} style={{color: '#1890FF'}}>{item.subfeed}</Text></Tooltip>,
+                <Tooltip title={`Switch to the ${item.subfeed} subfeed`}><Text onClick={() => this.switchSubfeed(item.subfeed)} style={{color: '#1890FF'}}>{item.subfeed}</Text></Tooltip>,
                 <DeleteIcon createdBy={item.user} id={item.id} timestamp={item.timestamp}/>]}
             >
             <Skeleton loading={this.state.loading} active avatar>
