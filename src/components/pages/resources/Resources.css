@@ -1,0 +1,14 @@
+.item-resources{
+    grid-area: resources;
+
+}
+
+.resources-container{
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto ;
+    background:white;
+    padding: 20px;
+    grid-template-areas:
+    "resources"
+}
