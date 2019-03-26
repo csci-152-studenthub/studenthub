@@ -9,7 +9,6 @@ import Dashboard from '../dashboard/Dashboard';
 import Resources from '../resources/Resources';
 import StudyGroups from '../studygroup/Studygroup';
 import Profile from '../profile/Profile';
-
 import './Main.css';
 
 // const SubMenu = Menu.SubMenu;
@@ -18,6 +17,7 @@ import './Main.css';
 const {
   Content, Footer, Sider,
 } = Layout;
+
 export class Main extends Component {
   constructor(props){
     super(props);

@@ -1,15 +1,9 @@
 import React, { Component } from 'react';
 import {message, Form, Icon, Input, Button, Typography} from 'antd';
 import { Auth } from "aws-amplify";
-// import logo from '../../../assets/logo.jpg';
 import '../../../App.css';
 
 const { Title } = Typography;
-
-
-// const {
-//   Header, Footer, Sider, Content,
-// } = Layout;
 
 class ChangePasswordComponent extends Component {
   constructor(props){
@@ -45,7 +39,7 @@ class ChangePasswordComponent extends Component {
         var code = values.code;
         var new_password = values.new_password;
 
-        const response = await Auth.forgotPasswordSubmit(username, code, new_password)
+        await Auth.forgotPasswordSubmit(username, code, new_password)
           .then(data => {
             this.setState({buttonLoading: false});
             console.log(data);
@@ -105,7 +99,7 @@ class ChangePasswordComponent extends Component {
             <Button loading={this.state.buttonLoading} onClick={this.handleSubmit} type="primary" htmlType="submit" className="login-form-button">
               Submit
             </Button>
-            Or <a onClick={() => changeForm(0)}>back to sign in.</a>
+            Or <a href="#" onClick={() => changeForm(0)}>back to sign in.</a>
           </Form.Item>
         </Form>
       </div>
