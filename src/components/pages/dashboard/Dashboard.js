@@ -2,16 +2,96 @@ import React, { Component } from 'react';
 import { Auth, API } from "aws-amplify";
 import { Avatar, message, Input, List, Skeleton, Popconfirm, Icon, Typography, Button } from 'antd';
 import uuid from "uuid";
-// import { Layout } from 'antd';
-// import { Button } from 'antd';
-// import { List, Icon, Tag } from 'antd';
-
 import './Dashboard.css';
 import Feeds from '../feeds/Feeds';
+
 export class Dashboard extends Component {
+  
+  constructor(props){
+    super(props);
+
+    this.state = {
+      confirmLoading: false,
+      buttonLoading: false,
+      current_subfeed: 'General',
+      loading: true,
+      user: '',
+      posts: [],
+      component: 1,
+      title: '',
+      content: '',
+      visible: false
+    }
+
+    this.getPosts = this.getPosts.bind(this);
+    this.handleLike = this.handleLike.bind(this);
+    this.deletePost = this.deletePost.bind(this);
+    this.createSubfeed = this.createSubfeed.bind(this);
+    this.handleActionClick = this.handleActionClick.bind(this);
+    this.getSubfeedPosts = this.getSubfeedPosts.bind(this);
+    this.switchSubfeed = this.switchSubfeed.bind(this);
+    this.onChange = this.onChange.bind(this);
+  }
+  async componentDidMount(){
+    Auth.currentAuthenticatedUser({
+        bypassCache: false // Optional, By default is false. If set to true, this call will send a request to Cognito to get the latest user data
+    }).then(user => {
+      this.setState({user: user.attributes.email})
+    })
+    .catch(err => console.log(err));
+    this.getPosts();
+  }
+
+  handleChange(type, e){
+    // console.log(type, 'is now: ', e.target.value);
+    this.setState({
+      [type]: e.target.value
+    });
+  }
+
+  handleSubmit = async event => {
+    event.preventDefault();
+    this.setState({buttonLoading: true});
+
+    
+  }
+
+  async getPosts() {
+    this.setState({
+      posts: [],
+      loading: true
+    })
+
+    try {
+      const posts = await API.get("posts", "/posts/get-posts");
+      // this.setState({posts});
+      posts.body.map((post) => (
+        this.setState({
+          posts: [
+            ...this.state.posts,
+            {
+              subfeed: post.subfeed,
+              timestamp: post.timestamp,
+              id: post.id,
+              user: post.user,
+              title: post.title,
+              content: post.content
+            }
+          ]
+        })
+      ));
+      // console.log(posts.body);
+      message.success('Successfully retrieved posts!');
+      this.setState({loading: false});
+    } catch (e) {
+      console.log(e);
+      this.setState({loading: false});
+    }
+  }
 
   render() {
     return (
+      
       <div>
         <div class="grid-head">
           <div>Hello!</div>
@@ -21,6 +101,7 @@ export class Dashboard extends Component {
           
 
           </div>
+          
           <div>Resources</div>
           <div>StudyGroup</div>
         </div>
