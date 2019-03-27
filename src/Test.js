@@ -8,10 +8,6 @@ import './App.css';
 const { Title } = Typography;
 
 class Test extends Component {
-  // constructor(props){
-  //   super(props);
-
-  // }
 
   trySignOut(){
     Auth.signOut()
