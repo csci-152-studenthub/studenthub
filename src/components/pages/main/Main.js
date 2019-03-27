@@ -82,7 +82,7 @@ export class Main extends Component {
 
           <Sider className="item-sider" collapsible>
             <div className="logo" />
-              <Menu theme="dark" mode="inline" defaultSelectedKeys={[this.state.component.toString()]}>
+              <Menu theme="dark" mode="inline" defaultSelectedKeys={[this.state.component.toString()]} className="stickyNav">
                 <Menu.Item key="1" onClick={() => this.switchComponent(1)}>
                   <Icon type="home" style={{fontSize: 20}} />
                   <span className="nav-text">Dashboard</span>

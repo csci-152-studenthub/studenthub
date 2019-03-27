@@ -345,8 +345,7 @@ export class CardContainer extends Component {
     return(
       <div className="card-container">
         <div className="item-post">
-          <Title>Feeds</Title>
-          <Title level={2}>{this.state.current_subfeed}</Title>
+          <Title>{this.state.current_subfeed}</Title>
           <div>
             <Title level={4}>Subfeed</Title>
             <Cascader
@@ -374,9 +373,8 @@ export class CardContainer extends Component {
                 onChange: (page) => {
                   console.log(page);
                 },
-                pageSize: 3,
+                pageSize: 10,
               }}
-              style={{top: 50}}
               dataSource={data}
               renderItem={item => (
                 <List.Item
