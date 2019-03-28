@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { Auth, API } from "aws-amplify";
 import { Avatar, message, Input, List, Skeleton, Popconfirm, Icon, Typography, Button, Cascader, Tooltip, Modal } from 'antd';
 import uuid from "uuid";
-import './CardContainer.css'
+import ProfilePic from "../profile/ProfilePic";
+import './CardContainer.css';
+
 
 const { Title, Text } = Typography;
 const { TextArea } = Input;
@@ -345,8 +347,7 @@ export class CardContainer extends Component {
     return(
       <div className="card-container">
         <div className="item-post">
-          <Title>Feeds</Title>
-          <Title level={2}>{this.state.current_subfeed}</Title>
+          <Title>{this.state.current_subfeed}</Title>
           <div>
             <Title level={4}>Subfeed</Title>
             <Cascader
@@ -374,9 +375,8 @@ export class CardContainer extends Component {
                 onChange: (page) => {
                   console.log(page);
                 },
-                pageSize: 3,
+                pageSize: 10,
               }}
-              style={{top: 50}}
               dataSource={data}
               renderItem={item => (
                 <List.Item
@@ -389,7 +389,8 @@ export class CardContainer extends Component {
                 >
                 <Skeleton loading={this.state.loading} active avatar>
                 <List.Item.Meta
-                  avatar={<Avatar size={42} icon="user" style={{backgroundColor: '#1890FF', top: 10}}/>}
+                  avatar={<ProfilePic/>}
+                  // avatar={<Avatar size={42} icon="user" style={{backgroundColor: '#1890FF', top: 10}}/>}
                   title={item.title}
                   description={'Submitted by: '+item.user}
                 />

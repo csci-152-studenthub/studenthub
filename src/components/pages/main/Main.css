@@ -49,6 +49,11 @@
         background-color: transparent;
     }
 
+    .stickyNav{
+        top: 40px;
+        position: sticky; 
+    }
+
     .item-header {
         grid-area: header;
         /* justify-self: left; */
@@ -71,7 +76,9 @@
         height: 100vh;
         display: block;
         min-height: 100%;
-
+        /* position: sticky; */
+        /* left: 0; */
+   
     
     }
     .item-footer {
