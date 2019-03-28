@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { Auth, API } from "aws-amplify";
 import { Avatar, message, Input, List, Skeleton, Popconfirm, Icon, Typography, Button, Cascader, Tooltip, Modal } from 'antd';
 import uuid from "uuid";
-import './CardContainer.css'
+import ProfilePic from "../profile/ProfilePic";
+import './CardContainer.css';
+
 
 const { Title, Text } = Typography;
 const { TextArea } = Input;
@@ -387,7 +389,8 @@ export class CardContainer extends Component {
                 >
                 <Skeleton loading={this.state.loading} active avatar>
                 <List.Item.Meta
-                  avatar={<Avatar size={42} icon="user" style={{backgroundColor: '#1890FF', top: 10}}/>}
+                  avatar={<ProfilePic/>}
+                  // avatar={<Avatar size={42} icon="user" style={{backgroundColor: '#1890FF', top: 10}}/>}
                   title={item.title}
                   description={'Submitted by: '+item.user}
                 />
