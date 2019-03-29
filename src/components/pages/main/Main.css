@@ -41,13 +41,33 @@
 
 /* For any screen larger than 900px */
 @media (min-width: 900px){
-    .logo {
-        height: 100px;
-        background: rgba(255,255,255,.2);
-        margin-left: auto;
-        margin-right: auto;
-        background-color: transparent;
+    .logo-area {
+        height: 80px;
+        /* background: rgba(255,255,255,.2); */
+    
+        
+        /* justify-content: center; */
+        background-color:#002140;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        /* justify-content: center; */
+        
     }
+    .logo-text{
+        display: inline-block;
+        font-weight: 600;
+        font-size: 20px;
+        font-family: Avenir,Helvetica Neue,Arial,Helvetica,sans-serif;
+        vertical-align: middle;
+        color:white;
+        padding-top:12px;
+    }
+    .logo{
+        height:32px;
+        width:32px;        
+    }
+   
 
     .stickyNav{
         top: 40px;

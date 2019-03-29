@@ -9,9 +9,10 @@ import Dashboard from '../dashboard/Dashboard';
 import Resources from '../resources/Resources';
 import StudyGroups from '../studygroup/Studygroup';
 import Profile from '../profile/Profile';
+import logo from '../../../react-logo.png';
 import './Main.css';
 
-// const SubMenu = Menu.SubMenu;
+const SubMenu = Menu.SubMenu;
 
 // const { Title } = Typography;
 const {
@@ -74,40 +75,53 @@ export class Main extends Component {
   }
 
     render() {
+      const SubMenu = Menu.SubMenu;
       return(
         <div className="container">
           <div className="item-header">
             <h2>This is the header</h2>
           </div>
-
           <Sider className="item-sider" collapsible>
-            <div className="logo" />
-              <Menu theme="dark" mode="inline" defaultSelectedKeys={[this.state.component.toString()]} className="stickyNav">
-                <Menu.Item key="1" onClick={() => this.switchComponent(1)}>
-                  <Icon type="home" style={{fontSize: 20}} />
-                  <span className="nav-text">Dashboard</span>
-                </Menu.Item>
-                <Menu.Item key="2" onClick={() => this.switchComponent(2)}>
-                  <Icon type="project" rotate={-90} style={{fontSize: 20}} />
-                  <span className="nav-text">Feeds</span>
-                </Menu.Item>
-                <Menu.Item key="3" onClick={() => this.switchComponent(3)}>
-                  <Icon type="read" style={{fontSize: 20}} />
-                  <span className="nav-text">Resources</span>
-                </Menu.Item>
-                <Menu.Item key="4" onClick={() => this.switchComponent(4)}>
-                  <Icon type="team" style={{fontSize: 20}} />
-                  <span className="nav-text">Study Groups</span>
-                </Menu.Item>
-                <Menu.Item key="5" onClick={() => this.switchComponent(5)}>
-                  <Icon type="user" style={{fontSize: 20}} />
-                  <span className="nav-text">My Profile</span>
-                </Menu.Item>
-                <Menu.Item key="6" onClick={() => {this.trySignOut()}}>
-                  <Icon type="logout" style={{fontSize: 20}} />
-                  <span className="nav-text">Sign Out</span>
-                </Menu.Item>
-              </Menu>
+          <div className="logo-area">
+            <a href="#">
+              <img src={logo} alt="Logo" className="logo"/>
+              <h1 className="logo-text">Studenthub</h1>
+            </a>
+          </div>
+
+            <Menu theme="dark" mode="inline" defaultSelectedKeys={[this.state.component.toString()]} className="stickyNav">
+              <Menu.Item key="1" onClick={() => this.switchComponent(1)}>
+                <Icon type="home" style={{fontSize: 20}} />
+                <span className="nav-text">Dashboard</span>
+              </Menu.Item>
+              {/* <Menu.Item key="2" onClick={() => this.switchComponent(2)}>
+                <Icon type="project" rotate={-90} style={{fontSize: 20}} />
+                <span className="nav-text">Feeds</span>
+              </Menu.Item> */}
+              <SubMenu key="2" title={<span><Icon type="project" style={{fontSize: 20}}/><span>Feeds</span></span>} onClick={()=> this.switchComponent(2)}>
+                <Menu.Item key="dummy">General</Menu.Item>
+                <Menu.Item key="dummy1">Computer Science</Menu.Item>
+                <Menu.Item key="dummy2">Biology</Menu.Item>
+                <Menu.Item key="dummy3">Psychology</Menu.Item>
+                <Menu.Item key="dummy4">English</Menu.Item>
+              </SubMenu>
+              <Menu.Item key="3" onClick={() => this.switchComponent(3)}>
+                <Icon type="read" style={{fontSize: 20}} />
+                <span className="nav-text">Resources</span>
+              </Menu.Item>
+              <Menu.Item key="4" onClick={() => this.switchComponent(4)}>
+                <Icon type="team" style={{fontSize: 20}} />
+                <span className="nav-text">Study Groups</span>
+              </Menu.Item>
+              <Menu.Item key="5" onClick={() => this.switchComponent(5)}>
+                <Icon type="user" style={{fontSize: 20}} />
+                <span className="nav-text">My Profile</span>
+              </Menu.Item>
+              <Menu.Item key="6" onClick={() => {this.trySignOut()}}>
+                <Icon type="logout" style={{fontSize: 20}} />
+                <span className="nav-text">Sign Out</span>
+              </Menu.Item>
+            </Menu>
           </Sider>
 
         <Content className="item-body">
