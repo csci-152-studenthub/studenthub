@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="18ea8b0b-a2f8-4f5c-9b18-7882f85c6657" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/components/pages/auth/SignIn.component.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/auth/SignIn.component.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/pages/feeds/CardContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/feeds/CardContainer.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -60,12 +59,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/pages/feeds/CardContainer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3030">
-              <caret line="526" lean-forward="true" selection-start-line="526" selection-end-line="526" />
+            <state relative-caret-position="155">
+              <caret line="471" column="120" selection-start-line="471" selection-start-column="120" selection-end-line="471" selection-end-column="120" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
                 <element signature="n#!!block;n#handleChange#0;n#CardContainer#0" />
-                <element signature="e#1722#2581#0" />
                 <element signature="n#!!block;n#createPost#0;n#CardContainer#0" />
                 <element signature="n#!!block;n#getPosts#0;n#CardContainer#0" />
                 <element signature="n#!!block;n#getSubfeedPosts#0;n#CardContainer#0" />
@@ -73,6 +71,7 @@
                 <element signature="n#!!block;n#handleActionClick#0;n#CardContainer#0" />
                 <element signature="n#!!block;n#handleLike#0;n#CardContainer#0" />
                 <element signature="n#!!block;n#handleDislike#0;n#CardContainer#0" />
+                <element signature="n#!!block;n#getSubfeeds#0;n#CardContainer#0" />
                 <element signature="n#!!block;n#updateSubfeeds#0;n#CardContainer#0" />
                 <element signature="n#!!block;n#deleteSubfeed#0;n#CardContainer#0" />
                 <element signature="e#8549#8603#0" />
@@ -81,6 +80,18 @@
                 <element signature="e#7889#7964#0" />
                 <element signature="e#8733#9096#0" />
                 <element signature="n#!!block;n#filter#0;n#!!block;n#render#0;n#CardContainer#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/pages/auth/SignIn.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="384">
+              <caret line="52" column="25" lean-forward="true" selection-start-line="52" selection-end-line="53" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -210,6 +221,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -295,12 +307,12 @@
       <workItem from="1553812828130" duration="2832000" />
       <workItem from="1553819188504" duration="232000" />
       <workItem from="1553819449162" duration="351000" />
-      <workItem from="1553819827613" duration="13080000" />
+      <workItem from="1553819827613" duration="14819000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16611000" />
+    <option name="totallyTimeSpent" value="18350000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -315,7 +327,7 @@
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.7361446" visible="true" weight="0.19313304" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7361446" visible="true" weight="0.19313304" />
       <window_info id="Structure" order="1" sideWeight="0.5007215" side_tool="true" weight="0.2533137" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -426,14 +438,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/auth/SignIn.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="384">
+          <caret line="52" column="25" lean-forward="true" selection-start-line="52" selection-end-line="53" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/pages/feeds/CardContainer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3030">
-          <caret line="526" lean-forward="true" selection-start-line="526" selection-end-line="526" />
+        <state relative-caret-position="155">
+          <caret line="471" column="120" selection-start-line="471" selection-start-column="120" selection-end-line="471" selection-end-column="120" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
             <element signature="n#!!block;n#handleChange#0;n#CardContainer#0" />
-            <element signature="e#1722#2581#0" />
             <element signature="n#!!block;n#createPost#0;n#CardContainer#0" />
             <element signature="n#!!block;n#getPosts#0;n#CardContainer#0" />
             <element signature="n#!!block;n#getSubfeedPosts#0;n#CardContainer#0" />
@@ -441,6 +462,7 @@
             <element signature="n#!!block;n#handleActionClick#0;n#CardContainer#0" />
             <element signature="n#!!block;n#handleLike#0;n#CardContainer#0" />
             <element signature="n#!!block;n#handleDislike#0;n#CardContainer#0" />
+            <element signature="n#!!block;n#getSubfeeds#0;n#CardContainer#0" />
             <element signature="n#!!block;n#updateSubfeeds#0;n#CardContainer#0" />
             <element signature="n#!!block;n#deleteSubfeed#0;n#CardContainer#0" />
             <element signature="e#8549#8603#0" />
