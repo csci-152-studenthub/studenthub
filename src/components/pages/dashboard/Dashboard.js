@@ -24,13 +24,7 @@ export class Dashboard extends Component {
     }
 
     this.getPosts = this.getPosts.bind(this);
-    this.handleLike = this.handleLike.bind(this);
-    this.deletePost = this.deletePost.bind(this);
-    this.createSubfeed = this.createSubfeed.bind(this);
-    this.handleActionClick = this.handleActionClick.bind(this);
-    this.getSubfeedPosts = this.getSubfeedPosts.bind(this);
-    this.switchSubfeed = this.switchSubfeed.bind(this);
-    this.onChange = this.onChange.bind(this);
+    
   }
   async componentDidMount(){
     Auth.currentAuthenticatedUser({
@@ -42,19 +36,7 @@ export class Dashboard extends Component {
     this.getPosts();
   }
 
-  handleChange(type, e){
-    // console.log(type, 'is now: ', e.target.value);
-    this.setState({
-      [type]: e.target.value
-    });
-  }
 
-  handleSubmit = async event => {
-    event.preventDefault();
-    this.setState({buttonLoading: true});
-
-    
-  }
 
   async getPosts() {
     this.setState({
@@ -88,8 +70,9 @@ export class Dashboard extends Component {
       this.setState({loading: false});
     }
   }
-
+  
   render() {
+    
     return (
       
       <div>
@@ -106,7 +89,8 @@ export class Dashboard extends Component {
           <div>StudyGroup</div>
         </div>
         <div class="grid-bottom">
-          <div>User posts title in Feeds</div>
+   
+          <div></div>
         </div>
 
 
