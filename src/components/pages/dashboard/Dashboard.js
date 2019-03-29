@@ -71,8 +71,9 @@ export class Dashboard extends Component {
     }
   }
   
+  
   render() {
-    
+    const data =this.state.posts
     return (
       
       <div>
@@ -89,8 +90,8 @@ export class Dashboard extends Component {
           <div>StudyGroup</div>
         </div>
         <div class="grid-bottom">
-   
-          <div></div>
+    
+        { data.map(post => <div>{post.user} posted {post.title} in the subfeed {post.subfeed}</div>)}
         </div>
 
 
