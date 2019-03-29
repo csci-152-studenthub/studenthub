@@ -35,11 +35,12 @@
 }
 
 .grid-bottom {
+  grid-gap: 20px 5px;
   padding-top: 70px;
   display: grid;
   height: 200px;
   grid-template:auto;
- 
+  gap: 20px 5px;
  
 }
 
@@ -47,7 +48,7 @@
   border: 1px solid  Gainsboro;
   background-color: white;
   height: 270px;
-  
+  line-height: 38px;
 }
 
 

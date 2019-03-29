@@ -91,7 +91,7 @@ export class Dashboard extends Component {
         </div>
         <div class="grid-bottom">
     
-        { data.map(post => <div>{post.user} posted {post.title} in the subfeed {post.subfeed}</div>)}
+        <div>{ data.slice(0,7).map(post => <div>{post.user} posted {post.title} in the Feeds</div>)}</div>
         </div>
 
 
