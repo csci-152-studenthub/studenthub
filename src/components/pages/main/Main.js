@@ -23,7 +23,7 @@ export class Main extends Component {
     super(props);
 
     this.state = {
-      component: 1,
+      component: 3, // change this back to 1 later in the future
     }
   }
 
