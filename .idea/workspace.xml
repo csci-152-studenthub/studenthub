@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="18ea8b0b-a2f8-4f5c-9b18-7882f85c6657" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/feeds/CardContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/feeds/CardContainer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/main/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/main/Main.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -57,27 +56,34 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/pages/feeds/CardContainer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="467" selection-start-line="467" selection-end-line="467" />
+            <state relative-caret-position="369">
+              <caret line="214" column="20" selection-start-line="214" selection-start-column="20" selection-end-line="214" selection-end-column="20" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
-                <element signature="n#!!block;n#handleChange#0;n#CardContainer#0" />
-                <element signature="n#!!block;n#createPost#0;n#CardContainer#0" />
-                <element signature="n#!!block;n#getPosts#0;n#CardContainer#0" />
-                <element signature="n#!!block;n#getSubfeedPosts#0;n#CardContainer#0" />
-                <element signature="n#!!block;n#deletePost#0;n#CardContainer#0" />
-                <element signature="n#!!block;n#handleActionClick#0;n#CardContainer#0" />
-                <element signature="n#!!block;n#handleLike#0;n#CardContainer#0" />
-                <element signature="n#!!block;n#handleDislike#0;n#CardContainer#0" />
-                <element signature="n#!!block;n#getSubfeeds#0;n#CardContainer#0" />
-                <element signature="n#!!block;n#updateSubfeeds#0;n#CardContainer#0" />
-                <element signature="n#!!block;n#deleteSubfeed#0;n#CardContainer#0" />
-                <element signature="n#!!block;n#filter#0;n#!!block;n#render#0;n#CardContainer#0" />
               </folding>
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/components/pages/main/Main.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="413">
+              <caret line="105" column="63" selection-start-line="105" selection-start-column="63" selection-end-line="105" selection-end-column="63" />
+              <folding>
+                <element signature="e#0#40#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/pages/main/Main.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1443" />
           </provider>
         </entry>
       </file>
@@ -127,6 +133,7 @@
         <option value="$PROJECT_DIR$/src/components/pages/profile/ProfilePic.js" />
         <option value="$PROJECT_DIR$/src/components/pages/auth/SignIn.component.js" />
         <option value="$PROJECT_DIR$/src/components/pages/feeds/CardContainer.js" />
+        <option value="$PROJECT_DIR$/src/components/pages/main/Main.js" />
       </list>
     </option>
   </component>
@@ -151,6 +158,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -213,7 +221,6 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -310,7 +317,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19738000" />
+    <option name="totallyTimeSpent" value="19877000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -323,15 +330,16 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.73373497" visible="true" weight="0.19313304" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7325301" visible="true" weight="0.19313304" />
       <window_info id="Structure" order="1" sideWeight="0.5007215" side_tool="true" weight="0.2533137" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" sideWeight="0.5007215" side_tool="true" weight="0.2533137" />
-      <window_info id="aws.explorer" order="7" sideWeight="0.26626506" side_tool="true" visible="true" weight="0.19313304" />
+      <window_info id="aws.explorer" order="7" sideWeight="0.26746988" side_tool="true" visible="true" weight="0.19313304" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49928468" weight="0.27349398" />
@@ -406,16 +414,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/pages/main/Main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="79" column="16" lean-forward="true" selection-start-line="79" selection-start-column="16" selection-end-line="79" selection-end-column="34" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/App.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="294">
@@ -447,22 +445,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/pages/feeds/CardContainer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="467" selection-start-line="467" selection-end-line="467" />
+        <state relative-caret-position="369">
+          <caret line="214" column="20" selection-start-line="214" selection-start-column="20" selection-end-line="214" selection-end-column="20" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
-            <element signature="n#!!block;n#handleChange#0;n#CardContainer#0" />
-            <element signature="n#!!block;n#createPost#0;n#CardContainer#0" />
-            <element signature="n#!!block;n#getPosts#0;n#CardContainer#0" />
-            <element signature="n#!!block;n#getSubfeedPosts#0;n#CardContainer#0" />
-            <element signature="n#!!block;n#deletePost#0;n#CardContainer#0" />
-            <element signature="n#!!block;n#handleActionClick#0;n#CardContainer#0" />
-            <element signature="n#!!block;n#handleLike#0;n#CardContainer#0" />
-            <element signature="n#!!block;n#handleDislike#0;n#CardContainer#0" />
-            <element signature="n#!!block;n#getSubfeeds#0;n#CardContainer#0" />
-            <element signature="n#!!block;n#updateSubfeeds#0;n#CardContainer#0" />
-            <element signature="n#!!block;n#deleteSubfeed#0;n#CardContainer#0" />
-            <element signature="n#!!block;n#filter#0;n#!!block;n#render#0;n#CardContainer#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/main/Main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="413">
+          <caret line="105" column="63" selection-start-line="105" selection-start-column="63" selection-end-line="105" selection-end-column="63" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -103,7 +103,7 @@ export class Main extends Component {
                 <Icon type="project" rotate={-90} style={{fontSize: 20}} />
                 <span className="nav-text">Feeds</span>
               </Menu.Item> */}
-              <SubMenu key="2" title={<span><Icon type="project" style={{fontSize: 20}}/><span>Feeds</span></span>} onClick={()=> this.switchComponent(2)}>
+              <SubMenu key="2" title={<span><Icon rotate={-90} type="project" style={{fontSize: 20}}/><span>Feeds</span></span>} onClick={()=> this.switchComponent(2)}>
                 <Menu.Item key="dummy">General</Menu.Item>
                 <Menu.Item key="dummy1">Computer Science</Menu.Item>
                 <Menu.Item key="dummy2">Biology</Menu.Item>
