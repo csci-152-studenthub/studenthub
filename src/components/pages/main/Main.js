@@ -26,6 +26,7 @@ export class Main extends Component {
     this.state = {
       component: 1,
     }
+    this.backToHome = this.backToHome.bind(this);
   }
 
   componentDidMount(){
@@ -74,6 +75,10 @@ export class Main extends Component {
     });
   }
 
+  backToHome(event){
+    window.location.reload();
+  }
+
     render() {
       const SubMenu = Menu.SubMenu;
       return(
@@ -81,14 +86,14 @@ export class Main extends Component {
           <div className="item-header">
             <h2>This is the header</h2>
           </div>
-          <Sider className="item-sider" collapsible>
-          <div className="logo-area">
-            <a href="#">
-              <img src={logo} alt="Logo" className="logo"/>
-              <h1 className="logo-text">Studenthub</h1>
-            </a>
-          </div>
 
+          <Sider className="item-sider" collapsible>
+            <div className="logo-area">
+              <a onClick={this.backToHome}>
+                <img src={logo} alt="Logo" className="logo" />
+                <h1 className="logo-text">Studenthub</h1>
+              </a>
+            </div>
             <Menu theme="dark" mode="inline" defaultSelectedKeys={[this.state.component.toString()]} className="stickyNav">
               <Menu.Item key="1" onClick={() => this.switchComponent(1)}>
                 <Icon type="home" style={{fontSize: 20}} />

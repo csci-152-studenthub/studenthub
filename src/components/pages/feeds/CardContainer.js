@@ -401,6 +401,11 @@ export class CardContainer extends Component {
             />
           }
         </div>
+
+        <div className="item-rules">
+          <h1>this is the area for the rules</h1>
+        </div>
+        
         <Modal
           title="Create Subfeed"
           visible={this.state.visible}
