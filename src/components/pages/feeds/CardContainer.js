@@ -508,6 +508,11 @@ export class CardContainer extends Component {
             />
           }
         </div>
+
+        <div className="item-rules">
+          <h1>this is the area for the rules</h1>
+        </div>
+
         <Drawer
           title="Subfeed Settings"
           placement="right"
@@ -519,6 +524,7 @@ export class CardContainer extends Component {
             <Button type="danger" loading={this.state.deleteSubfeedLoading} onClick={() => 'Deleting subfeed!'}>Delete Subfeed?</Button>
           </Popconfirm>
         </Drawer>
+
         <Modal
           title="Create Subfeed"
           visible={this.state.modalVisible}
