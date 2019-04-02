@@ -92,11 +92,11 @@ class SignInComponent extends Component {
           })(
             <Checkbox>Remember me</Checkbox>
           )}
-          <a className="login-form-forgot" onClick={() => changeForm(1)}>Forgot password</a>
+          <a href="#" className="login-form-forgot" onClick={() => changeForm(1)}>Forgot password</a>
           <Button loading={this.state.buttonLoading} onClick={this.handleSubmit} type="primary" htmlType="submit" className="login-form-button">
             Log in
           </Button>
-          Or <a onClick={() => changeForm(2)}>sign up now!</a>
+          Or <a href="#" onClick={() => changeForm(2)}>sign up now!</a>
         </Form.Item>
       </Form>
       </div>

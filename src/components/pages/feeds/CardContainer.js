@@ -1,21 +1,41 @@
 import React, { Component } from 'react';
 import { Auth, API } from "aws-amplify";
-import { Avatar, message, Input, List, Skeleton, Popconfirm, Icon, Typography, Button, Cascader, Tooltip, Modal } from 'antd';
+import {
+  Drawer,
+  message,
+  Input,
+  List,
+  Skeleton,
+  Popconfirm,
+  Icon,
+  Typography,
+  Button,
+  Cascader,
+  Tooltip,
+  Modal,
+  Divider
+} from 'antd';
 import uuid from "uuid";
 import ProfilePic from "../profile/ProfilePic";
 import './CardContainer.css';
 
 
-const { Title, Text } = Typography;
+const { Title, Text, Paragraph } = Typography;
 const { TextArea } = Input;
 export class CardContainer extends Component {
   constructor(props){
     super(props);
 
     this.state = {
-      confirmLoading: false,
+      deleteSubfeedLoading: false,
+      confirmModalLoading: false,
       buttonLoading: false,
-      current_subfeed: 'General',
+      currentSubfeed: 'General',
+      currentSubfeedId: '',
+      currentSubfeedCreator: '',
+      currentSubfeedTimestamp: '',
+      currentSubfeedOwner: false,
+      defaultSubfeed: ['General'],
       loading: true,
       user: '',
       posts: [],
@@ -23,12 +43,14 @@ export class CardContainer extends Component {
       component: 1,
       title: '',
       content: '',
-      visible: false
+      drawerVisible: false,
+      modalVisible: false
     }
 
     this.getPosts = this.getPosts.bind(this);
     this.getSubfeeds = this.getSubfeeds.bind(this);
     this.deletePost = this.deletePost.bind(this);
+    this.deleteSubfeed = this.deleteSubfeed.bind(this);
     this.createSubfeed = this.createSubfeed.bind(this);
     this.handleActionClick = this.handleActionClick.bind(this);
     this.getSubfeedPosts = this.getSubfeedPosts.bind(this);
@@ -61,7 +83,7 @@ export class CardContainer extends Component {
     try {
       var timestamp = new Date().toLocaleString();
       const response = await this.createPost({
-        subfeed: this.state.current_subfeed,
+        subfeed: this.state.currentSubfeed,
         likes: 0,
         dislikes: 0,
         timestamp: timestamp,
@@ -72,10 +94,10 @@ export class CardContainer extends Component {
       });
       this.setState({buttonLoading: false});
       message.success('Post has been created!');
-      if(this.state.current_subfeed === 'General'){
+      if(this.state.currentSubfeed === 'General'){
         this.getPosts();
       } else {
-        this.getSubfeedPosts(this.state.current_subfeed)
+        this.getSubfeedPosts(this.state.currentSubfeed)
       }
       console.log(response);
     } catch (e) {
@@ -169,10 +191,10 @@ export class CardContainer extends Component {
     API.del(apiName, path, myInit).then(response => {
         // Add your code here
         message.success('Successfully deleted post!')
-        if(this.state.current_subfeed === 'General'){
+        if(this.state.currentSubfeed === 'General'){
           this.getPosts();
         } else {
-          this.getSubfeedPosts(this.state.current_subfeed);
+          this.getSubfeedPosts(this.state.currentSubfeed);
         }
         console.log(response);
     }).catch(error => {
@@ -233,13 +255,15 @@ export class CardContainer extends Component {
     })
 
     try {
-      const subfeeds = await API.get("posts", "/posts/get-subfeeds");
-      console.log('Subfeeds: ', subfeeds);
+      const subfeeds = await API.get("posts", "/subfeeds/get-subfeeds");
+      // console.log('Subfeeds: ', subfeeds);
       subfeeds.body.map((sub) => (
         this.setState({
           subfeeds: [
             ...this.state.subfeeds,
             {
+              id: sub.id,
+              timestamp: sub.timestamp,
               created_by: sub.created_by,
               value: sub.subfeed_name,
               label: sub.subfeed_name
@@ -253,57 +277,133 @@ export class CardContainer extends Component {
     }
   }
 
-  createSubfeed(){
+  async createSubfeed(){
     var subfeed_name = this.state.subfeed;
     var created_by = this.state.user;
     var timestamp = new Date().toLocaleString();
     var id = 'subfeed-'+uuid.v4().toString()
 
     console.log('User created subfeed: '+subfeed_name);
-    this.setState({confirmLoading: true});
+    this.setState({confirmModalLoading: true});
 
     let apiName = 'posts';
-    let path = '/posts/create-subfeed';
+    let path = '/subfeeds/create-subfeed';
     let myInit = {
         body: {id, subfeed_name, created_by, timestamp}
     }
-    API.post(apiName, path, myInit).then(response => {
-      this.setState({confirmLoading: false});
+    await API.post(apiName, path, myInit).then(response => {
+      this.setState({confirmModalLoading: false});
+      console.log('Created subfeed with name: ', subfeed_name);
       if(response.body.success){
         message.success(response.body.success)
-        this.getSubfeeds();
+        // this.getSubfeeds();
+        let subfeed_list = this.state.subfeeds;
+        subfeed_list.push({id, value: subfeed_name, label: subfeed_name, created_by, timestamp});
         this.setState({
-          visible: false,
+          subfeeds: subfeed_list,
+          currentSubfeed: subfeed_name,
+          modalVisible: false,
         });
+        this.getSubfeedPosts(subfeed_name);
+        this.setCurrentSubfeed(subfeed_name);
       } else{
         message.error(response.body.error)
       }
       console.log(response);
     }).catch(error => {
-      this.setState({confirmLoading: false});
+      this.setState({confirmModalLoading: false});
       message.error('Could not create subfeed.')
       console.log(error.response)
     });
   }
 
-  showModal = () => {
+  // Removes deleted subfeed from subfeed array
+  updateSubfeeds(){
+    let subfeed_list = this.state.subfeeds.filter( s => s.value !== this.state.currentSubfeed );
     this.setState({
-      visible: true,
+      subfeeds: subfeed_list,
+      currentSubfeed: 'General'
+    });
+    this.setCurrentSubfeed('General');
+  }
+
+  async deleteSubfeed(id, timestamp){
+    console.log('User deleting subfeed:', id, timestamp);
+    this.setState(({deleteSubfeedLoading: true}));
+
+    let apiName = 'posts';
+    let path = '/subfeeds/delete-subfeed';
+    let myInit = {
+      body: {id, timestamp}
+    };
+    await API.post(apiName, path, myInit).then(response => {
+      this.updateSubfeeds();
+      this.setState(({
+        deleteSubfeedLoading: false,
+        drawerVisible: false,
+      }));
+      console.log('Success in deleting subfeed!:', response);
+      message.success('Successfully deleted subfeed!');
+      this.getPosts();
+    }).catch(error => {
+      this.setState(({deleteSubfeedLoading: false}));
+      console.log('Encountered an error in deleting subfeed:',error.response);
+      message.error('Encountered an error in deleting subfeed!');
     });
   }
 
-  handleCancel = (e) => {
+  showDrawer = () => {
+    this.setState({
+      drawerVisible: true,
+    });
+  };
+
+  showModal = () => {
+    this.setState({
+      modalVisible: true,
+    });
+  }
+
+  onDrawerClose = () => {
+    this.setState({
+      drawerVisible: false,
+    });
+  };
+
+  handleModalCancel = (e) => {
     console.log(e);
     this.setState({
-      visible: false,
+      modalVisible: false,
     });
+  }
+
+  setCurrentSubfeed(name){
+    console.log('Setting current subfeed as:',name);
+    let subfeed_obj = this.state.subfeeds.find(s => s.value === name);
+    // console.log('Setting current subfeed object as: ', subfeed_obj);
+
+    if(subfeed_obj !== undefined){
+      this.setState({
+        currentSubfeed: name,
+        currentSubfeedId: subfeed_obj.id,
+        currentSubfeedCreator: subfeed_obj.created_by,
+        currentSubfeedTimestamp: subfeed_obj.timestamp,
+      });
+
+      if (subfeed_obj.created_by === this.state.user) {
+        this.setState({currentSubfeedOwner: true})
+      } else {
+        this.setState({currentSubfeedOwner: false})
+      }
+
+    } else {
+      console.log('subfeed_obj is undefined in setCurrentSubfeed!')
+    }
   }
 
   onChange(value, selectedOptions) {
     console.log(value[0]);
-    this.setState({
-      current_subfeed: value[0]
-    });
+    this.setCurrentSubfeed(value[0]);
     if(value[0] === 'General'){
       this.getPosts();
     } else{
@@ -316,7 +416,7 @@ export class CardContainer extends Component {
     if(subfeed === 'General'){
       this.getPosts();
     } else {
-      this.setState({current_subfeed: subfeed})
+      this.setCurrentSubfeed(subfeed);
       this.getSubfeedPosts(subfeed);
     }
   }
@@ -347,23 +447,28 @@ export class CardContainer extends Component {
     return(
       <div className="card-container">
         <div className="item-post">
-          <Title>{this.state.current_subfeed}</Title>
+          <Title>
+          {this.state.currentSubfeed}
+            {this.state.currentSubfeedOwner ? <Tooltip title="Subfeed settings" placement="right"><Icon type="setting" style={{fontSize: 24, paddingLeft: 15}} onClick={this.showDrawer}/></Tooltip> : null }
+        </Title>
           <div>
             <Title level={4}>Subfeed</Title>
             <Cascader
               changeOnSelect
               options={this.state.subfeeds}
               onChange={this.onChange}
+              value={[this.state.currentSubfeed]}
               placeholder="Please select subfeed"
               showSearch={{ filter }}
             />
             <Button type="primary" onClick={this.showModal} style={{left: 15}}>Create New Subfeed</Button>
+            <Divider orientation="left"><Text style={{fontSize: 22}}>Create Post</Text></Divider>
           </div>
           <div>
-            <Title level={4} >Create Post</Title>
             <Input placeholder="Post title" style={{maxWidth: '300px', top: 0}} onChange={(e) => this.handleChange('title', e)}/><br/>
             <TextArea placeholder="Post content" rows={4} style={{top: 15, maxWidth: '600px'}} onChange={(e) => this.handleChange('content', e)}/><br/>
             <Button loading={this.state.buttonLoading} type="primary" onClick={this.handleSubmit} style={{top: 25}}>Submit Post</Button>
+            <Divider orientation="left" style={{top: 30}}><Text style={{fontSize: 22}}>{this.state.currentSubfeed} Posts</Text></Divider>
           </div>
         </div>
         <div className="item-feed">
@@ -387,15 +492,17 @@ export class CardContainer extends Component {
                     <Tooltip title={`Switch to the ${item.subfeed} subfeed`}><Text onClick={() => this.switchSubfeed(item.subfeed)} style={{color: '#1890FF'}}>{item.subfeed}</Text></Tooltip>,
                     <DeleteIcon createdBy={item.user} id={item.id} timestamp={item.timestamp}/>]}
                 >
-                <Skeleton loading={this.state.loading} active avatar>
-                <List.Item.Meta
-                  avatar={<ProfilePic/>}
-                  // avatar={<Avatar size={42} icon="user" style={{backgroundColor: '#1890FF', top: 10}}/>}
-                  title={item.title}
-                  description={'Submitted by: '+item.user}
-                />
-                {item.content}<br/>
-                </Skeleton>
+                  <Skeleton loading={this.state.loading} active avatar>
+                    <List.Item.Meta
+                      avatar={<ProfilePic/>}
+                      // avatar={<Avatar size={42} icon="user" style={{backgroundColor: '#1890FF', top: 10}}/>}
+                      title={item.title}
+                      description={`Submitted by user: ${item.user}`}
+                    />
+                    <Paragraph ellipsis={{ rows: 4, expandable: true }}>
+                      {item.content}
+                    </Paragraph>
+                  </Skeleton>
                 </List.Item>
               )}
             />
@@ -405,16 +512,28 @@ export class CardContainer extends Component {
         <div className="item-rules">
           <h1>this is the area for the rules</h1>
         </div>
-        
+
+        <Drawer
+          title="Subfeed Settings"
+          placement="right"
+          closable={true}
+          onClose={this.onDrawerClose}
+          visible={this.state.drawerVisible}
+        >
+          <Popconfirm placement="bottom" title="Are you sure delete this subfeed?" onConfirm={() => this.deleteSubfeed(this.state.currentSubfeedId, this.state.currentSubfeedTimestamp)} icon={<Icon type="exclamation-circle" style={{ color: 'red' }} />} onCancel={() => console.log('Canceled subfeed deletion.')} okText="Yes" cancelText="No">
+            <Button type="danger" loading={this.state.deleteSubfeedLoading} onClick={() => 'Deleting subfeed!'}>Delete Subfeed?</Button>
+          </Popconfirm>
+        </Drawer>
+
         <Modal
           title="Create Subfeed"
-          visible={this.state.visible}
+          visible={this.state.modalVisible}
           onOk={this.createSubfeed}
-          onCancel={this.handleCancel}
-          confirmLoading={this.state.confirmLoading}
+          onCancel={this.handleModalCancel}
+          confirmLoading={this.state.confirmModalLoading}
           footer={[
-              <Button key="back" onClick={this.handleCancel}>Cancel</Button>,
-              <Button key="submit" type="primary" loading={this.state.confirmLoading} onClick={this.createSubfeed}>
+              <Button key="back" onClick={this.handleModalCancel}>Cancel</Button>,
+              <Button key="submit" type="primary" loading={this.state.confirmModalLoading} onClick={this.createSubfeed}>
                 Create Subfeed
               </Button>,
             ]}
