@@ -20,7 +20,7 @@ import ProfilePic from "../profile/ProfilePic";
 import './CardContainer.css';
 
 
-const { Title, Text } = Typography;
+const { Title, Text, Paragraph } = Typography;
 const { TextArea } = Input;
 export class CardContainer extends Component {
   constructor(props){
@@ -462,10 +462,9 @@ export class CardContainer extends Component {
               showSearch={{ filter }}
             />
             <Button type="primary" onClick={this.showModal} style={{left: 15}}>Create New Subfeed</Button>
-            <Divider />
+            <Divider orientation="left"><Text style={{fontSize: 22}}>Create Post</Text></Divider>
           </div>
           <div>
-            <Title level={4} >Create Post</Title>
             <Input placeholder="Post title" style={{maxWidth: '300px', top: 0}} onChange={(e) => this.handleChange('title', e)}/><br/>
             <TextArea placeholder="Post content" rows={4} style={{top: 15, maxWidth: '600px'}} onChange={(e) => this.handleChange('content', e)}/><br/>
             <Button loading={this.state.buttonLoading} type="primary" onClick={this.handleSubmit} style={{top: 25}}>Submit Post</Button>
@@ -498,9 +497,11 @@ export class CardContainer extends Component {
                       avatar={<ProfilePic/>}
                       // avatar={<Avatar size={42} icon="user" style={{backgroundColor: '#1890FF', top: 10}}/>}
                       title={item.title}
-                      description={'Submitted by: '+item.user}
+                      description={`Submitted by user: ${item.user}`}
                     />
-                  {item.content}<br/>
+                    <Paragraph ellipsis={{ rows: 4, expandable: true }}>
+                      {item.content}
+                    </Paragraph>
                   </Skeleton>
                 </List.Item>
               )}
