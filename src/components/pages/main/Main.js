@@ -24,7 +24,7 @@ export class Main extends Component {
     super(props);
 
     this.state = {
-      component: 3, // change this back to 1 later in the future
+      component: 1,
     }
     this.backToHome = this.backToHome.bind(this);
   }
@@ -99,17 +99,17 @@ export class Main extends Component {
                 <Icon type="home" style={{fontSize: 20}} />
                 <span className="nav-text">Dashboard</span>
               </Menu.Item>
-              {/* <Menu.Item key="2" onClick={() => this.switchComponent(2)}>
+              <Menu.Item key="2" onClick={() => this.switchComponent(2)}>
                 <Icon type="project" rotate={-90} style={{fontSize: 20}} />
                 <span className="nav-text">Feeds</span>
-              </Menu.Item> */}
-              <SubMenu key="2" title={<span><Icon rotate={-90} type="project" style={{fontSize: 20}}/><span>Feeds</span></span>} onClick={()=> this.switchComponent(2)}>
-                <Menu.Item key="dummy">General</Menu.Item>
-                <Menu.Item key="dummy1">Computer Science</Menu.Item>
-                <Menu.Item key="dummy2">Biology</Menu.Item>
-                <Menu.Item key="dummy3">Psychology</Menu.Item>
-                <Menu.Item key="dummy4">English</Menu.Item>
-              </SubMenu>
+              </Menu.Item>
+              {/*<SubMenu key="2" title={<span><Icon rotate={-90} type="project" style={{fontSize: 20}}/><span>Feeds</span></span>} onClick={()=> this.switchComponent(2)}>*/}
+              {/*  <Menu.Item key="dummy">General</Menu.Item>*/}
+              {/*  <Menu.Item key="dummy1">Computer Science</Menu.Item>*/}
+              {/*  <Menu.Item key="dummy2">Biology</Menu.Item>*/}
+              {/*  <Menu.Item key="dummy3">Psychology</Menu.Item>*/}
+              {/*  <Menu.Item key="dummy4">English</Menu.Item>*/}
+              {/*</SubMenu>*/}
               <Menu.Item key="3" onClick={() => this.switchComponent(3)}>
                 <Icon type="read" style={{fontSize: 20}} />
                 <span className="nav-text">Resources</span>
