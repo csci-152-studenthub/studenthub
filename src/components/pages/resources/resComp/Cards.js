@@ -5,25 +5,27 @@ import { Card, Icon, Avatar, Col, Row } from 'antd';
 import game from "./game.jpg";
 import music from "./music.jpg";
 import book from "./book.jpg";
+import { Link } from "react-router-dom";
 
-
+//implement search 
+//listing of cateory
+//contact
 const { Content, } = Layout;
-
 const { Meta } = Card;
 
 export class Cards extends Component {
   render() {
     return (
       <Layout>
-        <div style={{color:"white", padding: "10px 400px", textAlign: "center", lineHeight: '64px', fontSize: "40px" }}>
-          <Content style={{backgroundColor:"#000066"}}>
+        <div style={{ color: "white", padding: "10px 400px", textAlign: "center", lineHeight: '64px', fontSize: "40px" }}>
+          <Content style={{ backgroundColor: "#000066" }}>
             Resources Page
           </Content>
         </div>
 
-        <Content style={{ padding: "0px 75px", marginTop: 25, marginBottom: "25%" }}>
+        <Content style={{ padding: "0px 75px", marginTop: 0, marginBottom: "25%" }}>
           <Breadcrumb style={{ margin: '10px' }}>
-            <Breadcrumb.Item>Home</Breadcrumb.Item>
+            <Breadcrumb.Item >Home</Breadcrumb.Item>
             <Breadcrumb.Item>List</Breadcrumb.Item>
             <Breadcrumb.Item>App</Breadcrumb.Item>
           </Breadcrumb>
@@ -66,7 +68,7 @@ export class Cards extends Component {
                     avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
                     title="Media"
                     description="Relax to some great musics of your choice"
-                    style={{height:"0px 42px"}}
+                    style={{ height: "0px 42px" }}
                   />
                 </Card>
               </Col>
@@ -76,13 +78,16 @@ export class Cards extends Component {
           <div style={{ background: '#ECECEC', padding: '30px' }}>
             <Row gutter={16}>
               <Col span={8}>
-                <Card title="Card title" bordered={true}>Card1</Card>
+                <Card title="Discovery" bordered={true}>Discovery</Card>
               </Col>
               <Col span={8}>
-                <Card title="Card title" bordered={false}>Card content</Card>
+                <Card title="References" bordered={false} >
+                  <Link to="https://reactjs.org/" > Web Page created using reactjs
+                  </Link>
+                </Card>
               </Col>
               <Col span={8}>
-                <Card title="Card title" bordered={false}>Card content</Card>
+                <Card title="Events" bordered={false}>Events</Card>
               </Col>
             </Row>
           </div>
