@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Auth, API } from "aws-amplify";
 import { Avatar, message, Input, List, Skeleton, Popconfirm, Icon, Typography, Button } from 'antd';
-import uuid from "uuid";
 import './Dashboard.css';
 import Feeds from '../feeds/Feeds';
 
@@ -67,7 +66,7 @@ export class Dashboard extends Component {
         })
       ));
       // console.log(posts.body);
-      message.success('Successfully retrieved posts!');
+     
       this.setState({loading: false});
     } catch (e) {
       console.log(e);
@@ -76,18 +75,13 @@ export class Dashboard extends Component {
   }
   
   render() {
-    const data =this.state.posts
     return (
       <div>
       <div class="grid-head">
-        <div>Hello!</div>
+        <div>Hello <strong>{this.state.user.split('@')[0]}</strong>, hope you have an amazing day!</div>
       </div>
       <div class="grid-container">
-        <div><Feeds/>
-        
-
-        </div>
-        
+        <div><Feeds/></div>
         <div>Resources</div>
         <div>StudyGroup</div>
       </div>
