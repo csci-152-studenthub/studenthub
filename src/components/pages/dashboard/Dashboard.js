@@ -3,7 +3,10 @@ import { Auth, API } from "aws-amplify";
 import { Avatar, message, Input, List, Skeleton, Popconfirm, Icon, Typography, Button } from 'antd';
 import './Dashboard.css';
 import Feeds from '../feeds/Feeds';
-
+import Resources from '../resources/Resources';
+import game from "./game.jpg";
+import music from "./music.jpg";
+import book from "./book.jpg";
 
 
 
@@ -82,7 +85,13 @@ export class Dashboard extends Component {
       </div>
       <div class="grid-container">
         <div><Feeds/></div>
-        <div>Resources</div>
+        <div>Resources
+          <p></p>
+          <p>{<img alt="example" src={music} height="20" />}Stanely upload a new item in media</p> 
+          <p>{<img alt="example" src={music} height="20" />}Bill upload a new item in media</p> 
+          <p>{<img alt="example" src={game}  height="20" />}Erick upload a new item in game</p> 
+          <p>{<img alt="example" src={book}  height="20" />}Steve upload a new item in book</p> 
+        </div>
         <div>StudyGroup</div>
       </div>
       
