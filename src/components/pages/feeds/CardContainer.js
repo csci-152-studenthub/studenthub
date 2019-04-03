@@ -34,6 +34,7 @@ export class CardContainer extends Component {
       currentSubfeedId: '',
       currentSubfeedCreator: '',
       currentSubfeedTimestamp: '',
+      currentSubfeedDescription: 'Default subfeed for all students. All posts are allowed here.',
       currentSubfeedOwner: false,
       defaultSubfeed: ['General'],
       loading: true,
@@ -262,6 +263,7 @@ export class CardContainer extends Component {
           subfeeds: [
             ...this.state.subfeeds,
             {
+              description: sub.subfeed_description,
               id: sub.id,
               timestamp: sub.timestamp,
               created_by: sub.created_by,
@@ -279,6 +281,7 @@ export class CardContainer extends Component {
 
   async createSubfeed(){
     var subfeed_name = this.state.subfeed;
+    var subfeed_description = this.state.subfeed_description;
     var created_by = this.state.user;
     var timestamp = new Date().toLocaleString();
     var id = 'subfeed-'+uuid.v4().toString()
@@ -289,7 +292,7 @@ export class CardContainer extends Component {
     let apiName = 'posts';
     let path = '/subfeeds/create-subfeed';
     let myInit = {
-        body: {id, subfeed_name, created_by, timestamp}
+        body: {id, subfeed_name, subfeed_description, created_by, timestamp}
     }
     await API.post(apiName, path, myInit).then(response => {
       this.setState({confirmModalLoading: false});
@@ -298,7 +301,7 @@ export class CardContainer extends Component {
         message.success(response.body.success)
         // this.getSubfeeds();
         let subfeed_list = this.state.subfeeds;
-        subfeed_list.push({id, value: subfeed_name, label: subfeed_name, created_by, timestamp});
+        subfeed_list.push({id, value: subfeed_name, label: subfeed_name, created_by, timestamp, description: subfeed_description});
         this.setState({
           subfeeds: subfeed_list,
           currentSubfeed: subfeed_name,
@@ -378,9 +381,9 @@ export class CardContainer extends Component {
   }
 
   setCurrentSubfeed(name){
-    console.log('Setting current subfeed as:',name);
+    // console.log('Setting current subfeed as:',name);
     let subfeed_obj = this.state.subfeeds.find(s => s.value === name);
-    // console.log('Setting current subfeed object as: ', subfeed_obj);
+    console.log('Setting current subfeed object as: ', subfeed_obj);
 
     if(subfeed_obj !== undefined){
       this.setState({
@@ -388,6 +391,7 @@ export class CardContainer extends Component {
         currentSubfeedId: subfeed_obj.id,
         currentSubfeedCreator: subfeed_obj.created_by,
         currentSubfeedTimestamp: subfeed_obj.timestamp,
+        currentSubfeedDescription: subfeed_obj.description
       });
 
       if (subfeed_obj.created_by === this.state.user) {
@@ -451,19 +455,7 @@ export class CardContainer extends Component {
           {this.state.currentSubfeed}
             {this.state.currentSubfeedOwner ? <Tooltip title="Subfeed settings" placement="right"><Icon type="setting" style={{fontSize: 24, paddingLeft: 15}} onClick={this.showDrawer}/></Tooltip> : null }
         </Title>
-          <div>
-            <Title level={4}>Subfeed</Title>
-            <Cascader
-              changeOnSelect
-              options={this.state.subfeeds}
-              onChange={this.onChange}
-              value={[this.state.currentSubfeed]}
-              placeholder="Please select subfeed"
-              showSearch={{ filter }}
-            />
-            <Button type="primary" onClick={this.showModal} style={{left: 15}}>Create New Subfeed</Button>
-            <Divider orientation="left"><Text style={{fontSize: 22}}>Create Post</Text></Divider>
-          </div>
+          <Divider orientation="left"><Text style={{fontSize: 22}}>Create Post</Text></Divider>
           <div>
             <Input placeholder="Post title" style={{maxWidth: '300px', top: 0}} onChange={(e) => this.handleChange('title', e)}/><br/>
             <TextArea placeholder="Post content" rows={4} style={{top: 15, maxWidth: '600px'}} onChange={(e) => this.handleChange('content', e)}/><br/>
@@ -510,7 +502,23 @@ export class CardContainer extends Component {
         </div>
 
         <div className="item-rules">
-          <h1>this is the area for the rules</h1>
+          <div>
+            <Title level={4}>Select subfeed</Title>
+            <Cascader
+              changeOnSelect
+              options={this.state.subfeeds}
+              onChange={this.onChange}
+              value={[this.state.currentSubfeed]}
+              placeholder="Please select subfeed"
+              showSearch={{ filter }}
+            />
+            <Button type="primary" onClick={this.showModal} style={{top: 15}}>Create New Subfeed</Button>
+          </div>
+          <Divider style={{top: 15}} />
+          <div>
+            <Title level={4}>Subfeed Information</Title>
+            <Paragraph>{this.state.currentSubfeedDescription}</Paragraph>
+          </div>
         </div>
 
         <Drawer
@@ -538,8 +546,14 @@ export class CardContainer extends Component {
               </Button>,
             ]}
         >
-          <Text level={3} />Subfeed Name<Text/>
-          <Input placeholder="New subfeed name" onChange={(e) => this.handleChange('subfeed', e)} style={{maxWidth: '300px', left: 15}}/>
+          <div>
+            <Text level={3} />Subfeed Name<Text/><br/>
+            <Input placeholder="Name of your subfeed!" onChange={(e) => this.handleChange('subfeed', e)} style={{maxWidth: '300px', top: 5}}/>
+          </div>
+          <div style={{paddingTop: 15}}>
+            <Text level={3} />Subfeed Description<Text/>
+            <TextArea placeholder="Give a description about what your subfeed is about!" rows={4} style={{ maxWidth: '500px', top: 5}} onChange={(e) => this.handleChange('subfeed_description', e)}/><br/>
+          </div>
         </Modal>
       </div>
     );
