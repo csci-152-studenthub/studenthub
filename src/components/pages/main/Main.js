@@ -8,7 +8,11 @@ import { Card, Avatar, Tag, Divider, Spin, Input } from 'antd';
 import Feeds from '../feeds/Feeds';
 import Dashboard from '../dashboard/Dashboard';
 import './Main.css';
+import { Calendar } from 'antd';
 
+function onPanelChange(value, mode) {
+  console.log(value, mode);
+}
 const SubMenu = Menu.SubMenu;
 
 const { Title } = Typography;
@@ -94,6 +98,8 @@ export class Main extends Component {
 
     render() {
       return(
+        
+  
         <div className="container">
 
           <Sider className="item-sider" collapsible>
@@ -122,6 +128,7 @@ export class Main extends Component {
                 <Menu.Item key="6" onClick={() => {this.trySignOut()}}>
                   <Icon type="logout" style={{fontSize: 20}} />
                   <span className="nav-text">Sign Out</span>
+                  
                 </Menu.Item>
               </Menu>
           </Sider>

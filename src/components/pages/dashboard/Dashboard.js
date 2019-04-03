@@ -5,9 +5,11 @@ import uuid from "uuid";
 import './Dashboard.css';
 import Feeds from '../feeds/Feeds';
 
+
+
+const { Title } = Typography;
 export class Dashboard extends Component {
-  
-  constructor(props){
+  constructor(props) {
     super(props);
 
     this.state = {
@@ -24,15 +26,16 @@ export class Dashboard extends Component {
     }
 
     this.getPosts = this.getPosts.bind(this);
-    
+
   }
-  async componentDidMount(){
+
+  async componentDidMount() {
     Auth.currentAuthenticatedUser({
-        bypassCache: false // Optional, By default is false. If set to true, this call will send a request to Cognito to get the latest user data
+      bypassCache: false // Optional, By default is false. If set to true, this call will send a request to Cognito to get the latest user data
     }).then(user => {
-      this.setState({user: user.attributes.email})
+      this.setState({ user: user.attributes.email })
     })
-    .catch(err => console.log(err));
+      .catch(err => console.log(err));
     this.getPosts();
   }
 
@@ -64,48 +67,32 @@ export class Dashboard extends Component {
       ));
       // console.log(posts.body);
       message.success('Successfully retrieved posts!');
-      this.setState({loading: false});
+      this.setState({ loading: false });
     } catch (e) {
       console.log(e);
-      this.setState({loading: false});
+      this.setState({ loading: false });
     }
   }
-  
-  
+
   render() {
-    const data =this.state.posts
+    const data = this.state.posts
+   
+
     return (
-      
-      <div>
+     
+
+      <div> 
         <div class="grid-head">
           <div>Hello!</div>
-        </div>
-        <div class="grid-container">
-          <div><Feeds/>
-          
-
           </div>
-          
+          <div class="grid-container">
+          <div><Feeds /></div>
           <div>Resources</div>
           <div>StudyGroup</div>
         </div>
-        <div class="grid-bottom">
-    
-        <div>{ data.slice(0,7).map(post => <div>{post.user} posted {post.title} in the Feeds</div>)}</div>
-        </div>
-
-
-
-
-
-
-
-
-
       </div>
 
     )
-    
   }
 }
 
