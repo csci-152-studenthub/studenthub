@@ -4,6 +4,7 @@
     grid-area: profile;
     background: white;
     padding:20px;
+    
 }
 
 
@@ -34,6 +35,8 @@
         grid-area: profile;
         background: white;
         padding:20px;
+        
+        justify-items: center;
     }
     .gray-col{
         grid-area: gray-col;
