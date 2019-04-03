@@ -5,7 +5,9 @@ import { Card, Icon, Avatar, Col, Row } from 'antd';
 import game from "./game.jpg";
 import music from "./music.jpg";
 import book from "./book.jpg";
-import { Link } from "react-router-dom";
+import booki from "./book1.png"
+import pikachu from "./pikachu.png";
+import pac from "./pac1.jpg";
 
 //implement search 
 //listing of cateory
@@ -25,7 +27,7 @@ export class Cards extends Component {
 
         <Content style={{ padding: "0px 75px", marginTop: 0, marginBottom: "25%" }}>
           <Breadcrumb style={{ margin: '10px' }}>
-            <Breadcrumb.Item >Home</Breadcrumb.Item>
+            <Breadcrumb.Item ><a onClick={this.props.switchPage}>Home</a></Breadcrumb.Item>
             <Breadcrumb.Item>List</Breadcrumb.Item>
             <Breadcrumb.Item>App</Breadcrumb.Item>
           </Breadcrumb>
@@ -39,7 +41,7 @@ export class Cards extends Component {
                   actions={[<Icon type="setting" />, <Icon type="edit" />, <Icon type="ellipsis" />]}
                 >
                   <Meta
-                    avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
+                    avatar={<Avatar src={pikachu} />}
                     title="Gaming Room"
                     description="Take a break with some innovating games"
                   />
@@ -52,7 +54,7 @@ export class Cards extends Component {
                   actions={[<Icon type="setting" />, <Icon type="edit" />, <Icon type="ellipsis" />]}
                 >
                   <Meta
-                    avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
+                    avatar={<Avatar src={booki} />}
                     title="Books"
                     description="Train your brain with some book reading"
                   />
@@ -65,7 +67,7 @@ export class Cards extends Component {
                   actions={[<Icon type="setting" />, <Icon type="edit" />, <Icon type="ellipsis" />]}
                 >
                   <Meta
-                    avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
+                    avatar={<Avatar src={pac} />}
                     title="Media"
                     description="Relax to some great musics of your choice"
                     style={{ height: "0px 42px" }}
@@ -78,16 +80,17 @@ export class Cards extends Component {
           <div style={{ background: '#ECECEC', padding: '30px' }}>
             <Row gutter={16}>
               <Col span={8}>
-                <Card title="Discovery" bordered={true}>Discovery</Card>
+                <Card title="Interested" bordered={true}>Find out what makes Student Hub a one of a kind website</Card>
               </Col>
               <Col span={8}>
-                <Card title="References" bordered={false} >
-                  <Link to="https://reactjs.org/" > Web Page created using reactjs
-                  </Link>
+                <Card title="References" bordered={false} > Our webpage is created using
+                  <a href ="https://reactjs.org/" style={{textDecoration:"underline"}}>
+                  <span> Reactjs </span>
+                  </a>
                 </Card>
               </Col>
               <Col span={8}>
-                <Card title="Events" bordered={false}>Events</Card>
+                <Card title="Events" bordered={false}>Check back later for new events near your local community</Card>
               </Col>
             </Row>
           </div>

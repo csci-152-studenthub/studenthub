@@ -24,7 +24,7 @@ export class Main extends Component {
     super(props);
 
     this.state = {
-      component: 3, // change this back to 1 later in the future
+      component: 1,
     }
     this.backToHome = this.backToHome.bind(this);
   }
@@ -38,6 +38,10 @@ export class Main extends Component {
     this.setState({component: page});
   }
 
+  switchPage= ()=>{
+    this.backToHome();
+  }
+
   renderComponent(){
     const current_component = this.state.component;
     switch (current_component) {
@@ -48,7 +52,7 @@ export class Main extends Component {
         return (<Feeds />);
         // break;
       case 3:
-        return (<Resources />);
+        return (<Resources switchPage={this.switchPage}/>);
         // break;
       case 4:
         return (<StudyGroups />);
