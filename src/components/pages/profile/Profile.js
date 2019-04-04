@@ -76,8 +76,10 @@ export class Profile extends Component {
           <div style={{textAlign: "left"}}>
             <Divider />
             <Button onClick={this.showDrawer} type="primary">Edit Account Information</Button>
+
           </div>
         </div>
+       
         <span className="gray-col"></span>
 
         <div className="profile-body">

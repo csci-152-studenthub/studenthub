@@ -450,20 +450,17 @@ export class CardContainer extends Component {
 
     return(
       <div className="card-container">
-        <div className="item-post">
-          <Title>
-          {/*{this.state.currentSubfeed}*/}
-            {this.state.currentSubfeedOwner ? <Tooltip title="Subfeed settings" placement="right"><Icon type="setting" style={{fontSize: 24, paddingLeft: 15}} onClick={this.showDrawer}/></Tooltip> : null }
-        </Title>
-          <Divider orientation="left"><Text style={{fontSize: 22}}>Create Post</Text></Divider>
-          <div>
-            <Input placeholder="Post title" style={{maxWidth: '300px', top: 0}} onChange={(e) => this.handleChange('title', e)}/><br/>
-            <TextArea placeholder="Post content" rows={4} style={{top: 15, maxWidth: '600px'}} onChange={(e) => this.handleChange('content', e)}/><br/>
-            <Button loading={this.state.buttonLoading} type="primary" onClick={this.handleSubmit} style={{top: 25}}>Submit Post</Button>
-            <Divider orientation="left" style={{top: 30}}><Text style={{fontSize: 22}}>{this.state.currentSubfeed} Posts</Text></Divider>
-          </div>
-        </div>
         <div className="item-feed">
+          <Title>
+
+            {this.state.currentSubfeedOwner ? <Tooltip title="Subfeed settings" placement="right"><Icon type="setting" style={{fontSize: 24, paddingLeft: 15}} onClick={this.showDrawer}/></Tooltip> : null }
+          </Title>
+          <Divider orientation="left"><Text style={{fontSize: 22}}>Create Post</Text></Divider>
+          <Input placeholder="Post title" style={{maxWidth: '300px', top: 0}} onChange={(e) => this.handleChange('title', e)}/><br/>
+          <TextArea placeholder="Post content" rows={4} style={{top: 15, maxWidth: '600px'}} onChange={(e) => this.handleChange('content', e)}/><br/>
+          <Button loading={this.state.buttonLoading} type="primary" onClick={this.handleSubmit} style={{top: 25}}>Submit Post</Button>
+          <Divider orientation="left" style={{top: 30}}><Text style={{fontSize: 22}}>{this.state.currentSubfeed} Posts</Text></Divider>
+          
           {data === [] ? null :
           <List
               itemLayout="vertical"
@@ -501,8 +498,8 @@ export class CardContainer extends Component {
           }
         </div>
 
-        <div className="item-rules">
-          <div>
+        <div className="item-subfeed">
+          <div className="item-subpost">
             <Title level={4}>Select subfeed</Title>
             <Cascader
               changeOnSelect
@@ -513,9 +510,9 @@ export class CardContainer extends Component {
               showSearch={{ filter }}
             />
             <Button type="primary" onClick={this.showModal} style={{top: 15}}>Create New Subfeed</Button>
+            <Divider style={{top:20}}/>
           </div>
-          <Divider style={{top: 15}} />
-          <div>
+          <div className="item-subfeed-info">
             <Title level={4}>Subfeed Information</Title>
             <Paragraph>{this.state.currentSubfeedDescription}</Paragraph>
           </div>
@@ -546,10 +543,10 @@ export class CardContainer extends Component {
               </Button>,
             ]}
         >
-          <div>
+        
             <Text level={3} />Subfeed Name<Text/><br/>
             <Input placeholder="Name of your subfeed!" onChange={(e) => this.handleChange('subfeed', e)} style={{maxWidth: '300px', top: 5}}/>
-          </div>
+
           <div style={{paddingTop: 15}}>
             <Text level={3} />Subfeed Description<Text/>
             <TextArea placeholder="Give a description about what your subfeed is about!" rows={4} style={{ maxWidth: '500px', top: 5}} onChange={(e) => this.handleChange('subfeed_description', e)}/><br/>
