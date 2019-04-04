@@ -2,16 +2,21 @@
     grid-area: feed;
     background:white;
     padding: 20px;
+    box-shadow: 0 1px 4px rgba(0,21,41,.08);
 
 }
 .item-post{
     grid-area: post;
     background:white;
     padding: 20px;
+    box-shadow: 0 1px 4px rgba(0,21,41,.08);
+
 }
 .item-rules{
     grid-area: rules;
     background: white;
+    padding: 20px;
+    box-shadow: 0 1px 4px rgba(0,21,41,.08);
 }
 .item-gap{
     grid-area: gap;

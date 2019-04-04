@@ -32,6 +32,7 @@ export class Cards extends Component {
             <Row gutter={16}>
               <Col span={8}>
                 <Card
+                  hoverable
                   style={{}}
                   cover={<img alt="example" src={game} height="175" />}
                   actions={[<Icon type="setting" />, <Icon type="edit" />, <Icon type="ellipsis" />]}
@@ -46,6 +47,7 @@ export class Cards extends Component {
 
               <Col span={8}>
                 <Card
+                  hoverable
                   cover={<img alt="example" src={book} height="175" />}
                   actions={[<Icon type="setting" />, <Icon type="edit" />, <Icon type="ellipsis" />]}
                 >
@@ -59,6 +61,7 @@ export class Cards extends Component {
 
               <Col span={8}>
                 <Card
+                  hoverable
                   cover={<img alt="example" src={music} height="175" />}
                   actions={[<Icon type="setting" />, <Icon type="edit" />, <Icon type="ellipsis" />]}
                 >
@@ -76,13 +79,13 @@ export class Cards extends Component {
           <div style={{ background: '#ECECEC', padding: '30px' }}>
             <Row gutter={16}>
               <Col span={8}>
-                <Card title="Card title" bordered={true}>Card1</Card>
+                <Card hoverable title="Card title" bordered={true}>Card1</Card>
               </Col>
               <Col span={8}>
-                <Card title="Card title" bordered={false}>Card content</Card>
+                <Card hoverable title="Card title" bordered={false}>Card content</Card>
               </Col>
               <Col span={8}>
-                <Card title="Card title" bordered={false}>Card content</Card>
+                <Card hoverable title="Card title" bordered={false}>Card content</Card>
               </Col>
             </Row>
           </div>
