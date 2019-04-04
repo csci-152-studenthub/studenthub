@@ -78,21 +78,33 @@ export class Dashboard extends Component {
   }
   
   render() {
+    const data = this.state.posts
     return (
       <div>
       <div class="grid-head">
-        <div>Hello <strong>{this.state.user.split('@')[0]}</strong>, hope you have an amazing day!</div>
+        <div><Title level={4}>Hello <strong>{this.state.user.split('@')[0]}</strong>, hope you have an amazing day!</Title></div>
       </div>
       <div class="grid-container">
-        <div><Feeds/></div>
-        <div>Resources
-          <p></p>
-          <p>{<img alt="example" src={music} height="20" />}Stanely upload a new item in media</p> 
-          <p>{<img alt="example" src={music} height="20" />}Bill upload a new item in media</p> 
-          <p>{<img alt="example" src={game}  height="20" />}Erick upload a new item in game</p> 
-          <p>{<img alt="example" src={book}  height="20" />}Steve upload a new item in book</p> 
+        <div>
+          <div class="title"><Title style={{color:"white"}}>Feeds</Title></div>
+          <List
+            itemLayout="horizontal"
+            dataSource={data}
+            renderItem={item => (
+              <List.Item>
+                <List.Item.Meta
+                  description={`${item.user.split('@')[0]} posted '${item.title}' in the '${item.subfeed}' subfeed.`}
+                />
+              </List.Item>
+    )}
+  />,
         </div>
-        <div>StudyGroup</div>
+        <div>
+        <div class="title"><Title style={{color:"white"}}>Resources</Title></div>
+        </div>
+        <div>
+        <div class="title"><Title style={{color:"white"}}>StudyGroup</Title></div>
+        </div>
       </div>
       
     </div>
