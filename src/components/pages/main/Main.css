@@ -39,10 +39,10 @@
 /* For any screen larger than 900px */
 @media (min-width: 900px){
     .logo-area {
-        height:80px;
+        height:64px;
         padding-left:24px;
         background-color:#002140;
-        line-height: 80px;
+        line-height: 64px;
         position: relative;
         overflow: hidden; /* hides logo-text*/
     
@@ -70,12 +70,26 @@
         position: sticky; 
     }
 
+    .item-header-essentials{ 
+        grid-area: essentials;
+        /* justify-self: right; */
+        display:flex;
+        flex-flow: row;
+        justify-content: flex-end;
+    }
+
     .item-header {
         grid-area: header;
-        /* justify-self: left; */
-        /* background:"#0000ff"; */
-        background-color:white;
+        font-size:20px;
         box-shadow: 0 1px 4px rgba(0,21,41,.08);
+        background:white;
+        display:inline-block;
+        text-align: center;
+        
+        /* height:100%; */
+        /* justify-self:  center;  */
+        /* /* align-items: center; */
+        
     }
    
     .item-body {
@@ -92,6 +106,7 @@
         height: 100vh;
         display: block;
         min-height: 100%;
+        box-shadow: 2px 0 6px rgba(0,21,41,.35);
         /* position: sticky; */
         /* left: 0; */
    
@@ -109,7 +124,7 @@
     .container{
         display: grid;
         grid-template-columns: [first]auto [line2]50px 1fr [line4]50px;
-        grid-template-rows: 80px [row1-end]50px auto 80px;
+        grid-template-rows: 64px [row1-end]50px auto 80px;
         /* grid-gap: 50px 0px; */
         background:#f0f2f5;
         /* background:red; */

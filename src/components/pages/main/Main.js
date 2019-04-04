@@ -11,6 +11,7 @@ import StudyGroups from '../studygroup/Studygroup';
 import Profile from '../profile/Profile';
 import logo from '../../../react-logo.png';
 import './Main.css';
+import ProfilePic from '../profile/ProfilePic';
 
 const SubMenu = Menu.SubMenu;
 const { Title, Text, Paragraph } = Typography;
@@ -91,7 +92,9 @@ export class Main extends Component {
       return(
         <div className="container">
           <div className="item-header">
-            <Title level={2}>{this.state.header}</Title>
+
+            <Title level={1} style={{lineHeight: 1.6}} >{this.state.header}</Title>
+
           </div>
 
           <Sider className="item-sider" collapsible>
