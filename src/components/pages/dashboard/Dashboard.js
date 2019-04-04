@@ -10,7 +10,7 @@ import book from "./book.jpg";
 
 
 
-const { Title } = Typography;
+const { Title,Text } = Typography;
 export class Dashboard extends Component {
   constructor(props){
     super(props);
@@ -93,7 +93,7 @@ export class Dashboard extends Component {
             renderItem={item => (
               <List.Item>
                 <List.Item.Meta
-                  description={`${item.user.split('@')[0]} posted '${item.title}' in the '${item.subfeed}' subfeed.`}
+                  description={<Text><Text style={{fontWeight: "bold"}}>{item.user.split('@')[0]}</Text> posted '{item.title}'in the '{item.subfeed}'' subfeed</Text>}
                 />
               </List.Item>
     )}
