@@ -1,37 +1,69 @@
-.item-feed{
-    grid-area: feed;
-    background:white;
-    padding: 20px;
-    box-shadow: 0 1px 4px rgba(0,21,41,.08);
 
-}
-.item-post{
-    grid-area: post;
-    background:white;
-    padding: 20px;
-    box-shadow: 0 1px 4px rgba(0,21,41,.08);
-
-}
-.item-rules{
-    grid-area: rules;
-    background: white;
-    padding: 20px;
-    box-shadow: 0 1px 4px rgba(0,21,41,.08);
-}
-.item-gap{
-    grid-area: gap;
-    /* background:#f0f2f5; */
-    background:blue;
-}
-
-.card-container{
+ /* For mobile view */
+ .card-container{
     display: grid;
-    grid-template-columns: 1fr 30px 300px;
+    grid-template-columns: 1fr;
     grid-template-rows: auto ;
     /* grid-gap: 30px 0px; */
     /* background:white; */
-    /* padding: 20px; */
+    padding: 20px;
     grid-template-areas:
-    "post gap rules"
-    "feed gap ."
+    "feed"
+}
+.item-subfeed{
+    display:none;
+}
+
+/* For any screen larger than 900px */
+@media (min-width: 900px){
+    .item-feed{
+        grid-area: feed;
+        background:white;
+        padding: 20px;
+        box-shadow: 0 1px 4px rgba(0,21,41,.08);
+
+    }
+    .item-subpost{
+        grid-area: subpost;
+        background: white;
+        padding: 10px;
+    }
+    .item-subfeed-info{
+        grid-area: sub-info;
+        background:white;
+        padding: 10px;
+    }
+    .item-divider{
+        grid-area: divider;
+        /* justify-self: center; */
+        background:white;
+        align-self: start;
+    }
+    .item-subfeed{
+        display:grid;
+        grid-template-columns: auto;
+        grid-template-rows: 150px 20px auto;
+        grid-area: subfeed;
+        background:white;
+        /* box-shadow: 0 1px 4px rgba(0,21,41,.08);  */
+        grid-template-areas:
+        "subpost"
+        "divider"
+        "sub-info"
+    }
+    .item-gap{
+        grid-area: gap;
+    }
+
+    .card-container{
+        display: grid;
+        grid-template-columns: 1fr 30px 300px;
+        grid-template-rows: auto ;
+        /* grid-gap: 30px 0px; */
+        /* background:white; */
+        /* padding: 20px; */
+        grid-template-areas:
+        "feed gap subfeed"
+        "feed gap ."
+    }
 }

@@ -5,10 +5,10 @@
 
 .resources-container{
     display: grid;
-    grid-template-columns: auto;
+    grid-template-columns: 1fr;
     grid-template-rows: auto ;
-    background:rgb(3, 3, 3);
-    padding: 4px;
+    background:white;
+    padding: 20px;
     grid-template-areas:
     "resources"
 }

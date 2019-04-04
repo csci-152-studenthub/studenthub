@@ -3,8 +3,6 @@
 .item-profile{
     grid-area: profile;
     background: white;
-    padding:20px;
-    
 }
 
 
@@ -12,7 +10,6 @@
     grid-area: body;
     background: white;
     /* justify-content: center; */
-    padding: 20px;
 
 }
 
@@ -34,9 +31,17 @@
     .item-profile{
         grid-area: profile;
         background: white;
-        padding:20px;
-        
-        justify-items: center;
+        text-align: center;
+    }
+    .item-profile-user{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        /* text-align: center; */
+    }
+
+    .item-profile-body{
+        text-align: start;
     }
     .gray-col{
         grid-area: gray-col;
@@ -48,7 +53,6 @@
         grid-area: body;
         background: white;
         /* justify-content: center; */
-        padding: 20px;
 
     }
 

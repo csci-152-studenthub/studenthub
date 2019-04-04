@@ -11,6 +11,7 @@ import StudyGroups from '../studygroup/Studygroup';
 import Profile from '../profile/Profile';
 import logo from '../../../react-logo.png';
 import './Main.css';
+import ProfilePic from '../profile/ProfilePic';
 
 const SubMenu = Menu.SubMenu;
 
@@ -84,7 +85,12 @@ export class Main extends Component {
       return(
         <div className="container">
           <div className="item-header">
-            <h2>This is the header</h2>
+            <div className="item-header-essentials">
+              {/* <Icon type="search" />
+              <Icon type="setting" />
+              <ProfilePic/> */}
+            </div>
+           
           </div>
 
           <Sider className="item-sider" collapsible>

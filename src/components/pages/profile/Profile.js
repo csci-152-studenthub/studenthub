@@ -38,11 +38,15 @@ export class Profile extends Component {
     return (
       <div className="profile-container">
         <div className="item-profile">
-          <ProfilePic />
-          <h2>{this.state.user.split('@')[0]}</h2>
-
-          <h3>This is the profile area. Will expand the more things put in this container</h3>
+          <div className="item-profile-user">
+            <ProfilePic />
+            <h2>{this.state.user.split('@')[0]}</h2>
+          </div>
+          <div className="item-profile-body">
+            <h3>This is the profile area. Will expand the more things put in this container</h3>
+          </div>
         </div>
+       
         <span className="gray-col"></span>
 
         <div className="profile-body">
