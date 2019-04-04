@@ -31,16 +31,15 @@ export class Dashboard extends Component {
   }
   
   async componentDidMount(){
-    Auth.currentAuthenticatedUser({
-        bypassCache: false // Optional, By default is false. If set to true, this call will send a request to Cognito to get the latest user data
-    }).then(user => {
-      this.setState({user: user.attributes.email})
-    })
-    .catch(err => console.log(err));
+    this.props.handler("Dashboard");
+    await Auth.currentAuthenticatedUser({
+      bypassCache: true  // Optional, By default is false. If set to true, this call will send a request to Cognito to get the latest user data
+    }).then(response => {
+      console.log('Setting userAttributes to:', response.attributes);
+      this.setState({userAttributes: response.attributes})
+    }).catch(err => console.log(err));
     this.getPosts();
   }
-
-
 
   async getPosts() {
     this.setState({
@@ -76,22 +75,20 @@ export class Dashboard extends Component {
   }
   
   render() {
-    const data =this.state.posts
+    const data =this.state.posts;
+    let userAttributes = this.state.userAttributes ? this.state.userAttributes : "";
     return (
       <div>
-      <div class="grid-head">
-        <div>Hello!</div>
-      </div>
-      <div class="grid-container">
-        <div><Feeds/>
-        
-
+        <div className="grid-head">
+          <div>Hello {userAttributes.name}</div>
         </div>
-        
-        <div>Resources</div>
-        <div>StudyGroup</div>
-      </div>
-      
+        <div className="grid-container">
+          <div>
+            <Feeds/>
+          </div>
+          <div>Resources</div>
+          <div>StudyGroup</div>
+        </div>
     </div>
 
     )
