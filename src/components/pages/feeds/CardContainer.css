@@ -45,7 +45,7 @@
         grid-template-rows: 150px 20px auto;
         grid-area: subfeed;
         background:white;
-        /* box-shadow: 0 1px 4px rgba(0,21,41,.08);  */
+        box-shadow: 0 1px 4px rgba(0,21,41,.08); 
         grid-template-areas:
         "subpost"
         "divider"

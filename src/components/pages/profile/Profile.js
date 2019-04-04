@@ -69,23 +69,23 @@ export class Profile extends Component {
 
     return (
       <div className="profile-container">
-        <div className="item-profile" >
-          <ProfilePic />
-          <Text style={{fontSize: 24}}>{this.state.userAttributes ? this.state.userAttributes.preferred_username : <Spin indicator={antIcon} />}</Text>
-
-          <div style={{textAlign: "left"}}>
-            <Divider />
+        <div className="item-profile">
+          <div className="item-profile-user">
+            <ProfilePic />
+            <Text style={{fontSize: 24}}>{this.state.userAttributes ? this.state.userAttributes.preferred_username : <Spin indicator={antIcon} />}</Text>
+          </div>
+         
+          <div className="item-profile-settings">
+            <Divider/>
             <Button onClick={this.showDrawer} type="primary">Edit Account Information</Button>
-
           </div>
         </div>
        
-        <span className="gray-col"></span>
 
         <div className="profile-body">
           <Tabs defaultActiveKey="1">
             <TabPane tab={<span><Icon rotate={-90} type="project" />Feeds</span>} key="1">
-              <Title level={4}>Where the users' feed posts will go</Title>
+              <Title level={4} style={{padding:100}}>Where the users' feed posts will go</Title>
             </TabPane>
             <TabPane tab={<span><Icon type="read" />Resources</span>} key="2">
               <Title level={4}>Where the users' resources posts will go</Title>

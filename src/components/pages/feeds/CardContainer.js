@@ -61,7 +61,7 @@ export class CardContainer extends Component {
   }
 
   async componentDidMount(){
-    this.props.setHeader("General");
+    // this.props.setHeader("General");
     this.getPosts();
     this.getSubfeeds();
     Auth.currentAuthenticatedUser({
@@ -451,10 +451,6 @@ export class CardContainer extends Component {
     return(
       <div className="card-container">
         <div className="item-feed">
-          <Title>
-
-            {this.state.currentSubfeedOwner ? <Tooltip title="Subfeed settings" placement="right"><Icon type="setting" style={{fontSize: 24, paddingLeft: 15}} onClick={this.showDrawer}/></Tooltip> : null }
-          </Title>
           <Divider orientation="left"><Text style={{fontSize: 22}}>Create Post</Text></Divider>
           <Input placeholder="Post title" style={{maxWidth: '300px', top: 0}} onChange={(e) => this.handleChange('title', e)}/><br/>
           <TextArea placeholder="Post content" rows={4} style={{top: 15, maxWidth: '600px'}} onChange={(e) => this.handleChange('content', e)}/><br/>
@@ -508,7 +504,9 @@ export class CardContainer extends Component {
               value={[this.state.currentSubfeed]}
               placeholder="Please select subfeed"
               showSearch={{ filter }}
+              
             />
+            {this.state.currentSubfeedOwner ? <Tooltip title="Subfeed settings" placement="right"><Icon type="setting" style={{fontSize: 24, paddingLeft: 15}} onClick={this.showDrawer}/></Tooltip> : null }
             <Button type="primary" onClick={this.showModal} style={{top: 15}}>Create New Subfeed</Button>
             <Divider style={{top:20}}/>
           </div>
