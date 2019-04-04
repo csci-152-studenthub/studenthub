@@ -13,7 +13,8 @@ import {
   Cascader,
   Tooltip,
   Modal,
-  Divider
+  Divider,
+  Tag
 } from 'antd';
 import uuid from "uuid";
 import ProfilePic from "../profile/ProfilePic";
@@ -60,6 +61,7 @@ export class CardContainer extends Component {
   }
 
   async componentDidMount(){
+    this.props.setHeader("General");
     this.getPosts();
     this.getSubfeeds();
     Auth.currentAuthenticatedUser({
@@ -137,8 +139,6 @@ export class CardContainer extends Component {
           ]
         })
       ));
-      // console.log(posts.body);
-      message.success('Successfully retrieved posts!');
       this.setState({loading: false});
     } catch (e) {
       console.log(e);
@@ -273,7 +273,6 @@ export class CardContainer extends Component {
           ]
         })
       ));
-      message.success('Successfully retrieved subfeeds!');
     } catch (e) {
       console.log('Error: ',e);
     }
@@ -382,6 +381,7 @@ export class CardContainer extends Component {
 
   setCurrentSubfeed(name){
     // console.log('Setting current subfeed as:',name);
+    this.props.setHeader(name);
     let subfeed_obj = this.state.subfeeds.find(s => s.value === name);
     console.log('Setting current subfeed object as: ', subfeed_obj);
 
@@ -452,7 +452,7 @@ export class CardContainer extends Component {
       <div className="card-container">
         <div className="item-feed">
           <Title>
-            {this.state.currentSubfeed}
+
             {this.state.currentSubfeedOwner ? <Tooltip title="Subfeed settings" placement="right"><Icon type="setting" style={{fontSize: 24, paddingLeft: 15}} onClick={this.showDrawer}/></Tooltip> : null }
           </Title>
           <Divider orientation="left"><Text style={{fontSize: 22}}>Create Post</Text></Divider>
@@ -478,7 +478,7 @@ export class CardContainer extends Component {
                   actions={!this.state.loading && [
                     <IconText onClick={() => this.handleLike(item)} type="like-o" text="152" />,
                     <IconText onClick={() => this.handleDislike(item)} type="dislike-o" text="152" />,
-                    <Tooltip title={`Switch to the ${item.subfeed} subfeed`}><Text onClick={() => this.switchSubfeed(item.subfeed)} style={{color: '#1890FF'}}>{item.subfeed}</Text></Tooltip>,
+                    <Tooltip title={`Switch to the ${item.subfeed} subfeed`}><Tag onClick={() => this.switchSubfeed(item.subfeed)} color="#1890FF">{item.subfeed}</Tag></Tooltip>,
                     <DeleteIcon createdBy={item.user} id={item.id} timestamp={item.timestamp}/>]}
                 >
                   <Skeleton loading={this.state.loading} active avatar>

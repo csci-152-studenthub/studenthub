@@ -31,6 +31,7 @@
     .item-profile{
         grid-area: profile;
         background: white;
+
         text-align: center;
     }
     .item-profile-user{

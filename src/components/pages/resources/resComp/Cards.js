@@ -61,89 +61,69 @@ export class Cards extends Component {
   }
 
 
-  getResourcesCards(){
-    this.setState({
-      data:[],
-      loading:true
-    })
-    try {
-      
-    }
-    catch(e){
-      console.log(e)
-    }
-  }
 
-  handleData(){
-    this.setState({
-      data:[
-        
-      ]
-      
-    })
-  }
+          <div style={{ background: '#a0beef', padding: '30px' }}>
+            <Row gutter={16}>
+              <Col span={8}>
+                <Card
+                  hoverable
+                  style={{}}
+                  cover={<img alt="example" src={game} height="175" />}
+                  actions={[<Icon type="setting" />, <Icon type="edit" />, <Icon type="ellipsis" />]}
+                >
+                  <Meta
+                    avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
+                    title="Gaming Room"
+                    description="Take a break with some innovating games"
+                  />
+                </Card>
+              </Col>
 
+              <Col span={8}>
+                <Card
+                  hoverable
+                  cover={<img alt="example" src={book} height="175" />}
+                  actions={[<Icon type="setting" />, <Icon type="edit" />, <Icon type="ellipsis" />]}
+                >
+                  <Meta
+                    avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
+                    title="Books"
+                    description="Train your brain with some book reading"
+                  />
+                </Card>
+              </Col>
 
-  render() {
-    const dummydata = [{
-      title: 'Title 1',
-      description: 'Blah Blah Blah',
-      image: ''
-    },
-    {
-      title: 'Title 2',
-      description: 'Blah Blah Blah',
-      image: ''
-    },
-    {
-      title: 'Title 3',
-      description: 'Blah Blah Blah',
-      image: ''
-    },
-    {
-      title: 'Title 4',
-      description: 'Blah Blah Blah',
-      image: ''
-    },
-    {
-      title: 'Title 1',
-      description: 'Blah Blah Blah',
-      image: ''
-    },
-    {
-      title: 'Title 2',
-      description: 'Blah Blah Blah',
-      image: ''
-    },
-    {
-      title: 'Title 3',
-      description: 'Blah Blah Blah',
-      image: ''
-    },
-    {
-      title: 'Title 4',
-      description: 'Blah Blah Blah',
-      image: ''
-    },]
-    return (
-      // <Layout>
-      //   <Content >
+              <Col span={8}>
+                <Card
+                  hoverable
+                  cover={<img alt="example" src={music} height="175" />}
+                  actions={[<Icon type="setting" />, <Icon type="edit" />, <Icon type="ellipsis" />]}
+                >
+                  <Meta
+                    avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
+                    title="Media"
+                    description="Relax to some great musics of your choice"
+                    style={{height:"0px 42px"}}
+                  />
+                </Card>
+              </Col>
+            </Row>
+          </div>
 
-      //     <div style={{background: "white"}}>
-      //       <Row gutter={16}>
-      //         <Col span={8}>
-      //           <Card
-      //             cover={<img alt="example" src={game} height="175" />}
-      //             actions={[<Icon type="setting" />, <Icon type="edit" />, <Icon type="ellipsis" />]}
-      //           >
-      //             <Meta
-      //               avatar={<Avatar src={game} />}
-      //               title="Gaming Room"
-      //               description="Take a break with some innovating games"
-      //             />
-      //           </Card>
-      //         </Col>
-
+          <div style={{ background: '#ECECEC', padding: '30px' }}>
+            <Row gutter={16}>
+              <Col span={8}>
+                <Card hoverable title="Card title" bordered={true}>Card1</Card>
+              </Col>
+              <Col span={8}>
+                <Card hoverable title="Card title" bordered={false}>Card content</Card>
+              </Col>
+              <Col span={8}>
+                <Card hoverable title="Card title" bordered={false}>Card content</Card>
+              </Col>
+            </Row>
+          </div>
+  
       //         <Col span={8}>
       //           <Card
       //             cover={<img alt="example" src={book} height="175" />}
