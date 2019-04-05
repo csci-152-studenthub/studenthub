@@ -98,7 +98,7 @@ export class ProfileFeed extends Component {
     );
 
     const blankData = [];
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < 5; i++) {
       blankData.push({
         title: `Blank title`,
         description: 'Blank description',

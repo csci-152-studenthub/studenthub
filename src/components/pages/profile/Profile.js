@@ -104,7 +104,7 @@ export class Profile extends Component {
             <div className="item-profile-user">
               <ProfilePic/>
               <Text style={{fontSize: 24, paddingTop: 15}}>{userAttributes.name + ' ' + userAttributes.family_name}</Text>
-              <Text style={{fontSize: 20, paddingTop: 5}}>{userAttributes.preferred_username}</Text>
+              <Text style={{fontSize: 18}}>{userAttributes.preferred_username}</Text>
             </div>
             <div className="item-profile-settings">
               <Text style={{fontSize: 16}}><Text style={{fontWeight: "500"}}>Major: </Text>{userAttributes["custom:major"]}</Text><br/>

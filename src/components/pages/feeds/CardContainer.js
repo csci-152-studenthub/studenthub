@@ -446,7 +446,7 @@ export class CardContainer extends Component {
     }
 
     const blankData = [];
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 5; i++) {
       blankData.push({
         title: `Blank title`,
         description: 'Blank description',
