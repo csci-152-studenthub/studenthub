@@ -6,20 +6,15 @@
     overflow-y: scroll;
     gap: 20px 5px;
    font-size:40px;
+   background-color: white;
   }
   
-  .grid-head > div {
-    border: 1px solid Gainsboro;
-    background-color: white;
-    height: 200px;
-    
-  }
+  
   .title
   {
     grid-area: title;
     text-align: center;
     background-color:#000066;
-  
   }
   
   .grid-container {

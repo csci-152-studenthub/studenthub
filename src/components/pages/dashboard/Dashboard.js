@@ -29,7 +29,7 @@ export class Dashboard extends Component {
     }
 
     this.getPosts = this.getPosts.bind(this);
-    
+    this.CountFeed = this.CountFeed.bind(this);
   }
   
   async componentDidMount(){
@@ -76,13 +76,33 @@ export class Dashboard extends Component {
       this.setState({loading: false});
     }
   }
+
   
-  render() {
-    const data = this.state.posts
+  CountFeed()
+  {
+    let e=0;
+    this.state.posts.forEach(post => {
+
+      if(post.user===this.state.user)
+      {
+        e++;
+      }
+    });
+
+    return (<Text >Feeds: {e} , Resources: {e}, StudyGroup:{e}</Text>)
+  }
+   render() {
+    const data =this.state.posts;
     return (
+    
       <div>
+       
       <div class="grid-head">
-        <div><Title level={4}>Hello <strong>{this.state.user.split('@')[0]}</strong>, hope you have an amazing day!</Title></div>
+        <div><Title level={4}>Hello <strong>{this.state.user.split('@')[0]}</strong>, hope you have an amazing day! {this.CountFeed()}</Title> 
+        <Text><p>1. Midterm on 4/17</p></Text>
+        <Text><p>2. Midterm on 4/17</p></Text>
+        <Text><p>3. Midterm on 4/17</p></Text>
+        </div>
       </div>
       <div class="grid-container">
         <div>
@@ -93,7 +113,7 @@ export class Dashboard extends Component {
             renderItem={item => (
               <List.Item>
                 <List.Item.Meta
-                  description={<Text><Text style={{fontWeight: "bold"}}>{item.user.split('@')[0]}</Text> posted '{item.title}'in the '{item.subfeed}'' subfeed</Text>}
+                  description={<Text><Text style={{fontWeight: "bold"}}>{item.user.split('@')[0]}</Text> posted '{item.title}'in the <Text style={{textDecorationLine:"underline"}}>{item.subfeed}</Text> subfeed</Text>}
                 />
               </List.Item>
     )}
@@ -101,6 +121,12 @@ export class Dashboard extends Component {
         </div>
         <div>
         <div class="title"><Title style={{color:"white"}}>Resources</Title></div>
+        <p>{<img alt="example" src={music} height="30" />}<strong>{this.state.user.split('@')[0]}</strong> upload a video in the Computer Scinece</p>
+        <p>{<img alt="example" src={book} height="24" />}<strong>{this.state.user.split('@')[0]}</strong> upload a document in the Chemistry</p>
+        <p>{<img alt="example" src={book} height="24" />}<strong>{this.state.user.split('@')[0]}</strong> upload a text in the CSCI 113</p>
+        <p>{<img alt="example" src={music} height="30" />}<strong>{this.state.user.split('@')[0]}</strong> upload a picture in the CSCI 152</p>
+        <p>{<img alt="example" src={game} height="30" />}<strong>{this.state.user.split('@')[0]}</strong> upload a game in the CSCI 152</p>
+        <p>{<img alt="example" src={music} height="30" />}<strong>{this.state.user.split('@')[0]}</strong> upload a picture in the CSCI 115</p>
         </div>
         <div>
         <div class="title"><Title style={{color:"white"}}>StudyGroup</Title></div>
