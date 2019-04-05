@@ -101,17 +101,18 @@ export class Profile extends Component {
       return (
         <div className="profile-container">
           <div className="item-profile">
-            <ProfilePic/>
-            <Text style={{fontSize: 24}}>{userAttributes.name + ' ' + userAttributes.family_name}</Text>
-            <Text style={{fontSize: 20}}>{userAttributes.preferred_username}</Text>
-            <div style={{textAlign: "left"}}>
-              <Text style={{fontSize: 16}}><Text
-                style={{fontWeight: "300"}}>Major: </Text>{userAttributes["custom:major"]}</Text>
+            <div className="item-profile-user">
+              <ProfilePic/>
+              <Text style={{fontSize: 24, paddingTop: 15}}>{userAttributes.name + ' ' + userAttributes.family_name}</Text>
+              <Text style={{fontSize: 20, paddingTop: 5}}>{userAttributes.preferred_username}</Text>
+            </div>
+            <div className="item-profile-settings">
+              <Text style={{fontSize: 16}}><Text style={{fontWeight: "500"}}>Major: </Text>{userAttributes["custom:major"]}</Text><br/>
+              <Text style={{fontSize: 16}}><Text style={{fontWeight: "500"}}>Email: </Text>{userAttributes["email"]}</Text>
               <Divider/>
               <Button onClick={this.showDrawer} type="primary">Edit Account Information</Button>
             </div>
           </div>
-          <span className="gray-col"></span>
 
           <div className="profile-body">
             <Tabs defaultActiveKey="1">

@@ -35,6 +35,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        padding-top: 50px;
     }
     .item-profile-settings{
         grid-area: profileSettings;
@@ -51,6 +52,7 @@
         grid-area: body;
         /* display:grid; */
         background: white;
+        padding: 20px;
        
         box-shadow: 0 1px 4px rgba(0,21,41,.08);
         grid-column: 3;

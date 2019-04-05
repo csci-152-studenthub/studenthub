@@ -15,7 +15,7 @@ import {
   Tooltip,
   Modal,
   Divider,
-  Tag
+  Tag, Avatar
 } from 'antd';
 import uuid from "uuid";
 import ProfilePic from "../profile/ProfilePic";
@@ -61,8 +61,10 @@ export class CardContainer extends Component {
     this.onChange = this.onChange.bind(this);
   }
 
+
+
   async componentDidMount(){
-    this.props.setHeader("General");
+    this.props.setHeader('General');
     this.getPosts();
     this.getSubfeeds();
     Auth.currentAuthenticatedUser({
@@ -454,19 +456,13 @@ export class CardContainer extends Component {
 
     return(
       <div className="card-container">
-        <div className="item-post">
-          <Title>
-            {this.state.currentSubfeedOwner ? <Tooltip title="Subfeed settings" placement="right"><Icon type="setting" style={{fontSize: 24, paddingLeft: 15}} onClick={this.showDrawer}/></Tooltip> : null }
-        </Title>
-          <Divider orientation="left"><Text style={{fontSize: 22}}>Create Post</Text></Divider>
-          <div>
-            <Input placeholder="Post title" style={{maxWidth: '300px', top: 0}} onChange={(e) => this.handleChange('title', e)}/><br/>
-            <TextArea placeholder="Post content" rows={4} style={{top: 15, maxWidth: '600px'}} onChange={(e) => this.handleChange('content', e)}/><br/>
-            <Button loading={this.state.buttonLoading} type="primary" onClick={this.handleSubmit} style={{top: 25}}>Submit Post</Button>
-            <Divider orientation="left" style={{top: 30}}><Text style={{fontSize: 22}}>{this.state.currentSubfeed} Posts</Text></Divider>
-          </div>
-        </div>
         <div className="item-feed">
+          <Divider orientation="left"><Text style={{fontSize: 22}}>Create Post</Text></Divider>
+          <Input placeholder="Post title" style={{maxWidth: '300px', top: 0}} onChange={(e) => this.handleChange('title', e)}/><br/>
+          <TextArea placeholder="Post content" rows={4} style={{top: 15, maxWidth: '600px'}} onChange={(e) => this.handleChange('content', e)}/><br/>
+          <Button loading={this.state.buttonLoading} type="primary" onClick={this.handleSubmit} style={{top: 25}}>Submit Post</Button>
+          <Divider orientation="left" style={{top: 30}}><Text style={{fontSize: 22}}>{this.state.currentSubfeed} Posts</Text></Divider>
+
           <List
               itemLayout="vertical"
               size="large"
@@ -483,8 +479,7 @@ export class CardContainer extends Component {
                 >
                   <Skeleton loading={loading} active avatar>
                     <List.Item.Meta
-                      avatar={<ProfilePic/>}
-                      // avatar={<Avatar size={42} icon="user" style={{backgroundColor: '#1890FF', top: 10}}/>}
+                      avatar={<Avatar size={38}  style={{ backgroundColor: '#1890FF', top: 10 }} icon="user" />}
                       title={item.title}
                       description={`Submitted by user: ${item.user}`}
                     />
@@ -497,8 +492,8 @@ export class CardContainer extends Component {
             />
         </div>
 
-        <div className="item-rules">
-          <div>
+        <div className="item-subfeed">
+          <div className="item-subpost">
             <Title level={4}>Select subfeed</Title>
             <Cascader
               changeOnSelect
@@ -507,20 +502,17 @@ export class CardContainer extends Component {
               value={[this.state.currentSubfeed]}
               placeholder="Please select subfeed"
               showSearch={{ filter }}
-              style={{width: '90%'}}
             />
+            {this.state.currentSubfeedOwner ? <Tooltip title="Subfeed settings" placement="right"><Icon type="setting" style={{fontSize: 24, paddingLeft: 15}} onClick={this.showDrawer}/></Tooltip> : null }
             <Button type="primary" onClick={this.showModal} style={{top: 15}}>Create New Subfeed</Button>
+            <Divider style={{top: 15}} />
           </div>
-          <Divider style={{top: 15}} />
-          <div>
-            <div>
+
+          <div className="item-subfeed-info">
               <Title level={4}>Subfeed Information</Title>
               <Text><Text style={{fontWeight: "bold"}}>Created by</Text>: {this.state.currentSubfeedCreator.split('@')[0]}</Text><br/>
-            </div>
-            <div style={{top: 5}}>
               <Text style={{fontWeight: "bold"}}>Description:</Text>
               <Paragraph style={{top: 5}}>{this.state.currentSubfeedDescription}</Paragraph>
-            </div>
           </div>
         </div>
 
@@ -548,11 +540,9 @@ export class CardContainer extends Component {
                 Create Subfeed
               </Button>,
             ]}
-        >
-          <div>
-            <Text level={3} />Subfeed Name<Text/><br/>
-            <Input placeholder="Name of your subfeed!" onChange={(e) => this.handleChange('subfeed', e)} style={{maxWidth: '300px', top: 5}}/>
-          </div>
+          >
+          <Text level={3} />Subfeed Name<Text/><br/>
+          <Input placeholder="Name of your subfeed!" onChange={(e) => this.handleChange('subfeed', e)} style={{maxWidth: '300px', top: 5}}/>
           <div style={{paddingTop: 15}}>
             <Text level={3} />Subfeed Description<Text/>
             <TextArea placeholder="Give a description about what your subfeed is about!" rows={4} style={{ maxWidth: '500px', top: 5}} onChange={(e) => this.handleChange('subfeed_description', e)}/><br/>
