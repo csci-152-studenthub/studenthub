@@ -93,7 +93,7 @@ export class Main extends Component {
         <div className="container">
           <div className="item-header">
 
-            <Title level={2}>{this.state.header}</Title>
+            <Title level={1} style={{lineHeight: 1.6}} >{this.state.header}</Title>
 
           </div>
 

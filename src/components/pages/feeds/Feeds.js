@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import CardContainer from './CardContainer';
+import { PropTypes } from 'react';
 
 export class Feeds extends Component {
-  constructor(props){
-    super(props);
-
-  }
 
   render() {
     return (

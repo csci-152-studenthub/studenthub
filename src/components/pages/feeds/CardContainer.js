@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 import { Auth, API } from "aws-amplify";
 import {
@@ -14,7 +15,7 @@ import {
   Tooltip,
   Modal,
   Divider,
-  Tag
+  Tag, Avatar
 } from 'antd';
 import uuid from "uuid";
 import ProfilePic from "../profile/ProfilePic";
@@ -33,12 +34,12 @@ export class CardContainer extends Component {
       buttonLoading: false,
       currentSubfeed: 'General',
       currentSubfeedId: '',
-      currentSubfeedCreator: '',
+      currentSubfeedCreator: 'Admin',
       currentSubfeedTimestamp: '',
       currentSubfeedDescription: 'Default subfeed for all students. All posts are allowed here.',
       currentSubfeedOwner: false,
       defaultSubfeed: ['General'],
-      loading: true,
+      componentLoading: true,
       user: '',
       posts: [],
       subfeeds: [],
@@ -60,8 +61,10 @@ export class CardContainer extends Component {
     this.onChange = this.onChange.bind(this);
   }
 
+
+
   async componentDidMount(){
-    this.props.setHeader("General");
+    this.props.setHeader('General');
     this.getPosts();
     this.getSubfeeds();
     Auth.currentAuthenticatedUser({
@@ -119,64 +122,56 @@ export class CardContainer extends Component {
   async getPosts() {
     this.setState({
       posts: [],
-      loading: true
+      componentLoading: true
     })
 
-    try {
-      const posts = await API.get("posts", "/posts/get-posts");
-      posts.body.map((post) => (
-        this.setState({
-          posts: [
-            ...this.state.posts,
-            {
-              subfeed: post.subfeed,
-              timestamp: post.timestamp,
-              id: post.id,
-              user: post.user,
-              title: post.title,
-              content: post.content
-            }
-          ]
-        })
-      ));
-      this.setState({loading: false});
-    } catch (e) {
-      console.log(e);
-      this.setState({loading: false});
-    }
+    const posts = await API.get("posts", "/posts/get-posts");
+    posts.body.map((post) => (
+      this.setState({
+        posts: [
+          ...this.state.posts,
+          {
+            subfeed: post.subfeed,
+            timestamp: post.timestamp,
+            id: post.id,
+            user: post.user,
+            title: post.title,
+            content: post.content
+          }
+        ]
+      })
+    ));
+    this.setState({componentLoading: false});
   }
 
   async getSubfeedPosts(subfeed){
     this.setState({
       posts: [],
-      loading: true
-    })
-    try{
-      await API.post("posts", "/posts/get-posts", {body: {subfeed: subfeed}}).then(response => {
-          console.log('Got subfeed posts: ',response);
-          response.body.map((post) => (
-            this.setState({
-              posts: [
-                ...this.state.posts,
-                {
-                  subfeed: post.subfeed,
-                  timestamp: post.timestamp,
-                  id: post.id,
-                  user: post.user,
-                  title: post.title,
-                  content: post.content
-                }
-              ]
-            })
-          ));
-          this.setState({loading: false});
-      }).catch(error => {
-          this.setState({loading: false});
-          console.log(error)
-      });
-    } catch (e) {
-      console.log(e);
-    }
+      componentLoading: true
+    });
+
+    await API.post("posts", "/posts/get-posts", {body: {subfeed: subfeed}}).then(response => {
+        console.log('Got subfeed posts: ',response);
+        response.body.map((post) => (
+          this.setState({
+            posts: [
+              ...this.state.posts,
+              {
+                subfeed: post.subfeed,
+                timestamp: post.timestamp,
+                id: post.id,
+                user: post.user,
+                title: post.title,
+                content: post.content
+              }
+            ]
+          })
+        ));
+        this.setState({componentLoading: false});
+    }).catch(error => {
+        this.setState({componentLoading: false});
+        console.log(error)
+    });
   }
 
   deletePost(id, timestamp){
@@ -442,49 +437,49 @@ export class CardContainer extends Component {
         }
       </span>
     );
-    const data = this.state.posts
+    const data = this.state.posts;
+    let loading = this.state.componentLoading;
+
 
     function filter(inputValue, path) {
       return (path.some(option => (option.label).toLowerCase().indexOf(inputValue.toLowerCase()) > -1));
     }
 
+    const blankData = [];
+    for (let i = 0; i < 5; i++) {
+      blankData.push({
+        title: `Blank title`,
+        description: 'Blank description',
+        content: 'Blank content',
+      });
+    }
+
     return(
       <div className="card-container">
         <div className="item-feed">
-          <Title>
-
-            {this.state.currentSubfeedOwner ? <Tooltip title="Subfeed settings" placement="right"><Icon type="setting" style={{fontSize: 24, paddingLeft: 15}} onClick={this.showDrawer}/></Tooltip> : null }
-          </Title>
           <Divider orientation="left"><Text style={{fontSize: 22}}>Create Post</Text></Divider>
           <Input placeholder="Post title" style={{maxWidth: '300px', top: 0}} onChange={(e) => this.handleChange('title', e)}/><br/>
           <TextArea placeholder="Post content" rows={4} style={{top: 15, maxWidth: '600px'}} onChange={(e) => this.handleChange('content', e)}/><br/>
           <Button loading={this.state.buttonLoading} type="primary" onClick={this.handleSubmit} style={{top: 25}}>Submit Post</Button>
           <Divider orientation="left" style={{top: 30}}><Text style={{fontSize: 22}}>{this.state.currentSubfeed} Posts</Text></Divider>
-          
-          {data === [] ? null :
+
           <List
               itemLayout="vertical"
               size="large"
-              pagination={{
-                onChange: (page) => {
-                  console.log(page);
-                },
-                pageSize: 10,
-              }}
-              dataSource={data}
+              pagination={{pageSize: 10}}
+              dataSource={loading ? blankData : data}
               renderItem={item => (
                 <List.Item
                   key={item.id}
-                  actions={!this.state.loading && [
+                  actions={!loading && [
                     <IconText onClick={() => this.handleLike(item)} type="like-o" text="152" />,
                     <IconText onClick={() => this.handleDislike(item)} type="dislike-o" text="152" />,
                     <Tooltip title={`Switch to the ${item.subfeed} subfeed`}><Tag onClick={() => this.switchSubfeed(item.subfeed)} color="#1890FF">{item.subfeed}</Tag></Tooltip>,
                     <DeleteIcon createdBy={item.user} id={item.id} timestamp={item.timestamp}/>]}
                 >
-                  <Skeleton loading={this.state.loading} active avatar>
+                  <Skeleton loading={loading} active avatar>
                     <List.Item.Meta
-                      avatar={<ProfilePic/>}
-                      // avatar={<Avatar size={42} icon="user" style={{backgroundColor: '#1890FF', top: 10}}/>}
+                      avatar={<Avatar size={38}  style={{ backgroundColor: '#1890FF', top: 10 }} icon="user" />}
                       title={item.title}
                       description={`Submitted by user: ${item.user}`}
                     />
@@ -495,7 +490,6 @@ export class CardContainer extends Component {
                 </List.Item>
               )}
             />
-          }
         </div>
 
         <div className="item-subfeed">
@@ -509,12 +503,16 @@ export class CardContainer extends Component {
               placeholder="Please select subfeed"
               showSearch={{ filter }}
             />
+            {this.state.currentSubfeedOwner ? <Tooltip title="Subfeed settings" placement="right"><Icon type="setting" style={{fontSize: 24, paddingLeft: 15}} onClick={this.showDrawer}/></Tooltip> : null }
             <Button type="primary" onClick={this.showModal} style={{top: 15}}>Create New Subfeed</Button>
-            <Divider style={{top:20}}/>
+            <Divider style={{top: 15}} />
           </div>
+
           <div className="item-subfeed-info">
-            <Title level={4}>Subfeed Information</Title>
-            <Paragraph>{this.state.currentSubfeedDescription}</Paragraph>
+              <Title level={4}>Subfeed Information</Title>
+              <Text><Text style={{fontWeight: "bold"}}>Created by</Text>: {this.state.currentSubfeedCreator.split('@')[0]}</Text><br/>
+              <Text style={{fontWeight: "bold"}}>Description:</Text>
+              <Paragraph style={{top: 5}}>{this.state.currentSubfeedDescription}</Paragraph>
           </div>
         </div>
 
@@ -542,11 +540,9 @@ export class CardContainer extends Component {
                 Create Subfeed
               </Button>,
             ]}
-        >
-        
-            <Text level={3} />Subfeed Name<Text/><br/>
-            <Input placeholder="Name of your subfeed!" onChange={(e) => this.handleChange('subfeed', e)} style={{maxWidth: '300px', top: 5}}/>
-
+          >
+          <Text level={3} />Subfeed Name<Text/><br/>
+          <Input placeholder="Name of your subfeed!" onChange={(e) => this.handleChange('subfeed', e)} style={{maxWidth: '300px', top: 5}}/>
           <div style={{paddingTop: 15}}>
             <Text level={3} />Subfeed Description<Text/>
             <TextArea placeholder="Give a description about what your subfeed is about!" rows={4} style={{ maxWidth: '500px', top: 5}} onChange={(e) => this.handleChange('subfeed_description', e)}/><br/>
