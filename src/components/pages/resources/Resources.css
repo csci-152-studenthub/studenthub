@@ -7,8 +7,8 @@
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: auto ;
-    background:rgb(3, 3, 3);
-    padding: 4px;
+    background:rgb(255, 255, 255);
+    padding: 20px;
     grid-template-areas:
     "resources"
 }

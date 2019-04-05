@@ -24,7 +24,7 @@ export class Main extends Component {
     super(props);
 
     this.state = {
-      component: 1,
+      component: 3,
     }
     this.backToHome = this.backToHome.bind(this);
   }
