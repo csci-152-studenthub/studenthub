@@ -25,6 +25,7 @@ export class Cards extends Component {
   }
   
   async componentDidMount(){
+    this.getResources();
     Auth.currentAuthenticatedUser({
       bypassCache:true
     }).then(user =>{
@@ -51,6 +52,11 @@ export class Cards extends Component {
     }).catch(error => {
       console.log(error);
     })
+  }
+
+  async getResources(){
+    const resources = await API.get("posts", "/resources/get-resources");
+    console.log("Resources here:", resources);
   }
 
   render() {
