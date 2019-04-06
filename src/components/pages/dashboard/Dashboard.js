@@ -33,16 +33,15 @@ export class Dashboard extends Component {
   }
   
   async componentDidMount(){
-    Auth.currentAuthenticatedUser({
-        bypassCache: false // Optional, By default is false. If set to true, this call will send a request to Cognito to get the latest user data
-    }).then(user => {
-      this.setState({user: user.attributes.email})
-    })
-    .catch(err => console.log(err));
+    this.props.handler("Dashboard");
+    await Auth.currentAuthenticatedUser({
+      bypassCache: true  // Optional, By default is false. If set to true, this call will send a request to Cognito to get the latest user data
+    }).then(response => {
+      console.log('Setting userAttributes to:', response.attributes);
+      this.setState({userAttributes: response.attributes})
+    }).catch(err => console.log(err));
     this.getPosts();
   }
-
-
 
   async getPosts() {
     this.setState({
@@ -69,7 +68,6 @@ export class Dashboard extends Component {
         })
       ));
       // console.log(posts.body);
-     
       this.setState({loading: false});
     } catch (e) {
       console.log(e);
@@ -96,7 +94,6 @@ export class Dashboard extends Component {
     return (
     
       <div>
-       
       <div class="grid-head">
         <div><Title level={4}>Hello <strong>{this.state.user.split('@')[0]}</strong>, hope you have an amazing day! {this.CountFeed()}</Title> 
         <Text level={0}><p>1. CSCI Midterm on 4/17</p></Text>
@@ -139,7 +136,6 @@ export class Dashboard extends Component {
 
         </div>
       </div>
-      
     </div>
 
     )
