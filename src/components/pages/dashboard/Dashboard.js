@@ -91,11 +91,12 @@ export class Dashboard extends Component {
   }
    render() {
     const data =this.state.posts;
+    let userAttributes = this.state.userAttributes ? this.state.userAttributes : ""; 
     return (
     
       <div>
       <div class="grid-head">
-        <div><Title level={4}>Hello <strong>{this.state.user.split('@')[0]}</strong>, hope you have an amazing day! {this.CountFeed()}</Title> 
+        <div><Title level={4}>Hello <strong>{userAttributes.name}</strong>, hope you have an amazing day! {this.CountFeed()}</Title> 
         <Text level={0}><p>1. CSCI Midterm on 4/17</p></Text>
         <Text level={0}><p>2. Appointment on 5/2</p></Text>
         <Text level={0}><p>3. MileStone2 on 4/9</p></Text>
