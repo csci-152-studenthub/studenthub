@@ -15,19 +15,8 @@ export class Cards extends Component {
   render() {
     return (
       <Layout>
-        <div style={{color:"white", padding: "10px 400px", textAlign: "center", lineHeight: '64px', fontSize: "40px" }}>
-          <Content style={{backgroundColor:"#000066"}}>
-            Resources Page
-          </Content>
-        </div>
 
         <Content style={{ padding: "0px 75px", marginTop: 25, marginBottom: "25%" }}>
-          <Breadcrumb style={{ margin: '10px' }}>
-            <Breadcrumb.Item>Home</Breadcrumb.Item>
-            <Breadcrumb.Item>List</Breadcrumb.Item>
-            <Breadcrumb.Item>App</Breadcrumb.Item>
-          </Breadcrumb>
-
           <div style={{ background: '#a0beef', padding: '30px' }}>
             <Row gutter={16}>
               <Col span={8}>
@@ -76,7 +65,7 @@ export class Cards extends Component {
             </Row>
           </div>
 
-          <div style={{ background: '#ECECEC', padding: '30px' }}>
+          <div >
             <Row gutter={16}>
               <Col span={8}>
                 <Card hoverable title="Card title" bordered={true}>Card1</Card>

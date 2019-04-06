@@ -134,17 +134,6 @@ class SignUpComponent extends Component {
       <Title level={3} style={{paddingLeft: 0}}>Sign up</Title>
       <Form onSubmit={this.handleSubmit} className="login-form">
         <Form.Item>
-          {getFieldDecorator('', {
-            rules: [
-              { pattern: '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.+-]+\.edu$', message: 'Only edu emails can be accepted!'},
-              { type: 'email', message: 'This is not a valid E-mail!'},
-              { required: true, message: 'Please input your E-mail!'}
-            ],
-          })(
-            <Input type="email" placeholder="Email" setFieldsValue={email} onChange={this.handleChange} prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}/>
-          )}
-        </Form.Item>
-        <Form.Item>
           {getFieldDecorator('email', {
             rules: [
               { pattern: '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.+-]+\.edu$', message: 'Only edu emails can be accepted!'},
