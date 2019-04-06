@@ -1,10 +1,8 @@
 
 import React from 'react';
-import ReactDOM from 'react-dom';
 import 'antd/dist/antd.css';
-import './index.css';
 import {
-  Form, Input, Tooltip, Icon, Cascader, Select, Row, Col, Checkbox, Button, AutoComplete,
+  Form, Input, Icon, Button, 
 } from 'antd';
 
 
@@ -12,7 +10,7 @@ import {
 let id = 0;
 
 
-class RegistrationForm extends React.Component {
+class CreateStudyGroup extends React.Component {
   remove = (k) => {
     const { form } = this.props;
     // can use data-binding to get
@@ -172,7 +170,7 @@ class RegistrationForm extends React.Component {
   }
 }
 
-const WrappedRegistrationForm = Form.create({ name: 'register' })(RegistrationForm);
+const CreateStudyGroupForm = Form.create({ name: 'CreateStudygroup' })(CreateStudyGroup);
 
-ReactDOM.render(<WrappedRegistrationForm />, document.getElementById('container'));
+export default CreateStudyGroupForm;
           

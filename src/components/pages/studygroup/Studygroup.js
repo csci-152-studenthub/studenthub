@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import {message, Typography, Button, Form, Input, Icon} from 'antd';
 import uuid from "uuid";
-import './Studygroup.css';
 import { API, Auth} from "aws-amplify";
-
+import CreateStudyGroupForm from './createStudyGroup';
 const { Title } = Typography;
+
+
 
 export class Studygroup extends Component {
   constructor(props){
@@ -89,6 +90,8 @@ export class Studygroup extends Component {
         <div>
           <Title level={3}>My Study groups</Title>
           <Button type="primary" onClick={this.getStudygroups}>Get Studygroups</Button>
+          <CreateStudyGroupForm/>
+        
         </div>
       </div>
     )
