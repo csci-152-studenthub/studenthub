@@ -1,6 +1,41 @@
 
 /* For Mobile view */
 
+
+.item-profile{
+    display: grid;
+    grid-area: profile;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    background: white;
+    box-shadow: 0 1px 4px rgba(0,21,41,.08);
+    grid-template-areas: 
+    "profileUser"
+    "profileSettings"
+    /* background: white; */
+    /* text-align: center; */
+}
+.item-profile-user{
+    grid-area: profileUser;
+    justify-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px;
+}
+.item-profile-settings{
+    grid-area: profileSettings;
+    padding:20px;
+}
+.profile-body {
+    grid-area: body;
+    /* display:grid; */
+    background: white;
+    padding:20px;
+}
+
+
+
 .profile-container{
     display: grid;
     grid-template-columns: 1fr;
@@ -14,8 +49,8 @@
 }
 
 
-/* For any screen larger than 900px */
-@media (min-width: 900px){
+/* For any screen larger than 1000px */
+@media (min-width: 1000px){
     .item-profile{
         display: grid;
         grid-area: profile;

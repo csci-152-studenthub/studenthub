@@ -21,7 +21,6 @@ import uuid from "uuid";
 import ProfilePic from "../profile/ProfilePic";
 import './CardContainer.css';
 
-
 const { Title, Text, Paragraph } = Typography;
 const { TextArea } = Input;
 export class CardContainer extends Component {
@@ -64,11 +63,10 @@ export class CardContainer extends Component {
 
 
   async componentDidMount(){
-    
     this.getPosts();
     this.getSubfeeds();
     Auth.currentAuthenticatedUser({
-        bypassCache: false  // Optional, By default is false. If set to true, this call will send a request to Cognito to get the latest user data
+        bypassCache: true  // Optional, By default is false. If set to true, this call will send a request to Cognito to get the latest user data
     }).then(user => {
       this.setState({user: user.attributes.email})
       this.props.setHeader('General');
@@ -206,6 +204,7 @@ export class CardContainer extends Component {
   }
 
   handleLike(post){
+    console.log('post:', post);
     console.log('User liked post: ', post.title);
 
     let apiName = 'posts';
