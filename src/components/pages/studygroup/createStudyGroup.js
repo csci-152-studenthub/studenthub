@@ -4,6 +4,8 @@ import 'antd/dist/antd.css';
 import {
   Form, Input, Icon, Button, 
 } from 'antd';
+import { Auth, API } from "aws-amplify";
+import uuid from "uuid";
 
 
 
@@ -41,15 +43,30 @@ class CreateStudyGroup extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.form.validateFieldsAndScroll((err, values) => {
+    this.props.form.validateFieldsAndScroll(async (err, values) => {
       if (!err) {
-        const { keys, names } = values;
-        console.log('Received values of form: ', values);
-        console.log('Merged values:', keys.map(key => names[key]));
-        console.log('Received values of form: ', values);
+        console.log(values);
+        let group_name=values.studygroupName;
+        let course=values.course;
+        let professor=values.professor;
+        let members=values.names;
+        let groupId = 'studygroup-'+uuid.v4().toString()
+        
+        let apiName = 'posts';
+        let path = '/studygroups/create-studygroup';
+        let myInit = {
+            body: {groupId,group_name,course,professor,members}
+        }
+        await API.post(apiName, path, myInit).then(response => {
+          console.log(response);
+        }).catch(error => {
+          console.log(error.response)
+        });
+       
       }
     });
   }
+
 
 
   render() {
