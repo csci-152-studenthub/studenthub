@@ -19,7 +19,7 @@ export class Resources extends Component {
   render() {
     return (
       <div className="resources-container">
-        <Cards/>
+        <Cards switchPage={this.props.switchPage} />
       </div>
     )
   }
