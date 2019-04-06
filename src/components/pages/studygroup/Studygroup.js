@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import {message, Typography, Button, Form, Input, Icon} from 'antd';
 import uuid from "uuid";
-import './Studygroup.css';
 import { API, Auth} from "aws-amplify";
-
+import CreateStudyGroupForm from './createStudyGroup';
+import "./Studygroup.css";
 const { Title } = Typography;
+
+
 
 export class Studygroup extends Component {
   constructor(props){
@@ -31,12 +33,12 @@ export class Studygroup extends Component {
 
   async getStudygroups(){
     console.log("Getting studygroups...");
-    let user = this.state.currentUser;
+    let email = this.state.currentUser;
 
     let apiName = 'posts';
     let path = '/studygroups/get-studygroups';
     let myInit = {
-      body: user
+      body: email
     };
     await API.post(apiName, path, myInit)
       .then((response) => {
@@ -89,6 +91,8 @@ export class Studygroup extends Component {
         <div>
           <Title level={3}>My Study groups</Title>
           <Button type="primary" onClick={this.getStudygroups}>Get Studygroups</Button>
+          <CreateStudyGroupForm/>
+        
         </div>
       </div>
     )
