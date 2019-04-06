@@ -151,6 +151,7 @@ class SignUpComponent extends Component {
           )}
         </Form.Item>
         <Form.Item>
+
           {getFieldDecorator('email', {
             rules: [
               { pattern: '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.+-]+\.edu$', message: 'Only edu emails can be accepted!'},
