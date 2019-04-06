@@ -1,18 +1,11 @@
 import React, { Component } from 'react';
-import {message, Form, Icon, Input, Button, AutoComplete, Select, Typography} from 'antd';
+import { message, Form, Icon, Input, Button, Typography, Select } from 'antd';
 import { Auth } from "aws-amplify";
-// import logo from '../../../assets/logo.jpg';
 import '../../../App.css';
 import './SignIn.css';
 
-const { Option } = Select;
-const AutoCompleteOption = AutoComplete.Option;
-
 const { Title } = Typography;
-
-// const {
-//   Header, Footer, Sider, Content,
-// } = Layout;
+const { Option, OptGroup } = Select;
 
 class SignUpComponent extends Component {
   constructor(props){
@@ -21,7 +14,9 @@ class SignUpComponent extends Component {
     this.state = {
       confirmDirty: false,
       autoCompleteResult: [],
-      buttonLoading: false
+      buttonLoading: false,
+      myValidateHelp: '',
+      myValidateStatus: '',
     }
 
   }
@@ -31,7 +26,7 @@ class SignUpComponent extends Component {
     this.setState({
       [event.target.id]: event.target.value
     });
-  }
+  };
 
   handleSubmit = (e) => {
     e.preventDefault();
@@ -39,25 +34,34 @@ class SignUpComponent extends Component {
     this.props.form.validateFieldsAndScroll(async (err, values) => {
 
       if (!err) {
-        this.setState({buttonLoading: true});
+        this.setState({
+          myValidateHelp: '',
+          myValidateStatus: '',
+          buttonLoading: true
+        });
         console.log(values);
-        const username = values.email;
-        const password = values.password;
-        const phone_number = values.prefix+values.phone
+        let username = values.email;
+        let password = values.password;
+        let name = values.firstName;
+        let family_name = values.lastName;
+        let preferred_username = values.username;
 
         await Auth.signUp({
           username,
           password,
           attributes: {
-              phone_number,   // optional - E.164 number convention
-              // other custom attributes
-          },
+            name,
+            family_name,
+            preferred_username,
+            'custom:major': 'Computer Science',
+          }
           })
           .then(data => {
             this.setState({buttonLoading: false});
             console.log(data);
             this.props.changeEmail(username);
             message.success("Successfully signed up!", 2.5);
+            setTimeout(() => message.success("Check your email to confirm your account!", 5), 500);
             setTimeout(() => this.props.changeForm(0), 500);
           })
           .catch(err => {
@@ -65,75 +69,89 @@ class SignUpComponent extends Component {
             console.log(err);
             message.error(err.message, 2.5);
           });
+      } else {
+        console.log(err);
+        if (err.firstName || err.lastName) {
+          this.setState({
+            myValidateHelp: 'Please enter first name and last name',
+            myValidateStatus: 'error'
+          });
+        }
       }
     });
-  }
-
-  handleConfirmBlur = (e) => {
-    const value = e.target.value;
-    this.setState({ confirmDirty: this.state.confirmDirty || !!value });
-  }
-
-  compareToFirstPassword = (rule, value, callback) => {
-    const form = this.props.form;
-    if (value && value !== form.getFieldValue('password')) {
-      callback('Two passwords that you enter is inconsistent!');
-    } else {
-      callback();
-    }
-  }
-
-  validateToNextPassword = (rule, value, callback) => {
-    const form = this.props.form;
-    if (value && this.state.confirmDirty) {
-      form.validateFields(['confirm'], { force: true });
-    }
-    callback();
-  }
-
-  handleWebsiteChange = (value) => {
-    let autoCompleteResult;
-    if (!value) {
-      autoCompleteResult = [];
-    } else {
-      autoCompleteResult = ['.com', '.org', '.net'].map(domain => `${value}${domain}`);
-    }
-    this.setState({ autoCompleteResult });
-  }
+  };
 
   render() {
+    const { myValidateHelp, myValidateStatus } = this.state;
     const { getFieldDecorator } = this.props.form;
-    const { autoCompleteResult } = this.state;
     var changeForm  =   this.props.changeForm;
-    var email = this.props.email;
-
-    const formItemLayout = {
-      labelCol: {
-        xs: { span: 24 },
-        sm: { span: 8 },
-      },
-      wrapperCol: {
-        xs: { span: 24 },
-        sm: { span: 16 },
-      },
-    };
-    const prefixSelector = getFieldDecorator('prefix', {
-      initialValue: '+1',
-    })(
-      <Select style={{ width: 70 }}>
-        <Option value="1">+1</Option>
-      </Select>
-    );
-
-    const websiteOptions = autoCompleteResult.map(website => (
-      <AutoCompleteOption key={website}>{website}</AutoCompleteOption>
-    ));
 
     return (
       <div>
       <Title level={3} style={{paddingLeft: 0}}>Sign up</Title>
       <Form onSubmit={this.handleSubmit} className="login-form">
+        <Form.Item
+          help={myValidateHelp}
+          validateStatus={myValidateStatus}
+        >
+          <Input.Group compact>
+            {getFieldDecorator('firstName', {
+              rules: [
+                {
+                  required: true,
+                  message: 'Please input your first name!'
+                }
+              ],
+            })(<Input style={{width: '50%'}} placeholder="First Name" />)}
+            {getFieldDecorator('lastName', {
+              rules: [
+                {
+                  required: true,
+                  message: 'Please input your last name!'
+                }
+              ],
+            })(<Input style={{width: '50%'}}  placeholder="Last Name" />)}
+          </Input.Group>
+        </Form.Item>
+        <Form.Item
+          hasFeedback
+        >
+          {getFieldDecorator('major', {
+            rules: [
+              { required: true, message: 'Please select your major!' },
+            ],
+          })(
+            <Select placeholder="Please select a major">
+              <OptGroup label="College of Science and Mathematics">
+                <Option value="Biology">Biology</Option>
+                <Option value="Chemistry">Chemistry</Option>
+                <Option value="Computer Science">Computer Science</Option>
+                <Option value="Mathematics">Mathematics</Option>
+              </OptGroup>
+              <OptGroup label="Lyles College of Engineering">
+                <Option value="Civil Engineering">Civil Engineering</Option>
+                <Option value="Computer Engineering">Computer Engineering</Option>
+                <Option value="Electrical Engineering">Electrical Engineering</Option>
+                <Option value="Mechanical Engineering">Mechanical Engineering</Option>
+              </OptGroup>
+              <OptGroup label="College of Social Sciences">
+                <Option value="Geography">Geography</Option>
+                <Option value="History">History</Option>
+              </OptGroup>
+            </Select>
+          )}
+        </Form.Item>
         <Form.Item>
+          {getFieldDecorator('username', {
+            rules: [
+              { required: true, message: 'Please input a username!'}
+            ],
+          })(
+            <Input placeholder="Username" onChange={this.handleChange} prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}/>
+          )}
+        </Form.Item>
+        <Form.Item>
+
           {getFieldDecorator('email', {
             rules: [
               { pattern: '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.+-]+\.edu$', message: 'Only edu emails can be accepted!'},
@@ -141,36 +159,16 @@ class SignUpComponent extends Component {
               { required: true, message: 'Please input your E-mail!'}
             ],
             })(
-              <Input type="email" placeholder="Email" setFieldsValue={email} onChange={this.handleChange} prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}/>
+              <Input type="email" placeholder="Email" onChange={this.handleChange} prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}/>
           )}
         </Form.Item>
         <Form.Item>
           {getFieldDecorator('password', {
             rules: [{
-              required: true, message: 'Please input your password!',
-            }, {
-              validator: this.validateToNextPassword,
+              required: true, message: 'Please input a password!',
             }],
           })(
-            <Input setFieldsValue={this.state.password} onChange={this.handleChange} type="password" placeholder="Password" prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}/>
-          )}
-        </Form.Item>
-        <Form.Item>
-          {getFieldDecorator('confirm', {
-            rules: [{
-              required: true, message: 'Please confirm your password!',
-            }, {
-              validator: this.compareToFirstPassword,
-            }],
-          })(
-            <Input setFieldsValue={this.state.confirm_password} onChange={this.handleChange} type="password" placeholder="Confirm Password" onBlur={this.handleConfirmBlur} prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}/>
-          )}
-        </Form.Item>
-        <Form.Item>
-          {getFieldDecorator('phone', {
-            rules: [{ required: true, message: 'Please input your phone number!' }],
-          })(
-            <Input setFieldsValue={this.state.phone_number} onChange={this.handleChange} placeholder="Phone Number" addonBefore={prefixSelector} style={{ width: '100%' }} />
+            <Input.Password setFieldsValue={this.state.password} onChange={this.handleChange} type="password" placeholder="Password" prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}/>
           )}
         </Form.Item>
 
