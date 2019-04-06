@@ -117,7 +117,7 @@ export class Profile extends Component {
           <div className="profile-body">
             <Tabs defaultActiveKey="1">
               <TabPane tab={<span><Icon rotate={-90} type="project"/>Feeds</span>} key="1">
-                <ProfileFeed currentUser={userAttributes.email}/>
+                <ProfileFeed currentUser={userAttributes.preferred_username}/>
               </TabPane>
               <TabPane tab={<span><Icon type="read"/>Resources</span>} key="2">
                 <Title level={4}>Where the users' resources posts will go</Title>

@@ -72,6 +72,7 @@ export class CardContainer extends Component {
     }).then(user => {
       this.setState({user: user.attributes.email})
       this.props.setHeader('General');
+
     })
     .catch(err => console.log(err));
   }
@@ -511,7 +512,7 @@ export class CardContainer extends Component {
 
           <div className="item-subfeed-info">
               <Title level={4}>Subfeed Information</Title>
-              <Text><Text style={{fontWeight: "bold"}}>Created by</Text>: {this.state.currentSubfeedCreator.split('@')[0]}</Text><br/>
+              <Text><Text style={{fontWeight: "bold"}}>Created by</Text>: {this.state.currentSubfeedCreator}</Text><br/>
               <Text style={{fontWeight: "bold"}}>Description:</Text>
               <Paragraph style={{top: 5}}>{this.state.currentSubfeedDescription}</Paragraph>
           </div>
