@@ -9,7 +9,10 @@
    background-color: white;
   }
   
-  
+  .overline
+  {
+    text-decoration: underline;
+  }
   .title
   {
     grid-area: title;
