@@ -66,7 +66,6 @@ export class Dashboard extends Component {
         })
       ));
       // console.log(posts.body);
-      message.success('Successfully retrieved posts!');
       this.setState({loading: false});
     } catch (e) {
       console.log(e);

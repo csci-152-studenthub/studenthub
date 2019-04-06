@@ -1,11 +1,8 @@
 import React, { Component } from 'react'
-import { message, Input, Icon, Typography, Button, Form, Select} from 'antd';
-import { Auth, API } from "aws-amplify";
+import { message, Input, Button, Form, Select} from 'antd';
+import { Auth } from "aws-amplify";
 
-const InputGroup = Input.Group;
 const { Option, OptGroup } = Select;
-
-const { Title, Text } = Typography;
 
 export class EditAccountInfo extends Component {
   constructor(props){
@@ -22,7 +19,6 @@ export class EditAccountInfo extends Component {
       myValidateStatus: '',
     };
 
-    // this.changeUsername = this.changeUsername.bind(this);
   }
 
   async componentWillMount(){
@@ -74,22 +70,7 @@ export class EditAccountInfo extends Component {
         }
       }
     });
-  }
-
-  // async changeFirstName(){
-  //   console.log(this.state.firstName);
-  // }
-  //
-  async changeUsername(){
-    let user = await Auth.currentAuthenticatedUser();
-    let preferredUsername = this.state.preferredUsername;
-    console.log('Setting username as: ', preferredUsername);
-
-    let result = await Auth.updateUserAttributes(user, {
-      'preferred_username': preferredUsername,
-    });
-    console.log('Result: ', result);
-  }
+  };
 
   render() {
     const { getFieldDecorator } = this.props.form;

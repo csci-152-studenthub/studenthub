@@ -70,7 +70,7 @@ export class CardContainer extends Component {
     Auth.currentAuthenticatedUser({
         bypassCache: false  // Optional, By default is false. If set to true, this call will send a request to Cognito to get the latest user data
     }).then(user => {
-      this.setState({user: user.attributes.email})
+      this.setState({user: user.attributes.preferred_username})
     })
     .catch(err => console.log(err));
   }
@@ -510,7 +510,7 @@ export class CardContainer extends Component {
 
           <div className="item-subfeed-info">
               <Title level={4}>Subfeed Information</Title>
-              <Text><Text style={{fontWeight: "bold"}}>Created by</Text>: {this.state.currentSubfeedCreator.split('@')[0]}</Text><br/>
+              <Text><Text style={{fontWeight: "bold"}}>Created by</Text>: {this.state.currentSubfeedCreator}</Text><br/>
               <Text style={{fontWeight: "bold"}}>Description:</Text>
               <Paragraph style={{top: 5}}>{this.state.currentSubfeedDescription}</Paragraph>
           </div>
