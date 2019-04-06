@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Menu, Icon, Layout, message, Row, Col } from 'antd';
+import {Menu, Icon, Layout, message, Row, Col, Typography} from 'antd';
 import { Auth } from "aws-amplify";
 // import { Card, Avatar, Tag, Divider, Spin, Input } from 'antd';
 // const { Title } = Typography;
@@ -11,8 +11,10 @@ import StudyGroups from '../studygroup/Studygroup';
 import Profile from '../profile/Profile';
 import logo from '../../../react-logo.png';
 import './Main.css';
+import ProfilePic from '../profile/ProfilePic';
 
 const SubMenu = Menu.SubMenu;
+const { Title, Text, Paragraph } = Typography;
 
 // const { Title } = Typography;
 const {
@@ -24,9 +26,11 @@ export class Main extends Component {
     super(props);
 
     this.state = {
-      component: 3,
-    }
+      component: 1,
+      header: 'General',
+    };
     this.backToHome = this.backToHome.bind(this);
+    this.setHeader = this.setHeader.bind(this);
   }
 
   componentDidMount(){
@@ -38,31 +42,31 @@ export class Main extends Component {
     this.setState({component: page});
   }
 
-  switchPage= ()=>{
-    this.backToHome();
-  }
-
   renderComponent(){
     const current_component = this.state.component;
     switch (current_component) {
       case 1:
-        return (<Dashboard />);
+        return (<Dashboard handler={this.setHeader}/>);
         // break;
       case 2:
-        return (<Feeds />);
+        return (<Feeds handler={this.setHeader}/>);
         // break;
       case 3:
-        return (<Resources switchPage={this.switchPage}/>);
+        return (<Resources handler={this.setHeader}/>);
         // break;
       case 4:
-        return (<StudyGroups />);
+        return (<StudyGroups handler={this.setHeader}/>);
         // break;
       case 5:
-        return (<Profile />);
+        return (<Profile handler={this.setHeader}/>);
         // break;
       default:
-        return (<Dashboard />)
+        return (<Dashboard handler={this.setHeader}/>)
     }
+  }
+
+  setHeader(value){
+    this.setState({header: value});
   }
 
   trySignOut(){
@@ -88,7 +92,9 @@ export class Main extends Component {
       return(
         <div className="container">
           <div className="item-header">
-            <h2>This is the header</h2>
+
+            <Title level={1} style={{lineHeight: 1.6}} >{this.state.header}</Title>
+
           </div>
 
           <Sider className="item-sider" collapsible>
@@ -103,17 +109,17 @@ export class Main extends Component {
                 <Icon type="home" style={{fontSize: 20}} />
                 <span className="nav-text">Dashboard</span>
               </Menu.Item>
-              {/* <Menu.Item key="2" onClick={() => this.switchComponent(2)}>
+              <Menu.Item key="2" onClick={() => this.switchComponent(2)}>
                 <Icon type="project" rotate={-90} style={{fontSize: 20}} />
                 <span className="nav-text">Feeds</span>
-              </Menu.Item> */}
-              <SubMenu key="2" title={<span><Icon rotate={-90} type="project" style={{fontSize: 20}}/><span>Feeds</span></span>} onClick={()=> this.switchComponent(2)}>
-                <Menu.Item key="dummy">General</Menu.Item>
-                <Menu.Item key="dummy1">Computer Science</Menu.Item>
-                <Menu.Item key="dummy2">Biology</Menu.Item>
-                <Menu.Item key="dummy3">Psychology</Menu.Item>
-                <Menu.Item key="dummy4">English</Menu.Item>
-              </SubMenu>
+              </Menu.Item>
+              {/*<SubMenu key="2" title={<span><Icon rotate={-90} type="project" style={{fontSize: 20}}/><span>Feeds</span></span>} onClick={()=> this.switchComponent(2)}>*/}
+              {/*  <Menu.Item key="dummy">General</Menu.Item>*/}
+              {/*  <Menu.Item key="dummy1">Computer Science</Menu.Item>*/}
+              {/*  <Menu.Item key="dummy2">Biology</Menu.Item>*/}
+              {/*  <Menu.Item key="dummy3">Psychology</Menu.Item>*/}
+              {/*  <Menu.Item key="dummy4">English</Menu.Item>*/}
+              {/*</SubMenu>*/}
               <Menu.Item key="3" onClick={() => this.switchComponent(3)}>
                 <Icon type="read" style={{fontSize: 20}} />
                 <span className="nav-text">Resources</span>
@@ -148,3 +154,4 @@ export class Main extends Component {
 
 
 export default Main
+

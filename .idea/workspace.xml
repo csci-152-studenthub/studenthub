@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="18ea8b0b-a2f8-4f5c-9b18-7882f85c6657" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/components/pages/main/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/main/Main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/feeds/CardContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/feeds/CardContainer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/profile/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/profile/Profile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/profile/ProfileFeed.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/profile/ProfileFeed.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,54 +27,18 @@
     <select />
   </component>
   <component name="DefaultGradleProjectSettings">
-    <option name="testRunner" value="GRADLE" />
-    <option name="delegatedBuild" value="true" />
+    <option name="isMigrated" value="true" />
   </component>
   <component name="FavoritesManager">
     <favorites_list name="studenthub" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/App.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="15" column="17" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
-              <folding>
-                <element signature="e#0#41#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/pages/feeds/Feeds.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <folding>
-                <element signature="e#0#41#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/pages/feeds/CardContainer.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="369">
-              <caret line="214" column="20" selection-start-line="214" selection-start-column="20" selection-end-line="214" selection-end-column="20" />
-              <folding>
-                <element signature="e#0#41#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/components/pages/main/Main.js">
+        <entry file="file://$PROJECT_DIR$/src/components/pages/profile/Profile.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="413">
-              <caret line="105" column="63" selection-start-line="105" selection-start-column="63" selection-end-line="105" selection-end-column="63" />
+            <state relative-caret-position="164">
+              <caret line="106" column="40" selection-start-line="106" selection-start-column="40" selection-end-line="106" selection-end-column="40" />
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
               </folding>
@@ -81,17 +47,71 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/pages/main/Main.css">
+        <entry file="file://$PROJECT_DIR$/src/components/pages/profile/ProfilePic.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1443" />
+            <state relative-caret-position="252">
+              <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="114" />
+              <folding>
+                <element signature="e#0#40#0" expanded="true" />
+              </folding>
+            </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/pages/auth/SignIn.js">
+        <entry file="file://$PROJECT_DIR$/src/components/pages/profile/profile.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="861">
-              <caret line="52" column="25" selection-start-line="52" selection-end-line="53" />
+            <state relative-caret-position="466">
+              <caret line="54" column="22" selection-start-line="54" selection-start-column="22" selection-end-line="54" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/pages/profile/ProfileFeed.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="885">
+              <caret line="100" column="25" selection-start-line="100" selection-start-column="25" selection-end-line="100" selection-end-column="25" />
+              <folding>
+                <element signature="e#0#40#0" expanded="true" />
+                <element signature="n#!!block;n#deletePost#0;n#ProfileFeed#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/pages/studygroup/Studygroup.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="399">
+              <caret line="23" column="31" selection-start-line="23" selection-start-column="31" selection-end-line="23" selection-end-column="31" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+                <element signature="n#!!block;n#getStudygroups#0;n#Studygroup#0" />
+                <element signature="n#!!block;n#createStudygroup#0;n#Studygroup#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/pages/dashboard/Dashboard.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="588">
+              <caret line="33" column="33" selection-start-line="33" selection-start-column="33" selection-end-line="33" selection-end-column="33" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+                <element signature="n#!!block;n#getPosts#0;n#Dashboard#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/pages/feeds/Feeds.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="84">
+              <caret line="4" column="38" selection-start-line="4" selection-start-column="38" selection-end-line="4" selection-end-column="38" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -99,7 +119,60 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/pages/main/Main.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="558">
+              <caret line="53" column="13" lean-forward="true" selection-start-line="53" selection-start-column="13" selection-end-line="53" selection-end-column="13" />
+              <folding>
+                <element signature="e#0#40#0" expanded="true" />
+                <element signature="n#!!block;n#trySignOut#0;n#Main#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/pages/feeds/CardContainer.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="21">
+              <caret line="448" column="25" selection-start-line="448" selection-start-column="25" selection-end-line="448" selection-end-column="25" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+                <element signature="n#!!block;n#handleChange#0;n#CardContainer#0" />
+                <element signature="n#!!block;n#createPost#0;n#CardContainer#0" />
+                <element signature="n#!!block;n#getPosts#0;n#CardContainer#0" />
+                <element signature="n#!!block;n#getSubfeedPosts#0;n#CardContainer#0" />
+                <element signature="n#!!block;n#deletePost#0;n#CardContainer#0" />
+                <element signature="n#!!block;n#handleActionClick#0;n#CardContainer#0" />
+                <element signature="n#!!block;n#handleLike#0;n#CardContainer#0" />
+                <element signature="n#!!block;n#handleDislike#0;n#CardContainer#0" />
+                <element signature="n#!!block;n#getSubfeeds#0;n#CardContainer#0" />
+                <element signature="n#!!block;n#createSubfeed#0;n#CardContainer#0" />
+                <element signature="n#!!block;n#updateSubfeeds#0;n#CardContainer#0" />
+                <element signature="n#!!block;n#deleteSubfeed#0;n#CardContainer#0" />
+                <element signature="n#!!block;n#onChange#0;n#CardContainer#0" />
+                <element signature="n#!!block;n#switchSubfeed#0;n#CardContainer#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/pages/feeds/CardContainer.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-280" />
+          </provider>
+        </entry>
+      </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -112,11 +185,13 @@
       <find>current_s</find>
       <find>visible</find>
       <find>confirmLoading</find>
-      <find>currentSubfeed</find>
       <find>subfeed_obj</find>
       <find>setSubfeed</find>
       <find>getSubfeedPosts</find>
       <find>setCurrentSubfeed</find>
+      <find>currentSubfeed</find>
+      <find>loading</find>
+      <find>setHeader</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -130,22 +205,22 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/components/pages/profile/ProfilePic.js" />
         <option value="$PROJECT_DIR$/src/components/pages/auth/SignIn.component.js" />
-        <option value="$PROJECT_DIR$/src/components/pages/feeds/CardContainer.js" />
+        <option value="$PROJECT_DIR$/src/components/pages/resources/resComp/Cards.js" />
+        <option value="$PROJECT_DIR$/src/config.js" />
+        <option value="$PROJECT_DIR$/src/components/pages/auth/SignUp.component.js" />
+        <option value="$PROJECT_DIR$/src/components/pages/profile/EditAccountInfo.js" />
+        <option value="$PROJECT_DIR$/src/components/pages/resources/Resources.js" />
+        <option value="$PROJECT_DIR$/src/components/pages/dashboard/Dashboard.js" />
+        <option value="$PROJECT_DIR$/src/components/pages/studygroup/Studygroup.js" />
+        <option value="$PROJECT_DIR$/src/components/pages/feeds/CardContainer.css" />
+        <option value="$PROJECT_DIR$/src/components/pages/profile/ProfilePic.js" />
+        <option value="$PROJECT_DIR$/src/components/pages/profile/profile.css" />
+        <option value="$PROJECT_DIR$/src/components/pages/feeds/Feeds.js" />
         <option value="$PROJECT_DIR$/src/components/pages/main/Main.js" />
-      </list>
-    </option>
-  </component>
-  <component name="ProjectConfigurationFiles">
-    <option name="files">
-      <list>
-        <option value="$PROJECT_DIR$/.idea/studenthub.iml" />
-        <option value="$PROJECT_DIR$/.idea/misc.xml" />
-        <option value="$PROJECT_DIR$/.idea/modules.xml" />
-        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
-        <option value="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" />
-        <option value="$PROJECT_DIR$/.idea/aws.xml" />
+        <option value="$PROJECT_DIR$/src/components/pages/feeds/CardContainer.js" />
+        <option value="$PROJECT_DIR$/src/components/pages/profile/ProfileFeed.js" />
+        <option value="$PROJECT_DIR$/src/components/pages/profile/Profile.js" />
       </list>
     </option>
   </component>
@@ -158,7 +233,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -198,6 +272,14 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="dashboard" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="studenthub" type="b2602c69:ProjectViewProjectNode" />
+              <item name="studenthub" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
               <item name="feeds" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -216,10 +298,19 @@
               <item name="pages" type="462c0819:PsiDirectoryNode" />
               <item name="profile" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="studenthub" type="b2602c69:ProjectViewProjectNode" />
+              <item name="studenthub" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="studygroup" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -232,6 +323,7 @@
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="fileTemplates" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -245,7 +337,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="AWS Lambda.[Remote] delete-subfeed">
+  <component name="RunManager" selected="AWS Lambda.[Remote] get-posts-user">
     <configuration name="[Remote] create-post" type="aws.lambda" factoryName="Remote" temporary="true" nameIsGenerated="true">
       <option name="credentialProviderId" value="profile:default" />
       <option name="regionId" value="us-west-2" />
@@ -259,17 +351,11 @@
       <option name="input" value="{&#10;  &quot;id&quot;: &quot;subfeed-515b477d-919f-46ee-88d9-72d08cfe2cc1&quot;,&#10;  &quot;timestamp&quot;: &quot;3/26/2019, 5:17:41 PM&quot;&#10;}" />
       <method v="2" />
     </configuration>
-    <configuration name="[Remote] get-post-subfeed" type="aws.lambda" factoryName="Remote" temporary="true" nameIsGenerated="true">
+    <configuration name="[Remote] get-posts-user" type="aws.lambda" factoryName="Remote" temporary="true" nameIsGenerated="true">
       <option name="credentialProviderId" value="profile:default" />
       <option name="regionId" value="us-west-2" />
-      <option name="functionName" value="get-post-subfeed" />
-      <option name="input" value="{&#10;  &quot;subfeed&quot;: &quot;General&quot;&#10;}" />
-      <method v="2" />
-    </configuration>
-    <configuration name="[Remote] get-posts" type="aws.lambda" factoryName="Remote" temporary="true" nameIsGenerated="true">
-      <option name="credentialProviderId" value="profile:default" />
-      <option name="regionId" value="us-west-2" />
-      <option name="functionName" value="get-posts" />
+      <option name="functionName" value="get-posts-user" />
+      <option name="input" value="{&#10;  &quot;user&quot;: &quot;ecast96@mail.fresnostate.edu&quot;&#10;}" />
       <method v="2" />
     </configuration>
     <configuration name="[Remote] get-subfeeds" type="aws.lambda" factoryName="Remote" temporary="true" nameIsGenerated="true">
@@ -279,20 +365,27 @@
       <option name="input" value="{&#10;  &quot;name&quot;: &quot;hello_world&quot;&#10;}" />
       <method v="2" />
     </configuration>
+    <configuration name="[Remote] studygroups-create-studygroup" type="aws.lambda" factoryName="Remote" temporary="true" nameIsGenerated="true">
+      <option name="credentialProviderId" value="profile:default" />
+      <option name="regionId" value="us-west-2" />
+      <option name="functionName" value="studygroups-create-studygroup" />
+      <option name="input" value="{&#10;  &quot;test&quot;: &quot;Hello&quot;&#10;}" />
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="AWS Lambda.[Remote] get-subfeeds" />
-      <item itemvalue="AWS Lambda.[Remote] get-post-subfeed" />
-      <item itemvalue="AWS Lambda.[Remote] get-posts" />
       <item itemvalue="AWS Lambda.[Remote] create-post" />
       <item itemvalue="AWS Lambda.[Remote] delete-subfeed" />
+      <item itemvalue="AWS Lambda.[Remote] studygroups-create-studygroup" />
+      <item itemvalue="AWS Lambda.[Remote] get-posts-user" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="AWS Lambda.[Remote] get-posts-user" />
+        <item itemvalue="AWS Lambda.[Remote] studygroups-create-studygroup" />
         <item itemvalue="AWS Lambda.[Remote] delete-subfeed" />
         <item itemvalue="AWS Lambda.[Remote] get-subfeeds" />
         <item itemvalue="AWS Lambda.[Remote] create-post" />
-        <item itemvalue="AWS Lambda.[Remote] get-posts" />
-        <item itemvalue="AWS Lambda.[Remote] get-post-subfeed" />
       </list>
     </recent_temporary>
   </component>
@@ -313,11 +406,13 @@
       <workItem from="1553819827613" duration="15765000" />
       <workItem from="1553875173806" duration="373000" />
       <workItem from="1554244651455" duration="69000" />
+      <workItem from="1554270774783" duration="2087000" />
+      <workItem from="1554322025898" duration="17077000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19877000" />
+    <option name="totallyTimeSpent" value="51462000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -332,16 +427,16 @@
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7325301" visible="true" weight="0.19313304" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7216867" visible="true" weight="0.19313304" />
       <window_info id="Structure" order="1" sideWeight="0.5007215" side_tool="true" weight="0.2533137" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" sideWeight="0.5007215" side_tool="true" weight="0.2533137" />
-      <window_info id="aws.explorer" order="7" sideWeight="0.26746988" side_tool="true" visible="true" weight="0.19313304" />
+      <window_info id="aws.explorer" order="7" sideWeight="0.27831325" side_tool="true" visible="true" weight="0.19313304" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32891566" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49928468" weight="0.27349398" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -352,6 +447,7 @@
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.32891566" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5007153" side_tool="true" weight="0.27349398" />
+      <window_info anchor="bottom" id="TypeScript" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.2496318" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -381,26 +477,6 @@
     <entry file="file://$USER_HOME$/.aws/config">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/pages/profile/ProfilePic.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="28" column="1" selection-start-line="28" selection-start-column="1" selection-end-line="28" selection-end-column="1" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/pages/profile/Profile.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="36" column="12" selection-start-line="36" selection-start-column="12" selection-end-line="36" selection-end-column="12" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/pages/auth/SignIn.css">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -408,25 +484,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1221">
           <caret line="98" column="70" selection-start-line="98" selection-start-column="70" selection-end-line="98" selection-end-column="70" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/App.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="15" column="17" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/pages/feeds/Feeds.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
@@ -443,20 +500,197 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/pages/feeds/CardContainer.js">
+    <entry file="file://$PROJECT_DIR$/src/components/pages/main/Main.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="369">
-          <caret line="214" column="20" selection-start-line="214" selection-start-column="20" selection-end-line="214" selection-end-column="20" />
+        <state relative-caret-position="-309">
+          <caret line="77" column="37" selection-start-line="77" selection-end-line="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="11" column="38" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#59#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/auth/SignUp.component.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="136" column="30" selection-start-line="136" selection-start-column="30" selection-end-line="136" selection-end-column="30" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/@types/react/index.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="268">
+          <caret line="1778" column="8" selection-start-line="1778" selection-start-column="8" selection-end-line="1778" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/resources/resComp/Cards.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="71" column="23" selection-start-line="71" selection-start-column="23" selection-end-line="71" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#48#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/profile/EditAccountInfo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="609">
+          <caret line="31" column="3" selection-start-line="31" selection-start-column="3" selection-end-line="31" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/resources/Resources.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="8" selection-start-line="8" selection-end-line="12" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/studygroup/Studygroup.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="23" column="31" selection-start-line="23" selection-start-column="31" selection-end-line="23" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+            <element signature="n#!!block;n#getStudygroups#0;n#Studygroup#0" />
+            <element signature="n#!!block;n#createStudygroup#0;n#Studygroup#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/dashboard/Dashboard.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="588">
+          <caret line="33" column="33" selection-start-line="33" selection-start-column="33" selection-end-line="33" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+            <element signature="n#!!block;n#getPosts#0;n#Dashboard#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/feeds/CardContainer.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-280" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/profile/profile.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="466">
+          <caret line="54" column="22" selection-start-line="54" selection-start-column="22" selection-end-line="54" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/profile/ProfilePic.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="114" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/pages/main/Main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="413">
-          <caret line="105" column="63" selection-start-line="105" selection-start-column="63" selection-end-line="105" selection-end-column="63" />
+        <state relative-caret-position="558">
+          <caret line="53" column="13" lean-forward="true" selection-start-line="53" selection-start-column="13" selection-end-line="53" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+            <element signature="n#!!block;n#trySignOut#0;n#Main#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/feeds/Feeds.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="4" column="38" selection-start-line="4" selection-start-column="38" selection-end-line="4" selection-end-column="38" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/feeds/CardContainer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="448" column="25" selection-start-line="448" selection-start-column="25" selection-end-line="448" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+            <element signature="n#!!block;n#handleChange#0;n#CardContainer#0" />
+            <element signature="n#!!block;n#createPost#0;n#CardContainer#0" />
+            <element signature="n#!!block;n#getPosts#0;n#CardContainer#0" />
+            <element signature="n#!!block;n#getSubfeedPosts#0;n#CardContainer#0" />
+            <element signature="n#!!block;n#deletePost#0;n#CardContainer#0" />
+            <element signature="n#!!block;n#handleActionClick#0;n#CardContainer#0" />
+            <element signature="n#!!block;n#handleLike#0;n#CardContainer#0" />
+            <element signature="n#!!block;n#handleDislike#0;n#CardContainer#0" />
+            <element signature="n#!!block;n#getSubfeeds#0;n#CardContainer#0" />
+            <element signature="n#!!block;n#createSubfeed#0;n#CardContainer#0" />
+            <element signature="n#!!block;n#updateSubfeeds#0;n#CardContainer#0" />
+            <element signature="n#!!block;n#deleteSubfeed#0;n#CardContainer#0" />
+            <element signature="n#!!block;n#onChange#0;n#CardContainer#0" />
+            <element signature="n#!!block;n#switchSubfeed#0;n#CardContainer#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/profile/ProfileFeed.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="885">
+          <caret line="100" column="25" selection-start-line="100" selection-start-column="25" selection-end-line="100" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+            <element signature="n#!!block;n#deletePost#0;n#ProfileFeed#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/profile/Profile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="164">
+          <caret line="106" column="40" selection-start-line="106" selection-start-column="40" selection-end-line="106" selection-end-column="40" />
           <folding>
             <element signature="e#0#40#0" expanded="true" />
           </folding>
