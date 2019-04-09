@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Icon, Typography, Button, Drawer, Tabs, Divider, Skeleton} from 'antd';
 import ProfilePic from './ProfilePic';
 import EditAccountInfo from './EditAccountInfo';
+import ProfileStudyGroups from './ProfileStudyGroups';
 import ProfileFeed from './ProfileFeed';
 import { Auth, API } from "aws-amplify";
 import './profile.css';
@@ -12,7 +13,7 @@ const { Title, Text } = Typography;
 
 export class Profile extends Component {
   constructor(props){
-    super();
+    super(props);
 
     this.state ={
       componentLoading: true,
@@ -123,7 +124,7 @@ export class Profile extends Component {
                 <Title level={4}>Where the users' resources posts will go</Title>
               </TabPane>
               <TabPane tab={<span><Icon type="team"/>Study groups</span>} key="3">
-                <Title level={4}>Where the users' study groups will go</Title>
+                <ProfileStudyGroups user={this.state.userAttributes.email}/>
               </TabPane>
             </Tabs>
           </div>

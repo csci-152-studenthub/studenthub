@@ -2,12 +2,12 @@
 import React from 'react';
 import 'antd/dist/antd.css';
 import {
-  Form, Input, Icon, Button, Modal 
+  Form, Input, Icon, Button, message
 } from 'antd';
-import { Auth, API } from "aws-amplify";
+import { API } from "aws-amplify";
 import uuid from "uuid";
 
-
+const { TextArea } = Input;
 
 let id = 0;
 
@@ -16,7 +16,8 @@ class CreateStudyGroup extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      visible:false,
+      buttonLoading: false,
+      visible: false,
       confirmDirty: false,
       autoCompleteResult: [],
     };
@@ -45,28 +46,36 @@ class CreateStudyGroup extends React.Component {
     form.setFieldsValue({
       keys: nextKeys,
     });
-  }
+  };
 
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.form.validateFieldsAndScroll(async (err, values) => {
       if (!err) {
+        this.setState({buttonLoading: true});
         console.log(values);
-        let group_name=values.studygroupName;
-        let course=values.course;
-        let professor=values.professor;
-        let members=values.names;
-        let groupId = 'studygroup-'+uuid.v4().toString()
-        
+        let group_name = values.studygroupName;
+        let course = values.course;
+        let professor = values.professor;
+        let members = values.names;
+        let groupId = 'studygroup-'+uuid.v4().toString();
+        var timestamp = new Date().toLocaleString();
+        let description = values.description;
+
         let apiName = 'posts';
         let path = '/studygroups/create-studygroup';
         let myInit = {
-            body: {groupId,group_name,course,professor,members}
-        }
+            body: {groupId, group_name, course, professor, members, timestamp, description}
+        };
         await API.post(apiName, path, myInit).then(response => {
-          console.log(response);
+          console.log('Created study group:', response);
+          message.success('Successfully created study group!');
+          this.setState({buttonLoading: false});
+          this.props.closeModal();
+          this.props.getStudygroups();
         }).catch(error => {
-          console.log(error.response)
+          console.log(error.response);
+          this.setState({buttonLoading: false});
         });
        
       }
@@ -75,7 +84,7 @@ class CreateStudyGroup extends React.Component {
 
   render() {
     const { getFieldDecorator, getFieldValue } = this.props.form;
-    
+    let buttonLoading = this.state.buttonLoading;
 
     getFieldDecorator('keys', { initialValue: [] });
     const keys = getFieldValue('keys');
@@ -108,6 +117,7 @@ class CreateStudyGroup extends React.Component {
         ) : null}
       </Form.Item>
     ));
+
     return (
       <Form onSubmit={this.handleSubmit} className="studygroup-modal">
         <Form.Item
@@ -119,7 +129,19 @@ class CreateStudyGroup extends React.Component {
               {required: true, message: 'Please input a study group name!',
             }],
           })(
-            <Input placeholder="Gold Team Study Group CSCI 152" />
+            <Input placeholder="ex: Gold Team Study Group CSCI 152" />
+          )}
+        </Form.Item>
+        <Form.Item
+          style={{width: "60%", marginBottom: 8}}
+          label="Description"
+        >
+          {getFieldDecorator('description', {
+            rules: [
+              {required: true, message: 'Please input a description of your study group!',
+              }],
+          })(
+            <TextArea placeholder="Description" />
           )}
         </Form.Item>
         <Form.Item
@@ -142,21 +164,21 @@ class CreateStudyGroup extends React.Component {
         >
           {getFieldDecorator('professor', {
             rules: [{
-              required: true, message: 'Please input a professor for the course!',
+              required: true,
+              message: 'Please input a professor for the course!',
             }],
           })(
             <Input placeholder="Dr Liu" />
           )}
         </Form.Item>
         {formItems}
-        
         <Form.Item >
           <Button type="dashed" onClick={this.add} style={{width: "60%", marginBottom: 8}}>
             <Icon type="plus" /> Add study group members
           </Button>
         </Form.Item>
         <Form.Item>
-          <Button type="primary" htmlType="submit">Create Group</Button>
+          <Button loading={buttonLoading} type="primary" htmlType="submit">Create Group</Button>
         </Form.Item>
       </Form>
     );
