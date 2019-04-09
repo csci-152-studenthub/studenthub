@@ -1,21 +1,22 @@
 import React, { Component } from 'react';
-import {message, Typography, Button, Form, Input, Icon} from 'antd';
+import { message, Typography, Button, Modal, Card, List } from 'antd';
 import uuid from "uuid";
 import { API, Auth} from "aws-amplify";
 import CreateStudyGroupForm from './createStudyGroup';
 import "./Studygroup.css";
+
+
 const { Title } = Typography;
-
-
-
 export class Studygroup extends Component {
   constructor(props){
     super(props);
 
     this.state = {
-      currentUser: '',
-      studygroup_name: '',
-      studygroup_description: '',
+      my_studygroup:[{
+        currentUser: 'hardcoded',
+        studygroup_name: 'whole loatta',
+        studygroup_description: 'gang doo doo',
+      }]
     }
 
     this.getStudygroups = this.getStudygroups.bind(this);
@@ -82,17 +83,59 @@ export class Studygroup extends Component {
       console.log(error)
     });
   }
+  
+  showModal = () => {
+    this.setState({
+      visible: true,
+    });
+  }
 
+  handleOk = (e) => {
+    console.log(e);
+    this.setState({
+      visible: false,
+    });
+  }
+
+  handleCancel = (e) => {
+    console.log(e);
+    this.setState({
+      visible: false,
+    });
+  }
 
   render() {
     return (
       <div className="studygroup-container">
-        <Title>Studygroup Page</Title>
-        <div>
-          <Title level={3}>My Study groups</Title>
+        <div className="item-studygroup">
+          <Title level={3}>My Study Groups</Title>
+          <List
+            grid={{ gutter: 16, column: 4 }}
+            dataSource={this.state.my_studygroup}
+            renderItem={item => (
+              <List.Item>
+                <Card
+                  hoverable
+                  title={item.studygroup_name}
+                  style={{ width: 300 }}
+                >
+                  <p>{item.studygroup_description}</p>
+                </Card>
+              </List.Item>
+            )}
+          />
+          
           <Button type="primary" onClick={this.getStudygroups}>Get Studygroups</Button>
-          <CreateStudyGroupForm/>
-        
+          <Button type="primary" onClick={this.showModal}>Create a Group</Button>
+          <Modal
+            title="Create a Group"
+            style={{top: 30}}
+            visible={this.state.visible}
+            onOk={this.handleOk}
+            onCancel={this.handleCancel}
+          >
+            <CreateStudyGroupForm/>
+          </Modal>
         </div>
       </div>
     )

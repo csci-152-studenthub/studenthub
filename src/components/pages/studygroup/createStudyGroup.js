@@ -2,7 +2,7 @@
 import React from 'react';
 import 'antd/dist/antd.css';
 import {
-  Form, Input, Icon, Button, 
+  Form, Input, Icon, Button, Modal 
 } from 'antd';
 import { Auth, API } from "aws-amplify";
 import uuid from "uuid";
@@ -13,6 +13,16 @@ let id = 0;
 
 
 class CreateStudyGroup extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      visible:false,
+      confirmDirty: false,
+      autoCompleteResult: [],
+    };
+  }
+ 
+
   remove = (k) => {
     const { form } = this.props;
     // can use data-binding to get
@@ -36,10 +46,6 @@ class CreateStudyGroup extends React.Component {
       keys: nextKeys,
     });
   }
-  state = {
-    confirmDirty: false,
-    autoCompleteResult: [],
-  };
 
   handleSubmit = (e) => {
     e.preventDefault();
@@ -67,46 +73,14 @@ class CreateStudyGroup extends React.Component {
     });
   }
 
-
-
   render() {
     const { getFieldDecorator, getFieldValue } = this.props.form;
-    const formItemLayout = {
-      labelCol: {
-        xs: { span: 24 },
-        sm: { span: 8 },
-      },
-      wrapperCol: {
-        xs: { span: 24 },
-        sm: { span: 16 },
-      },
-    };
-    const formItemLayoutWithOutLabel = {
-      wrapperCol: {
-        xs: { span: 24, offset: 0 },
-        sm: { span: 20, offset: 8 },
-      },
-    };
-    
-    const tailFormItemLayout = {
-      wrapperCol: {
-        xs: {
-          span: 24,
-          offset: 0,
-        },
-        sm: {
-          span: 20,
-          offset: 8,
-        },
-      },
-    };
     
 
     getFieldDecorator('keys', { initialValue: [] });
     const keys = getFieldValue('keys');
     const formItems = keys.map((k, index) => (
       <Form.Item
-        {...(index === 0 ? formItemLayout : formItemLayoutWithOutLabel)}
         label={index === 0 ? 'Members E-mail' : ''}
         required={false}
         key={k}
@@ -122,7 +96,7 @@ class CreateStudyGroup extends React.Component {
           { type: 'email', message: 'This is not a valid E-mail!'},
           { required: true, message: 'Please input your E-mail!'}],
         })(
-          <Input placeholder="Members E-mail" style={{ width: '60%', marginRight: 8 }} />
+          <Input placeholder="Members E-mail" style={{width: "60%", marginRight: 8}}/>
         )}
         {keys.length > 1 ? (
           <Icon
@@ -135,9 +109,9 @@ class CreateStudyGroup extends React.Component {
       </Form.Item>
     ));
     return (
-      <Form {...formItemLayout} onSubmit={this.handleSubmit}>
-        
+      <Form onSubmit={this.handleSubmit} className="studygroup-modal">
         <Form.Item
+          style={{width: "60%", marginBottom: 8}}
           label="Study Group Name"
         >
           {getFieldDecorator('studygroupName', {
@@ -149,6 +123,7 @@ class CreateStudyGroup extends React.Component {
           )}
         </Form.Item>
         <Form.Item
+          style={{width: "60%", marginBottom: 8}}
           label="Course"
         >
           {getFieldDecorator('course', {
@@ -162,6 +137,7 @@ class CreateStudyGroup extends React.Component {
           )}
         </Form.Item>
         <Form.Item
+          style={{width: "60%", marginBottom: 8}}
           label="Professor"
         >
           {getFieldDecorator('professor', {
@@ -174,13 +150,13 @@ class CreateStudyGroup extends React.Component {
         </Form.Item>
         {formItems}
         
-        <Form.Item {...formItemLayoutWithOutLabel}>
-          <Button type="dashed" onClick={this.add} style={{ width: '60%' }}>
+        <Form.Item >
+          <Button type="dashed" onClick={this.add} style={{width: "60%", marginBottom: 8}}>
             <Icon type="plus" /> Add study group members
           </Button>
         </Form.Item>
-        <Form.Item {...tailFormItemLayout}>
-          <Button type="primary" htmlType="submit">Create the group</Button>
+        <Form.Item>
+          <Button type="primary" htmlType="submit">Create Group</Button>
         </Form.Item>
       </Form>
     );
