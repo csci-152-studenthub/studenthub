@@ -1,17 +1,7 @@
 import React, { Component } from 'react';
 import { Auth } from "aws-amplify";
-// import { Col, Row, Divider} from 'antd';
 import Routes from "./routes";
-// import { Typography } from 'antd';
-// import logo from './assets/logo.jpg';
 import './App.css';
-
-// const { Title } = Typography;
-
-
-// const {
-//   Header, Footer, Sider, Content,
-// } = Layout;
 
 class App extends Component {
   constructor(props){
