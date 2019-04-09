@@ -1,6 +1,24 @@
+
+
+.dynamic-delete-button {
+    cursor: pointer;
+    position: relative;
+    top: 4px;
+    font-size: 20px;
+    color: #999;
+    transition: all .3s;
+  }
+
+.studygroup-modal{
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+}
+
+
 .item-studygroup{
     grid-area: studygroup;
-
+    
 }
 
 .studygroup-container{
@@ -8,6 +26,7 @@
     grid-template-columns: auto;
     grid-template-rows: auto ;
     background:white;
+    box-shadow: 0 1px 4px rgba(0,21,41,.08); 
     padding: 20px;
     grid-template-areas:
     "studygroup"
