@@ -26,7 +26,7 @@ export class Main extends Component {
     super(props);
 
     this.state = {
-      component: 1,
+      component: 4,
       header: 'General',
     };
     this.backToHome = this.backToHome.bind(this);
