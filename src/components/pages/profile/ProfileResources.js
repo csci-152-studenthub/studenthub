@@ -1,56 +1,26 @@
 import React, { Component } from 'react'
-import {Typography, Button, Modal, Card, List, Carousel, Divider, Avatar} from 'antd';
-import "./Resources.css";
-import "./resComp/Cards.js";
-import Cards from './resComp/Cards.js';
-import ResourceForm from './CreateResource.js';
-
-
-
-
+import {
+  List,
+  Card,
+  Carousel, Skeleton, Modal, Icon, Typography, Divider, Avatar
+} from 'antd';
+import './ProfileResources.css'
 const { Title, Paragraph, Text } = Typography;
+
+// import { API } from "aws-amplify";
+
 const { Meta } = Card;
-export class Resources extends Component {
+
+export class ProfileResources extends Component {
   constructor(props){
     super(props);
+
     this.state ={
       cardsLoading: true,
-      visible: false,
-      data:[
-      {
-        title: "Notes for CSCI 152",
-        description: "Lecture on Algorithms",
-        uri: `https://unsplash.it/150/200?image=11`   
-      },
-    ]
-  };
+    };
 
     this.openCard = this.openCard.bind(this);
   }
-
-  componentDidMount() {
-    this.props.handler("Resources");
-  }
-
-  showModal = () => {
-    this.setState({
-      visible: true,
-    });
-  }
-
-  handleOk = (e) => {
-    console.log(e);
-    this.setState({
-      visible: false,
-    });
-  }
-
-  handleCancel = (e) => {
-    console.log(e);
-    this.setState({
-      visible: false,
-    });
-  };
 
   openCard = (item) => {
     this.setState({
@@ -69,6 +39,40 @@ export class Resources extends Component {
 
 
   render() {
+    // let cardsLoading = this.state.cardsLoading;
+    let data = [
+      {
+        title: "Notes for CSCI 152",
+        description: "Lecture on Solid Principles",
+        uri: `https://unsplash.it/150/200?image=11`
+      },
+      {
+        title: "Notes for Physics",
+        description: "E=mc square",
+        uri: `https://unsplash.it/150/200?image=1`
+      },
+      {
+        title: "Notes for CSCI 130",
+        description: "Lecture on Web dev",
+        uri: `https://unsplash.it/150/200?image=3`
+      },
+      {
+        title: "Notes for Chemisty",
+        description: "Chemisty",
+        uri: `https://unsplash.it/150/200?image=8`
+      },
+      {
+        title: "Notes for Biology",
+        description: "Cells",
+        uri: `https://unsplash.it/150/200?image=9`
+      },
+      {
+        title: "Notes for English",
+        description: "English",
+        uri: `https://unsplash.it/150/200?image=4`
+      },
+    ];
+
     const comments = [
       {
         title: 'This is really helpful!',
@@ -79,11 +83,25 @@ export class Resources extends Component {
         user: "Stanley"
       },
     ];
+
+    function onChange(a, b, c) {
+      console.log(a, b, c);
+    }
+
+    // const blankData = [];
+    // for (let i = 0; i < 5; i++) {
+    //   blankData.push({
+    //     title: `Blank title`,
+    //     description: 'Blank description',
+    //     content: 'Blank content',
+    //   });
+    // }
+
     return (
-      <div className="resources-container">
-       <List
-          grid={{ gutter: 10, column: 4 }}
-          dataSource={this.state.data}
+      <div>
+        <List
+          grid={{ gutter: 10, column: 3 }}
+          dataSource={data}
           renderItem={item => (
             <List.Item>
               <Card
@@ -97,10 +115,10 @@ export class Resources extends Component {
                   description={item.description}
                 />
               </Card>
-              
+
             </List.Item>
           )}
-        />,
+        />
 
         <Modal
           title={this.state.currentCard === undefined ? "Loading..." : this.state.currentCard.title}
@@ -118,9 +136,9 @@ export class Resources extends Component {
                 Just some definitions of SOLID principles.
               </Paragraph>
             </div>
-            <Carousel>
+            <Carousel afterChange={onChange}>
               <div>
-                <Carousel vertical>
+                <Carousel vertical afterChange={onChange}>
                   <div><h3>Open-Closed Principle</h3></div>
                   <div><h3>Software entities should be open for extension, but closed for modification</h3></div>
                 </Carousel>
@@ -155,21 +173,9 @@ export class Resources extends Component {
             )}
           />
         </Modal>
-        {/* <Cards />
-
-        <Button type="primary" onClick={this.showModal}>Create a Resource</Button>
-        <Modal
-            title="Create a Resource"
-            style={{top: 30}}
-            visible={this.state.visible}
-            onOk={this.handleOk}
-            onCancel={this.handleCancel}
-          >
-          <ResourceForm/>
-        </Modal>
       </div>
     )
   }
 }
 
-export default Resources
+export default ProfileResources
