@@ -4,10 +4,6 @@ import { Card, List, Button } from 'antd';
 import { API, Auth } from "aws-amplify";
 import uuid from "uuid";
 
-import game from "./game.jpg";
-import booki from "./book1.png"
-import pikachu from "./pikachu.png";
-import pac from "./pac1.jpg";
 
 //implement search 
 //listing of cateory
@@ -19,65 +15,72 @@ export class Cards extends Component {
   constructor(){
     super();
     this.state = {
-      data: [],
+      resources: [],
       user:''
     }
   }
   
   async componentDidMount(){
-    this.getResources();
     Auth.currentAuthenticatedUser({
       bypassCache:true
     }).then(user =>{
       this.setState({user: user.attributes.preferred_username});
     })
     .catch(error => console.log(error));
-  }
-
-  async createResources(){
-    let resourceId = 'resource-'+uuid.v4().toString();
-    let resource_title = "this.state.title";
-    let resource_description = "this.state.description";
-    let created_by = this.state.user;
-    let timestamp = new Date().toLocaleString();
-
-    let apiName = 'posts';
-    let path = '/resources/create-resource';
-    let myInit = {
-      body: {resourceId, resource_title, resource_description, created_by, timestamp}
-    }
-    await API.post(apiName, path, myInit).then(response => {
-      console.log("Resource post sent", response);
-     
-    }).catch(error => {
-      console.log(error);
-    })
+    this.getResources();
   }
 
   async getResources(){
-    const resources = await API.get("posts", "/resources/get-resources");
-    console.log("Resources here:", resources);
+    console.log("Getting studygroups...");
+    let email = this.state.currentUser;
+
+    let apiName = 'posts';
+    let path = '/resources/get-resources';
+    let myInit = {
+      body: {user: email}
+    };
+    await API.get(apiName, path, myInit)
+      .then((response) => {
+        console.log("Resources:", response);
+        response.body.map((item) => {
+          this.setState({
+            resources:[
+              ...this.state.resources,
+              {
+               resource_title: item.resource_title,
+               resource_id: item.resourceId,
+               resource_description: item.resource_description,
+               created_by: item.created_by,
+               timestamp: item.timestamp
+              }
+            ]
+          })
+        })
+        // console.log('Success: ', this.state.study_groups);
+      })
+      .catch((error) => {
+        console.log("Something went wrong: ", error);
+      });
   }
 
   render() {
     return (
       <div>
-        <Button onClick={() => this.createResources() }>Create Resource</Button>
         <List
           grid={{ gutter: 16, column: 4 }}
-          dataSource={this.state.data}
+          dataSource={this.state.resources}
           renderItem={item => (
             <List.Item>
               <Card
                 hoverable
-                //title={item.title}
+                title={item.resource_title}
                 cover={<img src={item.url} />}
                 // actions={[<Icon type="setting" />, <Icon type="edit" />]}
               >
                 <Meta
                   // avatar={<Avatar src={item.image} />}
-                  title={item.title}
-                  description={item.description}
+                  title={item.resource_title}
+                  description={item.resource_description}
                 />
               </Card>
             </List.Item>

@@ -6,6 +6,7 @@ import ProfileStudyGroups from './ProfileStudyGroups';
 import ProfileFeed from './ProfileFeed';
 import { Auth, API } from "aws-amplify";
 import './profile.css';
+import ProfileResources from "./ProfileResources";
 
 const TabPane = Tabs.TabPane;
 
@@ -121,7 +122,7 @@ export class Profile extends Component {
                 <ProfileFeed currentUser={userAttributes.preferred_username}/>
               </TabPane>
               <TabPane tab={<span><Icon type="read"/>Resources</span>} key="2">
-                <Title level={4}>Where the users' resources posts will go</Title>
+                <ProfileResources />
               </TabPane>
               <TabPane tab={<span><Icon type="team"/>Study groups</span>} key="3">
                 <ProfileStudyGroups user={this.state.userAttributes.email}/>
