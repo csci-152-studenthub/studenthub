@@ -3,7 +3,7 @@ import {Typography, Button, Modal, Card, List, Carousel, Divider, Avatar} from '
 import "./Resources.css";
 import "./resComp/Cards.js";
 import Cards from './resComp/Cards.js';
-import ResourceForm from './CreateResource.js';
+import CreateResource from './CreateResource.js';
 
 
 
@@ -16,13 +16,6 @@ export class Resources extends Component {
     this.state ={
       cardsLoading: true,
       visible: false,
-      data:[
-      {
-        title: "Notes for CSCI 152",
-        description: "Lecture on Algorithms",
-        uri: `https://unsplash.it/150/200?image=11`   
-      },
-    ]
   };
 
     this.openCard = this.openCard.bind(this);
@@ -69,40 +62,11 @@ export class Resources extends Component {
 
 
   render() {
-    const comments = [
-      {
-        title: 'This is really helpful!',
-        user: "Nina"
-      },
-      {
-        title: 'I almost forgot to study these, thanks for the cards!',
-        user: "Stanley"
-      },
-    ];
     return (
       <div className="resources-container">
-       <List
-          grid={{ gutter: 10, column: 4 }}
-          dataSource={this.state.data}
-          renderItem={item => (
-            <List.Item>
-              <Card
-                hoverable
-                style={{ width: 240 }}
-                cover={<img alt="example" src={item.uri} />}
-              >
-                <Meta
-                  onClick={() => this.openCard(item)}
-                  title={item.title}
-                  description={item.description}
-                />
-              </Card>
-              
-            </List.Item>
-          )}
-        />,
+       
 
-        <Modal
+        {/* <Modal
           title={this.state.currentCard === undefined ? "Loading..." : this.state.currentCard.title}
           style={{top: 30}}
           width={1000}
@@ -154,18 +118,20 @@ export class Resources extends Component {
               </List.Item>
             )}
           />
-        </Modal>
-        {/* <Cards />
+        </Modal> */}
+        <Cards />
 
         <Button type="primary" onClick={this.showModal}>Create a Resource</Button>
         <Modal
             title="Create a Resource"
-            style={{top: 30}}
+            style={{top: 30, width: "50%"}}
             visible={this.state.visible}
             onOk={this.handleOk}
             onCancel={this.handleCancel}
+            okText="Submit"
+            
           >
-          <ResourceForm/>
+          <CreateResource modalVisible={this.state.visible}/>
         </Modal>
       </div>
     )

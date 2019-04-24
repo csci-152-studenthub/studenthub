@@ -4,6 +4,8 @@ import { Card, List, Button } from 'antd';
 import { API, Auth } from "aws-amplify";
 import uuid from "uuid";
 
+import "../Resources.css";
+
 
 //implement search 
 //listing of cateory
@@ -51,6 +53,7 @@ export class Cards extends Component {
                resource_id: item.resourceId,
                resource_description: item.resource_description,
                created_by: item.created_by,
+               resource_url: item.resource_url,
                timestamp: item.timestamp
               }
             ]
@@ -73,8 +76,11 @@ export class Cards extends Component {
             <List.Item>
               <Card
                 hoverable
-                title={item.resource_title}
-                cover={<img src={item.url} />}
+                cover={
+                <img 
+                  src={item.url === null ? item.url : `https://unsplash.it/150/200?image=11`}
+                  className="img-resize"
+                />}
                 // actions={[<Icon type="setting" />, <Icon type="edit" />]}
               >
                 <Meta

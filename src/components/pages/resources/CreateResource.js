@@ -7,15 +7,16 @@ import { API, Auth } from "aws-amplify";
 const { Text } = Typography;
 const { Option, OptGroup } = Select;
 const { TextArea } = Input;
-export class CreateResources extends Component {
+export class CreateResource extends Component {
   constructor(props){
-    super();
+    super(props);
 
     this.state ={
       user: '',
       title:'',
       id: '',
       description:'',
+      uri: '',
       timestamp: '',
     };
 
@@ -41,14 +42,15 @@ export class CreateResources extends Component {
       if (!err) {
 				let resource_title = values.title;
 				let resourceId = 'resource-' + uuid.v4().toString(); 
-				let resource_description = values.description;
+        let resource_description = values.description;
+        let image_uri = values.uri;
 				let created_by = user;
 				let timestamp = new Date().toLocaleString();
 
         let apiName = 'posts';
         let path = '/resources/create-resource';
         let myInit = {
-            body: { resource_title, resourceId, resource_description, created_by, timestamp}
+            body: { resource_title, resourceId, resource_description, created_by, image_uri, timestamp}
         }
         await API.post(apiName, path, myInit).then(response => {
           console.log("created resource:", response);
@@ -70,13 +72,13 @@ export class CreateResources extends Component {
 
 
     return (
-      <Form onSubmit={this.handleSubmit} style={{ width: "50%"}}>
+      <Form onSubmit={this.props.modalVisible ? this.handleSubmit : console.log("modalVisible is", this.props.modalVisible)}>
 				<Text level={3} />Resource Title<Text/><br/>
         <Form.Item>
           {getFieldDecorator('title', {
             rules: [{ required: true, message: 'Please input a title!' }],
           })(
-            <Input placeholder="Title" />
+            <Input placeholder="Title" style={{ width: 300}} />
           )}
         </Form.Item>
 				<Text level={3} />Resource Description<Text/><br/>
@@ -84,7 +86,7 @@ export class CreateResources extends Component {
           {getFieldDecorator('description', {
             rules: [{ required: true, message: 'Please input a description!' }],
           })(
-            <TextArea placeholder="Description" />
+            <TextArea placeholder="Description" rows={4} style={{ width: 500}}/>
           )}
         </Form.Item>
         
@@ -98,5 +100,5 @@ export class CreateResources extends Component {
   }
 }
 
-const WrappedCreateResourceForm = Form.create({ name: 'CreateResourceForm' })(CreateResources);
+const WrappedCreateResourceForm = Form.create({ name: 'CreateResourceForm' })(CreateResource);
 export default WrappedCreateResourceForm
