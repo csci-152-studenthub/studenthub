@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { message, Input, Button, Form, Select, Typography } from 'antd';
+import { message, Input, Button, Form, Select, Typography, Modal } from 'antd';
 import uuid from 'uuid';
 import { API, Auth } from "aws-amplify";
 
@@ -12,6 +12,7 @@ export class CreateResource extends Component {
     super(props);
 
     this.state ={
+      visible: true,
       user: '',
       title:'',
       id: '',
@@ -54,10 +55,11 @@ export class CreateResource extends Component {
         }
         await API.post(apiName, path, myInit).then(response => {
           console.log("created resource:", response);
+          this.props.handleCards(true);
         }).catch(error => {
           console.log("Coudln't create resource:", error)
         });
-       
+        this.props.handleComponent(false); //sends false to Resources component
         console.log('Received values of form: ', values);
 
       } else {
@@ -66,36 +68,47 @@ export class CreateResource extends Component {
     });
   };
 
+  handleCancel = (e) => {
+    console.log(e);
+    this.setState({
+      visible: false,
+    });
+    this.props.handleComponent(false); //sends false to Resources component
+  };
+
   render() {
     const { getFieldDecorator } = this.props.form;
     const { myValidateHelp, myValidateStatus } = this.state;
 
 
     return (
-      <Form onSubmit={this.props.modalVisible ? this.handleSubmit : console.log("modalVisible is", this.props.modalVisible)}>
-				<Text level={3} />Resource Title<Text/><br/>
-        <Form.Item>
-          {getFieldDecorator('title', {
-            rules: [{ required: true, message: 'Please input a title!' }],
-          })(
-            <Input placeholder="Title" style={{ width: 300}} />
-          )}
-        </Form.Item>
-				<Text level={3} />Resource Description<Text/><br/>
-        <Form.Item>
-          {getFieldDecorator('description', {
-            rules: [{ required: true, message: 'Please input a description!' }],
-          })(
-            <TextArea placeholder="Description" rows={4} style={{ width: 500}}/>
-          )}
-        </Form.Item>
-        
-        <Form.Item>
-          <Button type="primary" htmlType="submit" style={{width: '40%'}}>
-            Submit
-          </Button>
-        </Form.Item>
-      </Form>
+      <Modal
+      title="Create a Flashcard"
+      style={{top: 30, width: "50%"}}
+      visible={this.state.visible}
+      onOk={this.handleSubmit}
+      onCancel={this.handleCancel}
+      okText="Submit"
+      >
+        <Form onSubmit={this.handleSubmit}>
+          <Text level={3} />Flashcard Term<Text/><br/>
+          <Form.Item>
+            {getFieldDecorator('title', {
+              rules: [{ required: true, message: 'Please input a term!' }],
+            })(
+              <Input placeholder="Term" style={{ width: 300}} />
+            )}
+          </Form.Item>
+          <Text level={3} />Flashcard Definition<Text/><br/>
+          <Form.Item>
+            {getFieldDecorator('description', {
+              rules: [{ required: true, message: 'Please input a definition!' }],
+            })(
+              <TextArea placeholder="Definitions" rows={4} style={{ width: 500}}/>
+            )}
+          </Form.Item>
+        </Form>
+      </Modal>
     )
   }
 }
