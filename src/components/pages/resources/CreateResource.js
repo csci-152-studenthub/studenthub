@@ -46,14 +46,14 @@ export class CreateResources extends Component {
 				let timestamp = new Date().toLocaleString();
 
         let apiName = 'posts';
-        let path = '/resources/create-resources';
+        let path = '/resources/create-resource';
         let myInit = {
             body: { resource_title, resourceId, resource_description, created_by, timestamp}
         }
         await API.post(apiName, path, myInit).then(response => {
           console.log("created resource:", response);
         }).catch(error => {
-          console.log(error.response)
+          console.log("Coudln't create resource:", error)
         });
        
         console.log('Received values of form: ', values);
