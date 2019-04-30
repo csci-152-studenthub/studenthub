@@ -5,9 +5,7 @@ import { API, Auth } from "aws-amplify";
 import uuid from "uuid";
 
 
-//implement search 
-//listing of cateory
-//contact
+
 
 const { Meta } = Card;
 
