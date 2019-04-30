@@ -36,14 +36,14 @@ export class Resources extends Component {
     this.setState({
       visible: true,
     });
-  }
+  };
 
   handleOk = (e) => {
     console.log(e);
     this.setState({
       visible: false,
     });
-  }
+  };
 
   handleCancel = (e) => {
     console.log(e);
@@ -155,7 +155,7 @@ export class Resources extends Component {
             )}
           />
         </Modal>
-        {/* <Cards />
+        <Cards />
 
         <Button type="primary" onClick={this.showModal}>Create a Resource</Button>
         <Modal
