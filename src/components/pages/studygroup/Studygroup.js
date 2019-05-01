@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import { message, Typography, Button, Modal, Card, List, Skeleton } from 'antd';
-import uuid from "uuid";
+import { Typography, Button, Modal, Skeleton } from 'antd';
+// import uuid from "uuid";
 import { API, Auth} from "aws-amplify";
 import CreateStudyGroupForm from './createStudyGroup';
 import "./Studygroup.css";
 import MyStudyGroups from "../profile/ProfileStudyGroups";
 
-const { Meta } = Card;
+// const { Meta } = Card;
 
-const { Title, Text } = Typography;
+const { Title } = Typography;
 export class Studygroup extends Component {
   constructor(props){
     super(props);

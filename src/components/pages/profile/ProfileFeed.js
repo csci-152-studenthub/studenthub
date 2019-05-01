@@ -1,24 +1,21 @@
 import React, { Component } from 'react'
 import {
   message,
-  Input,
   Icon,
-  Typography,
-  Tabs,
   List,
   Popconfirm,
   Tag,
-  Skeleton
+  Skeleton,
+  Typography
 } from 'antd';
-import ProfilePic from './ProfilePic';
-import EditAccountInfo from './EditAccountInfo';
-import { Auth, API } from "aws-amplify";
+// import ProfilePic from './ProfilePic';
+// import EditAccountInfo from './EditAccountInfo';
+import { API } from "aws-amplify";
 import './profile.css';
 
-const InputGroup = Input.Group;
-const TabPane = Tabs.TabPane;
-
-const { Title, Text, Paragraph } = Typography;
+// const InputGroup = Input.Group;
+// const TabPane = Tabs.TabPane;
+const { Paragraph, Text } = Typography;
 
 export class ProfileFeed extends Component {
   constructor(props){
@@ -39,7 +36,7 @@ export class ProfileFeed extends Component {
     this.setState({
       posts: [],
       componentLoading: true
-    })
+    });
 
     let apiName = 'posts';
     let path = '/posts/get-posts-user';
@@ -57,7 +54,9 @@ export class ProfileFeed extends Component {
             id: post.id,
             user: post.user,
             title: post.title,
-            content: post.content
+            content: post.content,
+            likes: post.likes,
+            dislikes: post.dislikes
           }
         ]
       })
@@ -74,7 +73,7 @@ export class ProfileFeed extends Component {
         id: id,
         timestamp: timestamp
       }
-    }
+    };
     API.del(apiName, path, myInit).then(response => {
       this.getPosts();
       message.success('Successfully deleted post!');
@@ -88,6 +87,13 @@ export class ProfileFeed extends Component {
   render() {
     let data = this.state.posts;
     let loading = this.state.componentLoading;
+
+    const CounterIcon = ({name, count}) => (
+      <span>
+        <Text>{name}: </Text>
+        <Text style={{color: '#1890FF'}}>{count}</Text>
+      </span>
+    );
 
     const DeleteIcon = ({ createdBy, id, timestamp }) => (
       <span>
@@ -115,7 +121,7 @@ export class ProfileFeed extends Component {
         renderItem={item => (
           <List.Item
             key={item.title}
-            actions={!loading && [ <Tag color="#1890FF">{item.subfeed}</Tag>, <DeleteIcon createdBy={item.user} id={item.id} timestamp={item.timestamp} />]}
+            actions={!loading && [ <CounterIcon name={"Likes"} count={item.likes.length}/>, <CounterIcon name={"Dislikes"} count={item.dislikes.length}/>, <Tag color="#1890FF">{item.subfeed}</Tag>, <DeleteIcon createdBy={item.user} id={item.id} timestamp={item.timestamp} />]}
           >
             <Skeleton loading={loading} active avatar>
               <List.Item.Meta

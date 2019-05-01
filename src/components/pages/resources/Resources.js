@@ -5,11 +5,9 @@ import "./resComp/Cards.js";
 import Cards from './resComp/Cards.js';
 import ResourceForm from './CreateResource.js';
 
-
-
-
 const { Title, Paragraph, Text } = Typography;
 const { Meta } = Card;
+
 export class Resources extends Component {
   constructor(props){
     super(props);

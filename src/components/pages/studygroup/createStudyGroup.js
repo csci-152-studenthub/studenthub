@@ -1,16 +1,13 @@
 
 import React from 'react';
 import 'antd/dist/antd.css';
-import {
-  Form, Input, Icon, Button, message
-} from 'antd';
+import { Form, Input, Icon, Button, message } from 'antd';
 import { API } from "aws-amplify";
 import uuid from "uuid";
 
 const { TextArea } = Input;
 
 let id = 0;
-
 
 class CreateStudyGroup extends React.Component {
   constructor(props){
@@ -101,7 +98,7 @@ class CreateStudyGroup extends React.Component {
             whitespace: true,
             message: "Please input members email or delete this field.",
           },
-          { pattern: '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.+-]+\.edu$', message: 'Only edu emails can be accepted!'},
+          { pattern: '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.+-]+edu$', message: 'Only edu emails can be accepted!'},
           { type: 'email', message: 'This is not a valid E-mail!'},
           { required: true, message: 'Please input your E-mail!'}],
         })(

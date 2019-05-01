@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import '../../../../App.css';
 import { Card, List, Button } from 'antd';
 import { API, Auth } from "aws-amplify";
-import uuid from "uuid";
-
 
 //implement search 
 //listing of cateory
