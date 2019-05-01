@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Icon, Typography, Button, Drawer, Tabs, Divider, Skeleton} from 'antd';
+import { Icon, Typography, Button, Drawer, Tabs, Divider, Skeleton } from 'antd';
 import ProfilePic from './ProfilePic';
 import EditAccountInfo from './EditAccountInfo';
 import ProfileStudyGroups from './ProfileStudyGroups';
@@ -10,7 +10,7 @@ import ProfileResources from "./ProfileResources";
 
 const TabPane = Tabs.TabPane;
 
-const { Title, Text } = Typography;
+const { Text } = Typography;
 
 export class Profile extends Component {
   constructor(props){
@@ -47,7 +47,7 @@ export class Profile extends Component {
     this.setState({
       posts: [],
       loading: true
-    })
+    });
 
     try {
       const posts = await API.get("posts", "/posts/get-posts");
@@ -61,7 +61,9 @@ export class Profile extends Component {
               id: post.id,
               user: post.user,
               title: post.title,
-              content: post.content
+              content: post.content,
+              likes: post.likes,
+              dislikes: post.dislikes
             }
           ]
         })

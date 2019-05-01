@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
-import { message, Input, Button, Form, Select, Typography } from 'antd';
+import { Input, Button, Form, Typography } from 'antd';
 import uuid from 'uuid';
 import { API, Auth } from "aws-amplify";
 
-
 const { Text } = Typography;
-const { Option, OptGroup } = Select;
 const { TextArea } = Input;
+
 export class CreateResources extends Component {
   constructor(props){
     super();
@@ -22,8 +21,8 @@ export class CreateResources extends Component {
   }
 
   async componentWillMount(){
-    let user = await Auth.currentAuthenticatedUser();
-    this.setState({userCognito: user});
+    let { attributes } = await Auth.currentAuthenticatedUser();
+    this.setState({user: attributes.preferred_username, userEmail: attributes.email});
   }
 
   handleChange(name, event){
@@ -36,7 +35,7 @@ export class CreateResources extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
 
-    let user = this.state.userCognito;
+    let user = this.state.userEmail;
     this.props.form.validateFields(async (err, values) => {
       if (!err) {
 				let resource_title = values.title;
@@ -46,14 +45,14 @@ export class CreateResources extends Component {
 				let timestamp = new Date().toLocaleString();
 
         let apiName = 'posts';
-        let path = '/resources/create-resources';
+        let path = '/resources/create-resource';
         let myInit = {
             body: { resource_title, resourceId, resource_description, created_by, timestamp}
         }
         await API.post(apiName, path, myInit).then(response => {
           console.log("created resource:", response);
         }).catch(error => {
-          console.log(error.response)
+          console.log("Coudln't create resource:", error)
         });
        
         console.log('Received values of form: ', values);

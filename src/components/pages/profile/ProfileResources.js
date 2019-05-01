@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import {
   List,
   Card,
-  Carousel, Skeleton, Modal, Icon, Typography, Divider, Avatar
+  Carousel, Modal, Typography, Divider, Avatar
 } from 'antd';
 import './ProfileResources.css'
 const { Title, Paragraph, Text } = Typography;

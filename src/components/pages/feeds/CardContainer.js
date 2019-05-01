@@ -18,8 +18,9 @@ import {
   Tag, Avatar
 } from 'antd';
 import uuid from "uuid";
-import ProfilePic from "../profile/ProfilePic";
+// import ProfilePic from "../profile/ProfilePic";
 import './CardContainer.css';
+import Comments from './Comments'
 
 const { Title, Text, Paragraph } = Typography;
 const { TextArea } = Input;
@@ -37,17 +38,20 @@ export class CardContainer extends Component {
       currentSubfeedTimestamp: '',
       currentSubfeedDescription: 'Default subfeed for all students. All posts are allowed here.',
       currentSubfeedOwner: false,
+      currentPost: undefined,
       defaultSubfeed: ['General'],
       componentLoading: true,
       user: '',
+      userEmail: '',
       posts: [],
       subfeeds: [],
       component: 1,
       title: '',
       content: '',
       drawerVisible: false,
-      modalVisible: false
-    }
+      modalVisible: false,
+      commentsVisible: false
+    };
 
     this.getPosts = this.getPosts.bind(this);
     this.getSubfeeds = this.getSubfeeds.bind(this);
@@ -60,8 +64,6 @@ export class CardContainer extends Component {
     this.onChange = this.onChange.bind(this);
   }
 
-
-
   async componentDidMount(){
     this.getPosts();
     this.getSubfeeds();
@@ -69,7 +71,7 @@ export class CardContainer extends Component {
         bypassCache: true  // Optional, By default is false. If set to true, this call will send a request to Cognito to get the latest user data
     }).then(user => {
       this.props.setHeader('General');
-      this.setState({user: user.attributes.preferred_username})
+      this.setState({user: user.attributes.preferred_username, userEmail: user.attributes.email})
     })
     .catch(err => console.log(err));
   }
@@ -89,15 +91,15 @@ export class CardContainer extends Component {
       var timestamp = new Date().toLocaleString();
       const response = await this.createPost({
         subfeed: this.state.currentSubfeed,
-        likes: 0,
-        dislikes: 0,
+        likes: [this.state.userEmail],
+        dislikes: [],
         timestamp: timestamp,
-        id: uuid.v4().toString(),
+        id: 'post-'+uuid.v4().toString(),
         user: this.state.user,
         title: this.state.title,
         content: this.state.content
       });
-      this.setState({buttonLoading: false});
+      this.setState({buttonLoading: false, title: '', content: ''});
       message.success('Post has been created!');
       if(this.state.currentSubfeed === 'General'){
         this.getPosts();
@@ -107,10 +109,10 @@ export class CardContainer extends Component {
       console.log(response);
     } catch (e) {
       this.setState({buttonLoading: false});
-      message.error('Could not create post.')
+      message.error('Could not create post.');
       console.log(e);
     }
-  }
+  };
 
   createPost(post) {
     return API.post("posts", "/posts/create", {
@@ -122,7 +124,7 @@ export class CardContainer extends Component {
     this.setState({
       posts: [],
       componentLoading: true
-    })
+    });
 
     const posts = await API.get("posts", "/posts/get-posts");
     posts.body.map((post) => (
@@ -135,11 +137,14 @@ export class CardContainer extends Component {
             id: post.id,
             user: post.user,
             title: post.title,
-            content: post.content
+            content: post.content,
+            likes: post.likes,
+            dislikes: post.dislikes
           }
         ]
       })
     ));
+    console.log('Posts: ', posts);
     this.setState({componentLoading: false});
   }
 
@@ -161,7 +166,9 @@ export class CardContainer extends Component {
                 id: post.id,
                 user: post.user,
                 title: post.title,
-                content: post.content
+                content: post.content,
+                likes: post.likes,
+                dislikes: post.dislikes
               }
             ]
           })
@@ -203,52 +210,103 @@ export class CardContainer extends Component {
   }
 
   handleLike(post){
-    console.log('post:', post);
     console.log('User liked post: ', post.title);
+    let tempPosts = this.state.posts;
+    let user = this.state.userEmail;
+
+    for (let item of tempPosts) {
+      if(item.id === post.id){
+        if(item.likes.includes(user)){                     // If user has already disliked post, removes like
+          let index = item.likes.indexOf(user);
+          if (index !== -1) {
+            item.likes.splice(index, 1);
+          }
+        } else {
+          if(item.dislikes.includes(user)){                      // If user has previously liked post, removes like
+            let index = item.dislikes.indexOf(user);
+            if (index !== -1) {
+              item.dislikes.splice(index, 1);
+            }
+          }
+          item.likes.push(user);
+        }
+      }
+    }
+
+    this.setState({posts: tempPosts});
+    this.likePost(post);
+  }
+
+  likePost(post){
+    let id = post.id;
+    let timestamp = post.timestamp;
+    let userEmail = this.state.userEmail;
 
     let apiName = 'posts';
     let path = '/posts/'+post.id+'/like';
-    console.log('api: '+path)
     let myInit = {
-        body: {
-          timestamp: post.timestamp
-        }
-    }
-    API.put(apiName, path, myInit).then(response => {
-        // Add your code here
-        message.success('Successfully liked post!')
-        console.log(response);
+      body: {
+        id, timestamp, userEmail
+      }
+    };
+    API.post(apiName, path, myInit).then(response => {
+      console.log('like-post lambda response: ', response);
     }).catch(error => {
-        message.error('Could not like post.')
-        console.log(error.response)
+      console.log(error.response)
     });
   }
 
   handleDislike(post){
     console.log('User disliked post: ', post.title);
+    let tempPosts = this.state.posts;
+    let user = this.state.userEmail;
+
+    for (let item of tempPosts) {
+      if(item.id === post.id){
+        if(item.dislikes.includes(user)){                     // If user has already disliked post, remove dislike
+          let index = item.dislikes.indexOf(user);
+          if (index !== -1) {
+            item.dislikes.splice(index, 1);
+          }
+        } else {
+          if(item.likes.includes(user)){                      // If user has previously liked post, removes like
+            let index = item.likes.indexOf(user);
+            if (index !== -1) {
+              item.likes.splice(index, 1);
+            }
+          }
+          item.dislikes.push(user);
+        }
+      }
+    }
+
+    this.setState({posts: tempPosts});
+    this.dislikePost(post);
+  }
+
+  dislikePost(post){
+    let id = post.id;
+    let timestamp = post.timestamp;
+    let userEmail = this.state.userEmail;
 
     let apiName = 'posts';
     let path = '/posts/'+post.id+'/dislike';
-    console.log('api: '+path)
     let myInit = {
-        body: {
-          timestamp: post.timestamp
-        }
-    }
-    API.put(apiName, path, myInit).then(response => {
-        // Add your code here
-        message.success('Successfully disliked post!')
-        console.log(response);
+      body: {
+        id, timestamp, userEmail
+      }
+    };
+    API.post(apiName, path, myInit).then(response => {
+      console.log('dislike-post lambda response: ', response);
     }).catch(error => {
-        message.error('Could not like post.')
-        console.log(error.response)
+      console.log(error.response)
     });
   }
 
   async getSubfeeds(){
     this.setState({
       subfeeds: []
-    })
+    });
 
     try {
       const subfeeds = await API.get("posts", "/subfeeds/get-subfeeds");
@@ -420,10 +478,50 @@ export class CardContainer extends Component {
     }
   }
 
+  async getComments(item){
+    this.setState({ currentPost: item, commentsLoading: true});
+    let ref = item.id;
+
+    let apiName = 'posts';
+    let path = '/comments/get-comments';
+
+    let myInit = {
+      body: { ref }
+    };
+    await API.post(apiName, path, myInit).then(response => {
+      console.log(`Successfully got comments for '${item.title}'`);
+      if (response.body.length === 0){
+        console.log("No comments found.");
+        this.setState({currentPostComments: []});
+      } else {
+        console.log("Comments: ", response.body);
+        this.setState({currentPostComments: response.body});
+        // response.body.map((comment) => (
+        //   this.setState({
+        //     currentPostComments: [
+        //       ...this.state.currentPostComments,
+        //       {
+        //         key: comment.commentId,
+        //         datetime: comment.timestamp,
+        //         author: comment.user,
+        //         content: comment.content,
+        //         avatar: <Avatar size={38}  style={{ backgroundColor: '#1890FF', top: 10 }} icon="user" />
+        //       }
+        //     ]
+        //   })
+        // ));
+      }
+      this.setState({commentsLoading: false, commentsVisible: true})
+    }).catch(e => {
+      console.log("Error in getting comments: ", e);
+      this.setState({commentsLoading: false, commentsVisible: true})
+    })
+  }
+
   render() {
-    const IconText = ({ type, text, onClick }) => (
+    const IconText = ({ type, style, text, onClick }) => (
       <span>
-        <Icon type={type} style={{ marginRight: 2, color: '#1890FF'}} onClick={onClick}/>
+        <Icon type={type} style={{ marginRight: 5, color: '#1890FF'}} theme={style} onClick={onClick}/>
         {text}
       </span>
     );
@@ -458,8 +556,8 @@ export class CardContainer extends Component {
       <div className="card-container">
         <div className="item-feed">
           <Divider orientation="left"><Text style={{fontSize: 22}}>Create Post</Text></Divider>
-          <Input placeholder="Post title" style={{maxWidth: '300px', top: 0}} onChange={(e) => this.handleChange('title', e)}/><br/>
-          <TextArea placeholder="Post content" rows={4} style={{top: 15, maxWidth: '600px'}} onChange={(e) => this.handleChange('content', e)}/><br/>
+          <Input placeholder="Post title" value={this.state.title} style={{maxWidth: '300px', top: 0}} onChange={(e) => this.handleChange('title', e)}/><br/>
+          <TextArea placeholder="Post content" value={this.state.content} rows={4} style={{top: 15, maxWidth: '600px'}} onChange={(e) => this.handleChange('content', e)}/><br/>
           <Button loading={this.state.buttonLoading} type="primary" onClick={this.handleSubmit} style={{top: 25}}>Submit Post</Button>
           <Divider orientation="left" style={{top: 30}}><Text style={{fontSize: 22}}>{this.state.currentSubfeed} Posts</Text></Divider>
 
@@ -472,10 +570,19 @@ export class CardContainer extends Component {
                 <List.Item
                   key={item.id}
                   actions={!loading && [
-                    <IconText onClick={() => this.handleLike(item)} type="like-o" text="152" />,
-                    <IconText onClick={() => this.handleDislike(item)} type="dislike-o" text="152" />,
+                    <IconText onClick={() => this.handleLike(item)} type="like" style={item.likes.includes(this.state.userEmail) ? "filled" : null} text={loading ? null : item.likes.length} />,
+                    <IconText onClick={() => this.handleDislike(item)} type="dislike" style={item.dislikes.includes(this.state.userEmail) ? "filled" : null} text={loading ? null : item.dislikes.length} />,
                     <Tooltip title={`Switch to the ${item.subfeed} subfeed`}><Tag onClick={() => this.switchSubfeed(item.subfeed)} color="#1890FF">{item.subfeed}</Tag></Tooltip>,
-                    <DeleteIcon createdBy={item.user} id={item.id} timestamp={item.timestamp}/>]}
+                    <Tooltip title={"Comments"}>
+                      <Icon
+                        style={{ marginRight: 5, color: '#1890FF'}}
+                        onClick={() => {
+                          this.getComments(item);
+                        }}
+                        type="message" />
+                    </Tooltip>,
+                    <DeleteIcon createdBy={item.user} id={item.id} timestamp={item.timestamp}/>
+                  ]}
                 >
                   <Skeleton loading={loading} active avatar>
                     <List.Item.Meta
@@ -548,6 +655,22 @@ export class CardContainer extends Component {
             <TextArea placeholder="Give a description about what your subfeed is about!" rows={4} style={{ maxWidth: '500px', top: 5}} onChange={(e) => this.handleChange('subfeed_description', e)}/><br/>
           </div>
         </Modal>
+
+        <Drawer
+          title="Comments"
+          placement="right"
+          closable={true}
+          visible={this.state.commentsVisible}
+          width={512}
+          onClose={() => this.setState({commentsVisible: false})}
+        >
+          {this.state.commentsLoading ?
+            <Skeleton />
+            :
+            <Comments comments={this.state.currentPostComments} post={this.state.currentPost} user={this.state.user}/>
+          }
+        </Drawer>
+
       </div>
     );
   }

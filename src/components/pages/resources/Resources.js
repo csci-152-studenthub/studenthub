@@ -5,11 +5,9 @@ import "./resComp/Cards.js";
 import Cards from './resComp/Cards.js';
 import ResourceForm from './CreateResource.js';
 
-
-
-
 const { Title, Paragraph, Text } = Typography;
 const { Meta } = Card;
+
 export class Resources extends Component {
   constructor(props){
     super(props);
@@ -21,31 +19,6 @@ export class Resources extends Component {
         title: "Notes for CSCI 152",
         description: "Lecture on Algorithms",
         uri: `https://unsplash.it/150/200?image=11`   
-      },
-      {
-        title: "Notes for Physics",
-        description: "E=mc square",
-        uri: `https://unsplash.it/150/200?image=1`    
-      },
-      {
-        title: "Notes for CSCI 130",
-        description: "Lecture on Web dev",
-        uri: `https://unsplash.it/150/200?image=3`      
-      },
-      {
-        title: "Notes for Chemisty",
-        description: "Chemisty",
-        uri: `https://unsplash.it/150/200?image=8`
-      },
-      {
-        title: "Notes for Biology",
-        description: "Cells",
-        uri: `https://unsplash.it/150/200?image=9`
-      },
-      {
-        title: "Notes for English",
-        description: "English",
-        uri: `https://unsplash.it/150/200?image=4`
       },
     ]
   };
@@ -61,14 +34,14 @@ export class Resources extends Component {
     this.setState({
       visible: true,
     });
-  }
+  };
 
   handleOk = (e) => {
     console.log(e);
     this.setState({
       visible: false,
     });
-  }
+  };
 
   handleCancel = (e) => {
     console.log(e);
@@ -126,6 +99,7 @@ export class Resources extends Component {
             </List.Item>
           )}
         />,
+
         <Modal
           title={this.state.currentCard === undefined ? "Loading..." : this.state.currentCard.title}
           style={{top: 30}}
@@ -179,7 +153,8 @@ export class Resources extends Component {
             )}
           />
         </Modal>
-        {/* <Cards />
+        <Cards />
+
         <Button type="primary" onClick={this.showModal}>Create a Resource</Button>
         <Modal
             title="Create a Resource"
@@ -189,7 +164,7 @@ export class Resources extends Component {
             onCancel={this.handleCancel}
           >
           <ResourceForm/>
-        </Modal> */}
+        </Modal>
       </div>
     )
   }
