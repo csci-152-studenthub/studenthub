@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Auth, API } from "aws-amplify";
-import { List, Typography } from 'antd';
+import { Avatar, message, Input, List, Skeleton, Popconfirm, Icon, Typography, Button } from 'antd';
 import './Dashboard.css';
-// import Feeds from '../feeds/Feeds';
-// import Resources from '../resources/Resources';
+import Feeds from '../feeds/Feeds';
+import Resources from '../resources/Resources';
 import game from "./game.jpg";
 import music from "./music.jpg";
 import book from "./book.jpg";
@@ -29,7 +29,7 @@ export class Dashboard extends Component {
     }
 
     this.getPosts = this.getPosts.bind(this);
-    this.CountFeed = this.CountFeed.bind(this);
+    this.countFeed = this.countFeed.bind(this);
   }
   
   async componentDidMount(){
@@ -74,37 +74,45 @@ export class Dashboard extends Component {
       this.setState({loading: false});
     }
   }
-
+  handleChange(type, e){
+    // console.log(type, 'is now: ', e.target.value);
+    this.setState({
+      [type]: e.target.value
+    });
+  }
   
-  CountFeed()
+  countFeed()
   {
     let e=0;
     this.state.posts.forEach(post => {
-
-      if(post.user===this.state.user)
+      
+      if(post.user===this.state.userAttributes.preferred_username)
       {
         e++;
       }
+      
     });
 
-    return (<Text >Feeds: {e} , Resources: {e}, StudyGroup:{e}</Text>)
+    return (<Text >Feeds: {e}</Text>)
   }
    render() {
     const data =this.state.posts;
+    const { TextArea } = Input;
+  
     let userAttributes = this.state.userAttributes ? this.state.userAttributes : ""; 
     return (
     
       <div>
-      <div className="grid-head">
-        <div><Title level={4}>Hello <strong>{userAttributes.name}</strong>, hope you have an amazing day! {this.CountFeed()}</Title> 
-        <Text level={0}><p>1. CSCI Midterm on 4/17</p></Text>
-        <Text level={0}><p>2. Appointment on 5/2</p></Text>
-        <Text level={0}><p>3. MileStone2 on 4/9</p></Text>
+      
+      <div class="grid-head">
+        <div><Title level={4}>Hello <strong>{userAttributes.name}</strong>, hope you have an amazing day! {this.countFeed()}</Title> 
+        
         </div>
       </div>
-      <div className="grid-container">
+      <TextArea placeholder="Write down..." rows={6}  onChange={(e) => this.handleChange('content', e)}/>
+      <div class="grid-container">
         <div>
-          <div className="title"><Title style={{color:"white"}}>Feeds</Title></div>
+          <div class="title"><Title style={{color:"white"}}>Feeds</Title></div>
           <List
             itemLayout="horizontal"
             dataSource={data}
@@ -118,7 +126,7 @@ export class Dashboard extends Component {
   />,
         </div>
         <div>
-        <div className="title"><Title style={{color:"white"}}>Resources</Title></div>
+        <div class="title"><Title style={{color:"white"}}>Resources</Title></div>
         <p>{<img alt="example" src={music} height="30" />}<strong>{this.state.user.split('@')[0]}</strong> upload a video in the Computer Scinece</p>
         <p>{<img alt="example" src={book} height="24" />}<strong>{this.state.user.split('@')[0]}</strong> upload a document in the Chemistry</p>
         <p>{<img alt="example" src={book} height="24" />}<strong>{this.state.user.split('@')[0]}</strong> upload a text in the CSCI 113</p>
@@ -127,13 +135,13 @@ export class Dashboard extends Component {
         <p>{<img alt="example" src={music} height="30" />}<strong>{this.state.user.split('@')[0]}</strong> upload a picture in the CSCI 115</p>
         </div>
         <div>
-        <div className="title"><Title style={{color:"white"}}>StudyGroup</Title></div>
-        <p><strong>{this.state.user.split('@')[0]}</strong> joined "I want survive" in <span className="overline">CSCI119</span></p>
-        <p><strong>{this.state.user.split('@')[0]}</strong> joined "Milestone2" in <span className="overline">CSCI152</span></p>
-        <p><strong>{this.state.user.split('@')[0]}</strong> joined "Proofs introduction" in <span className="overline">CSCI119</span></p>
-        <p><strong>{this.state.user.split('@')[0]}</strong> joined "Final" in <span className="overline">CSCI119</span></p>
-        <p><strong>{this.state.user.split('@')[0]}</strong> joined "HW1" in <span className="overline">CSCI152</span></p>
-        <p><strong>{this.state.user.split('@')[0]}</strong> joined "Project" in <span className="overline">CSCI115</span></p>
+        <div class="title"><Title style={{color:"white"}}>StudyGroup</Title></div>
+        <p><strong>{this.state.user.split('@')[0]}</strong> joined "I want survive" in <span class="overline">CSCI119</span></p>
+        <p><strong>{this.state.user.split('@')[0]}</strong> joined "Milestone2" in <span class="overline">CSCI152</span></p>
+        <p><strong>{this.state.user.split('@')[0]}</strong> joined "Proofs introduction" in <span class="overline">CSCI119</span></p>
+        <p><strong>{this.state.user.split('@')[0]}</strong> joined "Final" in <span class="overline">CSCI119</span></p>
+        <p><strong>{this.state.user.split('@')[0]}</strong> joined "HW1" in <span class="overline">CSCI152</span></p>
+        <p><strong>{this.state.user.split('@')[0]}</strong> joined "Project" in <span class="overline">CSCI115</span></p>
 
         </div>
       </div>
