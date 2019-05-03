@@ -21,13 +21,22 @@
     
 }
 
+.item-studygroup-content{
+    grid-area: studygroup-content;
+
+}
+
+.item-divider{
+    grid-area: studygroup-divider;
+}
+
 .studygroup-container{
     display: grid;
-    grid-template-columns: auto;
+    grid-template-columns: 300px 50px 700px;
     grid-template-rows: auto ;
     background:white;
     box-shadow: 0 1px 4px rgba(0,21,41,.08); 
     padding: 20px;
     grid-template-areas:
-    "studygroup"
+    "studygroup studygroup-divider studygroup-content"
 }

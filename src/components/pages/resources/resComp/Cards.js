@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import '../../../../App.css';
 import { Card, List, Button, Skeleton, Modal, Carousel, Divider, Typography, Empty, ConfigProvider} from 'antd';
 import { API, Auth } from "aws-amplify";
+
 import uuid from "uuid";
 
 import "../Resources.css";
+
 
 
 //sort by major

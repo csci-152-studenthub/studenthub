@@ -5,6 +5,7 @@ import "./resComp/Cards.js";
 import Cards from './resComp/Cards.js';
 import CreateResource from './CreateResource.js';
 
+
 export class Resources extends Component {
   constructor(props){
     super(props);
@@ -18,6 +19,7 @@ export class Resources extends Component {
     this.props.handler("Resources");
   }
 
+
   showComponent = () => {
     this.setState( prevState => ({
       visible: !prevState.visible,
@@ -28,7 +30,7 @@ export class Resources extends Component {
     this.setState({
       visible: value,
     });
-  }
+  };
 
   handleResources = (value) => {
     this.setState({
@@ -40,6 +42,7 @@ export class Resources extends Component {
   render() {
     return (
       <div className="resources-container">
+
         <Cards updateResources={this.state.newResource} />
         <Button type="primary" onClick={this.showComponent}>Create Flashcards</Button>
         {this.state.visible ? <CreateResource handleComponent={this.hideComponent} handleCards={this.handleResources}/> : null} 

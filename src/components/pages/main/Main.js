@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Menu, Icon, Layout, message, Row, Col, Typography} from 'antd';
+import {Menu, Icon, Layout, message, Typography} from 'antd';
 import { Auth } from "aws-amplify";
 // import { Card, Avatar, Tag, Divider, Spin, Input } from 'antd';
 // const { Title } = Typography;
@@ -11,15 +11,11 @@ import StudyGroups from '../studygroup/Studygroup';
 import Profile from '../profile/Profile';
 import logo from '../../../react-logo.png';
 import './Main.css';
-import ProfilePic from '../profile/ProfilePic';
+// import ProfilePic from '../profile/ProfilePic';
 
-const SubMenu = Menu.SubMenu;
-const { Title, Text, Paragraph } = Typography;
-
-// const { Title } = Typography;
-const {
-  Content, Footer, Sider,
-} = Layout;
+// const SubMenu = Menu.SubMenu;
+const { Title } = Typography;
+const { Content, Footer, Sider } = Layout;
 
 export class Main extends Component {
   constructor(props){
@@ -88,7 +84,6 @@ export class Main extends Component {
   }
 
     render() {
-      const SubMenu = Menu.SubMenu;
       return(
         <div className="container">
           <div className="item-header">

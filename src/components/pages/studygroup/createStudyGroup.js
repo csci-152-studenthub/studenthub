@@ -1,16 +1,14 @@
 
 import React from 'react';
 import 'antd/dist/antd.css';
-import {
-  Form, Input, Icon, Button, message
-} from 'antd';
+import { Form, Input, Icon, Button, message } from 'antd';
 import { API } from "aws-amplify";
+import moment from 'moment';
 import uuid from "uuid";
 
 const { TextArea } = Input;
 
-let id = 0;
-
+let id = 1;
 
 class CreateStudyGroup extends React.Component {
   constructor(props){
@@ -20,9 +18,21 @@ class CreateStudyGroup extends React.Component {
       visible: false,
       confirmDirty: false,
       autoCompleteResult: [],
+      names: []
     };
   }
- 
+
+  componentDidMount() {
+    const { form } = this.props;
+    form.setFieldsValue({
+      keys: [0],
+    });
+    this.setState({
+      names: {
+        0: this.props.user,
+      }
+    });
+  }
 
   remove = (k) => {
     const { form } = this.props;
@@ -35,7 +45,8 @@ class CreateStudyGroup extends React.Component {
     form.setFieldsValue({
       keys: keys.filter(key => key !== k),
     });
-  }
+  };
+
   add = () => {
     const { form } = this.props;
     // can use data-binding to get
@@ -54,31 +65,50 @@ class CreateStudyGroup extends React.Component {
       if (!err) {
         this.setState({buttonLoading: true});
         console.log(values);
+        let created_by = this.props.user;
         let group_name = values.studygroupName;
         let course = values.course;
         let professor = values.professor;
         let members = values.names;
         let groupId = 'studygroup-'+uuid.v4().toString();
-        var timestamp = new Date().toLocaleString();
+        var timestamp = moment().format();
         let description = values.description;
 
         let apiName = 'posts';
         let path = '/studygroups/create-studygroup';
         let myInit = {
-            body: {groupId, group_name, course, professor, members, timestamp, description}
+            body: {groupId, group_name, course, professor, members, timestamp, description, created_by}
         };
         await API.post(apiName, path, myInit).then(response => {
           console.log('Created study group:', response);
           message.success('Successfully created study group!');
+          this.props.updateGroups({
+            groupId, group_name, course, professor, members, timestamp, description, created_by
+          });
+          this.props.switch({groupId, group_name, course, professor, members, timestamp, description, created_by});
+          this.sendEmails(group_name, members);
           this.setState({buttonLoading: false});
           this.props.closeModal();
-          this.props.getStudygroups();
         }).catch(error => {
-          console.log(error.response);
+          console.log("Encountered and error in creating a studygroup: ", error);
           this.setState({buttonLoading: false});
         });
        
       }
+    });
+  };
+
+   sendEmails(studygroup, users){
+    let apiName = 'posts';
+    let path = '/studygroups/send-emails';
+    let myInit = {
+      body: {studygroup, users}
+    };
+
+    API.post(apiName, path, myInit).then(response => {
+      console.log('Emails sent!:', response);
+    }).catch(error => {
+      console.log('Encountered an issue when trying to send emails: ', error.response);
     });
   }
 
@@ -96,12 +126,13 @@ class CreateStudyGroup extends React.Component {
       >
         {getFieldDecorator(`names[${k}]`, {
           validateTrigger: ['onChange', 'onBlur'],
+          initialValue:this.state.names[k],
           rules: [{
             required: true,
             whitespace: true,
             message: "Please input members email or delete this field.",
           },
-          { pattern: '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.+-]+\.edu$', message: 'Only edu emails can be accepted!'},
+          { pattern: '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.+-]+edu$', message: 'Only edu emails can be accepted!'},
           { type: 'email', message: 'This is not a valid E-mail!'},
           { required: true, message: 'Please input your E-mail!'}],
         })(

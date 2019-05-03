@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
+
 import { message, Input, Button, Form, Select, Typography, Modal, Icon } from 'antd';
+
 import uuid from 'uuid';
 import { API, Auth } from "aws-amplify";
 
-
 const { Text } = Typography;
-const { Option, OptGroup } = Select;
 const { TextArea } = Input;
+
+
 
 let id = 0;
 export class CreateResource extends Component {
