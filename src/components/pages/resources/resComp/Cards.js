@@ -52,7 +52,7 @@ export class Cards extends Component {
     this.setState({
       resources: [],
       loading: true
-    })
+    });
     await API.get(apiName, path, myInit)
       .then((response) => {
         console.log("Resources:", response);
@@ -72,7 +72,7 @@ export class Cards extends Component {
               }
             ]
           })
-        })
+        });
         this.setState({ loading: false });
         // console.log('Success: ', this.state.study_groups);
       })
@@ -86,8 +86,8 @@ export class Cards extends Component {
       currentCard: item,
       visible: true
     });
-    console.log(`Opening group card '${item.group_name}'`);
-
+    console.log(`Opening card with title '${item.resource_title}'`);
+    console.log("Card contents:", item);
   };
 
   handleCardModalCancel = () => {
@@ -95,6 +95,18 @@ export class Cards extends Component {
       visible: false,
     });
   };
+
+  flipCard(card){
+    let currentCard = this.state.currentCard;
+
+    currentCard.resource_noteCards.forEach(flashcard => {
+      if(flashcard.term === card.term){
+        flashcard.flipped = !flashcard.flipped
+      }
+    });
+
+    this.setState({currentCard})
+  }
 
   render() {
     const comments = [
@@ -111,8 +123,8 @@ export class Cards extends Component {
     const blankData = [];
     for (let i = 0; i < 8; i++) {
       blankData.push({
-        resource_title: `Blank title`,
-        resource_description: 'Blank description',
+        resource_title: `Blank asdf`,
+        resource_description: 'Blank asdf',
       });
     }
 
@@ -151,19 +163,18 @@ export class Cards extends Component {
         >
         <List
           grid={{ gutter: 16, column: 4 }}
-          dataSource={load ? blankData : console.log(this.state.resources.resource_noteCards)}
+          dataSource={this.state.currentCard ? this.state.currentCard.resource_noteCards : blankData}
           renderItem={noteItem => (
             <List.Item>
                 <Card
-                  onClick={ () => this.openCard(noteItem)}
+                  onClick={() => this.flipCard(noteItem)}
                   hoverable
                   cover={noteItem.url === undefined ? <Empty description={<React.Fragment>No Image</React.Fragment>}/> : <img src={noteItem.url} className="img-resize"/>}
                 > 
                 <Skeleton loading={load} active >
                   <Meta
-                    title={noteItem.resource_title}
-                    description={noteItem.resource_description}
-                  /> 
+                    title={noteItem.flipped ? noteItem.definition : noteItem.term}
+                  />
                 </Skeleton>
                 </Card>
             </List.Item>

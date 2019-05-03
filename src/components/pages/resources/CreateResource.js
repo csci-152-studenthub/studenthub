@@ -40,7 +40,7 @@ export class CreateResource extends Component {
       if (!err) {
         let noteCards = []
         for(let i in values.noteCard_term){
-          let card = { term: values.noteCard_term[i], definition: values.noteCard_definition[i] }
+          let card = { term: values.noteCard_term[i], definition: values.noteCard_definition[i], flipped: false};
           noteCards.push(card)
         }
 
