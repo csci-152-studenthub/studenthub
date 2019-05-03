@@ -67,6 +67,7 @@ export class Cards extends Component {
                created_by: item.created_by,
                resource_url: item.resource_url,
                resource_comments: [],
+               resource_noteCards: item.resource_noteCards,
                timestamp: item.timestamp
               }
             ]
@@ -139,6 +140,7 @@ export class Cards extends Component {
             </List.Item>
           )}
         />
+        {/* MODAL FILLED WITH NOTECARDS */}
         <Modal
           title={this.state.currentCard === undefined ? "Loading..." : this.state.currentCard.title}
           style={{top: 30}}
@@ -147,8 +149,44 @@ export class Cards extends Component {
           onCancel={this.handleCardModalCancel}
           footer={null}
         >
-          <div >
-            <Title level={4}>Posted by: <Text>ecast96</Text></Title>
+        <List
+          grid={{ gutter: 16, column: 4 }}
+          dataSource={load ? blankData : console.log(this.state.resources.resource_noteCards)}
+          renderItem={noteItem => (
+            <List.Item>
+                <Card
+                  onClick={ () => this.openCard(noteItem)}
+                  hoverable
+                  cover={noteItem.url === undefined ? <Empty description={<React.Fragment>No Image</React.Fragment>}/> : <img src={noteItem.url} className="img-resize"/>}
+                > 
+                <Skeleton loading={load} active >
+                  <Meta
+                    title={noteItem.resource_title}
+                    description={noteItem.resource_description}
+                  /> 
+                </Skeleton>
+                </Card>
+            </List.Item>
+            
+          )}
+        />
+        
+        
+          {/* <Card
+            onClick={ () => this.openCard(item)}
+            hoverable
+            cover={this.state.currentCard.url === undefined ? <Empty description={<React.Fragment>No Image</React.Fragment>}/> : <img src={this.state.currentCard.url} className="img-resize"/>}
+          > 
+          <Skeleton loading={load} active >
+            <Meta
+              title={this.state.currentCard.resource_title}
+              description={this.state.currentCard.resource_description}
+            /> 
+          </Skeleton>
+          </Card> */}
+        
+          {/* <div >
+            <Title level={4}>Posted by: <Text>{console.log(this.state.resources.created_by)}</Text></Title>
             <Title level={4} style={{lineHeight: 0}}>Description</Title>
             <div>
               <Paragraph>
@@ -189,7 +227,7 @@ export class Cards extends Component {
                 />
               </List.Item>
             )}
-          />
+          /> */}
         </Modal>
 
       </div>
