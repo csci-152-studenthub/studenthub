@@ -479,43 +479,7 @@ export class CardContainer extends Component {
   }
 
   async getComments(item){
-    this.setState({ currentPost: item, commentsLoading: true});
-    let ref = item.id;
-
-    let apiName = 'posts';
-    let path = '/comments/get-comments';
-
-    let myInit = {
-      body: { ref }
-    };
-    await API.post(apiName, path, myInit).then(response => {
-      console.log(`Successfully got comments for '${item.title}'`);
-      if (response.body.length === 0){
-        console.log("No comments found.");
-        this.setState({currentPostComments: []});
-      } else {
-        console.log("Comments: ", response.body);
-        this.setState({currentPostComments: response.body});
-        // response.body.map((comment) => (
-        //   this.setState({
-        //     currentPostComments: [
-        //       ...this.state.currentPostComments,
-        //       {
-        //         key: comment.commentId,
-        //         datetime: comment.timestamp,
-        //         author: comment.user,
-        //         content: comment.content,
-        //         avatar: <Avatar size={38}  style={{ backgroundColor: '#1890FF', top: 10 }} icon="user" />
-        //       }
-        //     ]
-        //   })
-        // ));
-      }
-      this.setState({commentsLoading: false, commentsVisible: true})
-    }).catch(e => {
-      console.log("Error in getting comments: ", e);
-      this.setState({commentsLoading: false, commentsVisible: true})
-    })
+    this.setState({ currentPost: item, commentsVisible: true})
   }
 
   render() {
@@ -537,6 +501,7 @@ export class CardContainer extends Component {
     );
     const data = this.state.posts;
     let loading = this.state.componentLoading;
+    let id = this.state.currentPost ? this.state.currentPost.id : "empty";
 
 
     function filter(inputValue, path) {
@@ -664,11 +629,7 @@ export class CardContainer extends Component {
           width={512}
           onClose={() => this.setState({commentsVisible: false})}
         >
-          {this.state.commentsLoading ?
-            <Skeleton />
-            :
-            <Comments comments={this.state.currentPostComments} post={this.state.currentPost} user={this.state.user}/>
-          }
+          <Comments id={id} user={this.state.user}/>
         </Drawer>
 
       </div>

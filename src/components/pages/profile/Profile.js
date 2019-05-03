@@ -37,9 +37,9 @@ export class Profile extends Component {
     }).then(response => {
       console.log('Setting userAttributes to:', response.attributes);
       this.setState({userAttributes: response.attributes});
-
     })
     .catch(err => console.log(err));
+    this.getStudygroups();
     this.setState({componentLoading: false});
   }
 
@@ -75,6 +75,46 @@ export class Profile extends Component {
     }
   }
 
+  async getStudygroups(){
+    this.setState({
+      study_groups: [],
+      cardsLoading: true
+    });
+
+    let user = this.state.userAttributes.email;
+    console.log("Getting studygroups for user "+user);
+
+    let apiName = 'posts';
+    let path = '/studygroups/get-studygroups';
+    let myInit = {
+      body: {user}
+    };
+    await API.post(apiName, path, myInit).then(response => {
+      console.log('Successfylly got studygroups: ', response.body);
+      this.setState({currentStudygroup: response.body[0]});
+      response.body.map((item) => (
+        this.setState({
+          study_groups:[
+            ...this.state.study_groups,
+            {
+              groupId: item.groupId,
+              course: item.course,
+              group_name: item.group_name,
+              description: item.description,
+              members: item.members,
+              professor: item.professor,
+              timestamp: item.timestamp,
+              created_by: item.created_by
+            }
+          ]
+        })
+      ));
+      this.setState({cardsLoading: false});
+    }).catch(e => {
+      console.log("Encountered an error in getting studygroups: ", e);
+    });
+  }
+
   showDrawer = () => {
     this.setState({
       drawerVisible: true,
@@ -87,8 +127,21 @@ export class Profile extends Component {
     });
   };
 
+  dummySwitch(group){
+    console.log("Profile: switching to group:", group.group_name);
+  }
+
   render() {
+    let cardsLoading = this.state.cardsLoading;
     let userAttributes = this.state.userAttributes ? this.state.userAttributes : "Undefined";
+
+    const blankData = [];
+    for (let i = 0; i < 5; i++) {
+      blankData.push({
+        group_name: "",
+        description: "",
+      });
+    }
 
     if (this.state.componentLoading) {
       return (
@@ -127,7 +180,7 @@ export class Profile extends Component {
                 <ProfileResources />
               </TabPane>
               <TabPane tab={<span><Icon type="team"/>Study groups</span>} key="3">
-                <ProfileStudyGroups user={this.state.userAttributes.email}/>
+                <ProfileStudyGroups user={this.state.userAttributes.email} switch={this.dummySwitch} study_groups={cardsLoading ? blankData : this.state.study_groups}/>
               </TabPane>
             </Tabs>
           </div>
