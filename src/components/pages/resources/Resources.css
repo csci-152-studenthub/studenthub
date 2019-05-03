@@ -1,3 +1,10 @@
+
+.img-resize{
+    height: 200px;
+    width: 100%;
+    overflow: hidden;
+}
+
 .item-resources{
     grid-area: resources;
 

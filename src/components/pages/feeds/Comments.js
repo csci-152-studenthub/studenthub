@@ -5,6 +5,7 @@ import {
 } from 'antd';
 import moment from 'moment';
 import uuid from "uuid";
+import Skeleton from "antd/lib/skeleton";
 
 const TextArea = Input.TextArea;
 const { Text, Paragraph } = Typography;
@@ -37,17 +38,69 @@ export default class Comments extends Component {
       commentContent: '',
       comments: [],
       submitting: false,
+      id: '',
     }
   }
 
   componentDidMount() {
-    console.log("Comments modal received: ", this.props.comments);
-    if(this.props.comments !== undefined) {
-      this.setComments(this.props.comments);
+    if(this.props.id !== undefined) {
+      console.log("Comments modal received: ", this.props);
+      this.getComments(this.props.id);
     }
   }
 
-  setComments(comments){
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if(this.props.id !== prevProps.id){
+      this.setState({commentsLoading: true});
+      console.log("Getting comments for ref with id: ", this.props.id);
+      this.getComments(this.props.id);
+    }
+  }
+
+  async getComments(id){
+    this.setState({ comments: [], commentsLoading: true, id});
+    let ref = id;
+
+    let apiName = 'posts';
+    let path = '/comments/get-comments';
+
+    let myInit = {
+      body: { ref }
+    };
+    await API.post(apiName, path, myInit).then(response => {
+      if (response.body.length === 0){
+        console.log("No comments found.");
+        this.setState({comments: []});
+      } else {
+        let commentsTemp = response.body;
+        console.log("Comments: ", commentsTemp);
+
+        commentsTemp.forEach(comment => {
+          console.log("ref:"+comment.content)
+          this.setState(prevState => ({
+            comments: [
+              ...prevState.comments,
+              {
+                id: comment.commentId,
+                datetime: comment.timestamp,
+                author: comment.user,
+                content: comment.content,
+                avatar: (<Avatar size={38}  style={{ backgroundColor: '#1890FF', top: 10 }} icon="user" />)
+              }
+            ]
+          }))
+        });
+        this.setState({commentsLoading: false})
+      }
+    }).catch(e => {
+      console.log("Error in getting comments: ", e);
+      this.setState({commentsLoading: false})
+    })
+  }
+
+  setComments(){
+    let comments = this.state.comments;
+
     console.log("Setting comments in modal...");
     comments.forEach(comment => {
       console.log(`Adding comment '${comment.content} to state.`);
@@ -63,32 +116,18 @@ export default class Comments extends Component {
           }
         ]
       }))
-    })
+    });
+    this.setState({commentsLoading: false})
   }
 
-  // async getComments(){
-  //   let ref = this.props.post.id;
-  //
-  //   let apiName = 'posts';
-  //   let path = '/comments/get-comments';
-  //
-  //   let myInit = {
-  //     body: { ref }
-  //   };
-  //   await API.post(apiName, path, myInit).then(response => {
-  //     console.log("Successfully got comments: ", response);
-  //   }).catch(e => {
-  //     console.log("Error in getting comments: ", e);
-  //   })
-  // }
-
   async postComment(){
+    this.setState({commentsLoading: true, submitting: true});
+
     let user = this.props.user;
     let commentId = 'comment-'+uuid.v4().toString();
     let timestamp = moment().format();
     let content = this.state.commentContent;
-    let ref = this.props.post.id;
-    console.log(`Adding comment '${content}' to post '${this.props.post.title}`);
+    let ref = this.props.id;
 
     let apiName = 'posts';
     let path = '/comments/post-comment';
@@ -112,8 +151,10 @@ export default class Comments extends Component {
           ...prevState.comments,
         ]
       }));
+      this.setState({commentsLoading: false, submitting: false});
     }).catch(e => {
       console.log("Error in posting comment: ", e);
+      this.setState({commentsLoading: false, submitting: false});
     })
   }
 
@@ -121,13 +162,7 @@ export default class Comments extends Component {
     if (!this.state.commentContent) {
       return;
     }
-
-    this.setState({
-      submitting: true,
-    });
-
     this.postComment();
-
   };
 
   handleChange = (e) => {
@@ -138,6 +173,7 @@ export default class Comments extends Component {
 
   async handleDelete(item){
     console.log(`Deleting post with id: ${item.id}`);
+    this.setState({commentsLoading: true});
 
     let apiName = 'posts';
     let path = '/comments/delete-comment';
@@ -155,6 +191,7 @@ export default class Comments extends Component {
     });
   }
 
+  // Manually remove comment deleted from state - one less api to call
   removeComment(id){
     let { comments } = this.state;
     let index = comments.map(function(comment) {
@@ -162,11 +199,23 @@ export default class Comments extends Component {
     }).indexOf(id);
 
     comments.splice(index, 1);
-    this.setState({comments});
+    this.setState({comments, commentsLoading: false});
   }
 
   render() {
-    const { comments, submitting, commentContent } = this.state;
+
+    const blankData = [];
+    for (let i = 0; i < this.state.comments.length; i++) {
+      blankData.push({
+        title: `Blank title`,
+        description: 'Blank description',
+        content: 'Blank content',
+      });
+    }
+
+    let comments = this.state.comments === [] ? blankData : this.state.comments;
+
+    let { submitting, commentContent, commentsLoading } = this.state;
     const user = this.props.user;
 
     const Timestamp = ({time}) => (
@@ -189,20 +238,22 @@ export default class Comments extends Component {
           itemLayout="horizontal"
           dataSource={comments}
           renderItem={item => (
-            <Comment
-              actions={user === item.author ? [<DeleteIcon item={item}/> ] : null}
-              author={<Text style={{fontSize: 14}}>{item.author}</Text>}
-              avatar={item.avatar}
-              content={
-                <Paragraph ellipsis={{ rows: 4, expandable: true }}>
-                  {item.content}
-                </Paragraph>
-                }
-              datetime={(<Timestamp time={item.datetime} />)}
-            />
+            <Skeleton loading={commentsLoading}>
+              <Comment
+                actions={user === item.author ? [<DeleteIcon item={item}/> ] : null}
+                author={<Text style={{fontSize: 14}}>{item.author}</Text>}
+                avatar={item.avatar}
+                content={
+                  <Paragraph ellipsis={{ rows: 4, expandable: true }}>
+                    {item.content}
+                  </Paragraph>
+                  }
+                datetime={(<Timestamp time={item.datetime} />)}
+              />
+            </Skeleton>
           )}
         />
-        <Divider orientation="left"><Text style={{fontSize: 22}}>Add Comment</Text></Divider>
+        <Divider orientation="left"><Text style={{fontSize: 20}}>Add Comment</Text></Divider>
         <Editor
           onChange={this.handleChange}
           onSubmit={this.handleSubmit}
