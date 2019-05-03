@@ -5,10 +5,11 @@ import { API, Auth} from "aws-amplify";
 import CreateStudyGroupForm from './createStudyGroup';
 import "./Studygroup.css";
 import MyStudyGroups from "../profile/ProfileStudyGroups";
+import Comments from "../feeds/Comments";
 
 // const { Meta } = Card;
 
-const { Title, Paragraph } = Typography;
+const { Title, Text, Paragraph } = Typography;
 export class Studygroup extends Component {
   constructor(props){
     super(props);
@@ -32,7 +33,7 @@ export class Studygroup extends Component {
     await Auth.currentAuthenticatedUser({
       bypassCache: true  // Optional, By default is false. If set to true, this call will send a request to Cognito to get the latest user data
     }).then(user => {
-      this.setState({user: user.attributes.email})
+      this.setState({user: user.attributes.email, username: user.attributes.preferred_username})
     }).catch(err => console.log(err));
     this.getStudygroups();
   }
@@ -51,6 +52,7 @@ export class Studygroup extends Component {
     let myInit = {
       body: {user}
     };
+
     await API.post(apiName, path, myInit).then(response => {
       console.log('Successfylly got studygroups: ', response.body);
       this.setState({currentStudygroup: response.body[0]});
@@ -126,7 +128,8 @@ export class Studygroup extends Component {
 
   render() {
     let cardsLoading = this.state.cardsLoading;
-    let currentStudygroup = this.state.currentStudygroup ? this.state.currentStudygroup : {group_name: "Loading..."};
+    let currentStudygroup = this.state.currentStudygroup ? this.state.currentStudygroup : {group_name: "Loading...", description: "Loading...", created_by: "", };
+    let id = this.state.currentStudygroup ? this.state.currentStudygroup.groupId : "1234";
 
     const blankData = [];
     for (let i = 0; i < 5; i++) {
@@ -144,14 +147,19 @@ export class Studygroup extends Component {
           {this.state.user ? <MyStudyGroups user={this.state.user} switch={this.switchStudygroup} study_groups={cardsLoading ? blankData : this.state.study_groups} /> : <Skeleton /> }
         </div>
         <div className="studygroup-divider" >
-          <Divider type="vertical" style={{height: 300, left: 25}}/>
+          <Divider type="vertical" style={{height: '100%', left: 20}}/>
         </div>
         <div className="item-studygroup-content">
-          <Skeleton loading={cardsLoading}>
-            <Title level={2}>{currentStudygroup.group_name}</Title>
-            <Title level={4}>Bulletin Board</Title>
-            <Paragraph code >{this.state.str}</Paragraph>
-          </Skeleton>
+          <Title level={2}>{currentStudygroup.group_name}</Title>
+          <Text>Created by: {currentStudygroup.created_by}</Text><br/>
+          <Text>Members</Text>
+          {this.state.currentStudygroup ? currentStudygroup.members.map((item, index) => (
+            <div><Text>{item}</Text><br/></div>
+          )) : "\nLoading..."}
+          <Title level={3}>Description</Title>
+          <Paragraph>{currentStudygroup.description}</Paragraph>
+          <Divider><Text style={{fontSize: 22}}>Messaging Board</Text></Divider>
+          <Comments id={id} user={this.state.username}/>
         </div>
 
 

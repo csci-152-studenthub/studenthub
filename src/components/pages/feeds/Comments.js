@@ -214,6 +214,7 @@ export default class Comments extends Component {
     }
 
     let comments = this.state.comments === [] ? blankData : this.state.comments;
+
     let { submitting, commentContent, commentsLoading } = this.state;
     const user = this.props.user;
 
@@ -252,7 +253,7 @@ export default class Comments extends Component {
             </Skeleton>
           )}
         />
-        <Divider orientation="left"><Text style={{fontSize: 22}}>Add Comment</Text></Divider>
+        <Divider orientation="left"><Text style={{fontSize: 20}}>Add Comment</Text></Divider>
         <Editor
           onChange={this.handleChange}
           onSubmit={this.handleSubmit}

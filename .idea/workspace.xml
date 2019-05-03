@@ -2,46 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="18ea8b0b-a2f8-4f5c-9b18-7882f85c6657" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/dashboard/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/dashboard/Dashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/feeds/CardContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/feeds/CardContainer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/pages/feeds/Comments.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/feeds/Comments.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/profile/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/profile/Profile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/profile/ProfileStudyGroups.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/profile/ProfileStudyGroups.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/studygroup/Studygroup.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/studygroup/Studygroup.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/pages/studygroup/Studygroup.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/studygroup/Studygroup.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/studygroup/createStudyGroup.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/studygroup/createStudyGroup.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/studenthub-api/.babelrc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/studenthub-api/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/studenthub-api/.serverless/cloudformation-template-create-stack.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/studenthub-api/.serverless/cloudformation-template-update-stack.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/studenthub-api/.serverless/serverless-state.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/studenthub-api/.webpack/service/create.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/studenthub-api/.webpack/service/create.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/studenthub-api/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/studenthub-api/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/studenthub-api/create.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/studenthub-api/delete.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/studenthub-api/env.example" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/studenthub-api/get.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/studenthub-api/handler.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/studenthub-api/hello.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/studenthub-api/libs/dynamodb-lib.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/studenthub-api/libs/response-lib.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/studenthub-api/list.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/studenthub-api/mocks/create-event.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/studenthub-api/mocks/delete-event.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/studenthub-api/mocks/get-event.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/studenthub-api/mocks/list-event.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/studenthub-api/mocks/update-event.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/studenthub-api/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/studenthub-api/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/studenthub-api/resources/api-gateway-errors.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/studenthub-api/serverless.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/studenthub-api/tests/handler.test.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/studenthub-api/update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/studenthub-api/webpack.config.js" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -71,72 +33,42 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/pages/resources/resComp/Cards.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="18" column="3" selection-start-line="18" selection-start-column="3" selection-end-line="18" selection-end-column="3" />
-              <folding>
-                <element signature="e#0#41#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/pages/feeds/CardContainer.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="297">
-              <caret line="510" selection-start-line="510" selection-end-line="517" selection-end-column="5" />
-              <folding>
-                <element signature="e#1#42#0" expanded="true" />
-                <element signature="e#337#366#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/components/pages/feeds/Comments.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="312">
-              <caret line="207" column="50" selection-start-line="207" selection-start-column="50" selection-end-line="207" selection-end-column="50" />
-              <folding>
-                <element signature="e#0#41#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/pages/profile/ProfileFeed.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="16" column="32" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
-              <folding>
-                <element signature="e#0#40#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/package.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="8" selection-start-line="8" selection-end-line="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/pages/studygroup/Studygroup.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1635">
-              <caret line="152" column="57" selection-start-line="152" selection-start-column="57" selection-end-line="152" selection-end-column="57" />
+            <state relative-caret-position="586">
+              <caret line="157" column="18" selection-start-line="157" selection-start-column="18" selection-end-line="157" selection-end-column="18" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
+                <element signature="e#145#184#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/pages/feeds/Comments.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1245">
+              <caret line="38" column="17" selection-start-line="38" selection-start-column="17" selection-end-line="38" selection-end-column="17" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+                <element signature="e#2145#2777#0" />
+                <element signature="e#3080#4046#0" />
+                <element signature="e#4071#4213#0" />
+                <element signature="e#4240#4311#0" />
+                <element signature="e#4716#5181#0" />
+                <element signature="e#4783#4979#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/pages/studygroup/Studygroup.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="332">
+              <caret line="29" column="34" selection-start-line="29" selection-start-column="34" selection-end-line="29" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -253,15 +185,15 @@
         <option value="$PROJECT_DIR$/src/components/pages/auth/ChangePassword.component.js" />
         <option value="$PROJECT_DIR$/src/components/pages/resources/CreateResource.js" />
         <option value="$PROJECT_DIR$/src/components/pages/dashboard/Dashboard.js" />
-        <option value="$PROJECT_DIR$/src/components/pages/studygroup/Studygroup.css" />
         <option value="$PROJECT_DIR$/src/components/pages/studygroup/sendEmails.js" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/src/components/pages/profile/ProfileStudyGroups.js" />
         <option value="$PROJECT_DIR$/src/components/pages/studygroup/createStudyGroup.js" />
         <option value="$PROJECT_DIR$/src/components/pages/profile/Profile.js" />
-        <option value="$PROJECT_DIR$/src/components/pages/studygroup/Studygroup.js" />
         <option value="$PROJECT_DIR$/src/components/pages/feeds/CardContainer.js" />
+        <option value="$PROJECT_DIR$/src/components/pages/studygroup/Studygroup.css" />
         <option value="$PROJECT_DIR$/src/components/pages/feeds/Comments.js" />
+        <option value="$PROJECT_DIR$/src/components/pages/studygroup/Studygroup.js" />
       </list>
     </option>
   </component>
@@ -286,6 +218,43 @@
               <item name="studenthub" type="b2602c69:ProjectViewProjectNode" />
               <item name="studenthub" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="studenthub" type="b2602c69:ProjectViewProjectNode" />
+              <item name="studenthub" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="studenthub" type="b2602c69:ProjectViewProjectNode" />
+              <item name="studenthub" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="studenthub" type="b2602c69:ProjectViewProjectNode" />
+              <item name="studenthub" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="auth" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="studenthub" type="b2602c69:ProjectViewProjectNode" />
+              <item name="studenthub" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="studenthub" type="b2602c69:ProjectViewProjectNode" />
+              <item name="studenthub" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="studygroup" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -400,12 +369,12 @@
       <workItem from="1556577130077" duration="9743000" />
       <workItem from="1556598662119" duration="14198000" />
       <workItem from="1556815912329" duration="2939000" />
-      <workItem from="1556845053083" duration="3331000" />
+      <workItem from="1556845053083" duration="6741000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="110349000" />
+    <option name="totallyTimeSpent" value="113759000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -420,7 +389,7 @@
     <frame x="0" y="23" width="1440" height="825" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6984993" visible="true" weight="0.1988555" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6984993" visible="true" weight="0.1988555" />
       <window_info id="Structure" order="1" sideWeight="0.5007215" side_tool="true" weight="0.2533137" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -597,16 +566,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/pages/resources/Resources.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/pages/profile/EditAccountInfo.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1648">
@@ -665,16 +624,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/pages/resources/CreateResource.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-664">
-          <caret line="37" column="35" selection-start-line="37" selection-start-column="35" selection-end-line="37" selection-end-column="35" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/pages/dashboard/Dashboard.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-308">
@@ -683,13 +632,6 @@
             <element signature="e#0#41#0" expanded="true" />
             <element signature="e#240#270#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/pages/studygroup/Studygroup.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="454">
-          <caret line="34" column="39" selection-start-line="34" selection-start-column="39" selection-end-line="34" selection-end-column="39" />
         </state>
       </provider>
     </entry>
@@ -731,16 +673,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/pages/profile/ProfileFeed.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="16" column="32" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/studenthub-api/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -765,20 +697,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/pages/studygroup/Studygroup.js">
+    <entry file="file://$PROJECT_DIR$/src/components/pages/profile/ProfileFeed.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1635">
-          <caret line="152" column="57" selection-start-line="152" selection-start-column="57" selection-end-line="152" selection-end-column="57" />
+        <state relative-caret-position="315">
+          <caret line="16" column="32" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
           <folding>
-            <element signature="e#0#41#0" expanded="true" />
+            <element signature="e#0#40#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/studygroup/Studygroup.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="332">
+          <caret line="29" column="34" selection-start-line="29" selection-start-column="34" selection-end-line="29" selection-end-column="34" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/pages/feeds/CardContainer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="510" selection-start-line="510" selection-end-line="517" selection-end-column="5" />
+        <state relative-caret-position="371">
+          <caret line="631" column="10" selection-start-line="631" selection-start-column="10" selection-end-line="631" selection-end-column="52" />
           <folding>
             <element signature="e#1#42#0" expanded="true" />
             <element signature="e#337#366#0" expanded="true" />
@@ -786,12 +725,49 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/resources/CreateResource.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-501">
+          <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/resources/Resources.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/pages/feeds/Comments.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="207" column="50" selection-start-line="207" selection-start-column="50" selection-end-line="207" selection-end-column="50" />
+        <state relative-caret-position="-1245">
+          <caret line="38" column="17" selection-start-line="38" selection-start-column="17" selection-end-line="38" selection-end-column="17" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
+            <element signature="e#2145#2777#0" />
+            <element signature="e#3080#4046#0" />
+            <element signature="e#4071#4213#0" />
+            <element signature="e#4240#4311#0" />
+            <element signature="e#4716#5181#0" />
+            <element signature="e#4783#4979#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/studygroup/Studygroup.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="586">
+          <caret line="157" column="18" selection-start-line="157" selection-start-column="18" selection-end-line="157" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+            <element signature="e#145#184#0" expanded="true" />
           </folding>
         </state>
       </provider>
