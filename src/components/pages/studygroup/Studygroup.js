@@ -150,16 +150,20 @@ export class Studygroup extends Component {
           <Divider type="vertical" style={{height: '100%', left: 20}}/>
         </div>
         <div className="item-studygroup-content">
-          <Title level={2}>{currentStudygroup.group_name}</Title>
-          <Text>Created by: {currentStudygroup.created_by}</Text><br/>
-          <Text>Members</Text>
-          {this.state.currentStudygroup ? currentStudygroup.members.map((item, index) => (
-            <div><Text>{item}</Text><br/></div>
-          )) : "\nLoading..."}
-          <Title level={3}>Description</Title>
-          <Paragraph>{currentStudygroup.description}</Paragraph>
-          <Divider><Text style={{fontSize: 22}}>Messaging Board</Text></Divider>
-          <Comments id={id} user={this.state.username}/>
+          <div className="item-groupCard">
+            <Title level={2}>{currentStudygroup.group_name}</Title>
+            <Text>Created by: {currentStudygroup.created_by}</Text><br/>
+            <Text>Members</Text>
+            {this.state.currentStudygroup ? currentStudygroup.members.map((item, index) => (
+              <div><Text>{item}</Text><br/></div>
+            )) : "\nLoading..."}
+            <Title level={3}>Description</Title>
+            <Paragraph>{currentStudygroup.description}</Paragraph>
+          </div>
+          <div className="item-messageBoard">
+            <Divider><Text style={{fontSize: 22}}>Messaging Board</Text></Divider>
+            <Comments id={id} user={this.state.username}/>
+          </div>
         </div>
 
 

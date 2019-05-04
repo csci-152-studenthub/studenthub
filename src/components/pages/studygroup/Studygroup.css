@@ -1,29 +1,9 @@
-
-
-.dynamic-delete-button {
-    cursor: pointer;
-    position: relative;
-    top: 4px;
-    font-size: 20px;
-    color: #999;
-    transition: all .3s;
-  }
-
-.studygroup-modal{
-    display: flex;
-    flex-direction: column;
-    /* align-items: center; */
-}
-
-
 .item-studygroup{
     grid-area: studygroup;
-    
 }
 
 .item-studygroup-content{
     grid-area: studygroup-content;
-
 }
 
 .item-divider{
@@ -32,11 +12,74 @@
 
 .studygroup-container{
     display: grid;
-    grid-template-columns: 300px 50px 700px;
+    grid-template-columns: auto;
     grid-template-rows: auto ;
     background:white;
     box-shadow: 0 1px 4px rgba(0,21,41,.08); 
     padding: 20px;
     grid-template-areas:
-    "studygroup studygroup-divider studygroup-content"
+    "studygroup"
+    "studygroup-content"
+}
+
+
+/* For any screen larger than 900px */
+@media (min-width: 900px){
+    .dynamic-delete-button {
+        cursor: pointer;
+        position: relative;
+        top: 4px;
+        font-size: 20px;
+        color: #999;
+        transition: all .3s;
+    }
+
+    .studygroup-modal{
+        display: flex;
+        flex-direction: column;
+        /* align-items: center; */
+    }
+
+
+    .item-studygroup{
+        grid-area: studygroup;
+        
+    }
+
+    .item-groupCard{
+        grid-area: groupcard;
+        padding: 20px;
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 0px 8px 0 rgba(0, 0, 0, 0.19);
+    }
+    .item-messageBoard{
+        grid-area: messageboard;
+        padding: 20px;
+        /* box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 0px 8px 0 rgba(0, 0, 0, 0.19); */
+    }
+
+    .item-studygroup-content{
+        grid-area: studygroup-content;
+        display:grid;
+        grid-gap: 20px;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto ;
+        grid-template-areas: 
+            "groupcard"
+            "messageboard"
+    }
+
+    .item-divider{
+        grid-area: studygroup-divider;
+    }
+
+    .studygroup-container{
+        display: grid;
+        grid-template-columns: 300px 50px auto;
+        grid-template-rows: auto ;
+        background:white;
+        box-shadow: 0 1px 4px rgba(0,21,41,.08); 
+        padding: 20px;
+        grid-template-areas:
+        "studygroup studygroup-divider studygroup-content"
+    }
 }

@@ -14,8 +14,20 @@
     display:none;
 }
 
+.mobile-view{
+    display: block;
+}
+.window-view{
+    display: none;
+}
 /* For any screen larger than 900px */
 @media (min-width: 900px){
+    .mobile-view{
+        display: none;
+    }
+    .window-view{
+        display: block;
+    }
     .item-feed{
         grid-area: feed;
         background:white;

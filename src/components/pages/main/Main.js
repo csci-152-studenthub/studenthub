@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Menu, Icon, Layout, message, Typography} from 'antd';
+import {Menu, Icon, Layout, message, Typography, Button, Drawer} from 'antd';
 import { Auth } from "aws-amplify";
 // import { Card, Avatar, Tag, Divider, Spin, Input } from 'antd';
 // const { Title } = Typography;
@@ -14,7 +14,7 @@ import './Main.css';
 // import ProfilePic from '../profile/ProfilePic';
 
 // const SubMenu = Menu.SubMenu;
-const { Title } = Typography;
+const { Title, Text } = Typography;
 const { Content, Footer, Sider } = Layout;
 
 export class Main extends Component {
@@ -22,8 +22,9 @@ export class Main extends Component {
     super(props);
 
     this.state = {
-      component: 3,
+      component: 1,
       header: 'General',
+      visible: false,
     };
     this.backToHome = this.backToHome.bind(this);
     this.setHeader = this.setHeader.bind(this);
@@ -83,13 +84,64 @@ export class Main extends Component {
     window.location.reload();
   }
 
+  showDrawer = () => {
+    this.setState({
+      visible: true,
+    });
+  };
+
+  onClose = () => {
+    this.setState({
+      visible: false,
+    });
+  };
+
     render() {
       return(
         <div className="container">
           <div className="item-header">
-
-            <Title level={1} style={{lineHeight: 1.6}} >{this.state.header}</Title>
-
+            <Title className="pageTitle"level={1} style={{lineHeight: 1.6}} >{this.state.header}</Title>  
+            <div className="hamburger-menu">
+              <Button onClick={this.showDrawer} style={{position:"fixed"}}>
+                <Icon type={this.state.visible ? 'menu-unfold' : 'menu-fold'}/>
+              </Button>
+              <Drawer
+                title="StudentHub"
+                placement="left"
+                closable={false}
+                onClose={this.onClose}
+                visible={this.state.visible}
+              >
+              <Menu mode="inline" defaultSelectedKeys={[this.state.component.toString()]}>
+                <Menu.Item key="1" onClick={() => this.switchComponent(1)}>
+                  <Icon type="home" style={{fontSize: 20}} />
+                  <span className="nav-text">Dashboard</span>
+                </Menu.Item>
+                <Menu.Item key="2" onClick={() => this.switchComponent(2)}>
+                  <Icon type="project" rotate={-90} style={{fontSize: 20}} />
+                  <span className="nav-text">Feeds</span>
+                </Menu.Item>
+                <Menu.Item key="3" onClick={() => this.switchComponent(3)}>
+                  <Icon type="read" style={{fontSize: 20}} />
+                  <span className="nav-text">Resources</span>
+                </Menu.Item>
+                <Menu.Item key="4" onClick={() => this.switchComponent(4)}>
+                  <Icon type="team" style={{fontSize: 20}} />
+                  <span className="nav-text">Study Groups</span>
+                </Menu.Item>
+                <Menu.Item key="5" onClick={() => this.switchComponent(5)}>
+                  <Icon type="user" style={{fontSize: 20}} />
+                  <span className="nav-text">My Profile</span>
+                </Menu.Item>
+                <Menu.Item key="6" onClick={() => {this.trySignOut()}}>
+                  <Icon type="logout" style={{fontSize: 20}} />
+                  <span className="nav-text">Sign Out</span>
+                </Menu.Item>
+              </Menu>
+              </Drawer>
+            </div>
+             
+            
           </div>
 
           <Sider className="item-sider" collapsible>
@@ -142,6 +194,8 @@ export class Main extends Component {
           Studenthub.io ©2019 Created with
           <a href="https://ant.design/"> Ant Design</a>
         </Footer>
+
+        
       </div>
       );
     }
