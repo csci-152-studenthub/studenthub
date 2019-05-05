@@ -2,13 +2,17 @@ import React, { Component } from 'react'
 import {
   List,
   Card,
-  Carousel, Modal, Typography, Divider, Avatar
+  Carousel, 
+  Modal, 
+  Typography, 
+  Divider, 
+  Avatar,
+  Empty
 } from 'antd';
 import './ProfileResources.css'
+import { API, Auth } from "aws-amplify";
+
 const { Title, Paragraph, Text } = Typography;
-
-// import { API } from "aws-amplify";
-
 const { Meta } = Card;
 
 export class ProfileResources extends Component {
@@ -20,6 +24,10 @@ export class ProfileResources extends Component {
     };
 
     this.openCard = this.openCard.bind(this);
+  }
+
+  componentDidMount(){
+    this.getResources();
   }
 
   openCard = (item) => {
@@ -37,52 +45,47 @@ export class ProfileResources extends Component {
     });
   };
 
+  async getResources(){
+    
+    console.log('prop user: ', this.props.currentUser)
+    let apiName = 'posts';
+    let path = '/resources/get-resources';
+    let myInit = {
+      body: {user: this.props.currentUser}
+    };
+    this.setState({
+      resources: [],
+    });
+    await API.get(apiName, path, myInit)
+      .then((response) => {
+        console.log("Resources:", response);
+        response.body.map((item) => {
+          this.setState({
+            resources:[
+              ...this.state.resources,
+              {
+               resource_title: item.resource_title,
+               resource_id: item.resourceId,
+               resource_description: item.resource_description,
+               created_by: item.created_by,
+               resource_url: item.resource_url,
+               resource_comments: [],
+               resource_noteCards: item.resource_noteCards,
+               timestamp: item.timestamp
+              }
+            ]
+          })
+        });
+        // console.log('Success: ', this.state.study_groups);
+      })
+      .catch((error) => {
+        console.log("Something went wrong: ", error);
+      });
+  }
+
 
   render() {
     // let cardsLoading = this.state.cardsLoading;
-    let data = [
-      {
-        title: "Notes for CSCI 152",
-        description: "Lecture on Solid Principles",
-        uri: `https://unsplash.it/150/200?image=11`
-      },
-      {
-        title: "Notes for Physics",
-        description: "E=mc square",
-        uri: `https://unsplash.it/150/200?image=1`
-      },
-      {
-        title: "Notes for CSCI 130",
-        description: "Lecture on Web dev",
-        uri: `https://unsplash.it/150/200?image=3`
-      },
-      {
-        title: "Notes for Chemisty",
-        description: "Chemisty",
-        uri: `https://unsplash.it/150/200?image=8`
-      },
-      {
-        title: "Notes for Biology",
-        description: "Cells",
-        uri: `https://unsplash.it/150/200?image=9`
-      },
-      {
-        title: "Notes for English",
-        description: "English",
-        uri: `https://unsplash.it/150/200?image=4`
-      },
-    ];
-
-    const comments = [
-      {
-        title: 'This is really helpful!',
-        user: "Nina"
-      },
-      {
-        title: 'I almost forgot to study these, thanks for the cards!',
-        user: "Stanley"
-      },
-    ];
 
     function onChange(a, b, c) {
       console.log(a, b, c);
@@ -101,78 +104,23 @@ export class ProfileResources extends Component {
       <div>
         <List
           grid={{ gutter: 10, column: 3 }}
-          dataSource={data}
+          dataSource={this.state.resources}
           renderItem={item => (
             <List.Item>
               <Card
                 hoverable
-                style={{ width: 240 }}
-                cover={<img alt="example" src={item.uri} />}
+                style={{ width: '100%' }}
               >
                 <Meta
                   onClick={() => this.openCard(item)}
-                  title={item.title}
-                  description={item.description}
+                  title={item.resource_title}
+                  description={item.resource_description}
                 />
               </Card>
 
             </List.Item>
           )}
         />
-
-        <Modal
-          title={this.state.currentCard === undefined ? "Loading..." : this.state.currentCard.title}
-          style={{top: 30}}
-          width={1000}
-          visible={this.state.cardModalVisible}
-          onCancel={this.handleCardModalCancel}
-          footer={null}
-        >
-          <div >
-            <Title level={4}>Posted by: <Text>ecast96</Text></Title>
-            <Title level={4} style={{lineHeight: 0}}>Description</Title>
-            <div>
-              <Paragraph>
-                Just some definitions of SOLID principles.
-              </Paragraph>
-            </div>
-            <Carousel afterChange={onChange}>
-              <div>
-                <Carousel vertical afterChange={onChange}>
-                  <div><h3>Open-Closed Principle</h3></div>
-                  <div><h3>Software entities should be open for extension, but closed for modification</h3></div>
-                </Carousel>
-              </div>
-              <div>
-                <Carousel vertical>
-                  <div><h3>Liskov Substitution Principle</h3></div>
-                  <div><h3>Inheritance should ensure that any property proved about supertype objects also holds for subtype objects</h3></div>
-                </Carousel>
-              </div>
-              <div>
-                <Carousel vertical>
-                  <div><h3>Dependency	Inversion Principle</h3></div>
-                  <div><h3>High-level	modules	should not depend on low-level module implementations. Both levels should depend on abstractions.</h3></div>
-                </Carousel>
-              </div>
-            </Carousel>
-          </div>
-          <Divider />
-          <Title level={4}>Comments</Title>
-          <List
-            itemLayout="horizontal"
-            dataSource={comments}
-            renderItem={item => (
-              <List.Item>
-                <List.Item.Meta
-                  avatar={<Avatar style={{ backgroundColor: '#1890FF'}} icon="user" />}
-                  title={<Text>{item.title}</Text>}
-                  description={<Text>{item.user}</Text>}
-                />
-              </List.Item>
-            )}
-          />
-        </Modal>
       </div>
     )
   }

@@ -1,67 +1,151 @@
-.grid-head {
-    grid-gap: 20px 5px;
-    display: grid;
-    height: 200px;
-    grid-template:auto;
-    overflow-y: scroll;
-    gap: 20px 5px;
-   font-size:40px;
-   background-color: white;
+
+
+/* For Mobile View */
+.activity,
+.item-feed-activity,
+.item-resources-activity,
+.item-studygroups-activity{
+  padding: 20px;
+}
+ .item-activity-board{
+  grid-area: activity-board;
+  display: grid;
+  grid-template-columns: auto; 
+  grid-template-rows: auto;
+  grid-gap: 0px 20px;
+  grid-template-areas:
+    "feedtitle"
+    "feeds"
+    "resourcetitle" 
+    "resources"
+    "studytitle"
+    "studygroups"
+}
+
+
+/* For any screen larger than 900px */
+@media (min-width: 900px){
+
+  .item-welcome-board{
+    grid-area: welcome-board;
+    background-color: white;
   }
-  
-  .overline
-  {
-    text-decoration: underline;
-  }
-  .title
-  {
-    grid-area: title;
+
+  /* Extends classes so classes can inherit */
+  .title, 
+  .item-feed-title,
+  .item-resource-title,
+  .item-studygroup-title{
     text-align: center;
-    background-color:#000066;
+    /* background-color:#1890ff; */
+    align-self: center;
+    /* box-shadow: 0 1px 4px rgba(0,21,41,.08);  */
   }
-  
-  .grid-container {
+
+  .item-feed-title{
+    grid-area: feedtitle;
+
+  }
+
+  .item-resource-title{
+    grid-area: resourcetitle;
+  }
+
+  .item-studygroup-title{
+    grid-area: studytitle;
+  }
+
+  /* Extends classes so classes can inherit */
+  .activity,
+  .item-feed-activity,
+  .item-resources-activity,
+  .item-studygroups-activity{
+    background-color: white;
+    padding: 10px;
+    overflow: auto;
+    /* box-shadow: 0 1px 4px rgba(24, 144, 255, 1); */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+
+  .item-feed-activity:hover{
+    grid-area: feeds;
+    box-shadow: 0 1px 4px rgba(24, 144, 255, 1);
+  }
+
+  .item-resources-activity:hover{
+    grid-area: resources; 
+    box-shadow: 0 1px 4px rgba(24, 144, 255, 1);
+  }
+
+  .item-studygroups-activity:hover{
+    grid-area: studygroups; 
+    box-shadow: 0 1px 4px rgba(24, 144, 255, 1);
+  }
+
+  .item-activity-board{
+    grid-area: activity-board;
     display: grid;
-    padding-top: 20px;  
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    /* grid-gap: 30px 0px; */
-    /* background:white; */
-    /* padding: 20px; */
+    grid-template-columns: 1fr 1fr 1fr; 
+    grid-template-rows: 60px 600px;
+    grid-gap: 0px 20px;
     grid-template-areas:
-    "title . ."
-    "content . ."
+      "feedtitle resourcetitle studytitle"
+      "feeds resources studygroups"
   }
-  
-  .grid-container > div {
-    border: 1px solid  Gainsboro;
-    background-color: white;
-    height: 300px;
-  
-    overflow-y:scroll;
-  }
- 
- 
-  
-  .grid-bottom {
-    grid-gap: 20px 5px;
-    padding-top: 70px;
+
+  .dashboard-container {
     display: grid;
-    height: 100px;
-    grid-template:auto;
-    gap: 20px 5px;
-   
-  }
-  
-  .grid-bottom > div {
-    border: 1px solid  Gainsboro;
+    padding: 30px;
+    grid-template-columns: 1fr; 
+    grid-template-rows: 1fr;
     background-color: white;
-    height: 270px;
-    line-height: 38px;
-  }
+    grid-gap: 30px 0px;
+    grid-template-areas:
+      
+      "activity-board"
+
+    }
+}
+/*
+.grid-container {
+  display: grid;
+  padding-top: 20px;  
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-gap: 30px 0px;
+  background:white; 
+  padding: 20px;
+  grid-template-areas:
+  "title . ."
+  "content . ."
+}
+
+.grid-container > div {
+  border: 1px solid  Gainsboro;
+  background-color: white;
+  height: 300px;
+  overflow-y:scroll;
+}
+
+.grid-bottom {
+  grid-gap: 20px 5px;
+  padding-top: 70px;
+  display: grid;
+  height: 100px;
+  grid-template:auto;
+  gap: 20px 5px;
+  
+}
+
+.grid-bottom > div {
+  border: 1px solid  Gainsboro;
+  background-color: white;
+  height: 270px;
+  line-height: 38px;
+}
+
+ */
+
 
   
   
-  
-    
-    
