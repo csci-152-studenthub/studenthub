@@ -5,7 +5,7 @@ import './Dashboard.css';
 // import Feeds from '../feeds/Feeds';
 // import Resources from '../resources/Resources';
 
-const { Text } = Typography;
+const { Text, Title } = Typography;
 
 // const highlight = {
 //   fontSize: 32,
@@ -211,11 +211,11 @@ export class Dashboard extends Component {
       return (
         <div className="dashboard-container">
           <div className="item-welcome-board">
-            {/* <Title level={3}>Hello {userAttributes.name}</Title>
-            <Title level={4}>Your Posts: {this.countPosts()}</Title> */}
-            {/* <Text level={0}><p>1. CSCI Midterm on 4/17</p></Text> */}
-            {/* <Text level={0}><p>2. Appointment on 5/2</p></Text> */}
-            {/* <Text level={0}><p>3. MileStone2 on 4/9</p></Text> */}
+            <Title level={3}>Hello {userAttributes.name}</Title>
+            <Title level={4}>Your Posts: {this.countPosts()}</Title> 
+            <Text level={0}><p>1. CSCI Midterm on 4/17</p></Text> 
+            <Text level={0}><p>2. Appointment on 5/2</p></Text> 
+            <Text level={0}><p>3. MileStone2 on 4/9</p></Text>
           </div>
           <div className="item-activity-board">
             <Divider className="item-feed-title"><Text style={{fontSize: 32}}>Feeds</Text></Divider>
