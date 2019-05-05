@@ -8,6 +8,10 @@ import "./Resources.css";
 const { Title, Paragraph, Text } = Typography;
 const { Meta } = Card;
 
+const highlight = {
+
+}
+
 export class Cards extends Component {
   constructor(props){
     super(props);
@@ -77,6 +81,7 @@ export class Cards extends Component {
   }
 
   openCard = (item) => {
+    
     this.setState({
       currentCard: item,
       visible: true
@@ -154,16 +159,16 @@ export class Cards extends Component {
             grid={{ column: 2 }}
             dataSource={this.state.currentCard ? this.state.currentCard.resource_noteCards : blankData}
             renderItem={noteItem => (
-              <List.Item>
+              <List.Item style={{paddingRight: 20}}>
                 <Skeleton loading={load} active >
                   <Card
-                    // className="notecard"
+                    className="notecard"
                     onClick={() => this.flipCard(noteItem)}
                     hoverable
                   > 
-                  <div className="notecard">
+                  {/* <div className="notecard"> */}
                     <Text>{noteItem.flipped ? noteItem.definition : noteItem.term}</Text>
-                  </div>
+                  {/* </div> */}
                   </Card>
                 </Skeleton>
               </List.Item>
