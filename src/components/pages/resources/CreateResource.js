@@ -1,24 +1,18 @@
 import React, { Component } from 'react'
-
 import { message, Input, Button, Form, Select, Typography, Modal, Icon } from 'antd';
-
+import moment from 'moment';
 import uuid from 'uuid';
 import { API, Auth } from "aws-amplify";
 
+
 const { Text } = Typography;
 const { TextArea } = Input;
-
-
-
 let id = 0;
 export class CreateResource extends Component {
   constructor(props){
     super(props);
-
     this.state ={
       visible: true,
-     
-     
     };
   }
 
@@ -52,8 +46,8 @@ export class CreateResource extends Component {
         let resource_noteCards = noteCards;
         let image_uri = values.uri;
 				let created_by = user;
-        let timestamp = new Date().toLocaleString();
-
+        let timestamp = moment().format();
+        
         let apiName = 'posts';
         let path = '/resources/create-resource';
         let myInit = {
@@ -84,9 +78,8 @@ export class CreateResource extends Component {
 
   remove = (k) => {
     const { form } = this.props;
-    // can use data-binding to get
     const keys = form.getFieldValue('keys');
-    // We need at least one passenger
+    
     if (keys.length === 1) {
       return;
     }
@@ -97,11 +90,10 @@ export class CreateResource extends Component {
 
   add = () => {
     const { form } = this.props;
-    // can use data-binding to get
+    
     const keys = form.getFieldValue('keys');
     const nextKeys = keys.concat(id++);
-    // can use data-binding to set
-    // important! notify form to detect changes
+
     form.setFieldsValue({
       keys: nextKeys,
     });

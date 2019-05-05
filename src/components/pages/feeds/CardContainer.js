@@ -18,6 +18,7 @@ import {
   Tag, Avatar
 } from 'antd';
 import uuid from "uuid";
+import moment from "moment"
 // import ProfilePic from "../profile/ProfilePic";
 import './CardContainer.css';
 import Comments from './Comments'
@@ -88,7 +89,7 @@ export class CardContainer extends Component {
     this.setState({buttonLoading: true});
 
     try {
-      var timestamp = new Date().toLocaleString();
+      var timestamp = moment().format();
       const response = await this.createPost({
         subfeed: this.state.currentSubfeed,
         likes: [this.state.userEmail],
@@ -335,7 +336,7 @@ export class CardContainer extends Component {
     var subfeed_name = this.state.subfeed;
     var subfeed_description = this.state.subfeed_description;
     var created_by = this.state.user;
-    var timestamp = new Date().toLocaleString();
+    var timestamp = moment().format();
     var id = 'subfeed-'+uuid.v4().toString()
 
     console.log('User created subfeed: '+subfeed_name);

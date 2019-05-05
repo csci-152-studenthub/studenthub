@@ -232,7 +232,7 @@ export class Dashboard extends Component {
                   </List.Item>
                   
                 )}
-              />,
+              />
             </div>
             <Divider className="item-resource-title"><Text style={{fontSize:32}}>Resources</Text></Divider>
             {/* <div className="item-resource-title"><Title style={{color:"white"}}>Resources</Title></div> */}
@@ -252,7 +252,7 @@ export class Dashboard extends Component {
                       />
                     </List.Item>
                   )}
-              />,
+              />
             </div>
             <Divider className="item-studygroup-title"><Text style={{fontSize: 32}}>Study Groups</Text></Divider>
             {/* <div className="item-studygroup-title"><Title style={{color:"white"}}>StudyGroup</Title></div> */}
@@ -272,7 +272,7 @@ export class Dashboard extends Component {
                       />
                     </List.Item>
                   )}
-              />,
+              />
             </div>
           </div>
         </div>

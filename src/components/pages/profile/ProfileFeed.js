@@ -61,6 +61,7 @@ export class ProfileFeed extends Component {
         ]
       })
     ));
+    
     this.setState({componentLoading: false});
   }
 
