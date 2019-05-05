@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Auth, API } from "aws-amplify";
-import { Avatar, message, Input, List, Skeleton, Popconfirm, Icon, Typography, Button } from 'antd';
+import { Avatar, message, Input, List, Skeleton, Popconfirm, Icon, Typography, Button} from 'antd';
+import moment from 'moment';
 import './Dashboard.css';
 import Feeds from '../feeds/Feeds';
 import Resources from '../resources/Resources';
@@ -11,6 +12,8 @@ import book from "./book.jpg";
 
 
 const { Title,Text } = Typography;
+
+
 export class Dashboard extends Component {
   constructor(props){
     super(props);
@@ -25,12 +28,22 @@ export class Dashboard extends Component {
       component: 1,
       title: '',
       content: '',
-      visible: false
+      visible: false,
+      resources:[],
+      studygroups:[]
     }
 
     this.getPosts = this.getPosts.bind(this);
+    this.getResources = this.getResources.bind(this);
+    this.getStudygroups = this.getStudygroups.bind(this);
     this.countFeed = this.countFeed.bind(this);
+    this.countResource = this.countResource.bind(this);
+    this.countStudygroup = this.countStudygroup.bind(this);
+    
   }
+
+ 
+  
   
   async componentDidMount(){
     this.props.handler("Dashboard");
@@ -41,6 +54,9 @@ export class Dashboard extends Component {
       this.setState({userAttributes: response.attributes})
     }).catch(err => console.log(err));
     this.getPosts();
+    this.getResources();
+    this.getStudygroups();
+
   }
 
   async getPosts() {
@@ -74,6 +90,64 @@ export class Dashboard extends Component {
       this.setState({loading: false});
     }
   }
+
+  async getResources() {
+    this.setState({
+      resources: [],
+      loading: true
+    })
+
+    try {
+      const resources = await API.get("posts", "/resources/get-resources");
+      resources.body.map((resource) => (
+        this.setState({
+          resources: [
+            ...this.state.resources,
+            {
+              email: resource.created_by,
+              timestamp: resource.timestamp,
+              description: resource.resource_description,
+              title:resource.resource_title
+            }
+          ]
+        })
+      ));
+       //console.log(resources.body);
+      this.setState({loading: false});
+    } catch (e) {
+      console.log(e);
+      this.setState({loading: false});
+    }
+  }
+  async getStudygroups() {
+    this.setState({
+      studygroups: [],
+      loading: true
+    })
+
+    try {
+      const studygroups = await API.get("posts", "/studygroups/get-studygroups");
+      studygroups.body.map((studygroup) => (
+        this.setState({
+          studygroups: [
+            ...this.state.studygroups,
+            {
+              course: studygroup.course,
+              timestamp: studygroup.timestamp,
+              description: studygroup.description,
+              email:studygroup.created_by
+            }
+          ]
+        })
+      ));
+       console.log(studygroups.body);
+      this.setState({loading: false});
+    } catch (e) {
+      console.log(e);
+      this.setState({loading: false});
+    }
+  }
+
   handleChange(type, e){
     // console.log(type, 'is now: ', e.target.value);
     this.setState({
@@ -92,9 +166,39 @@ export class Dashboard extends Component {
       }
       
     });
-
     return (<Text >Feeds: {e}</Text>)
   }
+
+  countResource()
+  {
+   
+    let e=0;
+    this.state.resources.forEach(resource => {
+      
+      if(resource.email===this.state.userAttributes.email)
+      {
+        e++;
+      }
+            
+    });
+    return (<Text >Resources: {e}</Text>)
+  }
+
+  countStudygroup()
+  {
+   console.log(this.state.studygroups)
+    let e=0;
+    this.state.studygroups.forEach(studygroup => {
+      
+      if(studygroup.email===this.state.userAttributes.email)
+      {
+        e++;
+      }
+            
+    });
+    return (<Text >StudyGroup: {e}</Text>)
+  }
+  
    render() {
     const data =this.state.posts;
     const { TextArea } = Input;
@@ -105,11 +209,11 @@ export class Dashboard extends Component {
       <div>
       
       <div class="grid-head">
-        <div><Title level={4}>Hello <strong>{userAttributes.name}</strong>, hope you have an amazing day! {this.countFeed()}</Title> 
+        <div><Title level={4}>Hello <strong>{userAttributes.name}</strong>, hope you have an amazing day! {this.countFeed()} {this.countResource()} {this.countStudygroup()}</Title> 
         
         </div>
       </div>
-      <TextArea placeholder="Write down..." rows={6}  onChange={(e) => this.handleChange('content', e)}/>
+      <TextArea placeholder="Write down..." rows={3}  onChange={(e) => this.handleChange('content', e)}/>
       <div class="grid-container">
         <div>
           <div class="title"><Title style={{color:"white"}}>Feeds</Title></div>
