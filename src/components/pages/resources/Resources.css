@@ -1,21 +1,96 @@
 
-.img-resize{
-    height: 200px;
-    width: 100%;
-    overflow: hidden;
+.item-resource-cards{
+  grid-area: cards;
+   
+} 
+
+.item-resource-info{
+  grid-area: resourceInfo;
+  padding: 50px;
+  box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+
+
 
 .item-resources{
-    grid-area: resources;
-
+  grid-area: resources;  
+  padding: 10px;
+  display: grid;
+  grid-gap: 0px 50px;
+  grid-template-columns: 300px auto ;
+  grid-template-rows: auto;
+  grid-template-areas: 
+    "cards"
+    "resourceInfo"
 }
 
-.resources-container{
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto ;
-    background:white;
-    padding: 20px;
-    grid-template-areas:
-    "resources"
+
+ .resources-container{
+  display: grid; 
+  background:white;
+  padding: 20px;
+  grid-template-columns: auto;
+  grid-template-rows: auto ;
+  grid-template-areas:
+  ". "
+  "resources"
+}
+
+
+
+
+/* For any screen larger than 900px */
+@media (min-width: 900px){
+    .notecard{
+      width: auto;
+      height: 200px;
+      padding: 20px;
+      overflow-x: hidden;
+      overflow-y: auto;
+      display:grid;
+      justify-content: center;
+      align-items: center;
+      /* justify-self: center; */
+    
+    }
+    .resource-card{
+      height: 170px;
+      width: 300px;
+     
+    }
+    
+    .item-resource-cards{
+      grid-area: cards;
+       
+    } 
+    
+
+    .item-resource-info{
+      grid-area: resourceInfo;
+      padding: 50px;
+      box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+
+    .item-resources{
+      grid-area: resources;  
+      padding: 10px;
+      display: grid;
+      grid-gap: 0px 50px;
+      grid-template-columns: 300px auto ;
+      grid-template-rows: auto;
+      grid-template-areas: 
+        "cards resourceInfo"
+    }
+
+   
+    .resources-container{
+        display: grid; 
+        background:white;
+        padding: 20px;
+        grid-template-columns: auto;
+        grid-template-rows: auto ;
+        grid-template-areas:
+        ". "
+        "resources"
+    }
 }

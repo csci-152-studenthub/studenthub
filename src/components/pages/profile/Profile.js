@@ -177,7 +177,7 @@ export class Profile extends Component {
                 <ProfileFeed currentUser={userAttributes.preferred_username}/>
               </TabPane>
               <TabPane tab={<span><Icon type="read"/>Resources</span>} key="2">
-                <ProfileResources />
+                <ProfileResources  currentUser={userAttributes.email}/>
               </TabPane>
               <TabPane tab={<span><Icon type="team"/>Study groups</span>} key="3">
                 <ProfileStudyGroups user={this.state.userAttributes.email} switch={this.dummySwitch} study_groups={cardsLoading ? blankData : this.state.study_groups}/>

@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
 import {Typography, Button, Modal, Card, List, Carousel, Divider, Avatar} from 'antd';
-import "./Resources.css";
-import "./resComp/Cards.js";
-import Cards from './resComp/Cards.js';
+import Cards from './Cards.js';
 import CreateResource from './CreateResource.js';
-
+import "./Resources.css";
 
 export class Resources extends Component {
   constructor(props){
@@ -42,9 +40,8 @@ export class Resources extends Component {
   render() {
     return (
       <div className="resources-container">
-
+        <Button type="primary" onClick={this.showComponent} style={{width:200}}>Create Flashcards</Button>
         <Cards updateResources={this.state.newResource} />
-        <Button type="primary" onClick={this.showComponent}>Create Flashcards</Button>
         {this.state.visible ? <CreateResource handleComponent={this.hideComponent} handleCards={this.handleResources}/> : null} 
       </div>
     )

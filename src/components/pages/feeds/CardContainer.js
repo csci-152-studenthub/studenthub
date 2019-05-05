@@ -18,6 +18,7 @@ import {
   Tag, Avatar
 } from 'antd';
 import uuid from "uuid";
+import moment from "moment"
 // import ProfilePic from "../profile/ProfilePic";
 import './CardContainer.css';
 import Comments from './Comments'
@@ -88,7 +89,7 @@ export class CardContainer extends Component {
     this.setState({buttonLoading: true});
 
     try {
-      var timestamp = new Date().toLocaleString();
+      var timestamp = moment().format();
       const response = await this.createPost({
         subfeed: this.state.currentSubfeed,
         likes: [this.state.userEmail],
@@ -335,7 +336,7 @@ export class CardContainer extends Component {
     var subfeed_name = this.state.subfeed;
     var subfeed_description = this.state.subfeed_description;
     var created_by = this.state.user;
-    var timestamp = new Date().toLocaleString();
+    var timestamp = moment().format();
     var id = 'subfeed-'+uuid.v4().toString()
 
     console.log('User created subfeed: '+subfeed_name);
@@ -620,18 +621,32 @@ export class CardContainer extends Component {
             <TextArea placeholder="Give a description about what your subfeed is about!" rows={4} style={{ maxWidth: '500px', top: 5}} onChange={(e) => this.handleChange('subfeed_description', e)}/><br/>
           </div>
         </Modal>
+          {/* DRAWER FOR MOBILE VIEW */}
+          <Drawer
+            className="mobile-view"
+            title="Comments"
+            placement="right"
+            closable={true}
+            visible={this.state.commentsVisible}
+            width={"100%"}
+            onClose={() => this.setState({commentsVisible: false})}
+          >
+            <Comments id={id} user={this.state.user}/>
+          </Drawer>
+             {/* DRAWER FOR WINDOW VIEW */}
+          <Drawer
+            className="window-view"
+            title="Comments"
+            placement="right"
+            closable={true}
+            visible={this.state.commentsVisible}
+            width={512}
+            onClose={() => this.setState({commentsVisible: false})}
+          >
+            <Comments id={id} user={this.state.user}/>
+          </Drawer>
 
-        <Drawer
-          title="Comments"
-          placement="right"
-          closable={true}
-          visible={this.state.commentsVisible}
-          width={512}
-          onClose={() => this.setState({commentsVisible: false})}
-        >
-          <Comments id={id} user={this.state.user}/>
-        </Drawer>
-
+       
       </div>
     );
   }

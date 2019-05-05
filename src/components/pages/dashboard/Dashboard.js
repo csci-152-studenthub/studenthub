@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import { Auth, API } from "aws-amplify";
-import { List, Typography, Skeleton } from 'antd';
+import { List, Typography, Skeleton, Divider } from 'antd';
 import './Dashboard.css';
 // import Feeds from '../feeds/Feeds';
 // import Resources from '../resources/Resources';
-import game from "./game.jpg";
-import music from "./music.jpg";
-import book from "./book.jpg";
 
+const { Text } = Typography;
 
-
-const { Title,Text } = Typography;
+// const highlight = {
+//   fontSize: 32,
+//   textShadow: '2px 2px 21px rgba(24, 144, 255, 1)'
+// }
 export class Dashboard extends Component {
   constructor(props){
     super(props);
@@ -36,21 +36,21 @@ export class Dashboard extends Component {
     await Auth.currentAuthenticatedUser({
       bypassCache: true  // Optional, By default is false. If set to true, this call will send a request to Cognito to get the latest user data
     }).then(response => {
-      console.log('Setting userAttributes to:', response.attributes);
+      // console.log('Setting userAttributes to:', response.attributes);
       this.setState({userAttributes: response.attributes})
     }).catch(err => console.log(err));
     this.getPosts();
+    this.getResources();
+    this.getStudygroups();
   }
 
   async getPosts() {
     this.setState({
       posts: [],
-      loading: true
     });
 
     try {
       const posts = await API.get("posts", "/posts/get-posts");
-      // this.setState({posts});
       posts.body.map((post) => (
         this.setState({
           posts: [
@@ -66,13 +66,93 @@ export class Dashboard extends Component {
           ]
         })
       ));
-      // console.log(posts.body);
-      this.setState({loading: false});
+     
     } catch (e) {
       console.log(e);
-      this.setState({loading: false});
+
     }
   }
+  
+
+  async getResources(){
+    let email = this.state.currentUser;
+    let apiName = 'posts';
+    let path = '/resources/get-resources';
+    let myInit = {
+      body: {user: email}
+    };
+    this.setState({
+      resources: [],
+    });
+    await API.get(apiName, path, myInit)
+      .then((response) => {
+        // console.log("Resources:", response);
+        response.body.map((item) => {
+          this.setState({
+            resources:[
+              ...this.state.resources,
+              {
+               resource_title: item.resource_title,
+               resource_id: item.resourceId,
+               resource_description: item.resource_description,
+               created_by: item.created_by,
+               resource_url: item.resource_url,
+               resource_comments: [],
+               resource_noteCards: item.resource_noteCards,
+               timestamp: item.timestamp
+              }
+            ]
+          })
+        });
+      })
+      .catch((error) => {
+        console.log("Something went wrong: ", error);
+      });
+  }
+
+
+  async getStudygroups(){
+    this.setState({
+      study_groups: [],
+      cardsLoading: true
+    });
+
+    let user = this.state.userAttributes.email;
+    // console.log("Getting studygroups for user "+user);
+
+    let apiName = 'posts';
+    let path = '/studygroups/get-studygroups';
+    let myInit = {
+      body: {user}
+    };
+
+    await API.post(apiName, path, myInit).then(response => {
+      // console.log('Successfylly got studygroups: ', response.body);
+      this.setState({currentStudygroup: response.body[0]});
+      response.body.map((item) => (
+        this.setState({
+          study_groups:[
+            ...this.state.study_groups,
+            {
+              groupId: item.groupId,
+              course: item.course,
+              group_name: item.group_name,
+              description: item.description,
+              members: item.members,
+              professor: item.professor,
+              timestamp: item.timestamp,
+              created_by: item.created_by
+            }
+          ]
+        })
+      ));
+      this.setState({cardsLoading: false});
+    }).catch(e => {
+      console.log("Encountered an error in getting studygroups: ", e);
+    });
+  }
+
+
 
   
   // CountFeed()
@@ -88,7 +168,7 @@ export class Dashboard extends Component {
   //
   //   return (<Text >Feeds: {e} , Resources: {e}, StudyGroup:{e}</Text>)
   // }
-
+  
 
   countPosts(){
     let posts = this.state.posts;
@@ -104,60 +184,99 @@ export class Dashboard extends Component {
     return e;
   }
 
-  render() {
-    const data =this.state.posts;
-    let userAttributes = this.state.userAttributes;
+  // highlight_handler = () =>{
+  //   console.log('mouse enter text');
+  //   this.setState({
+  //     isHighlighted: true
+  //   })
+  // };
 
+  // highlight_handler_leave = () =>{
+  //   console.log('mouse left text');
+  //   this.setState({
+  //     isHighlighted: false
+  //   })
+  // };
+
+
+  render() {
+    const post_data =this.state.posts;
+    const resource_data = this.state.resources;
+    const studygroup_data = this.state.study_groups;
+
+    let userAttributes = this.state.userAttributes;
     if(userAttributes === undefined)
       return (<Skeleton />);
     else
       return (
-        <div>
-        <div className="grid-head">
-          <div>
-            <Title level={3}>Hello <strong>{userAttributes.name}</strong>, hope you have an amazing day!</Title>
-            <Title level={4}>Feeds: {this.countPosts()}</Title>
-            <Text level={0}><p>1. CSCI Midterm on 4/17</p></Text>
-            <Text level={0}><p>2. Appointment on 5/2</p></Text>
-            <Text level={0}><p>3. MileStone2 on 4/9</p></Text>
+        <div className="dashboard-container">
+          <div className="item-welcome-board">
+            {/* <Title level={3}>Hello {userAttributes.name}</Title>
+            <Title level={4}>Your Posts: {this.countPosts()}</Title> */}
+            {/* <Text level={0}><p>1. CSCI Midterm on 4/17</p></Text> */}
+            {/* <Text level={0}><p>2. Appointment on 5/2</p></Text> */}
+            {/* <Text level={0}><p>3. MileStone2 on 4/9</p></Text> */}
+          </div>
+          <div className="item-activity-board">
+            <Divider className="item-feed-title"><Text style={{fontSize: 32}}>Feeds</Text></Divider>
+            {/* <div className="item-feed-title"><Title style={{color:"white"}}>Feeds</Title></div> */}
+            <div className="item-feed-activity">
+              <List
+                itemLayout="horizontal"
+                dataSource={post_data}
+                renderItem={item => (
+                  <List.Item>
+                    <List.Item.Meta
+                      description={<Text><Text style={{fontWeight: "bold"}}>{item.user.split('@')[0]}</Text> posted '{item.title}'in the <Text style={{textDecorationLine:"underline"}}>{item.subfeed}</Text> subfeed</Text>}
+                    />
+                  </List.Item>
+                  
+                )}
+              />
+            </div>
+            <Divider className="item-resource-title"><Text style={{fontSize:32}}>Resources</Text></Divider>
+            {/* <div className="item-resource-title"><Title style={{color:"white"}}>Resources</Title></div> */}
+            <div className="item-resources-activity">
+              <List
+                  itemLayout="horizontal"
+                  dataSource={resource_data}
+                  renderItem={item => (
+                    <List.Item>
+                      <List.Item.Meta
+                        description={
+                        <Text>
+                          <Text style={{fontWeight: "bold"}}>{item.created_by.split('@')[0]}</Text> created '{item.resource_title}' in
+                          <span> <Text style={{textDecorationLine:"underline"}}>Resources</Text></span>
+                        </Text>
+                        }
+                      />
+                    </List.Item>
+                  )}
+              />
+            </div>
+            <Divider className="item-studygroup-title"><Text style={{fontSize: 32}}>Study Groups</Text></Divider>
+            {/* <div className="item-studygroup-title"><Title style={{color:"white"}}>StudyGroup</Title></div> */}
+            <div className="item-studygroups-activity">
+               <List
+                  itemLayout="horizontal"
+                  dataSource={studygroup_data}
+                  renderItem={item => (
+                    <List.Item>
+                      <List.Item.Meta
+                        description={
+                        <Text>
+                          <Text style={{fontWeight: "bold"}}>{item.created_by.split('@')[0]}</Text> created '{item.group_name}' in
+                          <span> <Text style={{textDecorationLine:"underline"}}>Study Groups</Text></span>
+                        </Text>
+                        }
+                      />
+                    </List.Item>
+                  )}
+              />
+            </div>
           </div>
         </div>
-        <div className="grid-container">
-          <div>
-            <div className="title"><Title style={{color:"white"}}>Feeds</Title></div>
-            <List
-              itemLayout="horizontal"
-              dataSource={data}
-              renderItem={item => (
-                <List.Item>
-                  <List.Item.Meta
-                    description={<Text><Text style={{fontWeight: "bold"}}>{item.user.split('@')[0]}</Text> posted '{item.title}'in the <Text style={{textDecorationLine:"underline"}}>{item.subfeed}</Text> subfeed</Text>}
-                  />
-                </List.Item>
-      )}
-    />,
-          </div>
-          <div>
-          <div className="title"><Title style={{color:"white"}}>Resources</Title></div>
-          <p>{<img alt="example" src={music} height="30" />}<strong>{this.state.user.split('@')[0]}</strong> upload a video in the Computer Scinece</p>
-          <p>{<img alt="example" src={book} height="24" />}<strong>{this.state.user.split('@')[0]}</strong> upload a document in the Chemistry</p>
-          <p>{<img alt="example" src={book} height="24" />}<strong>{this.state.user.split('@')[0]}</strong> upload a text in the CSCI 113</p>
-          <p>{<img alt="example" src={music} height="30" />}<strong>{this.state.user.split('@')[0]}</strong> upload a picture in the CSCI 152</p>
-          <p>{<img alt="example" src={game} height="30" />}<strong>{this.state.user.split('@')[0]}</strong> upload a game in the CSCI 152</p>
-          <p>{<img alt="example" src={music} height="30" />}<strong>{this.state.user.split('@')[0]}</strong> upload a picture in the CSCI 115</p>
-          </div>
-          <div>
-          <div className="title"><Title style={{color:"white"}}>StudyGroup</Title></div>
-          <p><strong>{this.state.user.split('@')[0]}</strong> joined "I want survive" in <span className="overline">CSCI119</span></p>
-          <p><strong>{this.state.user.split('@')[0]}</strong> joined "Milestone2" in <span className="overline">CSCI152</span></p>
-          <p><strong>{this.state.user.split('@')[0]}</strong> joined "Proofs introduction" in <span className="overline">CSCI119</span></p>
-          <p><strong>{this.state.user.split('@')[0]}</strong> joined "Final" in <span className="overline">CSCI119</span></p>
-          <p><strong>{this.state.user.split('@')[0]}</strong> joined "HW1" in <span className="overline">CSCI152</span></p>
-          <p><strong>{this.state.user.split('@')[0]}</strong> joined "Project" in <span className="overline">CSCI115</span></p>
-
-          </div>
-        </div>
-      </div>
+    
 
       )
   }
