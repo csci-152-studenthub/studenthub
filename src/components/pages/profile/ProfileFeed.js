@@ -10,6 +10,7 @@ import {
 } from 'antd';
 // import ProfilePic from './ProfilePic';
 // import EditAccountInfo from './EditAccountInfo';
+import moment from 'moment'
 import { API } from "aws-amplify";
 import './profile.css';
 
@@ -127,7 +128,7 @@ export class ProfileFeed extends Component {
             <Skeleton loading={loading} active avatar>
               <List.Item.Meta
                 title={item.title}
-                description={item.timestamp}
+                description={moment(item.timestamp).format('MMMM Do YYYY, h:mm:ss a')}
               />
               <Paragraph ellipsis={{ rows: 4, expandable: true }}>
                 {item.content}

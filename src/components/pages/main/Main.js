@@ -22,7 +22,7 @@ export class Main extends Component {
     super(props);
 
     this.state = {
-      component: 3,
+      component: 0,
       header: 'General',
       visible: false,
     };
@@ -106,7 +106,7 @@ export class Main extends Component {
                 <Icon type={this.state.visible ? 'menu-unfold' : 'menu-fold'}/>
               </Button>
               <Drawer
-                title="StudentHub"
+                title="Studenthub.io"
                 placement="left"
                 closable={false}
                 onClose={this.onClose}
@@ -148,7 +148,7 @@ export class Main extends Component {
             <div className="logo-area">
               <a onClick={this.backToHome}>
                 <img src={logo} alt="Logo" className="logo" />
-                <h1 className="logo-text">Studenthub</h1>
+                <h1 className="logo-text">Studenthub.io</h1>
               </a>
             </div>
             <Menu theme="dark" mode="inline" defaultSelectedKeys={[this.state.component.toString()]} className="stickyNav">
