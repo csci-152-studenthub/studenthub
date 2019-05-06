@@ -34,7 +34,7 @@ export class CreateResource extends Component {
     let user = this.state.userEmail;
     this.props.form.validateFields(async (err, values) => {
       if (!err) {
-        let noteCards = []
+        let noteCards = [];
         for(let i in values.noteCard_term){
           let card = { term: values.noteCard_term[i], definition: values.noteCard_definition[i], flipped: false};
           noteCards.push(card)
@@ -47,12 +47,13 @@ export class CreateResource extends Component {
         let image_uri = values.uri;
 				let created_by = user;
         let timestamp = moment().format();
+        let views = 0;
         
         let apiName = 'posts';
         let path = '/resources/create-resource';
         let myInit = {
-            body: { resource_title, resourceId, resource_description, resource_noteCards, created_by, image_uri, timestamp}
-        }
+            body: { resource_title, resourceId, resource_description, resource_noteCards, created_by, image_uri, timestamp, views}
+        };
         await API.post(apiName, path, myInit).then(response => {
           console.log("created resource:", response);
           this.props.handleCards(true);

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Auth, API } from "aws-amplify";
-import {List, Typography, Skeleton, Divider, Statistic, Row, Col, Icon, Menu} from 'antd';
+import {List, Typography, Skeleton, Divider, Statistic, Row, Col, Icon, Spin} from 'antd';
 import './Dashboard.css';
 // import Feeds from '../feeds/Feeds';
 // import Resources from '../resources/Resources';
@@ -213,19 +213,19 @@ export class Dashboard extends Component {
             <div className="item-statistics">
               <Row gutter={12}>
                 <Col span={6}>
-                  <Statistic title="Total Posts" value={this.state.statistics ? this.state.statistics.postCount : "Loading..."} prefix={<Icon type="project" rotate={-90} style={{paddingRight: 10}} />} />
+                  <Statistic title="Total Posts" value={this.state.statistics ? this.state.statistics.postCount : "😪"} prefix={this.state.statistics ? <Icon type="project" rotate={-90} style={{paddingRight: 10}} /> : <Spin />} />
                 </Col>
                 <Col span={6}>
-                  <Statistic title="Total Likes" value={this.state.statistics ? this.state.statistics.postLikeCount : "Loading..."} prefix={<Icon type="like" style={{paddingRight: 10}}/>} />
+                  <Statistic title="Total Likes" value={this.state.statistics ? this.state.statistics.postLikeCount : "😪"} prefix={this.state.statistics ? <Icon type="like" style={{paddingRight: 10}}/> : <Spin />} />
                 </Col>
                 <Col span={1}>
                   <Divider type="vertical" style={{height: 100}}/>
                 </Col>
                 <Col span={6}>
-                  <Statistic title="Total Resources" value={this.state.statistics ? this.state.statistics.resourceCount : "Loading..."} prefix={<Icon type="read" style={{paddingRight: 10}}/>} />
+                  <Statistic title="Total Resources" value={this.state.statistics ? this.state.statistics.resourceCount : "😪"} prefix={this.state.statistics ? <Icon type="read" style={{paddingRight: 10}}/> : <Spin />} />
                 </Col>
                 <Col span={5}>
-                  <Statistic title="Resource Views" value={this.state.statistics ? this.state.statistics.resourceViewCount : "Loading..."} prefix={<Icon type="eye" style={{paddingRight: 10}}/>} />
+                  <Statistic title="Resource Views" value={this.state.statistics ? this.state.statistics.resourceViewCount : "😪"} prefix={this.state.statistics ? <Icon type="eye" style={{paddingRight: 10}}/> : <Spin />} />
                 </Col>
               </Row>
             </div>

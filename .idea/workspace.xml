@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="18ea8b0b-a2f8-4f5c-9b18-7882f85c6657" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/dashboard/Dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/dashboard/Dashboard.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/pages/dashboard/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/dashboard/Dashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/resources/Cards.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/resources/Cards.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/resources/CreateResource.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/resources/CreateResource.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -35,11 +33,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/pages/dashboard/Dashboard.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="227" column="164" selection-start-line="227" selection-start-column="164" selection-end-line="227" selection-end-column="164" />
+            <state relative-caret-position="555">
+              <caret line="227" column="127" selection-start-line="227" selection-start-column="127" selection-end-line="227" selection-end-column="127" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
                 <element signature="n#!!block;n#getPosts#0;n#Dashboard#0" />
@@ -55,6 +53,18 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="326">
               <caret line="124" column="18" selection-start-line="124" selection-start-column="18" selection-end-line="124" selection-end-column="61" />
+              <folding>
+                <element signature="e#0#40#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/components/pages/resources/CreateResource.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="107">
+              <caret line="36" column="27" selection-start-line="36" selection-start-column="27" selection-end-line="36" selection-end-column="27" />
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
               </folding>
@@ -210,7 +220,6 @@
         <option value="$PROJECT_DIR$/src/components/pages/auth/SignIn.js" />
         <option value="$PROJECT_DIR$/src/components/pages/main/Main.js" />
         <option value="$PROJECT_DIR$/src/components/pages/auth/ChangePassword.component.js" />
-        <option value="$PROJECT_DIR$/src/components/pages/resources/CreateResource.js" />
         <option value="$PROJECT_DIR$/src/components/pages/studygroup/sendEmails.js" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/src/components/pages/profile/ProfileStudyGroups.js" />
@@ -223,6 +232,7 @@
         <option value="$PROJECT_DIR$/src/components/pages/resources/Cards.js" />
         <option value="$PROJECT_DIR$/src/components/pages/dashboard/Dashboard.css" />
         <option value="$PROJECT_DIR$/src/components/pages/dashboard/Dashboard.js" />
+        <option value="$PROJECT_DIR$/src/components/pages/resources/CreateResource.js" />
       </list>
     </option>
   </component>
@@ -427,7 +437,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="117779000" />
+    <option name="totallyTimeSpent" value="118453000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -724,13 +734,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/pages/resources/CreateResource.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="1" column="18" selection-start-line="1" selection-end-line="1" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/pages/studygroup/Studygroup.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-925">
@@ -801,13 +804,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/pages/dashboard/Dashboard.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="227" column="164" selection-start-line="227" selection-start-column="164" selection-end-line="227" selection-end-column="164" />
+        <state relative-caret-position="555">
+          <caret line="227" column="127" selection-start-line="227" selection-start-column="127" selection-end-line="227" selection-end-column="127" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
             <element signature="n#!!block;n#getPosts#0;n#Dashboard#0" />
             <element signature="n#!!block;n#getResources#0;n#Dashboard#0" />
             <element signature="n#!!block;n#getStudygroups#0;n#Dashboard#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/resources/CreateResource.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="107">
+          <caret line="36" column="27" selection-start-line="36" selection-start-column="27" selection-end-line="36" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
           </folding>
         </state>
       </provider>
