@@ -76,7 +76,7 @@ export default class Comments extends Component {
         console.log("Comments: ", commentsTemp);
 
         commentsTemp.forEach(comment => {
-          console.log("ref:"+comment.content)
+          // console.log("ref:"+comment.content)
           this.setState(prevState => ({
             comments: [
               ...prevState.comments,
@@ -219,7 +219,7 @@ export default class Comments extends Component {
     const user = this.props.user;
 
     const Timestamp = ({time}) => (
-      <Tooltip title={moment(time).format('YYYY-MM-DD HH:mm:ss')}>
+      <Tooltip title={moment(time).format('MMMM Do YYYY, h:mm:ss a')}>
         <span>{moment(time).fromNow()}</span>
       </Tooltip>
     );
@@ -234,9 +234,17 @@ export default class Comments extends Component {
 
     return (
       <div>
+        <Divider orientation="left"><Text style={{fontSize: 20}}>Add Comment</Text></Divider>
+        <Editor
+          onChange={this.handleChange}
+          onSubmit={this.handleSubmit}
+          submitting={submitting}
+          value={commentContent}
+        />
         <List
           itemLayout="horizontal"
           dataSource={comments}
+          pagination={{pageSize: 5}}
           renderItem={item => (
             <Skeleton loading={commentsLoading}>
               <Comment
@@ -252,13 +260,6 @@ export default class Comments extends Component {
               />
             </Skeleton>
           )}
-        />
-        <Divider orientation="left"><Text style={{fontSize: 20}}>Add Comment</Text></Divider>
-        <Editor
-          onChange={this.handleChange}
-          onSubmit={this.handleSubmit}
-          submitting={submitting}
-          value={commentContent}
         />
       </div>
     );

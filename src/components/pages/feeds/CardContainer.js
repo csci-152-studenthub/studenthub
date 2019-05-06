@@ -578,7 +578,7 @@ export class CardContainer extends Component {
                     <List.Item.Meta
                       avatar={<Avatar size={38}  style={{ backgroundColor: '#1890FF', top: 10 }} icon="user" />}
                       title={item.title}
-                      description={`Submitted by user: ${item.user}`}
+                      description={`Submitted by ${item.user} - ${moment(item.timestamp).fromNow()}`}
                     />
                     <Paragraph ellipsis={{ rows: 4, expandable: true }}>
                       {item.content}
