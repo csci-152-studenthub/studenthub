@@ -40,19 +40,13 @@ export class Cards extends Component {
   }
 
   async getResources(){
-    console.log("Getting studygroups...");
-    let email = this.state.currentUser;
-
     let apiName = 'posts';
     let path = '/resources/get-resources';
-    let myInit = {
-      body: {user: email}
-    };
     this.setState({
       resources: [],
       loading: true
     });
-    await API.get(apiName, path, myInit)
+    await API.get(apiName, path)
       .then((response) => {
         console.log("Resources:", response);
         response.body.map((item) => {
@@ -128,7 +122,7 @@ export class Cards extends Component {
               <List.Item > 
                   <Skeleton loading={load} active >
                     <Card
-                     
+
                       className="resource-card"
                       onClick={ () => this.openCard(item)}
                       hoverable

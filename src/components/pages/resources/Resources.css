@@ -7,31 +7,13 @@
   grid-area: cards;
 } 
 
+/* for each resource card */
 .resource-card{
-  height: 170px;
-  width: auto;
+  /* height: 170px; */
+  width: 70vw;
 }
 
-.item-resource-info{
-  grid-area: resourceInfo;
-  padding: 50px;
-  display: none;
-}
-
-
-
-.item-resources{
-  grid-area: resources;  
-  padding: 10px;
-  display: grid;
-  grid-template-columns: auto;
-  grid-template-rows: auto;
-  grid-template-areas: 
-    "cards"
-}
-
-
- .resources-container{
+.resources-container{
   display: grid; 
   background:white;
   padding: 20px;
@@ -41,10 +23,6 @@
   ". "
   "resources"
 }
-
-
-
-
 /* For any screen larger than 900px */
 @media (min-width: 900px){
     .notecard{
@@ -73,6 +51,7 @@
 
     .item-resource-info{
       grid-area: resourceInfo;
+      display: block;
       padding: 50px;
       box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
