@@ -18,12 +18,16 @@ export class Cards extends Component {
     this.state = {
       visible: false,
       loading: true,
+      isMobile: false,
       resources: [],
       user:''
     }
   }
   
   async componentDidMount(){
+    if(window.innerWidth < 900){
+      this.handleWindowResize();
+    }
     Auth.currentAuthenticatedUser({
       bypassCache:true
     }).then(user =>{
@@ -31,13 +35,23 @@ export class Cards extends Component {
     })
     .catch(error => console.log(error));
     this.getResources();
+    
   }
 
   componentDidUpdate(prevProps){
     if(this.props.updateResources !== prevProps.updateResources){
       this.getResources();
+      
     }
+    window.addEventListener("resize", this.handleWindowResize);
   }
+
+  handleWindowResize = () => {
+    return setTimeout(() => {
+      console.log('screenresized, mobile is:', this.state.isMobile);
+      this.setState({ isMobile: window.innerWidth < 900 })
+    });
+}
 
   async getResources(){
     let apiName = 'posts';
@@ -138,40 +152,66 @@ export class Cards extends Component {
             )}
           />
         </div>
-        {/* MODAL FILLED WITH NOTECARDS */}
-        {/* <Modal
-          title={this.state.currentCard === undefined ? "Loading..." : this.state.currentCard.title}
-          style={{top: 30}}
-          width={1000}
-          visible={this.state.visible}
-          onCancel={this.handleCardModalCancel}
-          footer={null}
-        > */}
-        <div className="item-resource-info">
-          <List
-            style={this.state.visible ?  {display:"block"} : {display:"none"}}
-            grid={{ column: 2 }}
-            dataSource={this.state.currentCard ? this.state.currentCard.resource_noteCards : blankData}
-            renderItem={noteItem => (
-              <List.Item style={{paddingRight: 20}}>
-                <Skeleton loading={load} active >
-                  <Card
-                    className="notecard"
-                    onClick={() => this.flipCard(noteItem)}
-                    hoverable
-                  > 
-                  {/* <div className="notecard"> */}
-                    <Text>{noteItem.flipped ? noteItem.definition : noteItem.term}</Text>
-                  {/* </div> */}
-                  </Card>
-                </Skeleton>
-              </List.Item>
-              
-            )}
-          />
-        </div>
-        {/* </Modal> */}
+        {/* Window View */}
+          <div className="item-resource-info">
+            <List
+              style={this.state.visible ?  {display:"block"} : {display:"none"}}
+              grid={{ column: 2 }}
+              dataSource={this.state.currentCard ? this.state.currentCard.resource_noteCards : blankData}
+              renderItem={noteItem => (
+                <List.Item style={{paddingRight: 20}}>
+                  <Skeleton loading={load} active >
+                    <Card
+                      className="notecard"
+                      onClick={() => this.flipCard(noteItem)}
+                      hoverable
+                    > 
+                    {/* <div className="notecard"> */}
+                      {noteItem.flipped ? <Text>{noteItem.definition}</Text> : <Text style={{fontWeight: "bold"}}>{noteItem.term}</Text>}
+                    {/* </div> */}
+                    </Card>
+                  </Skeleton>
+                </List.Item>
+              )}
+            />
+          </div>
 
+        {/* Mobile View */}
+        {/* MODAL FILLED WITH NOTECARDWS */}
+        <div className="res-mobile-view">
+          <Modal
+            className="res-mobile-view"
+            title={this.state.currentCard === undefined ? "Loading..." : this.state.currentCard.title}
+            style={{top: 30}}
+            width={1000}
+            visible={this.state.isMobile ? this.state.visible : console.log('mobileis:',this.state.isMobile) }
+            onCancel={this.handleCardModalCancel}
+            footer={null}
+          >
+          <div className="item-resource-info-mobile">
+            <List
+              style={this.state.visible ?  {display:"block"} : {display:"none"}}
+              grid={{ column: 1 }}
+              dataSource={this.state.currentCard ? this.state.currentCard.resource_noteCards : blankData}
+              renderItem={noteItem => (
+                <List.Item style={{paddingRight: 20}}>
+                  <Skeleton loading={load} active >
+                    <Card
+                      className="notecard"
+                      onClick={() => this.flipCard(noteItem)}
+                      hoverable
+                    > 
+                    {/* <div className="notecard"> */}
+                      {noteItem.flipped ? <Text>{noteItem.definition}</Text> : <Text style={{fontWeight: "bold"}}>{noteItem.term}</Text>}
+                    {/* </div> */}
+                    </Card>
+                  </Skeleton>
+                </List.Item>  
+              )}
+            />
+          </div>
+          </Modal>
+        </div>
       </div>
     )
   }
