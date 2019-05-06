@@ -8,6 +8,9 @@
     "aws-amplify": "^1.1.22",
     "aws-sdk": "^2.449.0",
     "draft-js": "^0.10.5",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.12.1",
+    "enzyme-to-json": "^3.3.5",
     "gg-editor": "^2.0.2",
     "moment": "^2.24.0",
     "react": "^16.8.2",
@@ -16,12 +19,13 @@
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.5",
     "react-tooltip": "^3.9.2",
+    "sinon": "^7.3.2",
     "uuid": "^3.3.2"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "test",
     "eject": "react-scripts eject",
     "deploy": "aws s3 sync build/ s3://studenthub-test"
   },

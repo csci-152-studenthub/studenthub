@@ -1,11 +1,13 @@
-// import SignInComponent  from '../pages/auth/SignInComponent';
+import SignInComponent from '../auth/SignIn.componnt';
 
-// jest.mock(../)
+const fakeState={ loading: false,
+    buttonLoading: false,
+    formType: 0,
+    email: "",
+    password: ""}
+it("renders correctly" , ()=> {
+    const wrapper=shallow(fakeState/>)
+);
 
-// it('signs  in correctly ',()=>{
 
-
-
-
-// })
-
+}); 
