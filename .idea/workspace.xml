@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="18ea8b0b-a2f8-4f5c-9b18-7882f85c6657" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/main/Main.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/main/Main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/main/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/main/Main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/profile/ProfileFeed.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/profile/ProfileFeed.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/auth/SignIn.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/auth/SignIn.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -96,11 +93,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/index.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="203">
               <caret line="24" column="24" selection-start-line="24" selection-start-column="24" selection-end-line="24" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/components/pages/auth/SignIn.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="476">
+              <caret line="54" column="30" selection-start-line="54" selection-start-column="30" selection-end-line="54" selection-end-column="30" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -110,18 +119,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="390">
               <caret line="86" column="21" selection-start-line="86" selection-start-column="21" selection-end-line="86" selection-end-column="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/pages/resources/CreateResource.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="107">
-              <caret line="36" column="27" selection-start-line="36" selection-start-column="27" selection-end-line="36" selection-end-column="27" />
-              <folding>
-                <element signature="e#0#40#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -207,7 +204,6 @@
         <option value="$PROJECT_DIR$/src/components/pages/resources/Resources.js" />
         <option value="$PROJECT_DIR$/src/components/pages/resources/resComp/Cards.js" />
         <option value="$PROJECT_DIR$/src/components/pages/auth/SignIn.component.js" />
-        <option value="$PROJECT_DIR$/src/components/pages/auth/SignIn.js" />
         <option value="$PROJECT_DIR$/src/components/pages/auth/ChangePassword.component.js" />
         <option value="$PROJECT_DIR$/src/components/pages/studygroup/sendEmails.js" />
         <option value="$PROJECT_DIR$/package.json" />
@@ -226,6 +222,7 @@
         <option value="$PROJECT_DIR$/src/components/pages/main/Main.css" />
         <option value="$PROJECT_DIR$/src/components/pages/main/Main.js" />
         <option value="$PROJECT_DIR$/public/index.html" />
+        <option value="$PROJECT_DIR$/src/components/pages/auth/SignIn.js" />
       </list>
     </option>
   </component>
@@ -443,7 +440,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="119159000" />
+    <option name="totallyTimeSpent" value="119170000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -616,16 +613,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="504">
           <caret line="28" column="4" selection-start-line="28" selection-start-column="4" selection-end-line="28" selection-end-column="4" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/pages/auth/SignIn.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="20" column="17" lean-forward="true" selection-start-line="20" selection-start-column="17" selection-end-line="20" selection-end-column="17" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
@@ -831,6 +818,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="203">
           <caret line="24" column="24" selection-start-line="24" selection-start-column="24" selection-end-line="24" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/auth/SignIn.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="54" column="30" selection-start-line="54" selection-start-column="30" selection-end-line="54" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
