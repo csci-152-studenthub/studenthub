@@ -9,6 +9,7 @@
     "aws-sdk": "^2.449.0",
     "draft-js": "^0.10.5",
     "gg-editor": "^2.0.2",
+    "jest": "^23.6.0",
     "moment": "^2.24.0",
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
@@ -21,7 +22,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "jest",
     "eject": "react-scripts eject",
     "deploy": "aws s3 sync build/ s3://studenthub-test"
   },
@@ -33,5 +34,6 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {}
 }
