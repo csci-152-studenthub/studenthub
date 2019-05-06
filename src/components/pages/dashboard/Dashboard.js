@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Auth, API } from "aws-amplify";
-import { List, Typography, Skeleton, Divider } from 'antd';
+import {List, Typography, Skeleton, Divider, Statistic, Row, Col, Icon, Menu} from 'antd';
 import './Dashboard.css';
 // import Feeds from '../feeds/Feeds';
 // import Resources from '../resources/Resources';
 
-const { Text } = Typography;
+const { Text ,Title } = Typography;
 
 // const highlight = {
 //   fontSize: 32,
@@ -19,6 +19,7 @@ export class Dashboard extends Component {
       confirmLoading: false,
       buttonLoading: false,
       current_subfeed: 'General',
+      statistics: undefined,
       loading: true,
       user: '',
       posts: [],
@@ -42,6 +43,7 @@ export class Dashboard extends Component {
     this.getPosts();
     this.getResources();
     this.getStudygroups();
+    this.getStatistics();
   }
 
   async getPosts() {
@@ -66,13 +68,13 @@ export class Dashboard extends Component {
           ]
         })
       ));
-     
+
     } catch (e) {
       console.log(e);
 
     }
   }
-  
+
 
   async getResources(){
     let email = this.state.currentUser;
@@ -152,36 +154,24 @@ export class Dashboard extends Component {
     });
   }
 
-
-
-  
-  // CountFeed()
-  // {
-  //   let e=0;
-  //   this.state.posts.forEach(post => {
-  //
-  //     if(post.user===this.state.user)
-  //     {
-  //       e++;
-  //     }
-  //   });
-  //
-  //   return (<Text >Feeds: {e} , Resources: {e}, StudyGroup:{e}</Text>)
-  // }
-  
-
-  countPosts(){
-    let posts = this.state.posts;
+  async getStatistics(){
     let user = this.state.userAttributes.preferred_username;
-    let e = 0;
+    let userEmail = this.state.userAttributes.email;
 
-    posts.forEach(post => {
-      if(post.user === user){
-        e++;
-      }
-    });
-
-    return e;
+    console.log("Getting statistics");
+    let apiName = 'posts';
+    let path = '/dashboard/get-statistics';
+    let myInit = {
+      body: {user, userEmail}
+    };
+    await API.post(apiName, path, myInit)
+      .then((response) => {
+        console.log(response);
+        this.setState({statistics: response.body})
+      })
+      .catch((error) => {
+        console.log("Something went wrong: ", error);
+      });
   }
 
   // highlight_handler = () =>{
@@ -198,6 +188,14 @@ export class Dashboard extends Component {
   //   })
   // };
 
+//   postCount: 1
+// ​​
+//   postLikeCount: 3
+// ​​
+//   resourceCount: 5
+// ​​
+//   resourceViewCount: 2
+
 
   render() {
     const post_data =this.state.posts;
@@ -211,11 +209,26 @@ export class Dashboard extends Component {
       return (
         <div className="dashboard-container">
           <div className="item-welcome-board">
-            {/* <Title level={3}>Hello {userAttributes.name}</Title>
-            <Title level={4}>Your Posts: {this.countPosts()}</Title> */}
-            {/* <Text level={0}><p>1. CSCI Midterm on 4/17</p></Text> */}
-            {/* <Text level={0}><p>2. Appointment on 5/2</p></Text> */}
-            {/* <Text level={0}><p>3. MileStone2 on 4/9</p></Text> */}
+            <Title level={3}>Hello {userAttributes.name}</Title>
+            <div className="item-statistics">
+              <Row gutter={12}>
+                <Col span={6}>
+                  <Statistic title="Total Posts" value={this.state.statistics ? this.state.statistics.postCount : "Loading..."} prefix={<Icon type="project" rotate={-90} style={{paddingRight: 10}} />} />
+                </Col>
+                <Col span={6}>
+                  <Statistic title="Total Likes" value={this.state.statistics ? this.state.statistics.postLikeCount : "Loading..."} prefix={<Icon type="like" style={{paddingRight: 10}}/>} />
+                </Col>
+                <Col span={1}>
+                  <Divider type="vertical" style={{height: 100}}/>
+                </Col>
+                <Col span={6}>
+                  <Statistic title="Total Resources" value={this.state.statistics ? this.state.statistics.resourceCount : "Loading..."} prefix={<Icon type="read" style={{paddingRight: 10}}/>} />
+                </Col>
+                <Col span={5}>
+                  <Statistic title="Resource Views" value={this.state.statistics ? this.state.statistics.resourceViewCount : "Loading..."} prefix={<Icon type="eye" style={{paddingRight: 10}}/>} />
+                </Col>
+              </Row>
+            </div>
           </div>
           <div className="item-activity-board">
             <Divider className="item-feed-title"><Text style={{fontSize: 32}}>Feeds</Text></Divider>

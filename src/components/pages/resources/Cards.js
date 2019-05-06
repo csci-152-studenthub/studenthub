@@ -19,6 +19,7 @@ export class Cards extends Component {
       visible: false,
       loading: true,
       resources: [],
+      userEmail: '',
       user:''
     }
   }
@@ -27,7 +28,7 @@ export class Cards extends Component {
     Auth.currentAuthenticatedUser({
       bypassCache:true
     }).then(user =>{
-      this.setState({user: user.attributes.preferred_username});
+      this.setState({user: user.attributes.preferred_username, userEmail: user.attributes.email});
     })
     .catch(error => console.log(error));
     this.getResources();
@@ -41,18 +42,14 @@ export class Cards extends Component {
 
   async getResources(){
     console.log("Getting studygroups...");
-    let email = this.state.currentUser;
 
     let apiName = 'posts';
     let path = '/resources/get-resources';
-    let myInit = {
-      body: {user: email}
-    };
     this.setState({
       resources: [],
       loading: true
     });
-    await API.get(apiName, path, myInit)
+    await API.get(apiName, path)
       .then((response) => {
         console.log("Resources:", response);
         response.body.map((item) => {
@@ -86,8 +83,9 @@ export class Cards extends Component {
       currentCard: item,
       visible: true
     });
+    this.increaseResourceViews(item);
     console.log(`Opening card with title '${item.resource_title}'`);
-    console.log("Card contents:", item);
+    // console.log("Card contents:", item);
   };
 
   handleCardModalCancel = () => {
@@ -106,6 +104,29 @@ export class Cards extends Component {
     });
 
     this.setState({currentCard})
+  }
+
+  increaseResourceViews(card){
+    let email = this.state.userEmail;
+    let id = card.resource_id;
+
+    if(card.created_by === email){
+      console.log("User viewed their own resource. Not incrementing views.")
+    } else {
+      console.log("Increasing resource views for resource: ", card.resource_id);
+      let apiName = 'posts';
+      let path = '/resources/increase-resource-views';
+      let myInit = {
+        body: {user: email, id}
+      };
+      API.post(apiName, path, myInit)
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log("Something went wrong: ", error);
+        });
+    }
   }
 
   render() {
