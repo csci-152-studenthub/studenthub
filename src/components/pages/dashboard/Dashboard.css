@@ -26,14 +26,22 @@
 /* For any screen larger than 900px */
 @media (min-width: 900px){
 
+  .item-statistics{
+    grid-area: statistics;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 25px;
+    width: 712px;
+  }
+
   .item-welcome-board{
     grid-area: welcome-board;
     background-color: white;
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: auto;
-    grid-template-areas: 
-      ". ." 
+    grid-template-areas:
+            "."
+            "statistics"
   }
 
   /* Extends classes so classes can inherit */
