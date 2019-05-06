@@ -5,6 +5,7 @@ import './Dashboard.css';
 // import Feeds from '../feeds/Feeds';
 // import Resources from '../resources/Resources';
 
+
 const { Text ,Title } = Typography;
 
 // const highlight = {
@@ -229,6 +230,7 @@ export class Dashboard extends Component {
                 </Col>
               </Row>
             </div>
+
           </div>
           <div className="item-activity-board">
             <Divider className="item-feed-title"><Text style={{fontSize: 32}}>Feeds</Text></Divider>
