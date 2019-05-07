@@ -35,7 +35,7 @@ export class Profile extends Component {
     await Auth.currentAuthenticatedUser({
         bypassCache: true  // Optional, By default is false. If set to true, this call will send a request to Cognito to get the latest user data
     }).then(response => {
-      console.log('Setting userAttributes to:', response.attributes);
+      // console.log('Setting userAttributes to:', response.attributes);
       this.setState({userAttributes: response.attributes});
     })
     .catch(err => console.log(err));
@@ -82,7 +82,7 @@ export class Profile extends Component {
     });
 
     let user = this.state.userAttributes.email;
-    console.log("Getting studygroups for user "+user);
+    // console.log("Getting studygroups for user "+user);
 
     let apiName = 'posts';
     let path = '/studygroups/get-studygroups';
@@ -90,7 +90,7 @@ export class Profile extends Component {
       body: {user}
     };
     await API.post(apiName, path, myInit).then(response => {
-      console.log('Successfylly got studygroups: ', response.body);
+      // console.log('Successfully got studygroups: ', response.body);
       this.setState({currentStudygroup: response.body[0]});
       response.body.map((item) => (
         this.setState({
@@ -128,7 +128,7 @@ export class Profile extends Component {
   };
 
   dummySwitch(group){
-    console.log("Profile: switching to group:", group.group_name);
+    // console.log("Profile: switching to group:", group.group_name);
   }
 
   render() {

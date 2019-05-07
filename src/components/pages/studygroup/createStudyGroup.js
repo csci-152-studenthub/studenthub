@@ -64,7 +64,7 @@ class CreateStudyGroup extends React.Component {
     this.props.form.validateFieldsAndScroll(async (err, values) => {
       if (!err) {
         this.setState({buttonLoading: true});
-        console.log(values);
+        // console.log(values);
         let created_by = this.props.user;
         let group_name = values.studygroupName;
         let course = values.course;
@@ -80,13 +80,13 @@ class CreateStudyGroup extends React.Component {
             body: {groupId, group_name, course, professor, members, timestamp, description, created_by}
         };
         await API.post(apiName, path, myInit).then(response => {
-          console.log('Created study group:', response);
+          // console.log('Created study group:', response);
           message.success('Successfully created study group!');
           this.props.updateGroups({
             groupId, group_name, course, professor, members, timestamp, description, created_by
           });
           this.props.switch({groupId, group_name, course, professor, members, timestamp, description, created_by});
-          this.sendEmails(group_name, members);
+          // this.sendEmails(group_name, members);
           this.setState({buttonLoading: false});
           this.props.closeModal();
         }).catch(error => {
@@ -106,7 +106,7 @@ class CreateStudyGroup extends React.Component {
     };
 
     API.post(apiName, path, myInit).then(response => {
-      console.log('Emails sent!:', response);
+      // console.log('Emails sent!:', response);
     }).catch(error => {
       console.log('Encountered an issue when trying to send emails: ', error.response);
     });

@@ -44,7 +44,7 @@ export default class Comments extends Component {
 
   componentDidMount() {
     if(this.props.id !== undefined) {
-      console.log("Comments modal received: ", this.props);
+      // console.log("Comments modal received: ", this.props);
       this.getComments(this.props.id);
     }
   }
@@ -52,7 +52,7 @@ export default class Comments extends Component {
   componentDidUpdate(prevProps, prevState, snapshot) {
     if(this.props.id !== prevProps.id){
       this.setState({commentsLoading: true});
-      console.log("Getting comments for ref with id: ", this.props.id);
+      // console.log("Getting comments for ref with id: ", this.props.id);
       this.getComments(this.props.id);
     }
   }
@@ -69,11 +69,11 @@ export default class Comments extends Component {
     };
     await API.post(apiName, path, myInit).then(response => {
       if (response.body.length === 0){
-        console.log("No comments found.");
+        // console.log("No comments found.");
         this.setState({comments: []});
       } else {
         let commentsTemp = response.body;
-        console.log("Comments: ", commentsTemp);
+        // console.log("Comments: ", commentsTemp);
 
         commentsTemp.forEach(comment => {
           // console.log("ref:"+comment.content)
@@ -101,9 +101,9 @@ export default class Comments extends Component {
   setComments(){
     let comments = this.state.comments;
 
-    console.log("Setting comments in modal...");
+    // console.log("Setting comments in modal...");
     comments.forEach(comment => {
-      console.log(`Adding comment '${comment.content} to state.`);
+      // console.log(`Adding comment '${comment.content} to state.`);
       this.setState(prevState => ({
         comments: [
           ...prevState.comments,
@@ -136,7 +136,7 @@ export default class Comments extends Component {
       body: {commentId, timestamp, user, content, ref}
     };
     await API.post(apiName, path, myInit).then(response => {
-      console.log("Successfully posted comment: ", response);
+      // console.log("Successfully posted comment: ", response);
       this.setState(prevState => ({
         submitting: false,
         commentContent: '',
@@ -172,7 +172,7 @@ export default class Comments extends Component {
   };
 
   async handleDelete(item){
-    console.log(`Deleting post with id: ${item.id}`);
+    // console.log(`Deleting post with id: ${item.id}`);
     this.setState({commentsLoading: true});
 
     let apiName = 'posts';
@@ -184,7 +184,7 @@ export default class Comments extends Component {
       }
     };
     await API.del(apiName, path, myInit).then(response => {
-      console.log(response);
+      // console.log(response);
       this.removeComment(item.id);
     }).catch(error => {
       console.log(error.response)
@@ -226,7 +226,7 @@ export default class Comments extends Component {
 
     const DeleteIcon = ({ item }) => (
       <span>
-          <Popconfirm title="Are you sure delete this comment?" onConfirm={() => this.handleDelete(item)} onCancel={() => console.log('Canceled comment deletion.')} okText="Yes" cancelText="No">
+          <Popconfirm title="Are you sure delete this comment?" onConfirm={() => this.handleDelete(item)} onCancel={() => {return null}} okText="Yes" cancelText="No">
             <span>Delete</span>
           </Popconfirm>
       </span>

@@ -29,7 +29,7 @@ export class ProfileFeed extends Component {
   }
 
   async componentDidMount(){
-    console.log(this.props.currentUser);
+    // console.log(this.props.currentUser);
     this.getPosts();
   }
 
@@ -67,7 +67,7 @@ export class ProfileFeed extends Component {
   }
 
   deletePost(id, timestamp){
-    console.log(`Deleting post with id: ${id}`)
+    // console.log(`Deleting post with id: ${id}`)
     let apiName = 'posts';
     let path = '/posts/delete-post';
     let myInit = {
@@ -79,7 +79,7 @@ export class ProfileFeed extends Component {
     API.del(apiName, path, myInit).then(response => {
       this.getPosts();
       message.success('Successfully deleted post!');
-      console.log('Success in deleting post:', response);
+      // console.log('Success in deleting post:', response);
     }).catch(error => {
       message.error('Could not delete post.');
       console.log(error.response)
@@ -99,7 +99,7 @@ export class ProfileFeed extends Component {
 
     const DeleteIcon = ({ createdBy, id, timestamp }) => (
       <span>
-          <Popconfirm title="Are you sure delete this post?" onConfirm={() => this.deletePost(id, timestamp)} onCancel={() => console.log('Canceled post deletion.')} okText="Yes" cancelText="No">
+          <Popconfirm title="Are you sure delete this post?" onConfirm={() => this.deletePost(id, timestamp)} onCancel={() => {return null}} okText="Yes" cancelText="No">
             <Icon type="delete" style={{ right: 5}} />
           </Popconfirm>
       </span>
