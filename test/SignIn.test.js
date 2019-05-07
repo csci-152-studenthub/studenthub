@@ -13,17 +13,24 @@ describe("SignIn Component", () => {
   });
 
   test("Should have no values for password and email", () => {
-    const fakeEvent = { preventDefault: () => console.log('preventDefault') };
+    
     const wrapper = shallow(<SignIn />);
     expect(wrapper.find('.email').length).toBe(0);
     expect(wrapper.find('.password').length).toBe(0);
-    //wrapper.find('message').simulate('handlesubmit', fakeEvent);
-    //expect(wrapper.find(message).length).toBe(1);
-    //loginComponent.find('.form-login').simulate('submit', fakeEvent);
-    //expect(wrapper.find(Notification).length).toBe(1);
   });
+});
 
-  // it('should fail if no email or password are provided', () => {
+// describe("ControlledForm", () => {
+//   let wrapper;
+//   let mockSubmit;
+//   beforeEach(() => {
+//     mockSubmit = jest.fn();
+//     wrapper = shallow(<ControlledForm submit={mockSubmit} />);
+//   });
+ 
+
+
+// it('should fail if no email or password are provided', () => {
   //   const fakeEvent = { preventDefault: () => console.log('preventDefault') };
   //   const wrapper = shallow(<SignIn />);
   //   expect(wrapper.find('.email').length).toBe(0);
@@ -54,5 +61,5 @@ describe("SignIn Component", () => {
     // });
 
 
-});
+
 

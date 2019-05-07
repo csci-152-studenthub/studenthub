@@ -21,7 +21,6 @@ describe("ChangePassword", () => {
     expect(wrapper.find('.buttonLoading').length).toBe(0);
     expect(wrapper.find('.formType').length).toBe(0);
   });
-
-
+  
 });
 
