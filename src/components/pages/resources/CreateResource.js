@@ -61,7 +61,7 @@ export class CreateResource extends Component {
           this.props.handleCards(true);
           this.setState({submitting: false});
         }).catch(error => {
-          console.log("Couldn't create resource:", error)
+          console.log("Couldn't create resource:", error);
           this.setState({submitting: false});
         });
         this.props.handleComponent(false); //sends false to Resources component
