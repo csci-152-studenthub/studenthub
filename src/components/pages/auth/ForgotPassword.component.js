@@ -29,7 +29,7 @@ class ForgotPasswordComponent extends Component {
   }
 
   handleChange = event => {
-    console.log(`${event.target.id} is now: `, event.target.value);
+    // console.log(`${event.target.id} is now: `, event.target.value);
     this.setState({
       [event.target.id]: event.target.value
     });
@@ -42,25 +42,25 @@ class ForgotPasswordComponent extends Component {
     this.props.form.validateFieldsAndScroll(async (err, values) => {
       if(!err){
         this.setState({buttonLoading: true});
-        console.log(values);
+        // console.log(values);
         this.props.changeEmail(values.email);
 
         var username = values.email;
         await Auth.forgotPassword(username)
           .then(data => {
             this.setState({buttonLoading: false});
-            console.log(data);
+            // console.log(data);
             message.success("Please check your email for your verification code!", 3);
             setTimeout(() => this.props.changeForm(3), 1);
           })
           .catch(err => {
             this.setState({buttonLoading: false});
-            console.log(err);
+            // console.log(err);
             message.error(err.message, 2.5)
           });
 
       } else {
-        console.log(err);
+        // console.log(err);
       }
     });
   }

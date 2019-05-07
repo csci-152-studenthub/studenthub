@@ -29,7 +29,7 @@ class SignIn extends Component {
   };
 
   changeEmail = (email) => {
-    console.log("Setting email to: ", email);
+    // console.log("Setting email to: ", email);
     this.setState({email: email});
   };
 

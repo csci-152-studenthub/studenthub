@@ -22,7 +22,7 @@ export class Main extends Component {
     super(props);
 
     this.state = {
-      component: 3,
+      component: 0,
       header: 'General',
       visible: false,
     };
@@ -35,7 +35,7 @@ export class Main extends Component {
   }
 
   switchComponent(page){
-    console.log('Switching to page', page);
+    // console.log('Switching to page', page);
     this.setState({component: page});
   }
 
@@ -64,7 +64,7 @@ export class Main extends Component {
   trySignOut(){
     Auth.signOut()
     .then(data => {
-      console.log(data);
+      // console.log(data);
       message.success('Signed out!', 2.5);
       this.props.history.replace("/");
     })

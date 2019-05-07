@@ -129,7 +129,7 @@ export class CardContainer extends Component {
       } else {
         this.getSubfeedPosts(this.state.currentSubfeed)
       }
-      console.log(response);
+      // console.log(response);
     } catch (e) {
       this.setState({buttonLoading: false});
       message.error('Could not create post.');
@@ -167,7 +167,7 @@ export class CardContainer extends Component {
         ]
       })
     ));
-    console.log('Posts: ', posts);
+    // console.log('Posts: ', posts);
     this.setState({componentLoading: false});
   }
 
@@ -178,7 +178,7 @@ export class CardContainer extends Component {
     });
 
     await API.post("posts", "/posts/get-posts", {body: {subfeed: subfeed}}).then(response => {
-        console.log('Got subfeed posts: ',response);
+        // console.log('Got subfeed posts: ',response);
         response.body.map((post) => (
           this.setState({
             posts: [
@@ -204,7 +204,7 @@ export class CardContainer extends Component {
   }
 
   deletePost(id, timestamp){
-    console.log(`Deleting post with id: ${id}`)
+    // console.log(`Deleting post with id: ${id}`)
     let apiName = 'posts';
     let path = '/posts/delete-post';
     let myInit = {
@@ -215,25 +215,25 @@ export class CardContainer extends Component {
     }
     API.del(apiName, path, myInit).then(response => {
         // Add your code here
-        message.success('Successfully deleted post!')
+        message.success('Successfully deleted post!');
         if(this.state.currentSubfeed === 'General'){
           this.getPosts();
         } else {
           this.getSubfeedPosts(this.state.currentSubfeed);
         }
-        console.log(response);
+        // console.log(response);
     }).catch(error => {
-        message.error('Could not delete post.')
-        console.log(error.response)
+        message.error('Could not delete post.');
+        // console.log(error.response)
     });
   }
 
   handleActionClick(type){
-    console.log('Like button pressed!');
+    // console.log('Like button pressed!');
   }
 
   handleLike(post){
-    console.log('User liked post: ', post.title);
+    // console.log('User liked post: ', post.title);
     let tempPosts = this.state.posts;
     let user = this.state.userEmail;
 
@@ -273,14 +273,14 @@ export class CardContainer extends Component {
       }
     };
     API.post(apiName, path, myInit).then(response => {
-      console.log('like-post lambda response: ', response);
+      // console.log('like-post lambda response: ', response);
     }).catch(error => {
-      console.log(error.response)
+      // console.log(error.response)
     });
   }
 
   handleDislike(post){
-    console.log('User disliked post: ', post.title);
+    // console.log('User disliked post: ', post.title);
     let tempPosts = this.state.posts;
     let user = this.state.userEmail;
 
@@ -361,7 +361,7 @@ export class CardContainer extends Component {
     var timestamp = moment().format();
     var id = 'subfeed-'+uuid.v4().toString()
 
-    console.log('User created subfeed: '+subfeed_name);
+    // console.log('User created subfeed: '+subfeed_name);
     this.setState({confirmModalLoading: true});
 
     let apiName = 'posts';
@@ -371,7 +371,7 @@ export class CardContainer extends Component {
     }
     await API.post(apiName, path, myInit).then(response => {
       this.setState({confirmModalLoading: false});
-      console.log('Created subfeed with name: ', subfeed_name);
+      // console.log('Created subfeed with name: ', subfeed_name);
       if(response.body.success){
         message.success(response.body.success)
         // this.getSubfeeds();
@@ -387,11 +387,11 @@ export class CardContainer extends Component {
       } else{
         message.error(response.body.error)
       }
-      console.log(response);
+      // console.log(response);
     }).catch(error => {
       this.setState({confirmModalLoading: false});
-      message.error('Could not create subfeed.')
-      console.log(error.response)
+      message.error('Could not create subfeed.');
+      // console.log(error.response)
     });
   }
 
@@ -406,7 +406,7 @@ export class CardContainer extends Component {
   }
 
   async deleteSubfeed(id, timestamp){
-    console.log('User deleting subfeed:', id, timestamp);
+    // console.log('User deleting subfeed:', id, timestamp);
     this.setState(({deleteSubfeedLoading: true}));
 
     let apiName = 'posts';
@@ -420,12 +420,12 @@ export class CardContainer extends Component {
         deleteSubfeedLoading: false,
         drawerVisible: false,
       }));
-      console.log('Success in deleting subfeed!:', response);
+      // console.log('Success in deleting subfeed!:', response);
       message.success('Successfully deleted subfeed!');
       this.getPosts();
     }).catch(error => {
       this.setState(({deleteSubfeedLoading: false}));
-      console.log('Encountered an error in deleting subfeed:',error.response);
+      // console.log('Encountered an error in deleting subfeed:',error.response);
       message.error('Encountered an error in deleting subfeed!');
     });
   }
@@ -449,7 +449,7 @@ export class CardContainer extends Component {
   };
 
   handleModalCancel = (e) => {
-    console.log(e);
+    // console.log(e);
     this.setState({
       modalVisible: false,
     });
@@ -459,7 +459,7 @@ export class CardContainer extends Component {
     // console.log('Setting current subfeed as:',name);
     this.props.setHeader(name);
     let subfeed_obj = this.state.subfeeds.find(s => s.value === name);
-    console.log('Setting current subfeed object as: ', subfeed_obj);
+    // console.log('Setting current subfeed object as: ', subfeed_obj);
 
     if(subfeed_obj !== undefined){
       this.setState({
@@ -476,13 +476,11 @@ export class CardContainer extends Component {
         this.setState({currentSubfeedOwner: false})
       }
 
-    } else {
-      console.log('subfeed_obj is undefined in setCurrentSubfeed!')
     }
   }
 
   onChange(value, selectedOptions) {
-    console.log(value[0]);
+    // console.log(value[0]);
     this.setCurrentSubfeed(value[0]);
     if(value[0] === 'General'){
       this.getPosts();
@@ -492,7 +490,7 @@ export class CardContainer extends Component {
   }
 
   switchSubfeed(subfeed){
-    console.log(`Setting subfeed to '${subfeed}' and loading posts.`)
+    // console.log(`Setting subfeed to '${subfeed}' and loading posts.`)
     if(subfeed === 'General'){
       this.getPosts();
     } else {
@@ -515,7 +513,7 @@ export class CardContainer extends Component {
     const DeleteIcon = ({ createdBy, id, timestamp }) => (
       <span>
         {this.state.user === createdBy ?
-          <Popconfirm title="Are you sure delete this post?" onConfirm={() => this.deletePost(id, timestamp)} onCancel={() => console.log('Canceled post deletion.')} okText="Yes" cancelText="No">
+          <Popconfirm title="Are you sure delete this post?" onConfirm={() => this.deletePost(id, timestamp)} onCancel={() => {return null}} okText="Yes" cancelText="No">
             <Icon type="delete" style={{ right: 5}} />
           </Popconfirm>
           : null
@@ -620,7 +618,7 @@ export class CardContainer extends Component {
           onClose={this.onDrawerClose}
           visible={this.state.drawerVisible}
         >
-          <Popconfirm placement="bottom" title="Are you sure delete this subfeed?" onConfirm={() => this.deleteSubfeed(this.state.currentSubfeedId, this.state.currentSubfeedTimestamp)} icon={<Icon type="exclamation-circle" style={{ color: 'red' }} />} onCancel={() => console.log('Canceled subfeed deletion.')} okText="Yes" cancelText="No">
+          <Popconfirm placement="bottom" title="Are you sure delete this subfeed?" onConfirm={() => this.deleteSubfeed(this.state.currentSubfeedId, this.state.currentSubfeedTimestamp)} icon={<Icon type="exclamation-circle" style={{ color: 'red' }} />} onCancel={() => {return null}} okText="Yes" cancelText="No">
             <Button type="danger" loading={this.state.deleteSubfeedLoading} onClick={() => 'Deleting subfeed!'}>Delete Subfeed?</Button>
           </Popconfirm>
         </Drawer>

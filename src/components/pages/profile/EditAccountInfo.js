@@ -22,13 +22,13 @@ export class EditAccountInfo extends Component {
   }
 
   async componentWillMount(){
-    console.log(this.props.userAttributes);
+    // console.log(this.props.userAttributes);
     let user = await Auth.currentAuthenticatedUser();
     this.setState({userCognito: user});
   }
 
   handleChange(name, event){
-    console.log(name, 'is now:', event.target.value);
+    // console.log(name, 'is now:', event.target.value);
     this.setState({
       [name]: event.target.value
     });
@@ -44,7 +44,7 @@ export class EditAccountInfo extends Component {
           myValidateHelp: '',
           myValidateStatus: ''
         });
-        console.log('Received values of form: ', values);
+        // console.log('Received values of form: ', values);
 
         await Auth.updateUserAttributes(user, {
           'preferred_username': values.username,
@@ -52,7 +52,7 @@ export class EditAccountInfo extends Component {
           'family_name': values.lastName,
           'custom:major': values.major
         }).then((response) => {
-          console.log('Success:', response);
+          // console.log('Success:', response);
           message.success("Information Updated!");
           this.props.closeDrawer();
         }).catch((error) => {

@@ -35,7 +35,7 @@ export class ProfileResources extends Component {
       currentCard: item,
       cardModalVisible: true
     });
-    console.log(`Opening group card '${item.group_name}'`);
+    // console.log(`Opening group card '${item.group_name}'`);
 
   };
 
@@ -47,7 +47,7 @@ export class ProfileResources extends Component {
 
   async getResources(){
     
-    console.log('prop user: ', this.props.currentUser)
+    // console.log('prop user: ', this.props.currentUser)
     let apiName = 'posts';
     let path = '/resources/get-resources';
     let myInit = {
@@ -58,7 +58,7 @@ export class ProfileResources extends Component {
     });
     await API.get(apiName, path, myInit)
       .then((response) => {
-        console.log("Resources:", response);
+        // console.log("Resources:", response);
         response.body.map((item) => {
           this.setState({
             resources:[
@@ -86,10 +86,6 @@ export class ProfileResources extends Component {
 
   render() {
     // let cardsLoading = this.state.cardsLoading;
-
-    function onChange(a, b, c) {
-      console.log(a, b, c);
-    }
 
     // const blankData = [];
     // for (let i = 0; i < 5; i++) {

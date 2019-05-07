@@ -39,7 +39,7 @@ class SignUpComponent extends Component {
           myValidateStatus: '',
           buttonLoading: true
         });
-        console.log(values);
+        // console.log(values);
         let username = values.email;
         let password = values.password;
         let name = values.firstName;
@@ -58,7 +58,7 @@ class SignUpComponent extends Component {
           })
           .then(data => {
             this.setState({buttonLoading: false});
-            console.log(data);
+            // console.log(data);
             this.props.changeEmail(username);
             message.success("Successfully signed up!", 2.5);
             setTimeout(() => message.success("Check your email to confirm your account!", 5), 500);
@@ -66,11 +66,11 @@ class SignUpComponent extends Component {
           })
           .catch(err => {
             this.setState({buttonLoading: false});
-            console.log(err);
+            // console.log(err);
             message.error(err.message, 2.5);
           });
       } else {
-        console.log(err);
+        // console.log(err);
         if (err.firstName || err.lastName) {
           this.setState({
             myValidateHelp: 'Please enter first name and last name',

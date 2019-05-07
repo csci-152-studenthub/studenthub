@@ -45,7 +45,7 @@ export class Studygroup extends Component {
     });
 
     let user = this.state.user;
-    console.log("Getting studygroups for user "+user);
+    // console.log("Getting studygroups for user "+user);
 
     let apiName = 'posts';
     let path = '/studygroups/get-studygroups';
@@ -54,7 +54,7 @@ export class Studygroup extends Component {
     };
 
     await API.post(apiName, path, myInit).then(response => {
-      console.log('Successfylly got studygroups: ', response.body);
+      // console.log('Successfully got studygroups: ', response.body);
       this.setState({currentStudygroup: response.body[0]});
       response.body.map((item) => (
         this.setState({
@@ -98,17 +98,17 @@ export class Studygroup extends Component {
   };
 
   switchStudygroup(group){
-    console.log("Setting current studygroup to: ", group.group_name);
+    // console.log("Setting current studygroup to: ", group.group_name);
     this.setState({currentStudygroup: group})
   }
 
   onChange = (str) => {
-    console.log('Content change:', str);
+    // console.log('Content change:', str);
     this.setState({ str });
   };
 
   updateGroups(studygroup){
-    console.log("Adding new group to users' studygroups list: ", studygroup);
+    // console.log("Adding new group to users' studygroups list: ", studygroup);
     this.setState(prevState => ({
       study_groups: [
         {
