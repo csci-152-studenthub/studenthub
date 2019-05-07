@@ -72,7 +72,6 @@ export class Dashboard extends Component {
 
     } catch (e) {
       console.log(e);
-
     }
   }
 
@@ -89,7 +88,7 @@ export class Dashboard extends Component {
     });
     await API.get(apiName, path, myInit)
       .then((response) => {
-        // console.log("Resources:", response);
+        // // console.log("Resources:", response);
         response.body.map((item) => {
           this.setState({
             resources:[
@@ -121,7 +120,7 @@ export class Dashboard extends Component {
     });
 
     let user = this.state.userAttributes.email;
-    // console.log("Getting studygroups for user "+user);
+    // // console.log("Getting studygroups for user "+user);
 
     let apiName = 'posts';
     let path = '/studygroups/get-studygroups';
@@ -130,7 +129,7 @@ export class Dashboard extends Component {
     };
 
     await API.post(apiName, path, myInit).then(response => {
-      // console.log('Successfylly got studygroups: ', response.body);
+      // // console.log('Successfylly got studygroups: ', response.body);
       this.setState({currentStudygroup: response.body[0]});
       response.body.map((item) => (
         this.setState({
@@ -159,7 +158,7 @@ export class Dashboard extends Component {
     let user = this.state.userAttributes.preferred_username;
     let userEmail = this.state.userAttributes.email;
 
-    console.log("Getting statistics");
+    // console.log("Getting statistics");
     let apiName = 'posts';
     let path = '/dashboard/get-statistics';
     let myInit = {
@@ -167,7 +166,7 @@ export class Dashboard extends Component {
     };
     await API.post(apiName, path, myInit)
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         this.setState({statistics: response.body})
       })
       .catch((error) => {

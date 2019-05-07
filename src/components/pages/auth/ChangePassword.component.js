@@ -32,7 +32,7 @@ class ChangePasswordComponent extends Component {
     this.props.form.validateFieldsAndScroll(async (err, values) => {
       if(!err){
         this.setState({buttonLoading: true});
-        console.log(values);
+        // console.log(values);
 
         var username = values.email;
         this.props.changeEmail(username);
@@ -42,18 +42,18 @@ class ChangePasswordComponent extends Component {
         await Auth.forgotPasswordSubmit(username, code, new_password)
           .then(data => {
             this.setState({buttonLoading: false});
-            console.log(data);
+            // console.log(data);
 
             message.success("Password changed!", 2.5);
             setTimeout(() => this.props.changeForm(0), 500);
           })
           .catch(err => {
             this.setState({buttonLoading: false});
-            console.log(err);
+            // console.log(err);
             message.error(err.message, 2.5)
           });
       } else {
-        console.log(err);
+        // console.log(err);
       }
     });
 

@@ -26,23 +26,26 @@ class SignIn extends Component {
 
   changeForm = (type) => {
     this.setState({formType: type});
-  }
+  };
 
   changeEmail = (email) => {
-    console.log("Setting email to: ", email);
+    // console.log("Setting email to: ", email);
     this.setState({email: email});
-  }
+  };
 
   renderForm(){
     var formType = this.state.formType;
-    if(formType === 0){
-      return (<SignInComponent changeForm = {this.changeForm} changeEmail={this.changeEmail} email={this.state.email} history={this.props.history}/>)
-    } else if (formType === 1) {
-      return (<ForgotPasswordComponent changeForm = {this.changeForm} changeEmail={this.changeEmail} email={this.state.email}/>)
-    } else if (formType === 2) {
-      return (<SignUpComponent changeForm = {this.changeForm} changeEmail={this.changeEmail} email={this.state.email}/>)
-    } else if (formType === 3) {
-      return (<ChangePasswordComponent changeForm = {this.changeForm} changeEmail={this.changeEmail} email={this.state.email}/>)
+    switch (formType) {
+      case 0:
+        return (<SignInComponent changeForm = {this.changeForm} changeEmail={this.changeEmail} email={this.state.email} history={this.props.history}/>)
+      case 1:
+        return (<ForgotPasswordComponent changeForm = {this.changeForm} changeEmail={this.changeEmail} email={this.state.email}/>)
+      case 2:
+        return (<SignUpComponent changeForm = {this.changeForm} changeEmail={this.changeEmail} email={this.state.email}/>)
+      case 3:
+        return (<ChangePasswordComponent changeForm = {this.changeForm} changeEmail={this.changeEmail} email={this.state.email}/>)
+      default:
+        return (<SignInComponent changeForm = {this.changeForm} changeEmail={this.changeEmail} email={this.state.email} history={this.props.history}/>)
     }
   }
 
