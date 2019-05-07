@@ -50,7 +50,7 @@ export class Cards extends Component {
 
   handleWindowResize = () => {
     return setTimeout(() => {
-      console.log('screenresized, mobile is:', this.state.isMobile);
+      // console.log('screenresized, mobile is:', this.state.isMobile);
       this.setState({ isMobile: window.innerWidth < 900 })
     });
   };
@@ -64,7 +64,7 @@ export class Cards extends Component {
     });
     await API.get(apiName, path)
       .then((response) => {
-        console.log("Resources:", response.body[0]);
+        // console.log("Resources:", response.body[0]);
         response.body.map((item) => {
           this.setState({
             resources:[
@@ -97,7 +97,7 @@ export class Cards extends Component {
       visible: true
     });
     this.increaseResourceViews(item);
-    console.log(`Opening card with title '${item.resource_title}'`);
+    // console.log(`Opening card with title '${item.resource_title}'`);
     // console.log("Card contents:", item);
   };
 
@@ -124,9 +124,9 @@ export class Cards extends Component {
     let id = card.resource_id;
 
     if(card.created_by === email){
-      console.log("User viewed their own resource. Not incrementing views.")
+      // console.log("User viewed their own resource. Not incrementing views.")
     } else {
-      console.log("Increasing resource views for resource: ", card.resource_id);
+      // console.log("Increasing resource views for resource: ", card.resource_id);
       let apiName = 'posts';
       let path = '/resources/increase-resource-views';
       let myInit = {
@@ -134,7 +134,7 @@ export class Cards extends Component {
       };
       API.post(apiName, path, myInit)
         .then((response) => {
-          console.log(response);
+          // console.log(response);
         })
         .catch((error) => {
           console.log("Something went wrong: ", error);
@@ -201,25 +201,34 @@ export class Cards extends Component {
 
         {/* Window View */}
           <div className="item-resource-info">
-            <List
-              style={this.state.visible ?  {display:"block"} : {display:"none"}}
-              grid={{ column: 2 }}
-              dataSource={currentCard.resource_noteCards}
-              renderItem={noteItem => (
-                <List.Item style={{paddingRight: 20}}>
-                  <Skeleton loading={load} active >
-                    <Card
-                      className="notecard"
-                      onClick={() => this.flipCard(noteItem)}
-                      hoverable
-                    > 
-                      {noteItem.flipped ? <Text>{noteItem.definition}</Text> : <Text style={{fontWeight: "bold"}}>{noteItem.term}</Text>}
-                    </Card>
-                  </Skeleton>
-                </List.Item>
-              )}
-            />
-            <Comments id={currentCard.resourceId} user={this.state.user}/>
+            <div className="item-resource-createdby">
+              <Title level={3}>{currentCard.resource_title}</Title>
+              <Text><Text strong>Created by:</Text> {currentCard.created_by}</Text><br/>
+              <Text><Text strong>Description: </Text><br/>{currentCard.resource_description}</Text>
+            </div>
+           
+            <div className="item-resource-cards">
+              <Divider orientation="left"><Text style={{fontSize: 20}}>Flashcards</Text></Divider>
+              <List
+                style={this.state.visible ?  {display:"block"} : null}
+                grid={{ column: 2 }}
+                dataSource={currentCard.resource_noteCards}
+                renderItem={noteItem => (
+                  <List.Item style={{paddingRight: 20}}>
+                    <Skeleton loading={load} active >
+                      <Card
+                        className="notecard"
+                        onClick={() => this.flipCard(noteItem)}
+                        hoverable
+                      > 
+                        {noteItem.flipped ? <Text>{noteItem.definition}</Text> : <Text style={{fontWeight: "bold"}}>{noteItem.term}</Text>}
+                      </Card>
+                    </Skeleton>
+                  </List.Item>
+                )}
+              />
+              <Comments id={currentCard.resourceId} user={this.state.user}/>
+            </div>
           </div>
 
         {/* Mobile View */}
@@ -230,11 +239,16 @@ export class Cards extends Component {
             title={this.state.currentCard === undefined ? "Loading..." : currentCard.title}
             style={{top: 30}}
             width={1000}
-            visible={this.state.isMobile ? this.state.visible : console.log('mobileis:',this.state.isMobile) }
+            visible={this.state.isMobile && this.state.visible}
             onCancel={this.handleCardModalCancel}
             footer={null}
           >
           <div className="item-resource-info-mobile">
+            <div className="item-resource-createdby">
+              <Title level={3}>{currentCard.resource_title}</Title>
+              <Text><Text strong>Created by: </Text>{currentCard.created_by}</Text><br/>
+              <Text><Text strong>Description: </Text><br/>{currentCard.resource_description}</Text>
+            </div>
             <List
               style={this.state.visible ?  {display:"block"} : {display:"none"}}
               grid={{ column: 1 }}

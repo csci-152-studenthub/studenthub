@@ -17,7 +17,7 @@ class App extends Component {
         bypassCache: false  // Optional, By default is false. If set to true, this call will send a request to Cognito to get the latest user data
     }).then(user => {
       this.setState({authenticated: true})
-      console.log(user.attributes.email+' is signed in!');
+      // console.log(user.attributes.email+' is signed in!');
     })
     .catch(err => console.log(err));
   }

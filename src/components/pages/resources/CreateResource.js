@@ -23,7 +23,7 @@ export class CreateResource extends Component {
   }
 
   handleChange(name, event){
-    console.log(name, 'is now:', event.target.value);
+    // console.log(name, 'is now:', event.target.value);
     this.setState({
       [name]: event.target.value
     });
@@ -57,7 +57,7 @@ export class CreateResource extends Component {
             body: { resource_title, resourceId, resource_description, resource_noteCards, created_by, image_uri, timestamp, views}
         };
         await API.post(apiName, path, myInit).then(response => {
-          console.log("created resource:", response);
+          // console.log("created resource:", response);
           this.props.handleCards(true);
           this.setState({submitting: false});
         }).catch(error => {
@@ -74,7 +74,7 @@ export class CreateResource extends Component {
   };
 
   handleCancel = (e) => {
-    console.log(e);
+    // console.log(e);
     this.setState({
       visible: false,
     });

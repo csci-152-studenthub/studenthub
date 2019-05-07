@@ -35,7 +35,7 @@ export class ProfileResources extends Component {
       currentCard: item,
       cardModalVisible: true
     });
-    console.log(`Opening group card '${item.group_name}'`);
+    // console.log(`Opening group card '${item.group_name}'`);
 
   };
 
@@ -47,7 +47,7 @@ export class ProfileResources extends Component {
 
   async getResources(){
     
-    console.log('prop user: ', this.props.currentUser)
+    // console.log('prop user: ', this.props.currentUser)
     let apiName = 'posts';
     let path = '/resources/get-resources';
     let myInit = {
@@ -58,7 +58,7 @@ export class ProfileResources extends Component {
     });
     await API.get(apiName, path, myInit)
       .then((response) => {
-        console.log("Resources:", response);
+        // console.log("Resources:", response);
         response.body.map((item) => {
           this.setState({
             resources:[
@@ -87,10 +87,6 @@ export class ProfileResources extends Component {
   render() {
     // let cardsLoading = this.state.cardsLoading;
 
-    function onChange(a, b, c) {
-      console.log(a, b, c);
-    }
-
     // const blankData = [];
     // for (let i = 0; i < 5; i++) {
     //   blankData.push({
@@ -103,13 +99,13 @@ export class ProfileResources extends Component {
     return (
       <div>
         <List
-          grid={{ gutter: 10, column: 3 }}
+          grid={{ gutter: 16, column: 2 }}
           dataSource={this.state.resources}
           renderItem={item => (
             <List.Item>
               <Card
                 hoverable
-                style={{ width: '100%' }}
+                style={{ width: '100%', height: 150, overflow: 'auto' }}
               >
                 <Meta
                   onClick={() => this.openCard(item)}

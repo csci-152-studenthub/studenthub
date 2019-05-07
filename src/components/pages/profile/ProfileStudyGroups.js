@@ -17,64 +17,9 @@ export class ProfileStudyGroups extends Component {
       cardsLoading: true,
     };
 
-    // this.openCard = this.openCard.bind(this);
   }
 
-  // async componentDidMount(){
-  //   this.getStudygroups();
-  // }
-
-  // async getStudygroups(){
-  //   this.setState({
-  //     study_groups: [],
-  //     cardsLoading: true
-  //   });
-  //
-  //   let user = this.props.user;
-  //   console.log("Getting studygroups for user "+user);
-  //
-  //   let apiName = 'posts';
-  //   let path = '/studygroups/get-studygroups';
-  //   let myInit = {
-  //     body: {user}
-  //   };
-  //   const groups = await API.post(apiName, path, myInit);
-  //   console.log('Got groups: ',groups);
-  //   groups.body.map((item) => (
-  //     this.setState({
-  //       study_groups:[
-  //         ...this.state.study_groups,
-  //         {
-  //           groupId: item.groupId,
-  //           course: item.course,
-  //           group_name: item.group_name,
-  //           description: item.description,
-  //           members: item.members,
-  //           professor: item.professor
-  //         }
-  //       ]
-  //     })
-  //   ));
-  //   this.setState({cardsLoading: false});
-  // }
-
-  // openCard = (item) => {
-  //   this.setState({
-  //     currentCard: item,
-  //     cardModalVisible: true
-  //   });
-  //   console.log(`Opening group card '${item.group_name}'`);
-  //
-  // };
-
-  // handleCardModalCancel = () => {
-  //   this.setState({
-  //     cardModalVisible: false,
-  //   });
-  // };
-
   render() {
-    let cardsLoading = this.state.cardsLoading;
     let studygroups = this.props.study_groups;
 
     const blankData = [];
@@ -92,7 +37,9 @@ export class ProfileStudyGroups extends Component {
           grid={{ column: 1 }}
           dataSource={studygroups === undefined ? blankData : studygroups}
           renderItem={item => (
-            <List.Item>
+            <List.Item
+              key={item.groupId}
+            >
               <Card
                 hoverable
                 style={{ width: "100%", marginTop: 16 }}

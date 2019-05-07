@@ -35,7 +35,7 @@ export class Main extends Component {
   }
 
   switchComponent(page){
-    console.log('Switching to page', page);
+    // console.log('Switching to page', page);
     this.setState({component: page});
   }
 
@@ -44,19 +44,14 @@ export class Main extends Component {
     switch (current_component) {
       case 1:
         return (<Dashboard handler={this.setHeader}/>);
-        // break;
       case 2:
         return (<Feeds handler={this.setHeader}/>);
-        // break;
       case 3:
         return (<Resources handler={this.setHeader}/>);
-        // break;
       case 4:
         return (<StudyGroups handler={this.setHeader}/>);
-        // break;
       case 5:
         return (<Profile handler={this.setHeader}/>);
-        // break;
       default:
         return (<Dashboard handler={this.setHeader}/>)
     }
@@ -67,10 +62,9 @@ export class Main extends Component {
   }
 
   trySignOut(){
-    console.log('Button was pressed')
     Auth.signOut()
     .then(data => {
-      console.log(data);
+      // console.log(data);
       message.success('Signed out!', 2.5);
       this.props.history.replace("/");
     })
@@ -100,6 +94,7 @@ export class Main extends Component {
       return(
         <div className="container">
           <div className="item-header">
+            <Title className="pageTitle" level={1} style={{lineHeight: 1.6}} >{this.state.header}</Title>  
             <div className="hamburger-menu">
               <Button onClick={this.showDrawer} style={{position:"fixed"}}>
                 <Icon type={this.state.visible ? 'menu-unfold' : 'menu-fold'}/>
@@ -139,8 +134,6 @@ export class Main extends Component {
               </Menu>
               </Drawer>
             </div>
-            <Title className="pageTitle" level={1} style={{lineHeight: 1.6}} >{this.state.header}</Title>  
-
              
             
           </div>
@@ -148,7 +141,6 @@ export class Main extends Component {
           <Sider className="item-sider" collapsible>
             <div className="logo-area">
               <a onClick={this.backToHome}>
-                <img src={logo} alt="Logo" className="logo" />
                 <h1 className="logo-text">Studenthub.io</h1>
               </a>
             </div>

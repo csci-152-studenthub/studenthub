@@ -23,7 +23,7 @@
     "build": "react-scripts build",
     "test": "jest --verbose",
     "eject": "react-scripts eject",
-    "deploy": "aws s3 sync build/ s3://studenthub-test"
+    "deploy": "aws s3 sync build/ s3://studenthub.io"
   },
   "eslintConfig": {
     "extends": "react-app"

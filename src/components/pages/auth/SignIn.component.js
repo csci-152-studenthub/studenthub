@@ -46,20 +46,20 @@ class SignInComponent extends Component {
         await Auth.signIn(email, password)
           .then(data => {
             this.setState({buttonLoading: false});
-            console.log(data);
+            // console.log(data);
             message.success("Signed In!", 2.5);
             this.props.history.push("/home");
           })
           .catch(err => {
             this.setState({buttonLoading: false});
-            console.log(err);
+            // console.log(err);
             message.error(err.message, 2.5);
           });
       } else {
-        console.log(err);
+        // console.log(err);
       }
     });
-  }
+  };
 
   render() {
     const { getFieldDecorator } = this.props.form;
