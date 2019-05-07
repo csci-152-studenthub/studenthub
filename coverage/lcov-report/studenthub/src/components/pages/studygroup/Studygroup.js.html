@@ -1,0 +1,644 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for studenthub/src/components/pages/studygroup/Studygroup.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="..\..\..\..\..\prettify.css" />
+    <link rel="stylesheet" href="..\..\..\..\..\base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(..\..\..\..\..\sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="..\..\..\..\..\index.html">All files</a> / <a href="index.html">studenthub/src/components/pages/studygroup</a> Studygroup.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>0/43</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/12</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/12</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>0/41</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194</td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >import React, { Component } from 'react';</span>
+<span class="cstat-no" title="statement not covered" >import {Typography, Button, Modal, Skeleton, Divider, Avatar} from 'antd';</span>
+// import uuid from "uuid";
+<span class="cstat-no" title="statement not covered" >import { API, Auth} from "aws-amplify";</span>
+<span class="cstat-no" title="statement not covered" >import CreateStudyGroupForm from './createStudyGroup';</span>
+<span class="cstat-no" title="statement not covered" >import "./Studygroup.css";</span>
+<span class="cstat-no" title="statement not covered" >import MyStudyGroups from "../profile/ProfileStudyGroups";</span>
+<span class="cstat-no" title="statement not covered" >import Comments from "../feeds/Comments";</span>
+&nbsp;
+// const { Meta } = Card;
+&nbsp;
+const { Title, Text, Paragraph } = Typography;
+export class Studygroup extends Component {
+<span class="fstat-no" title="function not covered" >  constructor(</span>props)<span class="cstat-no" title="statement not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >    super(props);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    this.state = {</span>
+      cardsLoading: true,
+      currentCard: undefined,
+      currentStudygroup: undefined,
+      study_groups:[],
+      cardModalVisible: false,
+      str: "This is a test"
+    };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    this.getStudygroups = this.getStudygroups.bind(this);</span>
+<span class="cstat-no" title="statement not covered" >    this.switchStudygroup = this.switchStudygroup.bind(this);</span>
+<span class="cstat-no" title="statement not covered" >    this.updateGroups = this.updateGroups.bind(this);</span>
+  }
+&nbsp;
+  async componentDidMount(){
+<span class="cstat-no" title="statement not covered" >    this.props.handler("Study Groups");</span>
+    await Auth.currentAuthenticatedUser({
+      bypassCache: true  // Optional, By default is false. If set to true, this call will send a request to Cognito to get the latest user data
+    }).then(<span class="fstat-no" title="function not covered" >user =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >      this.setState({user: user.attributes.email, username: user.attributes.preferred_username})</span>
+    }).catch(<span class="fstat-no" title="function not covered" >err<span class="cstat-no" title="statement not covered" > =&gt; console.log(err));</span></span>
+<span class="cstat-no" title="statement not covered" >    this.getStudygroups();</span>
+  }
+&nbsp;
+  async getStudygroups(){
+<span class="cstat-no" title="statement not covered" >    this.setState({</span>
+      study_groups: [],
+      cardsLoading: true
+    });
+&nbsp;
+    let user = this.state.user;
+<span class="cstat-no" title="statement not covered" >    console.log("Getting studygroups for user "+user);</span>
+&nbsp;
+    let apiName = 'posts';
+    let path = '/studygroups/get-studygroups';
+    let myInit = {
+      body: {user}
+    };
+&nbsp;
+    await API.post(apiName, path, myInit).then(<span class="fstat-no" title="function not covered" >response =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >      console.log('Successfylly got studygroups: ', response.body);</span>
+<span class="cstat-no" title="statement not covered" >      this.setState({currentStudygroup: response.body[0]});</span>
+<span class="cstat-no" title="statement not covered" >      response.body.map(<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(</span>item) =&gt; (</span></span>
+        this.setState({
+          study_groups:[
+            ...this.state.study_groups,
+            {
+              groupId: item.groupId,
+              course: item.course,
+              group_name: item.group_name,
+              description: item.description,
+              members: item.members,
+              professor: item.professor,
+              timestamp: item.timestamp,
+              created_by: item.created_by
+            }
+          ]
+        })
+      ));
+<span class="cstat-no" title="statement not covered" >      this.setState({cardsLoading: false});</span>
+    }).catch(<span class="fstat-no" title="function not covered" >e =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >      console.log("Encountered an error in getting studygroups: ", e);</span>
+    });
+  }
+&nbsp;
+  showModal = <span class="fstat-no" title="function not covered" >() =&gt; </span>{
+<span class="cstat-no" title="statement not covered" >    this.setState({</span>
+      visible: true,
+    });
+  };
+&nbsp;
+  handleCancel = <span class="fstat-no" title="function not covered" >() =&gt; </span>{
+<span class="cstat-no" title="statement not covered" >    this.setState({</span>
+      visible: false,
+    });
+  };
+&nbsp;
+  handleCardModalCancel = <span class="fstat-no" title="function not covered" >() =&gt; </span>{
+<span class="cstat-no" title="statement not covered" >    this.setState({</span>
+      cardModalVisible: false,
+    });
+  };
+&nbsp;
+  switchStudygroup(group){
+<span class="cstat-no" title="statement not covered" >    console.log("Setting current studygroup to: ", group.group_name);</span>
+<span class="cstat-no" title="statement not covered" >    this.setState({currentStudygroup: group})</span>
+  }
+&nbsp;
+  onChange = <span class="fstat-no" title="function not covered" >(</span>str) =&gt; {
+<span class="cstat-no" title="statement not covered" >    console.log('Content change:', str);</span>
+<span class="cstat-no" title="statement not covered" >    this.setState({ str });</span>
+  };
+&nbsp;
+  updateGroups(studygroup){
+<span class="cstat-no" title="statement not covered" >    console.log("Adding new group to users' studygroups list: ", studygroup);</span>
+<span class="cstat-no" title="statement not covered" >    this.setState(<span class="fstat-no" title="function not covered" >prevState<span class="cstat-no" title="statement not covered" > =&gt; ({</span></span></span>
+      study_groups: [
+        {
+          groupId: studygroup.groupId,
+          course: studygroup.course,
+          group_name: studygroup.group_name,
+          description: studygroup.description,
+          members: studygroup.members,
+          professor: studygroup.professor,
+          timestamp: studygroup.timestamp,
+          created_by: studygroup.created_by
+        },
+        ...prevState.study_groups
+      ]
+    }))
+  }
+&nbsp;
+  render() {
+    let cardsLoading = <span class="cstat-no" title="statement not covered" >this.state.cardsLoading;</span>
+    let currentStudygroup = <span class="cstat-no" title="statement not covered" >this.state.currentStudygroup ? this.state.currentStudygroup : {group_name: "Loading...", description: "Loading...", created_by: "", };</span>
+    let id = <span class="cstat-no" title="statement not covered" >this.state.currentStudygroup ? this.state.currentStudygroup.groupId : "1234";</span>
+&nbsp;
+    const blankData = <span class="cstat-no" title="statement not covered" >[];</span>
+<span class="cstat-no" title="statement not covered" >    for (let i = 0; i &lt; 5; i++) {</span>
+<span class="cstat-no" title="statement not covered" >      blankData.push({</span>
+        group_name: "",
+        description: "",
+      });
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    return (</span>
+      &lt;div className="studygroup-container"&gt;
+        &lt;div className="item-studygroup"&gt;
+          &lt;Title level={3}&gt;My Study Groups&lt;/Title&gt;
+          &lt;Button type="primary" onClick={this.showModal}&gt;Create a Group&lt;/Button&gt;
+          {this.state.user ? &lt;MyStudyGroups user={this.state.user} switch={this.switchStudygroup} study_groups={cardsLoading ? blankData : this.state.study_groups} /&gt; : &lt;Skeleton /&gt; }
+        &lt;/div&gt;
+        &lt;div className="studygroup-divider" &gt;
+          &lt;Divider type="vertical" style={{height: '100%', left: 20}}/&gt;
+        &lt;/div&gt;
+        &lt;div className="item-studygroup-content"&gt;
+          &lt;div className="item-groupCard"&gt;
+            &lt;Title level={2}&gt;{currentStudygroup.group_name}&lt;/Title&gt;
+            &lt;Text&gt;Created by: {currentStudygroup.created_by}&lt;/Text&gt;&lt;br/&gt;
+            &lt;Text&gt;Members&lt;/Text&gt;
+            {this.state.currentStudygroup ? currentStudygroup.members.map(<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(</span>item, index) =&gt; (</span>
+              &lt;div&gt;&lt;Text&gt;{item}&lt;/Text&gt;&lt;br/&gt;&lt;/div&gt;
+            )) : "\nLoading..."}
+            &lt;Title level={3}&gt;Description&lt;/Title&gt;
+            &lt;Paragraph&gt;{currentStudygroup.description}&lt;/Paragraph&gt;
+          &lt;/div&gt;
+          &lt;div className="item-messageBoard"&gt;
+            &lt;Divider&gt;&lt;Text style={{fontSize: 22}}&gt;Messaging Board&lt;/Text&gt;&lt;/Divider&gt;
+            &lt;Comments id={id} user={this.state.username}/&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+&nbsp;
+&nbsp;
+        &lt;Modal
+          title="Create a Study Group"
+          style={{top: 30}}
+          visible={this.state.visible}
+          onCancel={this.handleCancel}
+          footer={null}
+        &gt;
+          &lt;CreateStudyGroupForm closeModal={this.handleCancel} switch={this.switchStudygroup} user={this.state.user} updateGroups={this.updateGroups}/&gt;
+        &lt;/Modal&gt;
+&nbsp;
+        &lt;Modal
+          title={this.state.currentCard === undefined ? "Loading..." : this.state.currentCard.group_name}
+          style={{top: 30}}
+          visible={this.state.cardModalVisible}
+          onCancel={this.handleCardModalCancel}
+          footer={null}
+        &gt;
+        &lt;/Modal&gt;
+      &lt;/div&gt;
+    )
+  }
+}
+&nbsp;
+export default Studygroup
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue May 07 2019 12:51:06 GMT-0700 (Pacific Daylight Time)
+</div>
+</div>
+<script src="..\..\..\..\..\prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="..\..\..\..\..\sorter.js"></script>
+</body>
+</html>

@@ -1,0 +1,647 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for studenthub/src/components/pages/resources/CreateResource.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="..\..\..\..\..\prettify.css" />
+    <link rel="stylesheet" href="..\..\..\..\..\base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(..\..\..\..\..\sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="..\..\..\..\..\index.html">All files</a> / <a href="index.html">studenthub/src/components/pages/resources</a> CreateResource.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>0/63</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/13</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/13</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>0/60</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195</td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >import React, { Component } from 'react'</span>
+<span class="cstat-no" title="statement not covered" >import { message, Input, Button, Form, Select, Typography, Modal, Icon } from 'antd';</span>
+<span class="cstat-no" title="statement not covered" >import moment from 'moment';</span>
+<span class="cstat-no" title="statement not covered" >import uuid from 'uuid';</span>
+<span class="cstat-no" title="statement not covered" >import { API, Auth } from "aws-amplify";</span>
+&nbsp;
+&nbsp;
+const { Text } = Typography;
+const { TextArea } = Input;
+let id = <span class="cstat-no" title="statement not covered" >0;</span>
+export class CreateResource extends Component {
+<span class="fstat-no" title="function not covered" >  constructor(</span>props)<span class="cstat-no" title="statement not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >    super(props);</span>
+<span class="cstat-no" title="statement not covered" >    this.state ={</span>
+      visible: true,
+      submitting: false
+    };
+  }
+&nbsp;
+  async componentWillMount(){
+    let { attributes } = await Auth.currentAuthenticatedUser();
+<span class="cstat-no" title="statement not covered" >    this.setState({user: attributes.preferred_username, userEmail: attributes.email});</span>
+  }
+&nbsp;
+  handleChange(name, event){
+<span class="cstat-no" title="statement not covered" >    console.log(name, 'is now:', event.target.value);</span>
+<span class="cstat-no" title="statement not covered" >    this.setState({</span>
+      [name]: event.target.value
+    });
+  }
+&nbsp;
+  handleSubmit = <span class="fstat-no" title="function not covered" >(</span>e) =&gt; {
+<span class="cstat-no" title="statement not covered" >    e.preventDefault();</span>
+&nbsp;
+    let user = <span class="cstat-no" title="statement not covered" >this.state.userEmail;</span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    this.props.form.validateFields(<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ><span class="fstat-no" title="function not covered" >async (</span>err, values) =&gt; {</span></span></span></span>
+      if (!err) {
+        let <span class="cstat-no" title="statement not covered" >noteCards = [];</span>
+<span class="cstat-no" title="statement not covered" >        for(let i in values.noteCard_term){</span>
+          let <span class="cstat-no" title="statement not covered" >card = { term: values.noteCard_term[i], definition: values.noteCard_definition[i], flipped: false};</span>
+<span class="cstat-no" title="statement not covered" >          noteCards.push(card)</span>
+        }
+<span class="cstat-no" title="statement not covered" >        this.setState({submitting: true});</span>
+&nbsp;
+				let <span class="cstat-no" title="statement not covered" >resource_title = values.title;</span>
+				let <span class="cstat-no" title="statement not covered" >resourceId = 'resource-' + uuid.v4().toString(); </span>
+        let <span class="cstat-no" title="statement not covered" >resource_description = values.description;</span>
+        let <span class="cstat-no" title="statement not covered" >resource_noteCards = noteCards;</span>
+        let <span class="cstat-no" title="statement not covered" >image_uri = values.uri;</span>
+				let <span class="cstat-no" title="statement not covered" >created_by = user;</span>
+        let <span class="cstat-no" title="statement not covered" >timestamp = moment().format();</span>
+        let <span class="cstat-no" title="statement not covered" >views = 0;</span>
+        
+        let <span class="cstat-no" title="statement not covered" >apiName = 'posts';</span>
+        let <span class="cstat-no" title="statement not covered" >path = '/resources/create-resource';</span>
+        let <span class="cstat-no" title="statement not covered" >myInit = {</span>
+            body: { resource_title, resourceId, resource_description, resource_noteCards, created_by, image_uri, timestamp, views}
+        };
+        await API.post(apiName, path, myInit).then(<span class="fstat-no" title="function not covered" >response =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >          console.log("created resource:", response);</span>
+<span class="cstat-no" title="statement not covered" >          this.props.handleCards(true);</span>
+<span class="cstat-no" title="statement not covered" >          this.setState({submitting: false});</span>
+        }).catch(<span class="fstat-no" title="function not covered" >error =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >          console.log("Couldn't create resource:", error);</span>
+<span class="cstat-no" title="statement not covered" >          this.setState({submitting: false});</span>
+        });
+<span class="cstat-no" title="statement not covered" >        this.props.handleComponent(false); //sends false to Resources component</span>
+        // console.log('Received values of form: ', values);
+&nbsp;
+      } else {
+<span class="cstat-no" title="statement not covered" >        console.log(err);</span>
+      }
+    });
+  };
+&nbsp;
+  handleCancel = <span class="fstat-no" title="function not covered" >(</span>e) =&gt; {
+<span class="cstat-no" title="statement not covered" >    console.log(e);</span>
+<span class="cstat-no" title="statement not covered" >    this.setState({</span>
+      visible: false,
+    });
+<span class="cstat-no" title="statement not covered" >    this.props.handleComponent(false); //sends false to Resources component</span>
+  };
+&nbsp;
+  remove = <span class="fstat-no" title="function not covered" >(</span>k) =&gt; {
+    const { form } = <span class="cstat-no" title="statement not covered" >this.props;</span>
+    const keys = <span class="cstat-no" title="statement not covered" >form.getFieldValue('keys');</span>
+    
+<span class="cstat-no" title="statement not covered" >    if (keys.length === 1) {</span>
+<span class="cstat-no" title="statement not covered" >      return;</span>
+    }
+<span class="cstat-no" title="statement not covered" >    form.setFieldsValue({</span>
+      keys: keys.filter(<span class="fstat-no" title="function not covered" >key<span class="cstat-no" title="statement not covered" > =&gt; key !== k),</span></span>
+    });
+  }
+&nbsp;
+  add = <span class="fstat-no" title="function not covered" >() =&gt; </span>{
+    const { form } = <span class="cstat-no" title="statement not covered" >this.props;</span>
+    
+    const keys = <span class="cstat-no" title="statement not covered" >form.getFieldValue('keys');</span>
+    const nextKeys = <span class="cstat-no" title="statement not covered" >keys.concat(id++);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    form.setFieldsValue({</span>
+      keys: nextKeys,
+    });
+  };
+  
+  render() <span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >{</span></span>
+    const { getFieldDecorator, getFieldValue } = <span class="cstat-no" title="statement not covered" >this.props.form;</span>
+    const { myValidateHelp, myValidateStatus } = <span class="cstat-no" title="statement not covered" >this.state;</span>
+<span class="cstat-no" title="statement not covered" >    getFieldDecorator('keys', { initialValue: [] });</span>
+    const keys = <span class="cstat-no" title="statement not covered" >getFieldValue('keys');</span>
+    const formItems = <span class="cstat-no" title="statement not covered" >keys.map(<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(</span>k, index) =&gt; (</span></span>
+      &lt;Form.Item
+        label={index === 0 ? 'Note Card' : ''}
+        required={false}
+        key={k}
+      &gt;
+        {getFieldDecorator(`noteCard_term[${k}]`, {
+          validateTrigger: ['onChange', 'onBlur'],
+          rules: [{
+            required: true,
+            whitespace: true,
+            message: "Please input something to define in this field",
+          }],
+        })(
+          &lt;div&gt;
+            &lt;Input placeholder="Term" style={{ width: '60%', marginRight: 8 }} /&gt;
+          &lt;/div&gt;
+        )}
+        {getFieldDecorator(`noteCard_definition[${k}]`, {
+          validateTrigger: ['onChange', 'onBlur'],
+          rules: [{
+            required: true,
+            whitespace: true,
+            message: "Please input something to define in this field",
+          }],
+        })(
+          &lt;div&gt;
+            &lt;TextArea placeholder="Definition" rows={1} style={{ width: 500}}/&gt;
+          &lt;/div&gt;
+        )}
+        {keys.length &gt; 1 ? (
+          &lt;Icon
+            className="dynamic-delete-button"
+            type="minus-circle-o"
+            onClick={<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >() =&gt; this.remove(k)}</span></span>
+          /&gt;
+        ) : null}
+      &lt;/Form.Item&gt;
+    ));
+&nbsp;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    return (</span>
+      &lt;Modal
+      title="Create a Flashcard"
+      style={{top: 30, width: "50%"}}
+      visible={this.state.visible}
+      onOk={this.handleSubmit}
+      confirmLoading={this.state.submitting}
+      onCancel={this.handleCancel}
+      okText="Submit"
+      &gt;
+        &lt;Form onSubmit={this.handleSubmit}&gt;
+          &lt;Text level={3} /&gt;Title&lt;Text/&gt;&lt;br/&gt;
+          &lt;Form.Item&gt;
+            {getFieldDecorator('title', {
+              rules: [{ required: true, message: 'Please input a title!' }],
+            })(
+              &lt;Input placeholder="Title" style={{ width: 300, lineHeight: 0}} /&gt;
+            )}
+          &lt;/Form.Item&gt;
+          &lt;Text level={3} /&gt;Description&lt;Text/&gt;
+          &lt;Form.Item&gt;
+            {getFieldDecorator('description', {
+              rules: [{ required: true, message: 'Please input a description!' }],
+            })(
+              &lt;TextArea placeholder="Description" rows={1} style={{ width: 500}}/&gt;
+            )}
+          &lt;/Form.Item&gt;
+          {formItems}
+          &lt;Form.Item&gt;
+            &lt;Button type="dashed" onClick={this.add} style={{ width: '60%' }}&gt;
+              &lt;Icon type="plus" /&gt; Add Note Cards
+            &lt;/Button&gt;
+          &lt;/Form.Item&gt;
+         
+        &lt;/Form&gt;
+      &lt;/Modal&gt;
+    )
+  }
+}
+&nbsp;
+const WrappedCreateResourceForm = <span class="cstat-no" title="statement not covered" >Form.create({ name: 'CreateResourceForm' })(CreateResource);</span>
+export default WrappedCreateResourceForm
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue May 07 2019 12:51:06 GMT-0700 (Pacific Daylight Time)
+</div>
+</div>
+<script src="..\..\..\..\..\prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="..\..\..\..\..\sorter.js"></script>
+</body>
+</html>
