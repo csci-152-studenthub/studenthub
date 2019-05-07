@@ -210,25 +210,21 @@ export class Dashboard extends Component {
       return (
         <div className="dashboard-container">
           <div className="item-welcome-board">
-            <Title level={3}>Hello {userAttributes.name}</Title>
+            <div className="welcome-message-box">
+              <div className="typewriter">
+                <Title level={3}>Hello {userAttributes.name}</Title>
+              </div>
+            </div>
+          
             <div className="item-statistics">
-              <Row gutter={12}>
-                <Col span={6}>
-                  <Statistic title="Total Posts" value={this.state.statistics ? this.state.statistics.postCount : "😪"} prefix={this.state.statistics ? <Icon type="project" rotate={-90} style={{paddingRight: 10}} /> : <Spin />} />
-                </Col>
-                <Col span={6}>
-                  <Statistic title="Total Likes" value={this.state.statistics ? this.state.statistics.postLikeCount : "😪"} prefix={this.state.statistics ? <Icon type="like" style={{paddingRight: 10}}/> : <Spin />} />
-                </Col>
-                <Col span={1}>
-                  <Divider type="vertical" style={{height: 100}}/>
-                </Col>
-                <Col span={6}>
-                  <Statistic title="Total Resources" value={this.state.statistics ? this.state.statistics.resourceCount : "😪"} prefix={this.state.statistics ? <Icon type="read" style={{paddingRight: 10}}/> : <Spin />} />
-                </Col>
-                <Col span={5}>
-                  <Statistic title="Resource Views" value={this.state.statistics ? this.state.statistics.resourceViewCount : "😪"} prefix={this.state.statistics ? <Icon type="eye" style={{paddingRight: 10}}/> : <Spin />} />
-                </Col>
-              </Row>
+              <div className="item-feed-stats">
+                <Statistic title="Total Posts" value={this.state.statistics ? this.state.statistics.postCount : "😪"} prefix={this.state.statistics ? <Icon type="project" rotate={-90}  /> : <Spin />} />
+                <Statistic title="Total Likes" value={this.state.statistics ? this.state.statistics.postLikeCount : "😪"} prefix={this.state.statistics ? <Icon type="like" /> : <Spin />} />
+              </div>
+              <div className="item-resource-stats">
+                <Statistic title="Total Resources" value={this.state.statistics ? this.state.statistics.resourceCount : "😪"} prefix={this.state.statistics ? <Icon type="read" /> : <Spin />} />
+                <Statistic title="Resource Views" value={this.state.statistics ? this.state.statistics.resourceViewCount : "😪"} prefix={this.state.statistics ? <Icon type="eye" /> : <Spin />} />
+              </div>
             </div>
 
           </div>
