@@ -1,6 +1,10 @@
 
 
 /* For Mobile View */
+.item-welcome-board{
+  grid-area: welcome-board;
+}
+
 .activity,
 .item-feed-activity,
 .item-resources-activity,
@@ -21,16 +25,122 @@
     "studytitle"
     "studygroups"
 }
+.stats,
+.item-feed-stats,
+.item-resource-stats{
+  padding: 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+}
+
+.item-statistics{
+  grid-area: statistics;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "feedStats resourceStats"
+}
+
+.welcome-message-box{
+  grid-area: welcomeMessageBox;
+  display: flex;
+  padding-left: 20px;
+  /* padding: 10px; */
+}
+
+
+.item-welcome-board{
+  grid-area: welcome-board;
+  background-color: white;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "welcomeMessageBox"
+    "statistics"
+    
+}
+
+
+.dashboard-container {
+  display: grid;
+  grid-template-columns: 1fr; 
+  grid-template-rows: 1fr;
+  background-color: white;
+
+  grid-template-areas:
+    "welcome-board"
+    "activity-board"
+  }
 
 
 /* For any screen larger than 900px */
 @media (min-width: 900px){
+  /* .typewriter{
+    grid-area: typewriter;
+    overflow: hidden;
+    border-right: .15em solid rgba(24, 144, 255, 1);
+    white-space: nowrap; 
+    margin: 0 auto; 
+    letter-spacing: .20em;
+    animation: 
+      typing 2s steps(20),
+      blink-caret .3s step-end infinite;
+  }
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+  
+  
+  @keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: rgba(24, 144, 255, 1); }
+  } */
+
+  .welcome-message-box{
+    grid-area: welcomeMessageBox;
+    display: grid;
+    grid-template-columns: auto 1fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+      "typewriter . ."
+  }
+
+  .item-feed-stats,
+  .item-resource-stats{
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+    /* align-items: center; */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+  }
+  .item-feed-stats:hover{
+    grid-area: feedStats;
+    box-shadow: 0 1px 4px rgba(24, 144, 255, 1);  
+    
+  }
+  .item-resource-stats:hover{
+    grid-area: resourceStats;
+    box-shadow: 0 1px 4px rgba(24, 144, 255, 1);
+  }
+  
 
   .item-statistics{
     grid-area: statistics;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    padding: 25px;
-    width: 712px;
+    display: grid;
+    /* padding: 25px;
+    width: 712px; */
+    grid-gap: 0px 20px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+      "feedStats resourceStats ."
+    
   }
 
   .item-welcome-board{
@@ -40,8 +150,8 @@
     grid-template-columns: auto;
     grid-template-rows: auto;
     grid-template-areas:
-            "."
-            "statistics"
+      "welcomeMessageBox"
+      "statistics"
   }
 
   /* Extends classes so classes can inherit */
