@@ -15,7 +15,9 @@ import {
   Tooltip,
   Modal,
   Divider,
-  Tag, Avatar
+  Tag,
+  Avatar,
+  Alert
 } from 'antd';
 import uuid from "uuid";
 import moment from "moment"
@@ -42,6 +44,8 @@ export class CardContainer extends Component {
       currentPost: undefined,
       defaultSubfeed: ['General'],
       componentLoading: true,
+      titleError: false,
+      contentError: false,
       user: '',
       userEmail: '',
       posts: [],
@@ -84,8 +88,26 @@ export class CardContainer extends Component {
     });
   }
 
+  checkInput(){
+    let error = false;
+    if(this.state.title === ''){
+      this.setState({titleError: true});
+      error = true;
+    }
+    if(this.state.content === ''){
+      this.setState({contentError: true});
+      error = true;
+    }
+
+    return error;
+  }
+
   handleSubmit = async event => {
     event.preventDefault();
+    if(this.checkInput()){
+      return;
+    }
+
     this.setState({buttonLoading: true});
 
     try {
@@ -523,7 +545,9 @@ export class CardContainer extends Component {
         <div className="item-feed">
           <Divider orientation="left"><Text style={{fontSize: 22}}>Create Post</Text></Divider>
           <Input placeholder="Post title" value={this.state.title} style={{maxWidth: '300px', top: 0}} onChange={(e) => this.handleChange('title', e)}/><br/>
+          {this.state.titleError && <Alert showIcon message="Title is required" type="error" style={{width: 200, top: 10}} closable onClose={() => this.setState({titleError: false})}/>}
           <TextArea placeholder="Post content" value={this.state.content} rows={4} style={{top: 15, maxWidth: '600px'}} onChange={(e) => this.handleChange('content', e)}/><br/>
+          {this.state.contentError && <Alert showIcon message="Content is required" type="error" style={{width: 200, top: 20}} closable onClose={() => this.setState({contentError: false})}/>}
           <Button loading={this.state.buttonLoading} type="primary" onClick={this.handleSubmit} style={{top: 25}}>Submit Post</Button>
           <Divider orientation="left" style={{top: 30}}><Text style={{fontSize: 22}}>{this.state.currentSubfeed} Posts</Text></Divider>
 
@@ -554,7 +578,7 @@ export class CardContainer extends Component {
                     <List.Item.Meta
                       avatar={<Avatar size={38}  style={{ backgroundColor: '#1890FF', top: 10 }} icon="user" />}
                       title={item.title}
-                      description={`Submitted by user: ${item.user}`}
+                      description={`Submitted by ${item.user} - ${moment(item.timestamp).fromNow()}`}
                     />
                     <Paragraph ellipsis={{ rows: 4, expandable: true }}>
                       {item.content}
