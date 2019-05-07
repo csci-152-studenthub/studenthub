@@ -22,7 +22,7 @@ export class Resources extends Component {
     this.setState( prevState => ({
       visible: !prevState.visible,
     }));
-  }
+  };
 
   hideComponent = (value) => {
     this.setState({
@@ -34,7 +34,7 @@ export class Resources extends Component {
     this.setState({
       newResource: value,
     });
-  }
+  };
   
 
   render() {

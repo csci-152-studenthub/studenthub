@@ -3,6 +3,7 @@ import { Card, List, Button, Skeleton, Modal, Carousel, Divider, Typography, Emp
 import { API, Auth } from "aws-amplify";
 import uuid from "uuid";
 import "./Resources.css";
+import Comments from "../feeds/Comments";
 
 
 const { Title, Paragraph, Text } = Typography;
@@ -19,6 +20,8 @@ export class Cards extends Component {
       visible: false,
       loading: true,
       isMobile: false,
+      currentCard: undefined,
+      testCard: undefined,
       resources: [],
       userEmail: '',
       user:''
@@ -36,24 +39,21 @@ export class Cards extends Component {
     })
     .catch(error => console.log(error));
     this.getResources();
-    
   }
 
   componentDidUpdate(prevProps){
     if(this.props.updateResources !== prevProps.updateResources){
       this.getResources();
-      
     }
     window.addEventListener("resize", this.handleWindowResize);
   }
-
 
   handleWindowResize = () => {
     return setTimeout(() => {
       console.log('screenresized, mobile is:', this.state.isMobile);
       this.setState({ isMobile: window.innerWidth < 900 })
     });
-}
+  };
 
   async getResources(){
     let apiName = 'posts';
@@ -64,14 +64,14 @@ export class Cards extends Component {
     });
     await API.get(apiName, path)
       .then((response) => {
-        console.log("Resources:", response);
+        console.log("Resources:", response.body[0]);
         response.body.map((item) => {
           this.setState({
             resources:[
               ...this.state.resources,
               {
                resource_title: item.resource_title,
-               resource_id: item.resourceId,
+               resourceId: item.resourceId,
                resource_description: item.resource_description,
                created_by: item.created_by,
                resource_url: item.resource_url,
@@ -82,10 +82,10 @@ export class Cards extends Component {
             ]
           })
         });
-        this.setState({ loading: false });
-        // console.log('Success: ', this.state.study_groups);
+        this.setState({ loading: false, currentCard: response.body[0] });
       })
       .catch((error) => {
+        this.setState({ loading: false });
         console.log("Something went wrong: ", error);
       });
   }
@@ -148,10 +148,31 @@ export class Cards extends Component {
       blankData.push({
         resource_title: `Blank asdf`,
         resource_description: 'Blank asdf',
+        resource_noteCards: [{
+          flipped: false,
+          term: "test1",
+          definition: "def1"
+        }],
       });
     }
 
     let load = this.state.loading;
+    let testCards = this.state.testCards ? this.state.testCards : [];
+    let currentCard = !load ? this.state.currentCard :
+      {
+        resource_title: "loading",
+        resource_id: "0",
+        resource_description: "loading",
+        created_by: "loading",
+        resource_url: "loading",
+        resource_comments: [],
+        resource_noteCards: [{
+          flipped: false,
+          term: "test1",
+          definition: "def1"
+        }],
+        timestamp: "loading"
+      };
 
     return (
       <div className="item-resources">
@@ -162,7 +183,6 @@ export class Cards extends Component {
               <List.Item > 
                   <Skeleton loading={load} active >
                     <Card
-
                       className="resource-card"
                       onClick={ () => this.openCard(item)}
                       hoverable
@@ -178,12 +198,13 @@ export class Cards extends Component {
             )}
           />
         </div>
+
         {/* Window View */}
           <div className="item-resource-info">
             <List
               style={this.state.visible ?  {display:"block"} : {display:"none"}}
               grid={{ column: 2 }}
-              dataSource={this.state.currentCard ? this.state.currentCard.resource_noteCards : blankData}
+              dataSource={currentCard.resource_noteCards}
               renderItem={noteItem => (
                 <List.Item style={{paddingRight: 20}}>
                   <Skeleton loading={load} active >
@@ -192,22 +213,21 @@ export class Cards extends Component {
                       onClick={() => this.flipCard(noteItem)}
                       hoverable
                     > 
-                    {/* <div className="notecard"> */}
                       {noteItem.flipped ? <Text>{noteItem.definition}</Text> : <Text style={{fontWeight: "bold"}}>{noteItem.term}</Text>}
-                    {/* </div> */}
                     </Card>
                   </Skeleton>
                 </List.Item>
               )}
             />
+            <Comments id={currentCard.resourceId} user={this.state.user}/>
           </div>
 
         {/* Mobile View */}
-        {/* MODAL FILLED WITH NOTECARDWS */}
+        {/* MODAL FILLED WITH NOTECARDS */}
         <div className="res-mobile-view">
           <Modal
             className="res-mobile-view"
-            title={this.state.currentCard === undefined ? "Loading..." : this.state.currentCard.title}
+            title={this.state.currentCard === undefined ? "Loading..." : currentCard.title}
             style={{top: 30}}
             width={1000}
             visible={this.state.isMobile ? this.state.visible : console.log('mobileis:',this.state.isMobile) }
@@ -218,7 +238,7 @@ export class Cards extends Component {
             <List
               style={this.state.visible ?  {display:"block"} : {display:"none"}}
               grid={{ column: 1 }}
-              dataSource={this.state.currentCard ? this.state.currentCard.resource_noteCards : blankData}
+              dataSource={this.state.currentCard ? currentCard.resource_noteCards : blankData}
               renderItem={noteItem => (
                 <List.Item style={{paddingRight: 20}}>
                   <Skeleton loading={load} active >
@@ -235,6 +255,7 @@ export class Cards extends Component {
                 </List.Item>  
               )}
             />
+            <Comments id={currentCard.resourceId} user={this.state.user}/>
           </div>
           </Modal>
         </div>

@@ -13,6 +13,7 @@ export class CreateResource extends Component {
     super(props);
     this.state ={
       visible: true,
+      submitting: false
     };
   }
 
@@ -39,6 +40,7 @@ export class CreateResource extends Component {
           let card = { term: values.noteCard_term[i], definition: values.noteCard_definition[i], flipped: false};
           noteCards.push(card)
         }
+        this.setState({submitting: true});
 
 				let resource_title = values.title;
 				let resourceId = 'resource-' + uuid.v4().toString(); 
@@ -57,8 +59,10 @@ export class CreateResource extends Component {
         await API.post(apiName, path, myInit).then(response => {
           console.log("created resource:", response);
           this.props.handleCards(true);
+          this.setState({submitting: false});
         }).catch(error => {
-          console.log("Coudln't create resource:", error)
+          console.log("Couldn't create resource:", error);
+          this.setState({submitting: false});
         });
         this.props.handleComponent(false); //sends false to Resources component
         // console.log('Received values of form: ', values);
@@ -152,6 +156,7 @@ export class CreateResource extends Component {
       style={{top: 30, width: "50%"}}
       visible={this.state.visible}
       onOk={this.handleSubmit}
+      confirmLoading={this.state.submitting}
       onCancel={this.handleCancel}
       okText="Submit"
       >

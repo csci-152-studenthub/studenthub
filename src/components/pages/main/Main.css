@@ -19,12 +19,29 @@
 
 /* CSS for mobile */
 
+.item-title-header{
+  grid-area: titleHeader;
+  /* justify-self: center;
+  align-items: center; */
+  /* width: 100%; */
+  
+}
+
 .item-header {
     grid-area: header;
- 
+    z-index: 1;
+    box-shadow: 0 1px 4px rgba(0,21,41,.08);
+    background-color: white;
+    top: 0px;
+    position: sticky;
+    line-height: 0px;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto;
+    grid-template-areas: 
+      "menu title Header"
     /* justify-self: center;
     background:white;  */
-
 }
 .item-body {
     grid-area: main;
@@ -58,9 +75,8 @@
 
 .hamburger-menu{
     grid-area: menu;
-    z-index: 10;
-    top: 40px;
-    /* line-height: 0px; */
+    padding: 20px;
+    /* z-index: 10; */
     position: sticky;
 }
 
@@ -114,6 +130,7 @@
     .item-header {
         grid-area: header;
         font-size:20px;
+        position: unset;
         box-shadow: 0 1px 4px rgba(0,21,41,.08);
         background:white;
         display:inline-block;
