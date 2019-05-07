@@ -22,7 +22,7 @@ export class Main extends Component {
     super(props);
 
     this.state = {
-      component: 0,
+      component: 3,
       header: 'General',
       visible: false,
     };
@@ -94,6 +94,7 @@ export class Main extends Component {
       return(
         <div className="container">
           <div className="item-header">
+            <Title className="pageTitle" level={1} style={{lineHeight: 1.6}} >{this.state.header}</Title>  
             <div className="hamburger-menu">
               <Button onClick={this.showDrawer} style={{position:"fixed"}}>
                 <Icon type={this.state.visible ? 'menu-unfold' : 'menu-fold'}/>
@@ -133,8 +134,6 @@ export class Main extends Component {
               </Menu>
               </Drawer>
             </div>
-            <Title className="pageTitle" level={1} style={{lineHeight: 1.6}} >{this.state.header}</Title>  
-
              
             
           </div>

@@ -103,13 +103,13 @@ export class ProfileResources extends Component {
     return (
       <div>
         <List
-          grid={{ gutter: 10, column: 3 }}
+          grid={{ gutter: 16, column: 2 }}
           dataSource={this.state.resources}
           renderItem={item => (
             <List.Item>
               <Card
                 hoverable
-                style={{ width: '100%' }}
+                style={{ width: '100%', height: 150, overflow: 'auto' }}
               >
                 <Meta
                   onClick={() => this.openCard(item)}
