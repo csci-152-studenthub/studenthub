@@ -20,14 +20,14 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">11.76% </span>
+        <span class="strong">14.29% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>2/17</span>
+        <span class='fraction'>2/14</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/8</span>
+        <span class='fraction'>0/5</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>0/5</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">11.76% </span>
+        <span class="strong">14.29% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>2/17</span>
+        <span class='fraction'>2/14</span>
       </div>
     </div>
   </div>
@@ -108,7 +108,10 @@
 63
 64
 65
-66</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+66
+67
+68
+69</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -139,19 +142,22 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -201,23 +207,26 @@ class SignIn extends Component {
 &nbsp;
   changeForm = <span class="fstat-no" title="function not covered" >(t</span>ype) =&gt; {
 <span class="cstat-no" title="statement not covered" >    this.setState({formType: type});</span>
-  }
+  };
 &nbsp;
   changeEmail = <span class="fstat-no" title="function not covered" >(e</span>mail) =&gt; {
-<span class="cstat-no" title="statement not covered" >    console.log("Setting email to: ", email);</span>
+    // console.log("Setting email to: ", email);
 <span class="cstat-no" title="statement not covered" >    this.setState({email: email});</span>
-  }
+  };
 &nbsp;
 <span class="fstat-no" title="function not covered" >  re</span>nderForm(){
     var formType = <span class="cstat-no" title="statement not covered" >this.state.formType;</span>
-<span class="cstat-no" title="statement not covered" >    if(formType === 0){</span>
-<span class="cstat-no" title="statement not covered" >      return (&lt;SignInComponent changeForm = {this.changeForm} changeEmail={this.changeEmail} email={this.state.email} history={this.props.history}/&gt;)</span>
-    } else <span class="cstat-no" title="statement not covered" >if (formType === 1) {</span>
-<span class="cstat-no" title="statement not covered" >      return (&lt;ForgotPasswordComponent changeForm = {this.changeForm} changeEmail={this.changeEmail} email={this.state.email}/&gt;)</span>
-    } else <span class="cstat-no" title="statement not covered" >if (formType === 2) {</span>
-<span class="cstat-no" title="statement not covered" >      return (&lt;SignUpComponent changeForm = {this.changeForm} changeEmail={this.changeEmail} email={this.state.email}/&gt;)</span>
-    } else <span class="cstat-no" title="statement not covered" >if (formType === 3) {</span>
-<span class="cstat-no" title="statement not covered" >      return (&lt;ChangePasswordComponent changeForm = {this.changeForm} changeEmail={this.changeEmail} email={this.state.email}/&gt;)</span>
+<span class="cstat-no" title="statement not covered" >    switch (formType) {</span>
+      case 0:
+<span class="cstat-no" title="statement not covered" >        return (&lt;SignInComponent changeForm = {this.changeForm} changeEmail={this.changeEmail} email={this.state.email} history={this.props.history}/&gt;)</span>
+      case 1:
+<span class="cstat-no" title="statement not covered" >        return (&lt;ForgotPasswordComponent changeForm = {this.changeForm} changeEmail={this.changeEmail} email={this.state.email}/&gt;)</span>
+      case 2:
+<span class="cstat-no" title="statement not covered" >        return (&lt;SignUpComponent changeForm = {this.changeForm} changeEmail={this.changeEmail} email={this.state.email}/&gt;)</span>
+      case 3:
+<span class="cstat-no" title="statement not covered" >        return (&lt;ChangePasswordComponent changeForm = {this.changeForm} changeEmail={this.changeEmail} email={this.state.email}/&gt;)</span>
+      default:
+<span class="cstat-no" title="statement not covered" >        return (&lt;SignInComponent changeForm = {this.changeForm} changeEmail={this.changeEmail} email={this.state.email} history={this.props.history}/&gt;)</span>
     }
   }
 &nbsp;
@@ -244,7 +253,7 @@ export default WrappedNormalLoginForm;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue May 07 2019 12:51:06 GMT-0700 (Pacific Daylight Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue May 07 2019 13:38:59 GMT-0700 (Pacific Daylight Time)
 </div>
 </div>
 <script src="..\..\..\..\..\prettify.js"></script>

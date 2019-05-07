@@ -22,7 +22,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>0/23</span>
+        <span class='fraction'>0/19</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -32,12 +32,12 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/9</span>
+        <span class='fraction'>0/8</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>0/23</span>
+        <span class='fraction'>0/19</span>
       </div>
     </div>
   </div>
@@ -168,11 +168,7 @@
 123
 124
 125
-126
-127
-128
-129
-130</td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+126</td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -209,38 +205,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -258,7 +228,29 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -338,7 +330,7 @@ export class ProfileResources extends Component {
       currentCard: item,
       cardModalVisible: true
     });
-<span class="cstat-no" title="statement not covered" >    console.log(`Opening group card '${item.group_name}'`);</span>
+    // console.log(`Opening group card '${item.group_name}'`);
 &nbsp;
   };
 &nbsp;
@@ -350,7 +342,7 @@ export class ProfileResources extends Component {
 &nbsp;
   async getResources(){
     
-<span class="cstat-no" title="statement not covered" >    console.log('prop user: ', this.props.currentUser)</span>
+    // console.log('prop user: ', this.props.currentUser)
     let apiName = 'posts';
     let path = '/resources/get-resources';
     let myInit = {
@@ -361,7 +353,7 @@ export class ProfileResources extends Component {
     });
     await API.get(apiName, path, myInit)
       .then(<span class="fstat-no" title="function not covered" >(</span>response) =&gt; {
-<span class="cstat-no" title="statement not covered" >        console.log("Resources:", response);</span>
+        // console.log("Resources:", response);
 <span class="cstat-no" title="statement not covered" >        response.body.map(<span class="fstat-no" title="function not covered" >(</span>item) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >          this.setState({</span>
             resources:[
@@ -390,10 +382,6 @@ export class ProfileResources extends Component {
   render() <span class="cstat-no" title="statement not covered" >{</span>
     // let cardsLoading = this.state.cardsLoading;
 &nbsp;
-    function <span class="fstat-no" title="function not covered" >onChange(a, b, c) {</span>
-<span class="cstat-no" title="statement not covered" >      console.log(a, b, c);</span>
-    }
-&nbsp;
     // const blankData = [];
     // for (let i = 0; i &lt; 5; i++) {
     //   blankData.push({
@@ -406,13 +394,13 @@ export class ProfileResources extends Component {
 <span class="cstat-no" title="statement not covered" >    return (</span>
       &lt;div&gt;
         &lt;List
-          grid={{ gutter: 10, column: 3 }}
+          grid={{ gutter: 16, column: 2 }}
           dataSource={this.state.resources}
           renderItem={<span class="fstat-no" title="function not covered" >item<span class="cstat-no" title="statement not covered" > =&gt; (</span></span>
             &lt;List.Item&gt;
               &lt;Card
                 hoverable
-                style={{ width: '100%' }}
+                style={{ width: '100%', height: 150, overflow: 'auto' }}
               &gt;
                 &lt;Meta
                   onClick={<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >() =&gt; this.openCard(item)}</span></span>
@@ -436,7 +424,7 @@ export default ProfileResources
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue May 07 2019 12:51:06 GMT-0700 (Pacific Daylight Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue May 07 2019 13:38:59 GMT-0700 (Pacific Daylight Time)
 </div>
 </div>
 <script src="..\..\..\..\..\prettify.js"></script>

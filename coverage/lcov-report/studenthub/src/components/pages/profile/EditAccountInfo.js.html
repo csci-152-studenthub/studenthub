@@ -22,7 +22,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>0/30</span>
+        <span class='fraction'>0/26</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
@@ -37,7 +37,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>0/29</span>
+        <span class='fraction'>0/25</span>
       </div>
     </div>
   </div>
@@ -223,25 +223,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -251,9 +236,24 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -379,13 +379,13 @@ export class EditAccountInfo extends Component {
   }
 &nbsp;
   async componentWillMount(){
-<span class="cstat-no" title="statement not covered" >    console.log(this.props.userAttributes);</span>
+    // console.log(this.props.userAttributes);
     let user = await Auth.currentAuthenticatedUser();
 <span class="cstat-no" title="statement not covered" >    this.setState({userCognito: user});</span>
   }
 &nbsp;
   handleChange(name, event){
-<span class="cstat-no" title="statement not covered" >    console.log(name, 'is now:', event.target.value);</span>
+    // console.log(name, 'is now:', event.target.value);
 <span class="cstat-no" title="statement not covered" >    this.setState({</span>
       [name]: event.target.value
     });
@@ -401,7 +401,7 @@ export class EditAccountInfo extends Component {
           myValidateHelp: '',
           myValidateStatus: ''
         });
-<span class="cstat-no" title="statement not covered" >        console.log('Received values of form: ', values);</span>
+        // console.log('Received values of form: ', values);
 &nbsp;
         await Auth.updateUserAttributes(user, {
           'preferred_username': values.username,
@@ -409,7 +409,7 @@ export class EditAccountInfo extends Component {
           'family_name': values.lastName,
           'custom:major': values.major
         }).then(<span class="fstat-no" title="function not covered" >(</span>response) =&gt; {
-<span class="cstat-no" title="statement not covered" >          console.log('Success:', response);</span>
+          // console.log('Success:', response);
 <span class="cstat-no" title="statement not covered" >          message.success("Information Updated!");</span>
 <span class="cstat-no" title="statement not covered" >          this.props.closeDrawer();</span>
         }).catch(<span class="fstat-no" title="function not covered" >(</span>error) =&gt; {
@@ -517,7 +517,7 @@ export default WrappedEditAccountInfo
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue May 07 2019 12:51:06 GMT-0700 (Pacific Daylight Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue May 07 2019 13:38:59 GMT-0700 (Pacific Daylight Time)
 </div>
 </div>
 <script src="..\..\..\..\..\prettify.js"></script>

@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">18.97% </span>
+        <span class="strong">19.64% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>11/58</span>
+        <span class='fraction'>11/56</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">5.56% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>3/21</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">18.97% </span>
+        <span class="strong">19.64% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>11/58</span>
+        <span class='fraction'>11/56</span>
       </div>
     </div>
   </div>
@@ -338,8 +338,7 @@
 293
 294
 295
-296
-297</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+296</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -418,7 +417,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -500,7 +498,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -508,7 +506,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -709,7 +707,6 @@ export class Dashboard extends Component {
 &nbsp;
     } catch (e) {
 <span class="cstat-no" title="statement not covered" >      console.log(e);</span>
-&nbsp;
     }
   }
 &nbsp;
@@ -726,7 +723,7 @@ export class Dashboard extends Component {
     });
 <span class="cstat-no" title="statement not covered" >    await API.get(apiName, path, myInit)</span>
       .then(<span class="fstat-no" title="function not covered" >(r</span>esponse) =&gt; {
-        // console.log("Resources:", response);
+        // // console.log("Resources:", response);
 <span class="cstat-no" title="statement not covered" >        response.body.map(<span class="fstat-no" title="function not covered" >(i</span>tem) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >          this.setState({</span>
             resources:[
@@ -758,7 +755,7 @@ export class Dashboard extends Component {
     });
 &nbsp;
     let user = <span class="cstat-no" title="statement not covered" >this.state.userAttributes.email;</span>
-    // console.log("Getting studygroups for user "+user);
+    // // console.log("Getting studygroups for user "+user);
 &nbsp;
     let apiName = <span class="cstat-no" title="statement not covered" >'posts';</span>
     let path = <span class="cstat-no" title="statement not covered" >'/studygroups/get-studygroups';</span>
@@ -767,7 +764,7 @@ export class Dashboard extends Component {
     };
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    await API.post(apiName, path, myInit).then(<span class="fstat-no" title="function not covered" >re</span>sponse =&gt; {</span>
-      // console.log('Successfylly got studygroups: ', response.body);
+      // // console.log('Successfylly got studygroups: ', response.body);
 <span class="cstat-no" title="statement not covered" >      this.setState({currentStudygroup: response.body[0]});</span>
 <span class="cstat-no" title="statement not covered" >      response.body.map(<span class="fstat-no" title="function not covered" >(i</span>tem) =&gt; (</span>
 <span class="cstat-no" title="statement not covered" >        this.setState({</span>
@@ -796,7 +793,7 @@ export class Dashboard extends Component {
     let user = <span class="cstat-no" title="statement not covered" >this.state.userAttributes.preferred_username;</span>
     let userEmail = <span class="cstat-no" title="statement not covered" >this.state.userAttributes.email;</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    console.log("Getting statistics");</span>
+    // console.log("Getting statistics");
     let apiName = <span class="cstat-no" title="statement not covered" >'posts';</span>
     let path = <span class="cstat-no" title="statement not covered" >'/dashboard/get-statistics';</span>
     let myInit = <span class="cstat-no" title="statement not covered" >{</span>
@@ -804,7 +801,7 @@ export class Dashboard extends Component {
     };
 <span class="cstat-no" title="statement not covered" >    await API.post(apiName, path, myInit)</span>
       .then(<span class="fstat-no" title="function not covered" >(r</span>esponse) =&gt; {
-<span class="cstat-no" title="statement not covered" >        console.log(response);</span>
+        // console.log(response);
 <span class="cstat-no" title="statement not covered" >        this.setState({statistics: response.body})</span>
       })
       .catch(<span class="fstat-no" title="function not covered" >(e</span>rror) =&gt; {
@@ -937,7 +934,7 @@ export default Dashboard
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue May 07 2019 12:51:06 GMT-0700 (Pacific Daylight Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue May 07 2019 13:38:59 GMT-0700 (Pacific Daylight Time)
 </div>
 </div>
 <script src="..\..\..\..\..\prettify.js"></script>

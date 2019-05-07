@@ -22,7 +22,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>0/51</span>
+        <span class='fraction'>0/48</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
@@ -37,7 +37,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>0/51</span>
+        <span class='fraction'>0/48</span>
       </div>
     </div>
   </div>
@@ -242,15 +242,7 @@
 197
 198
 199
-200
-201
-202
-203
-204
-205
-206
-207
-208</td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+200</td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -287,28 +279,23 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -320,9 +307,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -364,9 +350,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -388,6 +371,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -494,7 +478,7 @@ export class Main extends Component {
   }
 &nbsp;
   switchComponent(page){
-<span class="cstat-no" title="statement not covered" >    console.log('Switching to page', page);</span>
+    // console.log('Switching to page', page);
 <span class="cstat-no" title="statement not covered" >    this.setState({component: page});</span>
   }
 &nbsp;
@@ -503,19 +487,14 @@ export class Main extends Component {
 <span class="cstat-no" title="statement not covered" >    switch (current_component) {</span>
       case 1:
 <span class="cstat-no" title="statement not covered" >        return (&lt;Dashboard handler={this.setHeader}/&gt;);</span>
-        // break;
       case 2:
 <span class="cstat-no" title="statement not covered" >        return (&lt;Feeds handler={this.setHeader}/&gt;);</span>
-        // break;
       case 3:
 <span class="cstat-no" title="statement not covered" >        return (&lt;Resources handler={this.setHeader}/&gt;);</span>
-        // break;
       case 4:
 <span class="cstat-no" title="statement not covered" >        return (&lt;StudyGroups handler={this.setHeader}/&gt;);</span>
-        // break;
       case 5:
 <span class="cstat-no" title="statement not covered" >        return (&lt;Profile handler={this.setHeader}/&gt;);</span>
-        // break;
       default:
 <span class="cstat-no" title="statement not covered" >        return (&lt;Dashboard handler={this.setHeader}/&gt;)</span>
     }
@@ -526,10 +505,9 @@ export class Main extends Component {
   }
 &nbsp;
   trySignOut()<span class="cstat-no" title="statement not covered" >{</span>
-<span class="cstat-no" title="statement not covered" >    console.log('Button was pressed')</span>
 <span class="cstat-no" title="statement not covered" >    Auth.signOut()</span>
     .then(<span class="fstat-no" title="function not covered" >data =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >      console.log(data);</span>
+      // console.log(data);
 <span class="cstat-no" title="statement not covered" >      message.success('Signed out!', 2.5);</span>
 <span class="cstat-no" title="statement not covered" >      this.props.history.replace("/");</span>
     })
@@ -559,6 +537,7 @@ export class Main extends Component {
 <span class="cstat-no" title="statement not covered" >      return(</span>
         &lt;div className="container"&gt;
           &lt;div className="item-header"&gt;
+            &lt;Title className="pageTitle" level={1} style={{lineHeight: 1.6}} &gt;{this.state.header}&lt;/Title&gt;  
             &lt;div className="hamburger-menu"&gt;
               &lt;Button onClick={this.showDrawer} style={{position:"fixed"}}&gt;
                 &lt;Icon type={this.state.visible ? 'menu-unfold' : 'menu-fold'}/&gt;
@@ -598,8 +577,6 @@ export class Main extends Component {
               &lt;/Menu&gt;
               &lt;/Drawer&gt;
             &lt;/div&gt;
-            &lt;Title className="pageTitle" level={1} style={{lineHeight: 1.6}} &gt;{this.state.header}&lt;/Title&gt;  
-&nbsp;
              
             
           &lt;/div&gt;
@@ -607,7 +584,6 @@ export class Main extends Component {
           &lt;Sider className="item-sider" collapsible&gt;
             &lt;div className="logo-area"&gt;
               &lt;a onClick={this.backToHome}&gt;
-                &lt;img src={logo} alt="Logo" className="logo" /&gt;
                 &lt;h1 className="logo-text"&gt;Studenthub.io&lt;/h1&gt;
               &lt;/a&gt;
             &lt;/div&gt;
@@ -670,7 +646,7 @@ export default Main
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue May 07 2019 12:51:06 GMT-0700 (Pacific Daylight Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue May 07 2019 13:38:59 GMT-0700 (Pacific Daylight Time)
 </div>
 </div>
 <script src="..\..\..\..\..\prettify.js"></script>

@@ -22,7 +22,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>0/43</span>
+        <span class='fraction'>0/38</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
@@ -37,7 +37,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>0/41</span>
+        <span class='fraction'>0/36</span>
       </div>
     </div>
   </div>
@@ -283,24 +283,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -312,6 +294,24 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -336,17 +336,17 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -476,7 +476,7 @@ export class Studygroup extends Component {
     });
 &nbsp;
     let user = this.state.user;
-<span class="cstat-no" title="statement not covered" >    console.log("Getting studygroups for user "+user);</span>
+    // console.log("Getting studygroups for user "+user);
 &nbsp;
     let apiName = 'posts';
     let path = '/studygroups/get-studygroups';
@@ -485,7 +485,7 @@ export class Studygroup extends Component {
     };
 &nbsp;
     await API.post(apiName, path, myInit).then(<span class="fstat-no" title="function not covered" >response =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >      console.log('Successfylly got studygroups: ', response.body);</span>
+      // console.log('Successfully got studygroups: ', response.body);
 <span class="cstat-no" title="statement not covered" >      this.setState({currentStudygroup: response.body[0]});</span>
 <span class="cstat-no" title="statement not covered" >      response.body.map(<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(</span>item) =&gt; (</span></span>
         this.setState({
@@ -529,17 +529,17 @@ export class Studygroup extends Component {
   };
 &nbsp;
   switchStudygroup(group){
-<span class="cstat-no" title="statement not covered" >    console.log("Setting current studygroup to: ", group.group_name);</span>
+    // console.log("Setting current studygroup to: ", group.group_name);
 <span class="cstat-no" title="statement not covered" >    this.setState({currentStudygroup: group})</span>
   }
 &nbsp;
   onChange = <span class="fstat-no" title="function not covered" >(</span>str) =&gt; {
-<span class="cstat-no" title="statement not covered" >    console.log('Content change:', str);</span>
+    // console.log('Content change:', str);
 <span class="cstat-no" title="statement not covered" >    this.setState({ str });</span>
   };
 &nbsp;
   updateGroups(studygroup){
-<span class="cstat-no" title="statement not covered" >    console.log("Adding new group to users' studygroups list: ", studygroup);</span>
+    // console.log("Adding new group to users' studygroups list: ", studygroup);
 <span class="cstat-no" title="statement not covered" >    this.setState(<span class="fstat-no" title="function not covered" >prevState<span class="cstat-no" title="statement not covered" > =&gt; ({</span></span></span>
       study_groups: [
         {
@@ -628,7 +628,7 @@ export default Studygroup
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue May 07 2019 12:51:06 GMT-0700 (Pacific Daylight Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue May 07 2019 13:38:59 GMT-0700 (Pacific Daylight Time)
 </div>
 </div>
 <script src="..\..\..\..\..\prettify.js"></script>

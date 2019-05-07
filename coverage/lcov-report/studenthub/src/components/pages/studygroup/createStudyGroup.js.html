@@ -22,7 +22,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>0/65</span>
+        <span class='fraction'>0/61</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
@@ -37,7 +37,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>0/62</span>
+        <span class='fraction'>0/58</span>
       </div>
     </div>
   </div>
@@ -330,7 +330,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -346,20 +346,20 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -372,7 +372,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -551,7 +551,7 @@ class CreateStudyGroup extends React.Component {
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    this.props.form.validateFieldsAndScroll(<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ><span class="fstat-no" title="function not covered" >async (</span>err, values) =&gt; {</span></span></span></span>
       if (!err) {
 <span class="cstat-no" title="statement not covered" >        this.setState({buttonLoading: true});</span>
-<span class="cstat-no" title="statement not covered" >        console.log(values);</span>
+        // console.log(values);
         let <span class="cstat-no" title="statement not covered" >created_by = this.props.user;</span>
         let <span class="cstat-no" title="statement not covered" >group_name = values.studygroupName;</span>
         let <span class="cstat-no" title="statement not covered" >course = values.course;</span>
@@ -567,13 +567,13 @@ class CreateStudyGroup extends React.Component {
             body: {groupId, group_name, course, professor, members, timestamp, description, created_by}
         };
         await API.post(apiName, path, myInit).then(<span class="fstat-no" title="function not covered" >response =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >          console.log('Created study group:', response);</span>
+          // console.log('Created study group:', response);
 <span class="cstat-no" title="statement not covered" >          message.success('Successfully created study group!');</span>
 <span class="cstat-no" title="statement not covered" >          this.props.updateGroups({</span>
             groupId, group_name, course, professor, members, timestamp, description, created_by
           });
 <span class="cstat-no" title="statement not covered" >          this.props.switch({groupId, group_name, course, professor, members, timestamp, description, created_by});</span>
-<span class="cstat-no" title="statement not covered" >          this.sendEmails(group_name, members);</span>
+          // this.sendEmails(group_name, members);
 <span class="cstat-no" title="statement not covered" >          this.setState({buttonLoading: false});</span>
 <span class="cstat-no" title="statement not covered" >          this.props.closeModal();</span>
         }).catch(<span class="fstat-no" title="function not covered" >error =&gt; {</span>
@@ -593,7 +593,7 @@ class CreateStudyGroup extends React.Component {
     };
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    API.post(apiName, path, myInit).then(<span class="fstat-no" title="function not covered" >response =&gt; {</span></span>
-<span class="cstat-no" title="statement not covered" >      console.log('Emails sent!:', response);</span>
+      // console.log('Emails sent!:', response);
     }).catch(<span class="fstat-no" title="function not covered" >error =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >      console.log('Encountered an issue when trying to send emails: ', error.response);</span>
     });
@@ -712,7 +712,7 @@ export default CreateStudyGroupForm;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue May 07 2019 12:51:06 GMT-0700 (Pacific Daylight Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue May 07 2019 13:38:59 GMT-0700 (Pacific Daylight Time)
 </div>
 </div>
 <script src="..\..\..\..\..\prettify.js"></script>

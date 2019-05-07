@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1557258667433" clover="3.2.0">
-  <project timestamp="1557258667433" name="All files">
-    <metrics statements="1065" coveredstatements="61" conditionals="517" coveredconditionals="6" methods="333" coveredmethods="11" elements="1915" coveredelements="78" complexity="0" loc="1065" ncloc="1065" packages="11" files="30" classes="30">
+<coverage generated="1557261539980" clover="3.2.0">
+  <project timestamp="1557261539980" name="All files">
+    <metrics statements="974" coveredstatements="61" conditionals="514" coveredconditionals="6" methods="333" coveredmethods="11" elements="1821" coveredelements="78" complexity="0" loc="974" ncloc="974" packages="11" files="30" classes="30">
       <package name="studenthub">
         <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <file name=".babelrc.js" path="D:\GitHub\studenthub\.babelrc.js">
@@ -97,9 +97,9 @@
         </file>
       </package>
       <package name="studenthub.src">
-        <metrics statements="43" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="0"/>
+        <metrics statements="42" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="0"/>
         <file name="App.js" path="D:\GitHub\studenthub\src\App.js">
-          <metrics statements="13" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
+          <metrics statements="12" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
           <line num="1" count="0" type="stmt"/>
           <line num="2" count="0" type="stmt"/>
           <line num="3" count="0" type="stmt"/>
@@ -110,7 +110,6 @@
           <line num="15" count="0" type="stmt"/>
           <line num="16" count="0" type="stmt"/>
           <line num="19" count="0" type="stmt"/>
-          <line num="20" count="0" type="stmt"/>
           <line num="22" count="0" type="stmt"/>
           <line num="26" count="0" type="stmt"/>
         </file>
@@ -155,9 +154,9 @@
         </file>
       </package>
       <package name="studenthub.src.components.pages.auth">
-        <metrics statements="134" coveredstatements="11" conditionals="20" coveredconditionals="0" methods="43" coveredmethods="0"/>
+        <metrics statements="115" coveredstatements="11" conditionals="17" coveredconditionals="0" methods="43" coveredmethods="0"/>
         <file name="ChangePassword.component.js" path="D:\GitHub\studenthub\src\components\pages\auth\ChangePassword.component.js">
-          <metrics statements="28" coveredstatements="2" conditionals="2" coveredconditionals="0" methods="9" coveredmethods="0"/>
+          <metrics statements="24" coveredstatements="2" conditionals="2" coveredconditionals="0" methods="9" coveredmethods="0"/>
           <line num="6" count="2" type="stmt"/>
           <line num="10" count="0" type="stmt"/>
           <line num="12" count="0" type="stmt"/>
@@ -166,20 +165,16 @@
           <line num="32" count="0" type="stmt"/>
           <line num="33" count="0" type="cond" truecount="0" falsecount="2"/>
           <line num="34" count="0" type="stmt"/>
-          <line num="35" count="0" type="stmt"/>
           <line num="37" count="0" type="stmt"/>
           <line num="38" count="0" type="stmt"/>
           <line num="39" count="0" type="stmt"/>
           <line num="40" count="0" type="stmt"/>
           <line num="42" count="0" type="stmt"/>
           <line num="44" count="0" type="stmt"/>
-          <line num="45" count="0" type="stmt"/>
           <line num="47" count="0" type="stmt"/>
           <line num="48" count="0" type="stmt"/>
           <line num="51" count="0" type="stmt"/>
-          <line num="52" count="0" type="stmt"/>
           <line num="53" count="0" type="stmt"/>
-          <line num="56" count="0" type="stmt"/>
           <line num="63" count="0" type="stmt"/>
           <line num="64" count="0" type="stmt"/>
           <line num="65" count="0" type="stmt"/>
@@ -188,29 +183,24 @@
           <line num="110" count="2" type="stmt"/>
         </file>
         <file name="ForgotPassword.component.js" path="D:\GitHub\studenthub\src\components\pages\auth\ForgotPassword.component.js">
-          <metrics statements="28" coveredstatements="2" conditionals="2" coveredconditionals="0" methods="10" coveredmethods="0"/>
+          <metrics statements="23" coveredstatements="2" conditionals="2" coveredconditionals="0" methods="10" coveredmethods="0"/>
           <line num="7" count="2" type="stmt"/>
           <line num="16" count="0" type="stmt"/>
           <line num="18" count="0" type="stmt"/>
           <line num="28" count="0" type="stmt"/>
-          <line num="32" count="0" type="stmt"/>
           <line num="33" count="0" type="stmt"/>
           <line num="39" count="0" type="stmt"/>
           <line num="42" count="0" type="stmt"/>
           <line num="43" count="0" type="cond" truecount="0" falsecount="2"/>
           <line num="44" count="0" type="stmt"/>
-          <line num="45" count="0" type="stmt"/>
           <line num="46" count="0" type="stmt"/>
           <line num="48" count="0" type="stmt"/>
           <line num="49" count="0" type="stmt"/>
           <line num="51" count="0" type="stmt"/>
-          <line num="52" count="0" type="stmt"/>
           <line num="53" count="0" type="stmt"/>
           <line num="54" count="0" type="stmt"/>
           <line num="57" count="0" type="stmt"/>
-          <line num="58" count="0" type="stmt"/>
           <line num="59" count="0" type="stmt"/>
-          <line num="63" count="0" type="stmt"/>
           <line num="69" count="0" type="stmt"/>
           <line num="70" count="0" type="stmt"/>
           <line num="71" count="0" type="stmt"/>
@@ -219,7 +209,7 @@
           <line num="98" count="2" type="stmt"/>
         </file>
         <file name="SignIn.component.js" path="D:\GitHub\studenthub\src\components\pages\auth\SignIn.component.js">
-          <metrics statements="27" coveredstatements="2" conditionals="2" coveredconditionals="0" methods="9" coveredmethods="0"/>
+          <metrics statements="24" coveredstatements="2" conditionals="2" coveredconditionals="0" methods="9" coveredmethods="0"/>
           <line num="9" count="1" type="stmt"/>
           <line num="18" count="0" type="stmt"/>
           <line num="20" count="0" type="stmt"/>
@@ -233,13 +223,10 @@
           <line num="45" count="0" type="stmt"/>
           <line num="46" count="0" type="stmt"/>
           <line num="48" count="0" type="stmt"/>
-          <line num="49" count="0" type="stmt"/>
           <line num="50" count="0" type="stmt"/>
           <line num="51" count="0" type="stmt"/>
           <line num="54" count="0" type="stmt"/>
-          <line num="55" count="0" type="stmt"/>
           <line num="56" count="0" type="stmt"/>
-          <line num="59" count="0" type="stmt"/>
           <line num="65" count="0" type="stmt"/>
           <line num="66" count="0" type="stmt"/>
           <line num="67" count="0" type="stmt"/>
@@ -249,27 +236,24 @@
           <line num="107" count="1" type="stmt"/>
         </file>
         <file name="SignIn.js" path="D:\GitHub\studenthub\src\components\pages\auth\SignIn.js">
-          <metrics statements="17" coveredstatements="2" conditionals="8" coveredconditionals="0" methods="5" coveredmethods="0"/>
+          <metrics statements="14" coveredstatements="2" conditionals="5" coveredconditionals="0" methods="5" coveredmethods="0"/>
           <line num="14" count="1" type="stmt"/>
           <line num="18" count="0" type="stmt"/>
           <line num="20" count="0" type="stmt"/>
           <line num="28" count="0" type="stmt"/>
-          <line num="32" count="0" type="stmt"/>
           <line num="33" count="0" type="stmt"/>
           <line num="37" count="0" type="stmt"/>
-          <line num="38" count="0" type="cond" truecount="0" falsecount="2"/>
-          <line num="39" count="0" type="stmt"/>
-          <line num="40" count="0" type="cond" truecount="0" falsecount="2"/>
-          <line num="41" count="0" type="stmt"/>
-          <line num="42" count="0" type="cond" truecount="0" falsecount="2"/>
-          <line num="43" count="0" type="stmt"/>
-          <line num="44" count="0" type="cond" truecount="0" falsecount="2"/>
-          <line num="45" count="0" type="stmt"/>
-          <line num="50" count="0" type="stmt"/>
-          <line num="63" count="1" type="stmt"/>
+          <line num="38" count="0" type="cond" truecount="0" falsecount="5"/>
+          <line num="40" count="0" type="stmt"/>
+          <line num="42" count="0" type="stmt"/>
+          <line num="44" count="0" type="stmt"/>
+          <line num="46" count="0" type="stmt"/>
+          <line num="48" count="0" type="stmt"/>
+          <line num="53" count="0" type="stmt"/>
+          <line num="66" count="1" type="stmt"/>
         </file>
         <file name="SignUp.component.js" path="D:\GitHub\studenthub\src\components\pages\auth\SignUp.component.js">
-          <metrics statements="34" coveredstatements="3" conditionals="6" coveredconditionals="0" methods="10" coveredmethods="0"/>
+          <metrics statements="30" coveredstatements="3" conditionals="6" coveredconditionals="0" methods="10" coveredmethods="0"/>
           <line num="7" count="2" type="stmt"/>
           <line num="8" count="2" type="stmt"/>
           <line num="12" count="0" type="stmt"/>
@@ -279,7 +263,6 @@
           <line num="34" count="0" type="stmt"/>
           <line num="36" count="0" type="cond" truecount="0" falsecount="2"/>
           <line num="37" count="0" type="stmt"/>
-          <line num="42" count="0" type="stmt"/>
           <line num="43" count="0" type="stmt"/>
           <line num="44" count="0" type="stmt"/>
           <line num="45" count="0" type="stmt"/>
@@ -287,15 +270,12 @@
           <line num="47" count="0" type="stmt"/>
           <line num="49" count="0" type="stmt"/>
           <line num="60" count="0" type="stmt"/>
-          <line num="61" count="0" type="stmt"/>
           <line num="62" count="0" type="stmt"/>
           <line num="63" count="0" type="stmt"/>
           <line num="64" count="0" type="stmt"/>
           <line num="65" count="0" type="stmt"/>
           <line num="68" count="0" type="stmt"/>
-          <line num="69" count="0" type="stmt"/>
           <line num="70" count="0" type="stmt"/>
-          <line num="73" count="0" type="stmt"/>
           <line num="74" count="0" type="cond" truecount="0" falsecount="4"/>
           <line num="75" count="0" type="stmt"/>
           <line num="85" count="0" type="stmt"/>
@@ -307,7 +287,7 @@
         </file>
       </package>
       <package name="studenthub.src.components.pages.dashboard">
-        <metrics statements="61" coveredstatements="14" conditionals="18" coveredconditionals="1" methods="22" coveredmethods="4"/>
+        <metrics statements="59" coveredstatements="14" conditionals="18" coveredconditionals="1" methods="22" coveredmethods="4"/>
         <file name="Cards.js" path="D:\GitHub\studenthub\src\components\pages\dashboard\Cards.js">
           <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
           <line num="10" count="1" type="stmt"/>
@@ -315,7 +295,7 @@
           <line num="16" count="1" type="stmt"/>
         </file>
         <file name="Dashboard.js" path="D:\GitHub\studenthub\src\components\pages\dashboard\Dashboard.js">
-          <metrics statements="58" coveredstatements="11" conditionals="18" coveredconditionals="1" methods="21" coveredmethods="3"/>
+          <metrics statements="56" coveredstatements="11" conditionals="18" coveredconditionals="1" methods="21" coveredmethods="3"/>
           <line num="9" count="1" type="stmt"/>
           <line num="17" count="1" type="stmt"/>
           <line num="19" count="1" type="stmt"/>
@@ -334,46 +314,44 @@
           <line num="57" count="0" type="stmt"/>
           <line num="58" count="0" type="stmt"/>
           <line num="74" count="0" type="stmt"/>
+          <line num="80" count="0" type="stmt"/>
           <line num="81" count="0" type="stmt"/>
           <line num="82" count="0" type="stmt"/>
           <line num="83" count="0" type="stmt"/>
-          <line num="84" count="0" type="stmt"/>
-          <line num="87" count="0" type="stmt"/>
-          <line num="90" count="0" type="stmt"/>
+          <line num="86" count="0" type="stmt"/>
+          <line num="89" count="0" type="stmt"/>
+          <line num="92" count="0" type="stmt"/>
           <line num="93" count="0" type="stmt"/>
-          <line num="94" count="0" type="stmt"/>
-          <line num="112" count="0" type="stmt"/>
-          <line num="118" count="0" type="stmt"/>
-          <line num="123" count="0" type="stmt"/>
+          <line num="111" count="0" type="stmt"/>
+          <line num="117" count="0" type="stmt"/>
+          <line num="122" count="0" type="stmt"/>
+          <line num="125" count="0" type="stmt"/>
           <line num="126" count="0" type="stmt"/>
           <line num="127" count="0" type="stmt"/>
-          <line num="128" count="0" type="stmt"/>
-          <line num="132" count="0" type="stmt"/>
+          <line num="131" count="0" type="stmt"/>
+          <line num="133" count="0" type="stmt"/>
           <line num="134" count="0" type="stmt"/>
           <line num="135" count="0" type="stmt"/>
-          <line num="136" count="0" type="stmt"/>
-          <line num="152" count="0" type="stmt"/>
-          <line num="154" count="0" type="stmt"/>
+          <line num="151" count="0" type="stmt"/>
+          <line num="153" count="0" type="stmt"/>
+          <line num="158" count="0" type="stmt"/>
           <line num="159" count="0" type="stmt"/>
-          <line num="160" count="0" type="stmt"/>
           <line num="162" count="0" type="stmt"/>
           <line num="163" count="0" type="stmt"/>
           <line num="164" count="0" type="stmt"/>
-          <line num="165" count="0" type="stmt"/>
-          <line num="168" count="0" type="stmt"/>
+          <line num="167" count="0" type="stmt"/>
           <line num="170" count="0" type="stmt"/>
-          <line num="171" count="0" type="stmt"/>
-          <line num="174" count="0" type="stmt"/>
+          <line num="173" count="0" type="stmt"/>
+          <line num="201" count="1" type="stmt"/>
           <line num="202" count="1" type="stmt"/>
           <line num="203" count="1" type="stmt"/>
-          <line num="204" count="1" type="stmt"/>
-          <line num="206" count="1" type="stmt"/>
-          <line num="207" count="1" type="cond" truecount="1" falsecount="1"/>
-          <line num="208" count="1" type="stmt"/>
-          <line num="210" count="0" type="stmt"/>
-          <line num="239" count="0" type="stmt"/>
-          <line num="255" count="0" type="stmt"/>
-          <line num="275" count="0" type="stmt"/>
+          <line num="205" count="1" type="stmt"/>
+          <line num="206" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="207" count="1" type="stmt"/>
+          <line num="209" count="0" type="stmt"/>
+          <line num="238" count="0" type="stmt"/>
+          <line num="254" count="0" type="stmt"/>
+          <line num="274" count="0" type="stmt"/>
         </file>
       </package>
       <package name="studenthub.src.components.pages.exception">
@@ -384,9 +362,9 @@
         </file>
       </package>
       <package name="studenthub.src.components.pages.feeds">
-        <metrics statements="308" coveredstatements="35" conditionals="74" coveredconditionals="5" methods="98" coveredmethods="6"/>
+        <metrics statements="276" coveredstatements="35" conditionals="74" coveredconditionals="5" methods="98" coveredmethods="6"/>
         <file name="CardContainer.js" path="D:\GitHub\studenthub\src\components\pages\feeds\CardContainer.js">
-          <metrics statements="223" coveredstatements="32" conditionals="62" coveredconditionals="5" methods="68" coveredmethods="6"/>
+          <metrics statements="200" coveredstatements="32" conditionals="62" coveredconditionals="5" methods="68" coveredmethods="6"/>
           <line num="28" count="1" type="stmt"/>
           <line num="29" count="1" type="stmt"/>
           <line num="32" count="1" type="stmt"/>
@@ -427,7 +405,6 @@
           <line num="127" count="0" type="cond" truecount="0" falsecount="2"/>
           <line num="128" count="0" type="stmt"/>
           <line num="130" count="0" type="stmt"/>
-          <line num="132" count="0" type="stmt"/>
           <line num="134" count="0" type="stmt"/>
           <line num="135" count="0" type="stmt"/>
           <line num="136" count="0" type="stmt"/>
@@ -436,17 +413,14 @@
           <line num="152" count="1" type="stmt"/>
           <line num="153" count="0" type="stmt"/>
           <line num="154" count="0" type="stmt"/>
-          <line num="170" count="0" type="stmt"/>
           <line num="171" count="0" type="stmt"/>
           <line num="175" count="0" type="stmt"/>
           <line num="180" count="0" type="stmt"/>
-          <line num="181" count="0" type="stmt"/>
           <line num="182" count="0" type="stmt"/>
           <line num="183" count="0" type="stmt"/>
           <line num="199" count="0" type="stmt"/>
           <line num="201" count="0" type="stmt"/>
           <line num="202" count="0" type="stmt"/>
-          <line num="207" count="0" type="stmt"/>
           <line num="208" count="0" type="stmt"/>
           <line num="209" count="0" type="stmt"/>
           <line num="210" count="0" type="stmt"/>
@@ -455,11 +429,7 @@
           <line num="219" count="0" type="cond" truecount="0" falsecount="2"/>
           <line num="220" count="0" type="stmt"/>
           <line num="222" count="0" type="stmt"/>
-          <line num="224" count="0" type="stmt"/>
           <line num="226" count="0" type="stmt"/>
-          <line num="227" count="0" type="stmt"/>
-          <line num="232" count="0" type="stmt"/>
-          <line num="236" count="0" type="stmt"/>
           <line num="237" count="0" type="stmt"/>
           <line num="238" count="0" type="stmt"/>
           <line num="240" count="0" type="stmt"/>
@@ -482,9 +452,6 @@
           <line num="269" count="0" type="stmt"/>
           <line num="270" count="0" type="stmt"/>
           <line num="275" count="0" type="stmt"/>
-          <line num="276" count="0" type="stmt"/>
-          <line num="278" count="0" type="stmt"/>
-          <line num="283" count="0" type="stmt"/>
           <line num="284" count="0" type="stmt"/>
           <line num="285" count="0" type="stmt"/>
           <line num="287" count="0" type="stmt"/>
@@ -520,14 +487,12 @@
           <line num="360" count="0" type="stmt"/>
           <line num="361" count="0" type="stmt"/>
           <line num="362" count="0" type="stmt"/>
-          <line num="364" count="0" type="stmt"/>
           <line num="365" count="0" type="stmt"/>
           <line num="367" count="0" type="stmt"/>
           <line num="368" count="0" type="stmt"/>
           <line num="369" count="0" type="stmt"/>
           <line num="372" count="0" type="stmt"/>
           <line num="373" count="0" type="stmt"/>
-          <line num="374" count="0" type="stmt"/>
           <line num="375" count="0" type="cond" truecount="0" falsecount="2"/>
           <line num="376" count="0" type="stmt"/>
           <line num="378" count="0" type="stmt"/>
@@ -536,14 +501,11 @@
           <line num="385" count="0" type="stmt"/>
           <line num="386" count="0" type="stmt"/>
           <line num="388" count="0" type="stmt"/>
-          <line num="390" count="0" type="stmt"/>
           <line num="392" count="0" type="stmt"/>
           <line num="393" count="0" type="stmt"/>
-          <line num="394" count="0" type="stmt"/>
           <line num="400" count="0" type="stmt"/>
           <line num="401" count="0" type="stmt"/>
           <line num="405" count="0" type="stmt"/>
-          <line num="409" count="0" type="stmt"/>
           <line num="410" count="0" type="stmt"/>
           <line num="412" count="0" type="stmt"/>
           <line num="413" count="0" type="stmt"/>
@@ -551,68 +513,61 @@
           <line num="417" count="0" type="stmt"/>
           <line num="418" count="0" type="stmt"/>
           <line num="419" count="0" type="stmt"/>
-          <line num="423" count="0" type="stmt"/>
           <line num="424" count="0" type="stmt"/>
           <line num="425" count="0" type="stmt"/>
           <line num="427" count="0" type="stmt"/>
-          <line num="428" count="0" type="stmt"/>
           <line num="429" count="0" type="stmt"/>
           <line num="434" count="0" type="stmt"/>
           <line num="440" count="0" type="stmt"/>
           <line num="446" count="0" type="stmt"/>
-          <line num="452" count="0" type="stmt"/>
           <line num="453" count="0" type="stmt"/>
           <line num="460" count="0" type="stmt"/>
           <line num="461" count="0" type="stmt"/>
-          <line num="462" count="0" type="stmt"/>
           <line num="464" count="0" type="cond" truecount="0" falsecount="2"/>
           <line num="465" count="0" type="stmt"/>
           <line num="473" count="0" type="cond" truecount="0" falsecount="2"/>
           <line num="474" count="0" type="stmt"/>
           <line num="476" count="0" type="stmt"/>
-          <line num="480" count="0" type="stmt"/>
-          <line num="485" count="0" type="stmt"/>
+          <line num="484" count="0" type="stmt"/>
+          <line num="485" count="0" type="cond" truecount="0" falsecount="2"/>
           <line num="486" count="0" type="stmt"/>
-          <line num="487" count="0" type="cond" truecount="0" falsecount="2"/>
           <line num="488" count="0" type="stmt"/>
-          <line num="490" count="0" type="stmt"/>
+          <line num="494" count="0" type="cond" truecount="0" falsecount="2"/>
           <line num="495" count="0" type="stmt"/>
-          <line num="496" count="0" type="cond" truecount="0" falsecount="2"/>
           <line num="497" count="0" type="stmt"/>
-          <line num="499" count="0" type="stmt"/>
-          <line num="500" count="0" type="stmt"/>
-          <line num="505" count="0" type="stmt"/>
-          <line num="509" count="3" type="stmt"/>
-          <line num="510" count="0" type="stmt"/>
-          <line num="515" count="3" type="stmt"/>
+          <line num="498" count="0" type="stmt"/>
+          <line num="503" count="0" type="stmt"/>
+          <line num="507" count="3" type="stmt"/>
+          <line num="508" count="0" type="stmt"/>
+          <line num="513" count="3" type="stmt"/>
+          <line num="514" count="0" type="stmt"/>
           <line num="516" count="0" type="stmt"/>
-          <line num="518" count="0" type="stmt"/>
-          <line num="525" count="3" type="stmt"/>
-          <line num="526" count="3" type="stmt"/>
-          <line num="527" count="3" type="cond" truecount="1" falsecount="1"/>
-          <line num="531" count="0" type="stmt"/>
-          <line num="534" count="3" type="stmt"/>
-          <line num="535" count="3" type="stmt"/>
-          <line num="536" count="15" type="stmt"/>
-          <line num="543" count="3" type="stmt"/>
+          <line num="523" count="3" type="stmt"/>
+          <line num="524" count="3" type="stmt"/>
+          <line num="525" count="3" type="cond" truecount="1" falsecount="1"/>
+          <line num="529" count="0" type="stmt"/>
+          <line num="532" count="3" type="stmt"/>
+          <line num="533" count="3" type="stmt"/>
+          <line num="534" count="15" type="stmt"/>
+          <line num="541" count="3" type="stmt"/>
+          <line num="545" count="0" type="stmt"/>
+          <line num="546" count="0" type="cond" truecount="1" falsecount="1"/>
           <line num="547" count="0" type="stmt"/>
           <line num="548" count="0" type="cond" truecount="1" falsecount="1"/>
-          <line num="549" count="0" type="stmt"/>
-          <line num="550" count="0" type="cond" truecount="1" falsecount="1"/>
-          <line num="560" count="0" type="stmt"/>
-          <line num="563" count="0" type="cond" truecount="0" falsecount="4"/>
-          <line num="564" count="0" type="cond" truecount="0" falsecount="4"/>
-          <line num="565" count="0" type="stmt"/>
-          <line num="570" count="0" type="stmt"/>
-          <line num="623" count="0" type="stmt"/>
-          <line num="624" count="0" type="stmt"/>
-          <line num="642" count="0" type="stmt"/>
-          <line num="645" count="0" type="stmt"/>
-          <line num="656" count="0" type="stmt"/>
-          <line num="668" count="0" type="stmt"/>
+          <line num="558" count="0" type="stmt"/>
+          <line num="561" count="0" type="cond" truecount="0" falsecount="4"/>
+          <line num="562" count="0" type="cond" truecount="0" falsecount="4"/>
+          <line num="563" count="0" type="stmt"/>
+          <line num="568" count="0" type="stmt"/>
+          <line num="621" count="0" type="stmt"/>
+          <line num="622" count="0" type="stmt"/>
+          <line num="640" count="0" type="stmt"/>
+          <line num="643" count="0" type="stmt"/>
+          <line num="654" count="0" type="stmt"/>
+          <line num="666" count="0" type="stmt"/>
         </file>
         <file name="Comments.js" path="D:\GitHub\studenthub\src\components\pages\feeds\Comments.js">
-          <metrics statements="81" coveredstatements="3" conditionals="12" coveredconditionals="0" methods="29" coveredmethods="0"/>
+          <metrics statements="72" coveredstatements="3" conditionals="12" coveredconditionals="0" methods="29" coveredmethods="0"/>
           <line num="10" count="1" type="stmt"/>
           <line num="11" count="1" type="stmt"/>
           <line num="13" count="1" type="stmt"/>
@@ -620,11 +575,9 @@
           <line num="35" count="0" type="stmt"/>
           <line num="37" count="0" type="stmt"/>
           <line num="46" count="0" type="cond" truecount="0" falsecount="2"/>
-          <line num="47" count="0" type="stmt"/>
           <line num="48" count="0" type="stmt"/>
           <line num="53" count="0" type="cond" truecount="0" falsecount="2"/>
           <line num="54" count="0" type="stmt"/>
-          <line num="55" count="0" type="stmt"/>
           <line num="56" count="0" type="stmt"/>
           <line num="61" count="0" type="stmt"/>
           <line num="62" count="0" type="stmt"/>
@@ -633,19 +586,15 @@
           <line num="67" count="0" type="stmt"/>
           <line num="70" count="0" type="stmt"/>
           <line num="71" count="0" type="cond" truecount="0" falsecount="2"/>
-          <line num="72" count="0" type="stmt"/>
           <line num="73" count="0" type="stmt"/>
           <line num="75" count="0" type="stmt"/>
-          <line num="76" count="0" type="stmt"/>
           <line num="78" count="0" type="stmt"/>
           <line num="80" count="0" type="stmt"/>
           <line num="93" count="0" type="stmt"/>
           <line num="96" count="0" type="stmt"/>
           <line num="97" count="0" type="stmt"/>
           <line num="102" count="0" type="stmt"/>
-          <line num="104" count="0" type="stmt"/>
           <line num="105" count="0" type="stmt"/>
-          <line num="106" count="0" type="stmt"/>
           <line num="107" count="0" type="stmt"/>
           <line num="120" count="0" type="stmt"/>
           <line num="124" count="0" type="stmt"/>
@@ -658,7 +607,6 @@
           <line num="133" count="0" type="stmt"/>
           <line num="135" count="0" type="stmt"/>
           <line num="138" count="0" type="stmt"/>
-          <line num="139" count="0" type="stmt"/>
           <line num="140" count="0" type="stmt"/>
           <line num="154" count="0" type="stmt"/>
           <line num="156" count="0" type="stmt"/>
@@ -667,13 +615,11 @@
           <line num="163" count="0" type="stmt"/>
           <line num="165" count="0" type="stmt"/>
           <line num="169" count="0" type="stmt"/>
-          <line num="175" count="0" type="stmt"/>
           <line num="176" count="0" type="stmt"/>
           <line num="178" count="0" type="stmt"/>
           <line num="179" count="0" type="stmt"/>
           <line num="180" count="0" type="stmt"/>
           <line num="186" count="0" type="stmt"/>
-          <line num="187" count="0" type="stmt"/>
           <line num="188" count="0" type="stmt"/>
           <line num="190" count="0" type="stmt"/>
           <line num="196" count="0" type="stmt"/>
@@ -704,9 +650,9 @@
         </file>
       </package>
       <package name="studenthub.src.components.pages.main">
-        <metrics statements="51" coveredstatements="0" conditionals="8" coveredconditionals="0" methods="17" coveredmethods="0"/>
+        <metrics statements="48" coveredstatements="0" conditionals="8" coveredconditionals="0" methods="17" coveredmethods="0"/>
         <file name="Main.js" path="D:\GitHub\studenthub\src\components\pages\main\Main.js">
-          <metrics statements="51" coveredstatements="0" conditionals="8" coveredconditionals="0" methods="17" coveredmethods="0"/>
+          <metrics statements="48" coveredstatements="0" conditionals="8" coveredconditionals="0" methods="17" coveredmethods="0"/>
           <line num="1" count="0" type="stmt"/>
           <line num="2" count="0" type="stmt"/>
           <line num="3" count="0" type="stmt"/>
@@ -722,64 +668,57 @@
           <line num="24" count="0" type="stmt"/>
           <line num="29" count="0" type="stmt"/>
           <line num="30" count="0" type="stmt"/>
-          <line num="38" count="0" type="stmt"/>
           <line num="39" count="0" type="stmt"/>
           <line num="43" count="0" type="stmt"/>
           <line num="44" count="0" type="stmt"/>
           <line num="46" count="0" type="stmt"/>
-          <line num="49" count="0" type="stmt"/>
+          <line num="48" count="0" type="stmt"/>
+          <line num="50" count="0" type="stmt"/>
           <line num="52" count="0" type="stmt"/>
-          <line num="55" count="0" type="stmt"/>
-          <line num="58" count="0" type="stmt"/>
+          <line num="54" count="0" type="stmt"/>
+          <line num="56" count="0" type="stmt"/>
           <line num="61" count="0" type="stmt"/>
-          <line num="66" count="0" type="stmt"/>
+          <line num="64" count="0" type="stmt"/>
+          <line num="65" count="0" type="stmt"/>
+          <line num="68" count="0" type="stmt"/>
           <line num="69" count="0" type="stmt"/>
-          <line num="70" count="0" type="stmt"/>
-          <line num="71" count="0" type="stmt"/>
+          <line num="72" count="0" type="stmt"/>
           <line num="73" count="0" type="stmt"/>
-          <line num="74" count="0" type="stmt"/>
-          <line num="75" count="0" type="stmt"/>
           <line num="78" count="0" type="stmt"/>
-          <line num="79" count="0" type="stmt"/>
-          <line num="84" count="0" type="stmt"/>
+          <line num="82" count="0" type="stmt"/>
           <line num="88" count="0" type="stmt"/>
+          <line num="93" count="0" type="stmt"/>
           <line num="94" count="0" type="stmt"/>
-          <line num="99" count="0" type="stmt"/>
-          <line num="100" count="0" type="stmt"/>
-          <line num="115" count="0" type="stmt"/>
-          <line num="119" count="0" type="stmt"/>
-          <line num="123" count="0" type="stmt"/>
-          <line num="127" count="0" type="stmt"/>
-          <line num="131" count="0" type="stmt"/>
-          <line num="135" count="0" type="stmt"/>
-          <line num="156" count="0" type="stmt"/>
-          <line num="160" count="0" type="stmt"/>
+          <line num="110" count="0" type="stmt"/>
+          <line num="114" count="0" type="stmt"/>
+          <line num="118" count="0" type="stmt"/>
+          <line num="122" count="0" type="stmt"/>
+          <line num="126" count="0" type="stmt"/>
+          <line num="130" count="0" type="stmt"/>
+          <line num="148" count="0" type="stmt"/>
+          <line num="152" count="0" type="stmt"/>
+          <line num="163" count="0" type="stmt"/>
+          <line num="167" count="0" type="stmt"/>
           <line num="171" count="0" type="stmt"/>
           <line num="175" count="0" type="stmt"/>
-          <line num="179" count="0" type="stmt"/>
-          <line num="183" count="0" type="stmt"/>
         </file>
       </package>
       <package name="studenthub.src.components.pages.profile">
-        <metrics statements="149" coveredstatements="0" conditionals="25" coveredconditionals="0" methods="37" coveredmethods="0"/>
+        <metrics statements="133" coveredstatements="0" conditionals="25" coveredconditionals="0" methods="37" coveredmethods="0"/>
         <file name="EditAccountInfo.js" path="D:\GitHub\studenthub\src\components\pages\profile\EditAccountInfo.js">
-          <metrics statements="29" coveredstatements="0" conditionals="11" coveredconditionals="0" methods="7" coveredmethods="0"/>
+          <metrics statements="25" coveredstatements="0" conditionals="11" coveredconditionals="0" methods="7" coveredmethods="0"/>
           <line num="1" count="0" type="stmt"/>
           <line num="2" count="0" type="stmt"/>
           <line num="3" count="0" type="stmt"/>
           <line num="8" count="0" type="stmt"/>
           <line num="9" count="0" type="stmt"/>
           <line num="11" count="0" type="stmt"/>
-          <line num="25" count="0" type="stmt"/>
           <line num="27" count="0" type="stmt"/>
-          <line num="31" count="0" type="stmt"/>
           <line num="32" count="0" type="stmt"/>
           <line num="38" count="0" type="stmt"/>
           <line num="40" count="0" type="stmt"/>
           <line num="41" count="0" type="cond" truecount="0" falsecount="7"/>
           <line num="43" count="0" type="stmt"/>
-          <line num="47" count="0" type="stmt"/>
-          <line num="55" count="0" type="stmt"/>
           <line num="56" count="0" type="stmt"/>
           <line num="57" count="0" type="stmt"/>
           <line num="59" count="0" type="stmt"/>
@@ -795,7 +734,7 @@
           <line num="155" count="0" type="stmt"/>
         </file>
         <file name="Profile.js" path="D:\GitHub\studenthub\src\components\pages\profile\Profile.js">
-          <metrics statements="43" coveredstatements="0" conditionals="6" coveredconditionals="0" methods="9" coveredmethods="0"/>
+          <metrics statements="39" coveredstatements="0" conditionals="6" coveredconditionals="0" methods="9" coveredmethods="0"/>
           <line num="1" count="0" type="stmt"/>
           <line num="2" count="0" type="stmt"/>
           <line num="3" count="0" type="stmt"/>
@@ -811,7 +750,6 @@
           <line num="19" count="0" type="stmt"/>
           <line num="33" count="0" type="stmt"/>
           <line num="34" count="0" type="stmt"/>
-          <line num="38" count="0" type="stmt"/>
           <line num="39" count="0" type="stmt"/>
           <line num="41" count="0" type="stmt"/>
           <line num="42" count="0" type="stmt"/>
@@ -822,15 +760,12 @@
           <line num="73" count="0" type="stmt"/>
           <line num="74" count="0" type="stmt"/>
           <line num="79" count="0" type="stmt"/>
-          <line num="85" count="0" type="stmt"/>
-          <line num="93" count="0" type="stmt"/>
           <line num="94" count="0" type="stmt"/>
           <line num="95" count="0" type="stmt"/>
           <line num="112" count="0" type="stmt"/>
           <line num="114" count="0" type="stmt"/>
           <line num="119" count="0" type="stmt"/>
           <line num="125" count="0" type="stmt"/>
-          <line num="131" count="0" type="stmt"/>
           <line num="135" count="0" type="stmt"/>
           <line num="136" count="0" type="cond" truecount="0" falsecount="2"/>
           <line num="138" count="0" type="stmt"/>
@@ -841,7 +776,7 @@
           <line num="158" count="0" type="stmt"/>
         </file>
         <file name="ProfileFeed.js" path="D:\GitHub\studenthub\src\components\pages\profile\ProfileFeed.js">
-          <metrics statements="35" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="9" coveredmethods="0"/>
+          <metrics statements="32" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="9" coveredmethods="0"/>
           <line num="1" count="0" type="stmt"/>
           <line num="2" count="0" type="stmt"/>
           <line num="13" count="0" type="stmt"/>
@@ -850,20 +785,17 @@
           <line num="22" count="0" type="stmt"/>
           <line num="23" count="0" type="stmt"/>
           <line num="25" count="0" type="stmt"/>
-          <line num="32" count="0" type="stmt"/>
           <line num="33" count="0" type="stmt"/>
           <line num="37" count="0" type="stmt"/>
           <line num="48" count="0" type="stmt"/>
           <line num="66" count="0" type="stmt"/>
           <line num="69" count="0" type="stmt"/>
-          <line num="70" count="0" type="stmt"/>
           <line num="71" count="0" type="stmt"/>
           <line num="72" count="0" type="stmt"/>
           <line num="73" count="0" type="stmt"/>
           <line num="79" count="0" type="stmt"/>
           <line num="80" count="0" type="stmt"/>
           <line num="81" count="0" type="stmt"/>
-          <line num="82" count="0" type="stmt"/>
           <line num="84" count="0" type="stmt"/>
           <line num="85" count="0" type="stmt"/>
           <line num="89" count="0" type="stmt"/>
@@ -886,7 +818,7 @@
           <line num="12" count="0" type="stmt"/>
         </file>
         <file name="ProfileResources.js" path="D:\GitHub\studenthub\src\components\pages\profile\ProfileResources.js">
-          <metrics statements="23" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="9" coveredmethods="0"/>
+          <metrics statements="19" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="8" coveredmethods="0"/>
           <line num="1" count="0" type="stmt"/>
           <line num="2" count="0" type="stmt"/>
           <line num="12" count="0" type="stmt"/>
@@ -897,43 +829,38 @@
           <line num="26" count="0" type="stmt"/>
           <line num="30" count="0" type="stmt"/>
           <line num="34" count="0" type="stmt"/>
-          <line num="38" count="0" type="stmt"/>
           <line num="43" count="0" type="stmt"/>
-          <line num="50" count="0" type="stmt"/>
           <line num="56" count="0" type="stmt"/>
-          <line num="61" count="0" type="stmt"/>
           <line num="62" count="0" type="stmt"/>
           <line num="63" count="0" type="stmt"/>
           <line num="82" count="0" type="stmt"/>
           <line num="87" count="0" type="stmt"/>
-          <line num="91" count="0" type="stmt"/>
-          <line num="103" count="0" type="stmt"/>
-          <line num="108" count="0" type="stmt"/>
-          <line num="115" count="0" type="stmt"/>
+          <line num="99" count="0" type="stmt"/>
+          <line num="104" count="0" type="stmt"/>
+          <line num="111" count="0" type="stmt"/>
         </file>
         <file name="ProfileStudyGroups.js" path="D:\GitHub\studenthub\src\components\pages\profile\ProfileStudyGroups.js">
-          <metrics statements="15" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
+          <metrics statements="14" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="3" coveredmethods="0"/>
           <line num="1" count="0" type="stmt"/>
           <line num="2" count="0" type="stmt"/>
           <line num="7" count="0" type="stmt"/>
           <line num="13" count="0" type="stmt"/>
           <line num="14" count="0" type="stmt"/>
           <line num="16" count="0" type="stmt"/>
-          <line num="76" count="0" type="stmt"/>
-          <line num="77" count="0" type="stmt"/>
-          <line num="78" count="0" type="stmt"/>
-          <line num="80" count="0" type="stmt"/>
-          <line num="81" count="0" type="stmt"/>
-          <line num="82" count="0" type="stmt"/>
-          <line num="89" count="0" type="stmt"/>
-          <line num="94" count="0" type="stmt"/>
-          <line num="102" count="0" type="stmt"/>
+          <line num="22" count="0" type="stmt"/>
+          <line num="23" count="0" type="stmt"/>
+          <line num="25" count="0" type="stmt"/>
+          <line num="26" count="0" type="stmt"/>
+          <line num="27" count="0" type="stmt"/>
+          <line num="34" count="0" type="stmt"/>
+          <line num="39" count="0" type="stmt"/>
+          <line num="49" count="0" type="stmt"/>
         </file>
       </package>
       <package name="studenthub.src.components.pages.resources">
-        <metrics statements="136" coveredstatements="0" conditionals="43" coveredconditionals="0" methods="37" coveredmethods="0"/>
+        <metrics statements="127" coveredstatements="0" conditionals="43" coveredconditionals="0" methods="37" coveredmethods="0"/>
         <file name="Cards.js" path="D:\GitHub\studenthub\src\components\pages\resources\Cards.js">
-          <metrics statements="63" coveredstatements="0" conditionals="28" coveredconditionals="0" methods="19" coveredmethods="0"/>
+          <metrics statements="57" coveredstatements="0" conditionals="28" coveredconditionals="0" methods="19" coveredmethods="0"/>
           <line num="1" count="0" type="stmt"/>
           <line num="2" count="0" type="stmt"/>
           <line num="3" count="0" type="stmt"/>
@@ -954,10 +881,8 @@
           <line num="46" count="0" type="stmt"/>
           <line num="48" count="0" type="stmt"/>
           <line num="52" count="0" type="stmt"/>
-          <line num="53" count="0" type="stmt"/>
           <line num="54" count="0" type="stmt"/>
           <line num="61" count="0" type="stmt"/>
-          <line num="67" count="0" type="stmt"/>
           <line num="68" count="0" type="stmt"/>
           <line num="69" count="0" type="stmt"/>
           <line num="85" count="0" type="stmt"/>
@@ -965,7 +890,6 @@
           <line num="89" count="0" type="stmt"/>
           <line num="95" count="0" type="stmt"/>
           <line num="99" count="0" type="stmt"/>
-          <line num="100" count="0" type="stmt"/>
           <line num="105" count="0" type="stmt"/>
           <line num="111" count="0" type="stmt"/>
           <line num="113" count="0" type="stmt"/>
@@ -975,13 +899,10 @@
           <line num="123" count="0" type="stmt"/>
           <line num="124" count="0" type="stmt"/>
           <line num="126" count="0" type="cond" truecount="0" falsecount="2"/>
-          <line num="127" count="0" type="stmt"/>
-          <line num="129" count="0" type="stmt"/>
           <line num="130" count="0" type="stmt"/>
           <line num="131" count="0" type="stmt"/>
           <line num="132" count="0" type="stmt"/>
           <line num="135" count="0" type="stmt"/>
-          <line num="137" count="0" type="stmt"/>
           <line num="140" count="0" type="stmt"/>
           <line num="145" count="0" type="stmt"/>
           <line num="146" count="0" type="stmt"/>
@@ -993,13 +914,13 @@
           <line num="177" count="0" type="stmt"/>
           <line num="182" count="0" type="stmt"/>
           <line num="187" count="0" type="stmt"/>
-          <line num="208" count="0" type="stmt"/>
-          <line num="213" count="0" type="stmt"/>
-          <line num="242" count="0" type="stmt"/>
-          <line num="247" count="0" type="stmt"/>
+          <line num="216" count="0" type="stmt"/>
+          <line num="221" count="0" type="stmt"/>
+          <line num="256" count="0" type="stmt"/>
+          <line num="261" count="0" type="stmt"/>
         </file>
         <file name="CreateResource.js" path="D:\GitHub\studenthub\src\components\pages\resources\CreateResource.js">
-          <metrics statements="60" coveredstatements="0" conditionals="13" coveredconditionals="0" methods="13" coveredmethods="0"/>
+          <metrics statements="57" coveredstatements="0" conditionals="13" coveredconditionals="0" methods="13" coveredmethods="0"/>
           <line num="1" count="0" type="stmt"/>
           <line num="2" count="0" type="stmt"/>
           <line num="3" count="0" type="stmt"/>
@@ -1010,7 +931,6 @@
           <line num="13" count="0" type="stmt"/>
           <line num="14" count="0" type="stmt"/>
           <line num="22" count="0" type="stmt"/>
-          <line num="26" count="0" type="stmt"/>
           <line num="27" count="0" type="stmt"/>
           <line num="33" count="0" type="stmt"/>
           <line num="35" count="0" type="stmt"/>
@@ -1031,14 +951,12 @@
           <line num="54" count="0" type="stmt"/>
           <line num="55" count="0" type="stmt"/>
           <line num="56" count="0" type="stmt"/>
-          <line num="60" count="0" type="stmt"/>
           <line num="61" count="0" type="stmt"/>
           <line num="62" count="0" type="stmt"/>
           <line num="64" count="0" type="stmt"/>
           <line num="65" count="0" type="stmt"/>
           <line num="67" count="0" type="stmt"/>
           <line num="71" count="0" type="stmt"/>
-          <line num="77" count="0" type="stmt"/>
           <line num="78" count="0" type="stmt"/>
           <line num="81" count="0" type="stmt"/>
           <line num="85" count="0" type="stmt"/>
@@ -1079,9 +997,9 @@
         </file>
       </package>
       <package name="studenthub.src.components.pages.studygroup">
-        <metrics statements="103" coveredstatements="0" conditionals="23" coveredconditionals="0" methods="26" coveredmethods="0"/>
+        <metrics statements="94" coveredstatements="0" conditionals="23" coveredconditionals="0" methods="26" coveredmethods="0"/>
         <file name="Studygroup.js" path="D:\GitHub\studenthub\src\components\pages\studygroup\Studygroup.js">
-          <metrics statements="41" coveredstatements="0" conditionals="12" coveredconditionals="0" methods="12" coveredmethods="0"/>
+          <metrics statements="36" coveredstatements="0" conditionals="12" coveredconditionals="0" methods="12" coveredmethods="0"/>
           <line num="1" count="0" type="stmt"/>
           <line num="2" count="0" type="stmt"/>
           <line num="4" count="0" type="stmt"/>
@@ -1100,8 +1018,6 @@
           <line num="37" count="0" type="stmt"/>
           <line num="38" count="0" type="stmt"/>
           <line num="42" count="0" type="stmt"/>
-          <line num="48" count="0" type="stmt"/>
-          <line num="57" count="0" type="stmt"/>
           <line num="58" count="0" type="stmt"/>
           <line num="59" count="0" type="stmt"/>
           <line num="76" count="0" type="stmt"/>
@@ -1109,11 +1025,8 @@
           <line num="83" count="0" type="stmt"/>
           <line num="89" count="0" type="stmt"/>
           <line num="95" count="0" type="stmt"/>
-          <line num="101" count="0" type="stmt"/>
           <line num="102" count="0" type="stmt"/>
-          <line num="106" count="0" type="stmt"/>
           <line num="107" count="0" type="stmt"/>
-          <line num="111" count="0" type="stmt"/>
           <line num="112" count="0" type="stmt"/>
           <line num="130" count="0" type="stmt"/>
           <line num="131" count="0" type="cond" truecount="0" falsecount="2"/>
@@ -1125,7 +1038,7 @@
           <line num="157" count="0" type="cond" truecount="0" falsecount="2"/>
         </file>
         <file name="createStudyGroup.js" path="D:\GitHub\studenthub\src\components\pages\studygroup\createStudyGroup.js">
-          <metrics statements="62" coveredstatements="0" conditionals="11" coveredconditionals="0" methods="14" coveredmethods="0"/>
+          <metrics statements="58" coveredstatements="0" conditionals="11" coveredconditionals="0" methods="14" coveredmethods="0"/>
           <line num="2" count="0" type="stmt"/>
           <line num="3" count="0" type="stmt"/>
           <line num="4" count="0" type="stmt"/>
@@ -1152,7 +1065,6 @@
           <line num="63" count="0" type="stmt"/>
           <line num="64" count="0" type="cond" truecount="0" falsecount="5"/>
           <line num="66" count="0" type="stmt"/>
-          <line num="67" count="0" type="stmt"/>
           <line num="68" count="0" type="stmt"/>
           <line num="69" count="0" type="stmt"/>
           <line num="70" count="0" type="stmt"/>
@@ -1164,11 +1076,9 @@
           <line num="77" count="0" type="stmt"/>
           <line num="78" count="0" type="stmt"/>
           <line num="79" count="0" type="stmt"/>
-          <line num="83" count="0" type="stmt"/>
           <line num="84" count="0" type="stmt"/>
           <line num="85" count="0" type="stmt"/>
           <line num="88" count="0" type="stmt"/>
-          <line num="89" count="0" type="stmt"/>
           <line num="90" count="0" type="stmt"/>
           <line num="91" count="0" type="stmt"/>
           <line num="93" count="0" type="stmt"/>
@@ -1177,7 +1087,6 @@
           <line num="103" count="0" type="stmt"/>
           <line num="104" count="0" type="stmt"/>
           <line num="108" count="0" type="stmt"/>
-          <line num="109" count="0" type="stmt"/>
           <line num="111" count="0" type="stmt"/>
           <line num="115" count="0" type="stmt"/>
           <line num="116" count="0" type="stmt"/>

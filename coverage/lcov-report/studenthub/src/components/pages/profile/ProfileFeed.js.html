@@ -22,7 +22,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>0/41</span>
+        <span class='fraction'>0/38</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
@@ -37,7 +37,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>0/35</span>
+        <span class='fraction'>0/32</span>
       </div>
     </div>
   </div>
@@ -218,19 +218,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -245,6 +234,17 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -256,7 +256,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -268,7 +268,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -362,7 +362,7 @@ export class ProfileFeed extends Component {
   }
 &nbsp;
   async componentDidMount(){
-<span class="cstat-no" title="statement not covered" >    console.log(this.props.currentUser);</span>
+    // console.log(this.props.currentUser);
 <span class="cstat-no" title="statement not covered" >    this.getPosts();</span>
   }
 &nbsp;
@@ -400,7 +400,7 @@ export class ProfileFeed extends Component {
   }
 &nbsp;
   deletePost(id, timestamp)<span class="cstat-no" title="statement not covered" >{</span>
-<span class="cstat-no" title="statement not covered" >    console.log(`Deleting post with id: ${id}`)</span>
+    // console.log(`Deleting post with id: ${id}`)
     let apiName = <span class="cstat-no" title="statement not covered" >'posts';</span>
     let path = <span class="cstat-no" title="statement not covered" >'/posts/delete-post';</span>
     let myInit = <span class="cstat-no" title="statement not covered" >{</span>
@@ -412,7 +412,7 @@ export class ProfileFeed extends Component {
 <span class="cstat-no" title="statement not covered" >    API.del(apiName, path, myInit).then(<span class="fstat-no" title="function not covered" >response =&gt; {</span></span>
 <span class="cstat-no" title="statement not covered" >      this.getPosts();</span>
 <span class="cstat-no" title="statement not covered" >      message.success('Successfully deleted post!');</span>
-<span class="cstat-no" title="statement not covered" >      console.log('Success in deleting post:', response);</span>
+      // console.log('Success in deleting post:', response);
     }).catch(<span class="fstat-no" title="function not covered" >error =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >      message.error('Could not delete post.');</span>
 <span class="cstat-no" title="statement not covered" >      console.log(error.response)</span>
@@ -432,7 +432,7 @@ export class ProfileFeed extends Component {
 &nbsp;
     const <span class="fstat-no" title="function not covered" >DeleteIcon = <span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >(</span>{ createdBy, id, timestamp }) =&gt; (</span></span></span>
       &lt;span&gt;
-          &lt;Popconfirm title="Are you sure delete this post?" onConfirm={<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >() =&gt; this.deletePost(id, timestamp)} onCancel={<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >() =&gt; console.log('Canceled post deletion.')} okText="Yes" cancelText="No"&gt;</span></span></span></span>
+          &lt;Popconfirm title="Are you sure delete this post?" onConfirm={<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >() =&gt; this.deletePost(id, timestamp)} onCancel={<span class="fstat-no" title="function not covered" >() =&gt; </span>{<span class="cstat-no" title="statement not covered" >return null}} okText="Yes" cancelText="No"&gt;</span></span></span>
             &lt;Icon type="delete" style={{ right: 5}} /&gt;
           &lt;/Popconfirm&gt;
       &lt;/span&gt;
@@ -481,7 +481,7 @@ export default ProfileFeed
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue May 07 2019 12:51:06 GMT-0700 (Pacific Daylight Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue May 07 2019 13:38:59 GMT-0700 (Pacific Daylight Time)
 </div>
 </div>
 <script src="..\..\..\..\..\prettify.js"></script>
