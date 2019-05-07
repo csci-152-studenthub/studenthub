@@ -39,7 +39,7 @@
     "@babel/plugin-proposal-class-properties": "*",
     "@babel/preset-env": "*",
     "@babel/preset-react": "*",
-    "babel-jest": "*",
+    "babel-jest": "23.6.0",
     "enzyme": "*",
     "enzyme-adapter-react-16": "*",
     "identity-obj-proxy": "^3.0.0",
