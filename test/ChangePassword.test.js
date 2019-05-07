@@ -16,7 +16,7 @@ describe("ChangePassword", () => {
     const fakeEvent = { preventDefault: () => console.log('preventDefault') };
     const wrapper = shallow(<ChangePasswordComponent />);
     expect(wrapper.find('.email').length).toBe(0);
-    expect(wrapper.find('.password').length).toBe(0);
+    expect(wrapper.find('.new_password').length).toBe(0);
     expect(wrapper.find('.code').length).toBe(0);
     expect(wrapper.find('.buttonLoading').length).toBe(0);
     expect(wrapper.find('.formType').length).toBe(0);
