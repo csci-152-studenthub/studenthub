@@ -59,7 +59,7 @@ class SignInComponent extends Component {
         console.log(err);
       }
     });
-  }
+  };
 
   render() {
     const { getFieldDecorator } = this.props.form;

@@ -46,11 +46,11 @@ class ForgotPasswordComponent extends Component {
         this.props.changeEmail(values.email);
 
         var username = values.email;
-        const response = await Auth.forgotPassword(username)
+        await Auth.forgotPassword(username)
           .then(data => {
             this.setState({buttonLoading: false});
             console.log(data);
-            message.success("Email sent!", 2.5);
+            message.success("Please check your email for your verification code!", 3);
             setTimeout(() => this.props.changeForm(3), 1);
           })
           .catch(err => {
