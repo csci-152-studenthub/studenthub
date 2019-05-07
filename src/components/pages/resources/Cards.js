@@ -201,25 +201,34 @@ export class Cards extends Component {
 
         {/* Window View */}
           <div className="item-resource-info">
-            <List
-              style={this.state.visible ?  {display:"block"} : {display:"none"}}
-              grid={{ column: 2 }}
-              dataSource={currentCard.resource_noteCards}
-              renderItem={noteItem => (
-                <List.Item style={{paddingRight: 20}}>
-                  <Skeleton loading={load} active >
-                    <Card
-                      className="notecard"
-                      onClick={() => this.flipCard(noteItem)}
-                      hoverable
-                    > 
-                      {noteItem.flipped ? <Text>{noteItem.definition}</Text> : <Text style={{fontWeight: "bold"}}>{noteItem.term}</Text>}
-                    </Card>
-                  </Skeleton>
-                </List.Item>
-              )}
-            />
-            <Comments id={currentCard.resourceId} user={this.state.user}/>
+            <div className="item-resource-createdby">
+              <Title level={3}>{currentCard.resource_title}</Title>
+              <Text><Text strong>Created by:</Text> {currentCard.created_by}</Text><br/>
+              <Text><Text strong>Description: </Text><br/>{currentCard.resource_description}</Text>
+            </div>
+           
+            <div className="item-resource-cards">
+              <Divider orientation="left"><Text style={{fontSize: 20}}>Flashcards</Text></Divider>
+              <List
+                style={this.state.visible ?  {display:"block"} : null}
+                grid={{ column: 2 }}
+                dataSource={currentCard.resource_noteCards}
+                renderItem={noteItem => (
+                  <List.Item style={{paddingRight: 20}}>
+                    <Skeleton loading={load} active >
+                      <Card
+                        className="notecard"
+                        onClick={() => this.flipCard(noteItem)}
+                        hoverable
+                      > 
+                        {noteItem.flipped ? <Text>{noteItem.definition}</Text> : <Text style={{fontWeight: "bold"}}>{noteItem.term}</Text>}
+                      </Card>
+                    </Skeleton>
+                  </List.Item>
+                )}
+              />
+              <Comments id={currentCard.resourceId} user={this.state.user}/>
+            </div>
           </div>
 
         {/* Mobile View */}
@@ -235,6 +244,11 @@ export class Cards extends Component {
             footer={null}
           >
           <div className="item-resource-info-mobile">
+            <div className="item-resource-createdby">
+              <Title level={3}>{currentCard.resource_title}</Title>
+              <Text><Text strong>Created by: </Text>{currentCard.created_by}</Text><br/>
+              <Text><Text strong>Description: </Text><br/>{currentCard.resource_description}</Text>
+            </div>
             <List
               style={this.state.visible ?  {display:"block"} : {display:"none"}}
               grid={{ column: 1 }}

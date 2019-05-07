@@ -46,9 +46,8 @@
 
 .welcome-message-box{
   grid-area: welcomeMessageBox;
-  display: flex;
-  padding-left: 20px;
-  /* padding: 10px; */
+  align-self: center;
+  padding: 10px;
 }
 
 
