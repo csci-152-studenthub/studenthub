@@ -1,4 +1,6 @@
-# studenthub
+# Studenthub.io
+
+Website is up at https://studenthub.io for initial user testing!
 
 ## How To Run:
 **1. Open terminal (Mac OS) or cmd (Windows)**  
