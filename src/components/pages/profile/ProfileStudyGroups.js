@@ -1,13 +1,10 @@
 import React, { Component } from 'react'
 import {
-  Typography,
   List,
-  Skeleton, Card, Modal
+  Card, 
 } from 'antd';
-import { API } from "aws-amplify";
 
 const { Meta } = Card;
-const { Text } = Typography;
 
 export class ProfileStudyGroups extends Component {
   constructor(props){

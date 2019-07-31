@@ -1,18 +1,11 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import {
   List,
   Card,
-  Carousel, 
-  Modal, 
-  Typography, 
-  Divider, 
-  Avatar,
-  Empty
 } from 'antd';
 import './ProfileResources.css'
-import { API, Auth } from "aws-amplify";
+import { API } from "aws-amplify";
 
-const { Title, Paragraph, Text } = Typography;
 const { Meta } = Card;
 
 export class ProfileResources extends Component {

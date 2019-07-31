@@ -320,7 +320,7 @@ export class CardContainer extends Component {
       }
     };
     API.post(apiName, path, myInit).then(response => {
-      console.log('dislike-post lambda response: ', response);
+      // console.log('dislike-post lambda response: ', response);
     }).catch(error => {
       console.log(error.response)
     });

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { message, Input, Button, Form, Select, Typography, Modal, Icon } from 'antd';
+import { Input, Button, Form, Typography, Modal, Icon } from 'antd';
 import moment from 'moment';
 import uuid from 'uuid';
 import { API, Auth } from "aws-amplify";
@@ -106,7 +106,7 @@ export class CreateResource extends Component {
   
   render() {
     const { getFieldDecorator, getFieldValue } = this.props.form;
-    const { myValidateHelp, myValidateStatus } = this.state;
+    // const { myValidateHelp, myValidateStatus } = this.state;
     getFieldDecorator('keys', { initialValue: [] });
     const keys = getFieldValue('keys');
     const formItems = keys.map((k, index) => (

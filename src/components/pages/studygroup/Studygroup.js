@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Typography, Button, Modal, Skeleton, Divider, Avatar} from 'antd';
+import {Typography, Button, Modal, Skeleton, Divider} from 'antd';
 // import uuid from "uuid";
 import { API, Auth} from "aws-amplify";
 import CreateStudyGroupForm from './createStudyGroup';

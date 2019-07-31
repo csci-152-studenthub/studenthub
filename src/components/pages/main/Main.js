@@ -9,12 +9,11 @@ import Dashboard from '../dashboard/Dashboard';
 import Resources from '../resources/Resources';
 import StudyGroups from '../studygroup/Studygroup';
 import Profile from '../profile/Profile';
-import logo from '../../../react-logo.png';
 import './Main.css';
 // import ProfilePic from '../profile/ProfilePic';
 
 // const SubMenu = Menu.SubMenu;
-const { Title, Text } = Typography;
+const { Title } = Typography;
 const { Content, Footer, Sider } = Layout;
 
 export class Main extends Component {

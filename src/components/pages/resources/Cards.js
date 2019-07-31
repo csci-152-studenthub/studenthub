@@ -1,17 +1,13 @@
 import React, { Component } from 'react';
-import { Card, List, Button, Skeleton, Modal, Carousel, Divider, Typography, Empty, ConfigProvider} from 'antd';
+import { Card, List, Skeleton, Modal, Divider, Typography } from 'antd';
 import { API, Auth } from "aws-amplify";
-import uuid from "uuid";
+// import uuid from "uuid";
 import "./Resources.css";
 import Comments from "../feeds/Comments";
 
 
-const { Title, Paragraph, Text } = Typography;
+const { Title, Text } = Typography;
 const { Meta } = Card;
-
-const highlight = {
-
-}
 
 export class Cards extends Component {
   constructor(props){
@@ -157,7 +153,7 @@ export class Cards extends Component {
     }
 
     let load = this.state.loading;
-    let testCards = this.state.testCards ? this.state.testCards : [];
+    // let testCards = this.state.testCards ? this.state.testCards : [];
     let currentCard = !load ? this.state.currentCard :
       {
         resource_title: "loading",

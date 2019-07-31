@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { API } from "aws-amplify";
 import {
-  Comment, Avatar, Form, Button, List, Input, Tooltip, Popconfirm, Divider, Typography, message
+  Comment, Avatar, Form, Button, List, Input, Tooltip, Popconfirm, Divider, Typography,
 } from 'antd';
 import moment from 'moment';
 import uuid from "uuid";

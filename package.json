@@ -43,7 +43,10 @@
     "enzyme": "*",
     "enzyme-adapter-react-16": "*",
     "identity-obj-proxy": "^3.0.0",
-    "jest": "*"
+    "jest": "*",
+    "prettier": "^1.18.2",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-prettier": "^3.1.0"
   },
   "jest": {
     "collectCoverage": true,

@@ -52,7 +52,7 @@ class SignInComponent extends Component {
           })
           .catch(err => {
             this.setState({buttonLoading: false});
-            // console.log(err);
+            console.log(err);
             message.error(err.message, 2.5);
           });
       } else {
@@ -75,14 +75,14 @@ class SignInComponent extends Component {
                     { required: true, message: 'Please input your email!' }],
             initialValue: email
           })(
-            <Input setFieldsValue={email} onChange={this.handleChange} prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} type="email" placeholder="Email" />
+            <Input setfieldsvalue={email} onChange={this.handleChange} prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} type="email" placeholder="Email" />
           )}
         </Form.Item>
         <Form.Item>
           {getFieldDecorator('password', {
             rules: [{ required: true, message: 'Please input your Password!' }],
           })(
-            <Input setFieldsValue={this.state.password} onChange={this.handleChange} prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="Password" />
+            <Input setfieldsvalue={this.state.password} onChange={this.handleChange} prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="Password" />
           )}
         </Form.Item>
         <Form.Item>

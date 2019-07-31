@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Typography, Button, Modal, Card, List, Carousel, Divider, Avatar} from 'antd';
+import { Button } from 'antd';
 import Cards from './Cards.js';
 import CreateResource from './CreateResource.js';
 import "./Resources.css";
