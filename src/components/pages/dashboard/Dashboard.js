@@ -1,21 +1,14 @@
 import React, { Component } from 'react';
 import { Auth, API } from "aws-amplify";
 import {List, Typography, Skeleton, Divider, Statistic, Row, Col, Icon, Spin} from 'antd';
+import GetApi from '../../../api/dashboard_api.js/get_api.js';
 import './Dashboard.css';
-// import Feeds from '../feeds/Feeds';
-// import Resources from '../resources/Resources';
-
 
 const { Text ,Title } = Typography;
 
-// const highlight = {
-//   fontSize: 32,
-//   textShadow: '2px 2px 21px rgba(24, 144, 255, 1)'
-// }
 export class Dashboard extends Component {
   constructor(props){
     super(props);
-
     this.state = {
       confirmLoading: false,
       buttonLoading: false,
@@ -29,7 +22,6 @@ export class Dashboard extends Component {
       content: '',
       visible: false
     };
-
     this.getPosts = this.getPosts.bind(this);
   }
   
@@ -47,34 +39,24 @@ export class Dashboard extends Component {
     this.getStatistics();
   }
 
-  async getPosts() {
-    this.setState({
-      posts: [],
-    });
-
-    try {
-      const posts = await API.get("posts", "/posts/get-posts");
-      posts.body.map((post) => (
-        this.setState({
-          posts: [
-            ...this.state.posts,
-            {
-              subfeed: post.subfeed,
-              timestamp: post.timestamp,
-              id: post.id,
-              user: post.user,
-              title: post.title,
-              content: post.content
-            }
-          ]
-        })
-      ));
-
-    } catch (e) {
-      console.log(e);
-    }
+  async getPosts(){
+    const posts = await GetApi.getposts();
+    posts.body.map((post) => (
+      this.setState({
+        posts: [
+          ...this.state.posts,
+          {
+            subfeed: post.subfeed,
+            timestamp: post.timestamp,
+            id: post.id,
+            user: post.user,
+            title: post.title,
+            content: post.content
+          }
+        ]
+      })
+    ));
   }
-
 
   async getResources(){
     let email = this.state.currentUser;
@@ -88,7 +70,6 @@ export class Dashboard extends Component {
     });
     await API.get(apiName, path, myInit)
       .then((response) => {
-        // // console.log("Resources:", response);
         response.body.map((item) => {
           this.setState({
             resources:[
@@ -112,7 +93,6 @@ export class Dashboard extends Component {
       });
   }
 
-
   async getStudygroups(){
     this.setState({
       study_groups: [],
@@ -120,8 +100,6 @@ export class Dashboard extends Component {
     });
 
     let user = this.state.userAttributes.email;
-    // // console.log("Getting studygroups for user "+user);
-
     let apiName = 'posts';
     let path = '/studygroups/get-studygroups';
     let myInit = {
@@ -129,7 +107,6 @@ export class Dashboard extends Component {
     };
 
     await API.post(apiName, path, myInit).then(response => {
-      // // console.log('Successfylly got studygroups: ', response.body);
       this.setState({currentStudygroup: response.body[0]});
       response.body.map((item) => (
         this.setState({
@@ -157,8 +134,6 @@ export class Dashboard extends Component {
   async getStatistics(){
     let user = this.state.userAttributes.preferred_username;
     let userEmail = this.state.userAttributes.email;
-
-    // console.log("Getting statistics");
     let apiName = 'posts';
     let path = '/dashboard/get-statistics';
     let myInit = {
@@ -166,36 +141,12 @@ export class Dashboard extends Component {
     };
     await API.post(apiName, path, myInit)
       .then((response) => {
-        // console.log(response);
         this.setState({statistics: response.body})
       })
       .catch((error) => {
         console.log("Something went wrong: ", error);
       });
   }
-
-  // highlight_handler = () =>{
-  //   console.log('mouse enter text');
-  //   this.setState({
-  //     isHighlighted: true
-  //   })
-  // };
-
-  // highlight_handler_leave = () =>{
-  //   console.log('mouse left text');
-  //   this.setState({
-  //     isHighlighted: false
-  //   })
-  // };
-
-//   postCount: 1
-// ​​
-//   postLikeCount: 3
-// ​​
-//   resourceCount: 5
-// ​​
-//   resourceViewCount: 2
-
 
   render() {
     const post_data =this.state.posts;
@@ -229,7 +180,6 @@ export class Dashboard extends Component {
           </div>
           <div className="item-activity-board">
             <Divider className="item-feed-title"><Text style={{fontSize: 32}}>Feeds</Text></Divider>
-            {/* <div className="item-feed-title"><Title style={{color:"white"}}>Feeds</Title></div> */}
             <div className="item-feed-activity">
               <List
                 itemLayout="horizontal"
@@ -240,12 +190,10 @@ export class Dashboard extends Component {
                       description={<Text><Text style={{fontWeight: "bold"}}>{item.user.split('@')[0]}</Text> posted '{item.title}'in the <Text style={{textDecorationLine:"underline"}}>{item.subfeed}</Text> subfeed</Text>}
                     />
                   </List.Item>
-                  
                 )}
               />
             </div>
             <Divider className="item-resource-title"><Text style={{fontSize:32}}>Resources</Text></Divider>
-            {/* <div className="item-resource-title"><Title style={{color:"white"}}>Resources</Title></div> */}
             <div className="item-resources-activity">
               <List
                   itemLayout="horizontal"
@@ -265,7 +213,6 @@ export class Dashboard extends Component {
               />
             </div>
             <Divider className="item-studygroup-title"><Text style={{fontSize: 32}}>Study Groups</Text></Divider>
-            {/* <div className="item-studygroup-title"><Title style={{color:"white"}}>StudyGroup</Title></div> */}
             <div className="item-studygroups-activity">
                <List
                   itemLayout="horizontal"
@@ -286,8 +233,6 @@ export class Dashboard extends Component {
             </div>
           </div>
         </div>
-    
-
       )
   }
 }
