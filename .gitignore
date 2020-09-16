@@ -1,6 +1,7 @@
 build
 node_modules
 .idea/
+.idea/workspace.xml
 #amplify
 amplify/\#current-cloud-backend
 amplify/.config/local-*
