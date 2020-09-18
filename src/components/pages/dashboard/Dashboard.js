@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Auth, API } from "aws-amplify";
 import {List, Typography, Skeleton, Divider, Statistic, Row, Col, Icon, Spin} from 'antd';
 import GetApi from '../../../api/dashboard_api.js/get_api.js';
+import PostApi from '../../../api/dashboard_api.js/post_api.js';
 import './Dashboard.css';
 
 const { Text ,Title } = Typography;
@@ -40,6 +41,9 @@ export class Dashboard extends Component {
   }
 
   async getPosts(){
+    this.setState({
+      posts: [],
+    });
     const posts = await GetApi.getposts();
     posts.body.map((post) => (
       this.setState({
@@ -60,37 +64,30 @@ export class Dashboard extends Component {
 
   async getResources(){
     let email = this.state.currentUser;
-    let apiName = 'posts';
-    let path = '/resources/get-resources';
     let myInit = {
       body: {user: email}
     };
     this.setState({
       resources: [],
     });
-    await API.get(apiName, path, myInit)
-      .then((response) => {
-        response.body.map((item) => {
-          this.setState({
-            resources:[
-              ...this.state.resources,
-              {
-               resource_title: item.resource_title,
-               resource_id: item.resourceId,
-               resource_description: item.resource_description,
-               created_by: item.created_by,
-               resource_url: item.resource_url,
-               resource_comments: [],
-               resource_noteCards: item.resource_noteCards,
-               timestamp: item.timestamp
-              }
-            ]
-          })
-        });
+    const resources = await GetApi.getresources(myInit);
+    resources.body.map((item) => (
+      this.setState({
+        resources: [
+          ...this.state.resources,
+          {
+            resource_title: item.resource_title,
+            resource_id: item.resourceId,
+            resource_description: item.resource_description,
+            created_by: item.created_by,
+            resource_url: item.resource_url,
+            resource_comments: [],
+            resource_noteCards: item.resource_noteCards,
+            timestamp: item.timestamp
+          }
+        ]
       })
-      .catch((error) => {
-        console.log("Something went wrong: ", error);
-      });
+    ));
   }
 
   async getStudygroups(){
@@ -98,22 +95,20 @@ export class Dashboard extends Component {
       study_groups: [],
       cardsLoading: true
     });
-
     let user = this.state.userAttributes.email;
-    let apiName = 'posts';
-    let path = '/studygroups/get-studygroups';
     let myInit = {
       body: {user}
     };
-
-    await API.post(apiName, path, myInit).then(response => {
-      this.setState({currentStudygroup: response.body[0]});
-      response.body.map((item) => (
-        this.setState({
-          study_groups:[
-            ...this.state.study_groups,
-            {
-              groupId: item.groupId,
+    const studygroups = await PostApi.getstudygroups(myInit);
+    this.setState({
+      currentStudygroup: studygroups.body[0]
+    });
+    studygroups.body.map((item) => (
+      this.setState({
+        study_groups:[
+          ...this.state.study_groups,
+          {
+            groupId: item.groupId,
               course: item.course,
               group_name: item.group_name,
               description: item.description,
@@ -121,31 +116,23 @@ export class Dashboard extends Component {
               professor: item.professor,
               timestamp: item.timestamp,
               created_by: item.created_by
-            }
-          ]
-        })
-      ));
-      this.setState({cardsLoading: false});
-    }).catch(e => {
-      console.log("Encountered an error in getting studygroups: ", e);
-    });
+          }
+        ]
+      })
+    ));
+    this.setState({cardsLoading: false});
   }
 
   async getStatistics(){
     let user = this.state.userAttributes.preferred_username;
     let userEmail = this.state.userAttributes.email;
-    let apiName = 'posts';
-    let path = '/dashboard/get-statistics';
     let myInit = {
       body: {user, userEmail}
     };
-    await API.post(apiName, path, myInit)
-      .then((response) => {
-        this.setState({statistics: response.body})
-      })
-      .catch((error) => {
-        console.log("Something went wrong: ", error);
-      });
+    const statistics = await PostApi.getstatistics(myInit);
+    this.setState({
+      statistics: statistics.body
+    });
   }
 
   render() {
