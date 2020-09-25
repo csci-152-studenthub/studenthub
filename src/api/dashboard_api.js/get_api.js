@@ -2,12 +2,12 @@ import { API } from "aws-amplify";
 
 
 export default {
-    getposts(){
-        const getposts = API.get("posts", "/posts/get-posts");
+    async getposts(){
+        const getposts = await API.get("posts", "/posts/get-posts");
         return getposts;
     },
-    getresources(useremail){
-        const getresources = API.get("posts", "/resources/get-resources", useremail);
+    async getresources(useremail){
+        const getresources = await API.get("posts", "/resources/get-resources", useremail);
         return getresources;
     }
 };
