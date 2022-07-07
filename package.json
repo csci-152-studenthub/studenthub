@@ -9,7 +9,7 @@
     "aws-sdk": "^2.449.0",
     "draft-js": "^0.10.5",
     "gg-editor": "^2.0.2",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
     "react-markdown": "^4.0.6",
